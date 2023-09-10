@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>StringUtils.js - TsLangUtils</title>
+    
+    <meta name="description" content="Common Lang Utilities for TypeScript" />
+    
+        <meta name="keywords" content="yookue, commons-lang, array-utils, boolean-utils, object-utils, random-utils, string-utils, time-utils" />
+        <meta name="keyword" content="yookue, commons-lang, array-utils, boolean-utils, object-utils, random-utils, string-utils, time-utils" />
+    
+    
+    
+    <meta property="og:title" content="TsLangUtils"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content="ts-lang-utils"/>
+    <meta property="og:url" content="https://yookue.github.io/ts-lang-utils"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/yookue/ts-lang-utils" target="_blank" class="menu-item" id="repo_link" >Github</a></h2><h3>Classes</h3><ul><li><a href="ArrayUtils.html">ArrayUtils</a><ul class='methods'><li data-type='method'><a href="ArrayUtils.html#.includes">includes</a></li><li data-type='method'><a href="ArrayUtils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="ArrayUtils.html#.isNotEmpty">isNotEmpty</a></li></ul></li><li><a href="BooleanUtils.html">BooleanUtils</a><ul class='methods'><li data-type='method'><a href="BooleanUtils.html#.fromString">fromString</a></li><li data-type='method'><a href="BooleanUtils.html#.toString">toString</a></li><li data-type='method'><a href="BooleanUtils.html#.toString10">toString10</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringOnOff">toStringOnOff</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringTF">toStringTF</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringTrueFalse">toStringTrueFalse</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringYN">toStringYN</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringYesNo">toStringYesNo</a></li></ul></li><li><a href="ObjectUtils.html">ObjectUtils</a><ul class='methods'><li data-type='method'><a href="ObjectUtils.html#.allEmpty">allEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.allNil">allNil</a></li><li data-type='method'><a href="ObjectUtils.html#.allNotEmpty">allNotEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.allNotNil">allNotNil</a></li><li data-type='method'><a href="ObjectUtils.html#.anyEmpty">anyEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.anyNil">anyNil</a></li><li data-type='method'><a href="ObjectUtils.html#.anyNotEmpty">anyNotEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.anyNotNil">anyNotNil</a></li><li data-type='method'><a href="ObjectUtils.html#.firstNonNil">firstNonNil</a></li><li data-type='method'><a href="ObjectUtils.html#.hasProperty">hasProperty</a></li><li data-type='method'><a href="ObjectUtils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.isNil">isNil</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotNil">isNotNil</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotNull">isNotNull</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotUndefined">isNotUndefined</a></li><li data-type='method'><a href="ObjectUtils.html#.isNull">isNull</a></li><li data-type='method'><a href="ObjectUtils.html#.isPrototype">isPrototype</a></li><li data-type='method'><a href="ObjectUtils.html#.isUndefined">isUndefined</a></li><li data-type='method'><a href="ObjectUtils.html#.keys">keys</a></li><li data-type='method'><a href="ObjectUtils.html#.toString">toString</a></li></ul></li><li><a href="RandomUtils.html">RandomUtils</a><ul class='methods'><li data-type='method'><a href="RandomUtils.html#.randomBoolean">randomBoolean</a></li><li data-type='method'><a href="RandomUtils.html#.randomElement">randomElement</a></li><li data-type='method'><a href="RandomUtils.html#.randomInteger">randomInteger</a></li><li data-type='method'><a href="RandomUtils.html#.randomNumber">randomNumber</a></li></ul></li><li><a href="StringUtils.html">StringUtils</a><ul class='methods'><li data-type='method'><a href="StringUtils.html#.allBlank">allBlank</a></li><li data-type='method'><a href="StringUtils.html#.allEmpty">allEmpty</a></li><li data-type='method'><a href="StringUtils.html#.allNotBlank">allNotBlank</a></li><li data-type='method'><a href="StringUtils.html#.allNotEmpty">allNotEmpty</a></li><li data-type='method'><a href="StringUtils.html#.anyBlank">anyBlank</a></li><li data-type='method'><a href="StringUtils.html#.anyEmpty">anyEmpty</a></li><li data-type='method'><a href="StringUtils.html#.anyNotBlank">anyNotBlank</a></li><li data-type='method'><a href="StringUtils.html#.anyNotEmpty">anyNotEmpty</a></li><li data-type='method'><a href="StringUtils.html#.defaultIfBlank">defaultIfBlank</a></li><li data-type='method'><a href="StringUtils.html#.defaultIfEmpty">defaultIfEmpty</a></li><li data-type='method'><a href="StringUtils.html#.equals">equals</a></li><li data-type='method'><a href="StringUtils.html#.equalsAny">equalsAny</a></li><li data-type='method'><a href="StringUtils.html#.equalsAnyIgnoreCase">equalsAnyIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.equalsIgnoreCase">equalsIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.includes">includes</a></li><li data-type='method'><a href="StringUtils.html#.includesAny">includesAny</a></li><li data-type='method'><a href="StringUtils.html#.includesAnyIgnoreCase">includesAnyIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.includesIgnoreCase">includesIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.isBlank">isBlank</a></li><li data-type='method'><a href="StringUtils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="StringUtils.html#.isNotBlank">isNotBlank</a></li><li data-type='method'><a href="StringUtils.html#.isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="StringUtils.html#.isWhitespace">isWhitespace</a></li><li data-type='method'><a href="StringUtils.html#.trim">trim</a></li></ul></li><li><a href="TimeUtils.html">TimeUtils</a><ul class='methods'><li data-type='method'><a href="TimeUtils.html#.sleep">sleep</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">StringUtils.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) 2023 Yookue Ltd. All rights reserved.
+ *
+ * Licensed under the MIT License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+import { ArrayUtils } from './ArrayUtils';
+import { ObjectUtils } from './ObjectUtils';
+/**
+ * Utility functions for string
+ *
+ * @abstract
+ * @hideconstructor
+ */
+export class StringUtils {
+    /**
+     * Returns whether the given string is empty
+     *
+     * @param text the string to check
+     * @returns true if the given string is empty
+     *
+     * @example
+     * StringUtils.isEmpty(undefined);    // true
+     * StringUtils.isEmpty('foobar');    // false
+     */
+    static isEmpty(text) {
+        return !text || text.length === 0;
+    }
+    /**
+     * Returns whether the given string is not empty
+     *
+     * @param text the string to check
+     * @returns true if the given string is not empty
+     *
+     * @example
+     * StringUtils.isNotEmpty('foobar');    // true
+     */
+    static isNotEmpty(text) {
+        return !this.isEmpty(text);
+    }
+    /**
+     * Returns whether the given string is blank
+     *
+     * @description check if all the characters in the given string is whitespace or line separators
+     * @param text the string to check
+     * @returns true if the given string is blank
+     *
+     * @example
+     * StringUtils.isBlank(undefined);    // true
+     * StringUtils.isBlank('foobar');    // false
+     */
+    static isBlank(text) {
+        if (!text || text.length === 0) {
+            return true;
+        }
+        const length = text.length;
+        for (let i = 0; i &lt; length; i++) {
+            const character = text.charAt(i);
+            if (character !== ' ' &amp;&amp; character !== '\\r' &amp;&amp; character !== '\\n') {
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
+     * Returns whether the given string is not blank
+     *
+     * @param text the string to check
+     * @returns true if the given string is not blank
+     *
+     * @example
+     * StringUtils.isNotBlank('foobar');    // true
+     */
+    static isNotBlank(text) {
+        return !this.isBlank(text);
+    }
+    /**
+     * Returns whether all the characters in the given string is whitespace
+     *
+     * @param text the string to check
+     * @returns true if all the characters in the given string is whitespace
+     */
+    static isWhitespace(text) {
+        if (!text || text.length === 0) {
+            return false;
+        }
+        const length = text.length;
+        for (let i = 0; i &lt; length; i++) {
+            if (text.charAt(i) !== ' ') {
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
+     * Returns whether all the given texts are empty
+     *
+     * @param texts the texts to check
+     * @return true if all the given texts are empty
+     *
+     * @example
+     * StringUtils.allEmpty(null, undefined);    // true
+     * StringUtils.allEmpty(null, 'true');    // false
+     */
+    static allEmpty(...texts) {
+        return !texts || texts.length === 0 || !texts.some(text => this.isNotEmpty(text));
+    }
+    /**
+     * Returns whether all the given texts are not empty
+     *
+     * @param texts the texts to check
+     * @return true if all the given texts are not empty
+     *
+     * @example
+     * StringUtils.allNotEmpty(null, undefined);    // false
+     * StringUtils.allNotEmpty(null, 'world');    // false
+     * StringUtils.allNotEmpty('foo', 'bar');    // true
+     */
+    static allNotEmpty(...texts) {
+        return texts &amp;&amp; texts.length > 0 &amp;&amp; !texts.some(text => this.isEmpty(text));
+    }
+    /**
+     * Returns whether any of the given texts is empty
+     *
+     * @param texts the texts to check
+     * @return true if any of the given texts is empty
+     *
+     * @example
+     * StringUtils.anyEmpty(null, undefined);    // true
+     * StringUtils.anyEmpty('foo', 'bar');    // false
+     */
+    static anyEmpty(...texts) {
+        return !texts || texts.length === 0 || texts.some(text => this.isEmpty(text));
+    }
+    /**
+     * Returns whether any of the given texts is not empty
+     *
+     * @param texts the texts to check
+     * @return true if any of the given texts is not empty
+     *
+     * @example
+     * StringUtils.anyNotEmpty(null, undefined);    // false
+     * StringUtils.anyNotEmpty(null, 'world');    // true
+     */
+    static anyNotEmpty(...texts) {
+        return texts &amp;&amp; texts.length > 0 &amp;&amp; texts.some(text => this.isNotEmpty(text));
+    }
+    /**
+     * Returns whether all the given texts are blank
+     *
+     * @param texts the texts to check
+     * @return true if all the given texts are blank
+     *
+     * @example
+     * StringUtils.allBlank(null, undefined);    // true
+     * StringUtils.allBlank(null, 'true');    // false
+     */
+    static allBlank(...texts) {
+        return !texts || texts.length === 0 || !texts.some(text => this.isNotBlank(text));
+    }
+    /**
+     * Returns whether all the given texts are not blank
+     *
+     * @param texts the texts to check
+     * @return true if all the given texts are not blank
+     *
+     * @example
+     * StringUtils.allNotBlank(null, undefined);    // false
+     * StringUtils.allNotBlank(null, 'world');    // false
+     * StringUtils.allNotBlank('foo', 'bar');    // true
+     */
+    static allNotBlank(...texts) {
+        return texts &amp;&amp; texts.length > 0 &amp;&amp; !texts.some(text => this.isBlank(text));
+    }
+    /**
+     * Returns whether any of the given texts is blank
+     *
+     * @param texts the texts to check
+     * @return true if any of the given texts is blank
+     *
+     * @example
+     * StringUtils.anyBlank(null, undefined);    // true
+     * StringUtils.anyBlank('foo', 'bar');    // false
+     */
+    static anyBlank(...texts) {
+        return !texts || texts.length === 0 || texts.some(text => this.isBlank(text));
+    }
+    /**
+     * Returns whether any of the given texts is not blank
+     *
+     * @param texts the texts to check
+     * @return true if any of the given texts is not blank
+     *
+     * @example
+     * StringUtils.anyNotBlank(null, undefined);    // false
+     * StringUtils.anyNotBlank(null, 'world');    // true
+     */
+    static anyNotBlank(...texts) {
+        return texts &amp;&amp; texts.length > 0 &amp;&amp; texts.some(text => this.isNotBlank(text));
+    }
+    /**
+     * Returns the default value if the given text is empty, or the text self if it is not empty
+     *
+     * @param text the text to check
+     * @param defaultValue the default value placeholder
+     * @return string the default value if the given text is empty, or the text self if it is not empty
+     *
+     * @example
+     * StringUtils.defaultIfEmpty(undefined, 'foobar');    // 'foobar'
+     */
+    static defaultIfEmpty(text, defaultValue) {
+        return this.isEmpty(text) ? defaultValue : text;
+    }
+    /**
+     * Returns the default value if the given text is blank, or the text self if it is not blank
+     *
+     * @param text the text to check
+     * @param defaultValue the default value placeholder
+     * @return string the default value if the given text is blank, or the text self if it is not blank
+     *
+     * @example
+     * StringUtils.defaultIfBlank(undefined, 'foobar');    // 'foobar'
+     */
+    static defaultIfBlank(text, defaultValue) {
+        return this.isBlank(text) ? defaultValue : text;
+    }
+    /**
+     * Returns whether the given strings are equal
+     *
+     * @param text the source string to check
+     * @param comparison the target string to compare
+     * @returns true if the given strings are equal
+     *
+     * @example
+     * StringUtils.equals('foo', 'foo');    // true
+     * StringUtils.equals('foo', 'bar');    // false
+     */
+    static equals(text, comparison) {
+        if (text === comparison || ObjectUtils.allNil(text, comparison)) {
+            return true;
+        }
+        if (ObjectUtils.anyNil(text, comparison) || (text === null || text === void 0 ? void 0 : text.length) !== (comparison === null || comparison === void 0 ? void 0 : comparison.length)) {
+            return false;
+        }
+        return text === comparison;
+    }
+    /**
+     * Returns whether the given strings are equal, case-insensitive
+     *
+     * @param text the source string to check
+     * @param comparison the target string to compare
+     * @returns true if the given strings are equal, case-insensitive
+     *
+     * @example
+     * StringUtils.equalsIgnoreCase('foo', 'FOO');    // true
+     */
+    static equalsIgnoreCase(text, comparison) {
+        if (text === comparison || ObjectUtils.allNil(text, comparison)) {
+            return true;
+        }
+        if (ObjectUtils.anyNil(text, comparison) || (text === null || text === void 0 ? void 0 : text.length) !== (comparison === null || comparison === void 0 ? void 0 : comparison.length)) {
+            return false;
+        }
+        return (text === null || text === void 0 ? void 0 : text.toUpperCase()) === (comparison === null || comparison === void 0 ? void 0 : comparison.toUpperCase());
+    }
+    /**
+     * Returns whether the given string equals to any of the comparison strings
+     *
+     * @param text the source string to check
+     * @param comparisons the target strings to compare
+     * @returns true if the given string equals to any of the comparison strings
+     *
+     * @example
+     * StringUtils.equalsAny('foo', ['foo', 'bar']);    // true
+     */
+    static equalsAny(text, comparisons) {
+        return ArrayUtils.includes(comparisons, text);
+    }
+    /**
+     * Returns whether the given text equals to any of the comparison strings, case-insensitive
+     *
+     * @param text the source string to check
+     * @param comparisons the target strings to compare
+     * @returns true if the given string equals to any of the comparison strings, case-insensitive
+     *
+     * @example
+     * StringUtils.equalsAnyIgnoreCase('foo', ['FOO', 'bar']);    // true
+     */
+    static equalsAnyIgnoreCase(text, comparisons) {
+        if (ObjectUtils.isNil(text) || ArrayUtils.isEmpty(comparisons)) {
+            return false;
+        }
+        // @ts-ignore
+        return comparisons.some(comparison => this.equalsIgnoreCase(text, comparison));
+    }
+    /**
+     * Returns whether the given text includes the comparison string
+     *
+     * @param text the source string to check
+     * @param comparison the target string to compare
+     * @returns true if the given text includes the comparison string
+     *
+     * @example
+     * StringUtils.includes('foobar', 'foo');    // true
+     */
+    static includes(text, comparison) {
+        // @ts-ignore
+        return text === comparison || (ObjectUtils.allNotNil(text, comparison) &amp;&amp; text.includes(comparison));
+    }
+    /**
+     * Returns whether the given text includes the comparison string, case-insensitive
+     *
+     * @param text the source string to check
+     * @param comparison the target string to compare
+     * @returns true if the given text includes the comparison string, case-insensitive
+     *
+     * @example
+     * StringUtils.includesIgnoreCase('foobar', 'FOO');    // true
+     */
+    static includesIgnoreCase(text, comparison) {
+        var _a;
+        // @ts-ignore
+        return text === comparison || (ObjectUtils.allNotNil(text, comparison) &amp;&amp; ((_a = text === null || text === void 0 ? void 0 : text.toUpperCase()) === null || _a === void 0 ? void 0 : _a.includes(comparison === null || comparison === void 0 ? void 0 : comparison.toUpperCase())));
+    }
+    /**
+     * Returns whether the given text includes to any of the comparison strings
+     *
+     * @param text the source string to check
+     * @param comparisons the target strings to compare
+     * @returns true if the given text includes the comparison string
+     *
+     * @example
+     * StringUtils.includesAny('foobar', ['foo', 'bar']);    // true
+     */
+    static includesAny(text, comparisons) {
+        return ObjectUtils.allNotNil(text, comparisons) &amp;&amp; (comparisons === null || comparisons === void 0 ? void 0 : comparisons.some(comparison => this.includes(text, comparison)));
+    }
+    /**
+     * Returns whether the given text includes to any of the comparison strings, case-insensitive
+     *
+     * @param text the source string to check
+     * @param comparisons the target strings to compare
+     * @returns true if the text includes the comparison string, case-insensitive
+     *
+     * @example
+     * StringUtils.includesAnyIgnoreCase('foobar', ['FOO', 'world']);    // true
+     */
+    static includesAnyIgnoreCase(text, comparisons) {
+        return ObjectUtils.allNotNil(text, comparisons) &amp;&amp; (comparisons === null || comparisons === void 0 ? void 0 : comparisons.some(comparison => this.includesIgnoreCase(text, comparison)));
+    }
+    /**
+     * Returns a string that trimmed from the given string
+     *
+     * @param text the string to trim
+     * @param emptyAsNull whether to return null if the trimmed result is empty
+     * @return string the trimmed string value from the given string
+     *
+     * @example
+     * StringUtils.trim('foobar', true);    // 'foobar'
+     */
+    static trim(text, emptyAsNull) {
+        if (!text) {
+            return text;
+        }
+        const result = text.trim();
+        return (emptyAsNull &amp;&amp; this.isEmpty(result)) ? null : result;
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sun Sep 10 2023 23:08:38 GMT+0800 using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>

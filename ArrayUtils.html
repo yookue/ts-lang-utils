@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>ArrayUtils - TsLangUtils</title>
+    
+    <meta name="description" content="Common Lang Utilities for TypeScript" />
+    
+        <meta name="keywords" content="yookue, commons-lang, array-utils, boolean-utils, object-utils, random-utils, string-utils, time-utils" />
+        <meta name="keyword" content="yookue, commons-lang, array-utils, boolean-utils, object-utils, random-utils, string-utils, time-utils" />
+    
+    
+    
+    <meta property="og:title" content="TsLangUtils"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content="ts-lang-utils"/>
+    <meta property="og:url" content="https://yookue.github.io/ts-lang-utils"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/yookue/ts-lang-utils" target="_blank" class="menu-item" id="repo_link" >Github</a></h2><h3>Classes</h3><ul><li><a href="ArrayUtils.html">ArrayUtils</a><ul class='methods'><li data-type='method'><a href="ArrayUtils.html#.includes">includes</a></li><li data-type='method'><a href="ArrayUtils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="ArrayUtils.html#.isNotEmpty">isNotEmpty</a></li></ul></li><li><a href="BooleanUtils.html">BooleanUtils</a><ul class='methods'><li data-type='method'><a href="BooleanUtils.html#.fromString">fromString</a></li><li data-type='method'><a href="BooleanUtils.html#.toString">toString</a></li><li data-type='method'><a href="BooleanUtils.html#.toString10">toString10</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringOnOff">toStringOnOff</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringTF">toStringTF</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringTrueFalse">toStringTrueFalse</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringYN">toStringYN</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringYesNo">toStringYesNo</a></li></ul></li><li><a href="ObjectUtils.html">ObjectUtils</a><ul class='methods'><li data-type='method'><a href="ObjectUtils.html#.allEmpty">allEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.allNil">allNil</a></li><li data-type='method'><a href="ObjectUtils.html#.allNotEmpty">allNotEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.allNotNil">allNotNil</a></li><li data-type='method'><a href="ObjectUtils.html#.anyEmpty">anyEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.anyNil">anyNil</a></li><li data-type='method'><a href="ObjectUtils.html#.anyNotEmpty">anyNotEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.anyNotNil">anyNotNil</a></li><li data-type='method'><a href="ObjectUtils.html#.firstNonNil">firstNonNil</a></li><li data-type='method'><a href="ObjectUtils.html#.hasProperty">hasProperty</a></li><li data-type='method'><a href="ObjectUtils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.isNil">isNil</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotNil">isNotNil</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotNull">isNotNull</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotUndefined">isNotUndefined</a></li><li data-type='method'><a href="ObjectUtils.html#.isNull">isNull</a></li><li data-type='method'><a href="ObjectUtils.html#.isPrototype">isPrototype</a></li><li data-type='method'><a href="ObjectUtils.html#.isUndefined">isUndefined</a></li><li data-type='method'><a href="ObjectUtils.html#.keys">keys</a></li><li data-type='method'><a href="ObjectUtils.html#.toString">toString</a></li></ul></li><li><a href="RandomUtils.html">RandomUtils</a><ul class='methods'><li data-type='method'><a href="RandomUtils.html#.randomBoolean">randomBoolean</a></li><li data-type='method'><a href="RandomUtils.html#.randomElement">randomElement</a></li><li data-type='method'><a href="RandomUtils.html#.randomInteger">randomInteger</a></li><li data-type='method'><a href="RandomUtils.html#.randomNumber">randomNumber</a></li></ul></li><li><a href="StringUtils.html">StringUtils</a><ul class='methods'><li data-type='method'><a href="StringUtils.html#.allBlank">allBlank</a></li><li data-type='method'><a href="StringUtils.html#.allEmpty">allEmpty</a></li><li data-type='method'><a href="StringUtils.html#.allNotBlank">allNotBlank</a></li><li data-type='method'><a href="StringUtils.html#.allNotEmpty">allNotEmpty</a></li><li data-type='method'><a href="StringUtils.html#.anyBlank">anyBlank</a></li><li data-type='method'><a href="StringUtils.html#.anyEmpty">anyEmpty</a></li><li data-type='method'><a href="StringUtils.html#.anyNotBlank">anyNotBlank</a></li><li data-type='method'><a href="StringUtils.html#.anyNotEmpty">anyNotEmpty</a></li><li data-type='method'><a href="StringUtils.html#.defaultIfBlank">defaultIfBlank</a></li><li data-type='method'><a href="StringUtils.html#.defaultIfEmpty">defaultIfEmpty</a></li><li data-type='method'><a href="StringUtils.html#.equals">equals</a></li><li data-type='method'><a href="StringUtils.html#.equalsAny">equalsAny</a></li><li data-type='method'><a href="StringUtils.html#.equalsAnyIgnoreCase">equalsAnyIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.equalsIgnoreCase">equalsIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.includes">includes</a></li><li data-type='method'><a href="StringUtils.html#.includesAny">includesAny</a></li><li data-type='method'><a href="StringUtils.html#.includesAnyIgnoreCase">includesAnyIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.includesIgnoreCase">includesIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.isBlank">isBlank</a></li><li data-type='method'><a href="StringUtils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="StringUtils.html#.isNotBlank">isNotBlank</a></li><li data-type='method'><a href="StringUtils.html#.isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="StringUtils.html#.isWhitespace">isWhitespace</a></li><li data-type='method'><a href="StringUtils.html#.trim">trim</a></li></ul></li><li><a href="TimeUtils.html">TimeUtils</a><ul class='methods'><li data-type='method'><a href="TimeUtils.html#.sleep">sleep</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">ArrayUtils</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+            ArrayUtils
+        
+        </h2>
+        
+            <div class="class-description usertext"><p>Utility functions for array</p></div>
+        
+    
+</header>
+
+<article>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".includes"><span class="type-signature type-signature-static">(static) </span>includes<span class="signature">(array, element)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns whether the given array includes the given element</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ArrayUtils.js.html">ArrayUtils.js</a>, <a href="ArrayUtils.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>ArrayUtils.includes(['foo', 'bar'], 'foo');    // true</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the array to check</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the element to compare</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>true if the given array includes the given element</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isEmpty"><span class="type-signature type-signature-static">(static) </span>isEmpty<span class="signature">(array)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns whether the given array is empty</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ArrayUtils.js.html">ArrayUtils.js</a>, <a href="ArrayUtils.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>ArrayUtils.isEmpty([]);    // true</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the array to check</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>true if the given array is empty</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isNotEmpty"><span class="type-signature type-signature-static">(static) </span>isNotEmpty<span class="signature">(array)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns whether the given array is not empty</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ArrayUtils.js.html">ArrayUtils.js</a>, <a href="ArrayUtils.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>ArrayUtils.isNotEmpty(['foo', 'bar']);    // true</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the array to check</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>true if the given array is not empty</p>
+</div>
+
+
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sun Sep 10 2023 23:08:38 GMT+0800 using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>

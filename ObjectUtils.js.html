@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>ObjectUtils.js - TsLangUtils</title>
+    
+    <meta name="description" content="Common Lang Utilities for TypeScript" />
+    
+        <meta name="keywords" content="yookue, commons-lang, array-utils, boolean-utils, object-utils, random-utils, string-utils, time-utils" />
+        <meta name="keyword" content="yookue, commons-lang, array-utils, boolean-utils, object-utils, random-utils, string-utils, time-utils" />
+    
+    
+    
+    <meta property="og:title" content="TsLangUtils"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content="ts-lang-utils"/>
+    <meta property="og:url" content="https://yookue.github.io/ts-lang-utils"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/yookue/ts-lang-utils" target="_blank" class="menu-item" id="repo_link" >Github</a></h2><h3>Classes</h3><ul><li><a href="ArrayUtils.html">ArrayUtils</a><ul class='methods'><li data-type='method'><a href="ArrayUtils.html#.includes">includes</a></li><li data-type='method'><a href="ArrayUtils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="ArrayUtils.html#.isNotEmpty">isNotEmpty</a></li></ul></li><li><a href="BooleanUtils.html">BooleanUtils</a><ul class='methods'><li data-type='method'><a href="BooleanUtils.html#.fromString">fromString</a></li><li data-type='method'><a href="BooleanUtils.html#.toString">toString</a></li><li data-type='method'><a href="BooleanUtils.html#.toString10">toString10</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringOnOff">toStringOnOff</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringTF">toStringTF</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringTrueFalse">toStringTrueFalse</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringYN">toStringYN</a></li><li data-type='method'><a href="BooleanUtils.html#.toStringYesNo">toStringYesNo</a></li></ul></li><li><a href="ObjectUtils.html">ObjectUtils</a><ul class='methods'><li data-type='method'><a href="ObjectUtils.html#.allEmpty">allEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.allNil">allNil</a></li><li data-type='method'><a href="ObjectUtils.html#.allNotEmpty">allNotEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.allNotNil">allNotNil</a></li><li data-type='method'><a href="ObjectUtils.html#.anyEmpty">anyEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.anyNil">anyNil</a></li><li data-type='method'><a href="ObjectUtils.html#.anyNotEmpty">anyNotEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.anyNotNil">anyNotNil</a></li><li data-type='method'><a href="ObjectUtils.html#.firstNonNil">firstNonNil</a></li><li data-type='method'><a href="ObjectUtils.html#.hasProperty">hasProperty</a></li><li data-type='method'><a href="ObjectUtils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.isNil">isNil</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotNil">isNotNil</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotNull">isNotNull</a></li><li data-type='method'><a href="ObjectUtils.html#.isNotUndefined">isNotUndefined</a></li><li data-type='method'><a href="ObjectUtils.html#.isNull">isNull</a></li><li data-type='method'><a href="ObjectUtils.html#.isPrototype">isPrototype</a></li><li data-type='method'><a href="ObjectUtils.html#.isUndefined">isUndefined</a></li><li data-type='method'><a href="ObjectUtils.html#.keys">keys</a></li><li data-type='method'><a href="ObjectUtils.html#.toString">toString</a></li></ul></li><li><a href="RandomUtils.html">RandomUtils</a><ul class='methods'><li data-type='method'><a href="RandomUtils.html#.randomBoolean">randomBoolean</a></li><li data-type='method'><a href="RandomUtils.html#.randomElement">randomElement</a></li><li data-type='method'><a href="RandomUtils.html#.randomInteger">randomInteger</a></li><li data-type='method'><a href="RandomUtils.html#.randomNumber">randomNumber</a></li></ul></li><li><a href="StringUtils.html">StringUtils</a><ul class='methods'><li data-type='method'><a href="StringUtils.html#.allBlank">allBlank</a></li><li data-type='method'><a href="StringUtils.html#.allEmpty">allEmpty</a></li><li data-type='method'><a href="StringUtils.html#.allNotBlank">allNotBlank</a></li><li data-type='method'><a href="StringUtils.html#.allNotEmpty">allNotEmpty</a></li><li data-type='method'><a href="StringUtils.html#.anyBlank">anyBlank</a></li><li data-type='method'><a href="StringUtils.html#.anyEmpty">anyEmpty</a></li><li data-type='method'><a href="StringUtils.html#.anyNotBlank">anyNotBlank</a></li><li data-type='method'><a href="StringUtils.html#.anyNotEmpty">anyNotEmpty</a></li><li data-type='method'><a href="StringUtils.html#.defaultIfBlank">defaultIfBlank</a></li><li data-type='method'><a href="StringUtils.html#.defaultIfEmpty">defaultIfEmpty</a></li><li data-type='method'><a href="StringUtils.html#.equals">equals</a></li><li data-type='method'><a href="StringUtils.html#.equalsAny">equalsAny</a></li><li data-type='method'><a href="StringUtils.html#.equalsAnyIgnoreCase">equalsAnyIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.equalsIgnoreCase">equalsIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.includes">includes</a></li><li data-type='method'><a href="StringUtils.html#.includesAny">includesAny</a></li><li data-type='method'><a href="StringUtils.html#.includesAnyIgnoreCase">includesAnyIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.includesIgnoreCase">includesIgnoreCase</a></li><li data-type='method'><a href="StringUtils.html#.isBlank">isBlank</a></li><li data-type='method'><a href="StringUtils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="StringUtils.html#.isNotBlank">isNotBlank</a></li><li data-type='method'><a href="StringUtils.html#.isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="StringUtils.html#.isWhitespace">isWhitespace</a></li><li data-type='method'><a href="StringUtils.html#.trim">trim</a></li></ul></li><li><a href="TimeUtils.html">TimeUtils</a><ul class='methods'><li data-type='method'><a href="TimeUtils.html#.sleep">sleep</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">ObjectUtils.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) 2023 Yookue Ltd. All rights reserved.
+ *
+ * Licensed under the MIT License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+/**
+ * Utility functions for object
+ *
+ * @abstract
+ * @hideconstructor
+ */
+export class ObjectUtils {
+    /**
+     * Returns whether the given object is null or undefined
+     *
+     * @param object the object to check
+     * @return ture if the given object is null or undefined
+     *
+     * @example
+     * ObjectUtils.isNil(null);    // true
+     * ObjectUtils.isNil(undefined);    // true
+     * ObjectUtils.isNil({});    // false
+     */
+    static isNil(object) {
+        return object === undefined || object === null;
+    }
+    /**
+     * Returns whether the given object is not null or undefined
+     *
+     * @param object the object to check
+     * @return ture if the given object is not null or undefined
+     *
+     * @example
+     * ObjectUtils.isNotNil('foobar');    // true
+     * ObjectUtils.isNotNil([]);    // true
+     */
+    static isNotNil(object) {
+        return !this.isNil(object);
+    }
+    /**
+     * Returns whether the given object is null
+     *
+     * @param object the object to check
+     * @return ture if the given object is null
+     *
+     * @example
+     * ObjectUtils.isNull(null);    // true
+     * ObjectUtils.isNull({});    // false
+     */
+    static isNull(object) {
+        return object === null;
+    }
+    /**
+     * Returns whether the given object is not null
+     *
+     * @param object the object to check
+     * @return ture if the given object is not null
+     *
+     * @example
+     * ObjectUtils.isNotNull('foobar');    // true
+     */
+    static isNotNull(object) {
+        return !this.isNull(object);
+    }
+    /**
+     * Returns whether the given object is undefined
+     *
+     * @param object the object to check
+     * @return ture if the given object is undefined
+     *
+     * @example
+     * ObjectUtils.isUndefined(undefined);    // true
+     * ObjectUtils.isUndefined({});    // false
+     */
+    static isUndefined(object) {
+        return object === undefined;
+    }
+    /**
+     * Returns whether the given object is not undefined
+     *
+     * @param object the object to check
+     * @return ture if the given object is not undefined
+     *
+     * @example
+     * ObjectUtils.isNotUndefined('foobar');    // true
+     */
+    static isNotUndefined(object) {
+        return !this.isUndefined(object);
+    }
+    /**
+     * Returns whether the given object is empty
+     *
+     * @param object the object to check
+     * @return ture if the given object is empty
+     *
+     * @example
+     * ObjectUtils.isEmpty(null);    // true
+     * ObjectUtils.isEmpty(undefined);    // true
+     * ObjectUtils.isEmpty({});    // true
+     * ObjectUtils.isEmpty('foobar');    // false
+     */
+    static isEmpty(object) {
+        var _a;
+        if (this.isNil(object)) {
+            return true;
+        }
+        if (typeof object === 'string' || Array.isArray(object)) {
+            return object.length === 0;
+        }
+        if (object instanceof Map || object instanceof Set) {
+            return object.size === 0;
+        }
+        if (typeof object === 'object') {
+            return ((_a = this.keys(object)) === null || _a === void 0 ? void 0 : _a.length) === 0;
+        }
+        return false;
+    }
+    /**
+     * Returns whether the given object is not empty
+     *
+     * @param object the object to check
+     * @return ture if the given object is not empty
+     *
+     * @example
+     * ObjectUtils.isNotEmpty('foobar');    // true
+     * ObjectUtils.isNotEmpty([undefined, null]);    // true
+     */
+    static isNotEmpty(object) {
+        return !this.isEmpty(object);
+    }
+    /**
+     * Returns whether the given object is prototyped
+     *
+     * @param object the object to check
+     * @return ture if the given object is prototyped
+     *
+     * @example
+     * ObjectUtils.isPrototype({});    // false
+     * ObjectUtils.isPrototype('foobar');    // false
+     */
+    static isPrototype(object) {
+        if (typeof object !== 'object') {
+            return false;
+        }
+        const constructor = object.constructor;
+        const prototype = (typeof constructor === 'function') ? constructor.prototype : object.prototype;
+        return object === prototype;
+    }
+    /**
+     * Returns whether all the given objects are null or undefined
+     *
+     * @param objects the objects to check
+     * @return ture if all the given objects are null or undefined
+     *
+     * @example
+     * ObjectUtils.allNil(null, undefined);    // true
+     * ObjectUtils.allNil(null, {});    // false
+     */
+    static allNil(...objects) {
+        return this.isEmpty(objects) || !objects.some(object => this.isNotNil(object));
+    }
+    /**
+     * Returns whether all the given objects are not null or undefined
+     *
+     * @param objects the objects to check
+     * @return ture if all the given objects are not null or undefined
+     *
+     * @example
+     * ObjectUtils.allNotNil(null, undefined);    // false
+     * ObjectUtils.allNotNil(null, {});    // false
+     * ObjectUtils.allNotNil('foo', 'bar');    // true
+     */
+    static allNotNil(...objects) {
+        return this.isNotEmpty(objects) &amp;&amp; !objects.some(object => this.isNil(object));
+    }
+    /**
+     * Returns whether any of the given objects is null or undefined
+     *
+     * @param objects the objects to check
+     * @return ture if any of the given objects is null or undefined
+     *
+     * @example
+     * ObjectUtils.anyNil(null, undefined);    // true
+     * ObjectUtils.anyNil(null, {});    // true
+     */
+    static anyNil(...objects) {
+        return this.isEmpty(objects) || objects.some(object => this.isNil(object));
+    }
+    /**
+     * Returns whether any of the given objects is not null or undefined
+     *
+     * @param objects the objects to check
+     * @return ture if any of the given objects is not null or undefined
+     *
+     * @example
+     * ObjectUtils.anyNotNil(null, undefined);    // false
+     * ObjectUtils.anyNotNil(null, {});    // true
+     */
+    static anyNotNil(...objects) {
+        return this.isNotEmpty(objects) &amp;&amp; objects.some(object => this.isNotNil(object));
+    }
+    /**
+     * Returns whether all the given objects are empty
+     *
+     * @param objects the objects to check
+     * @return ture if all the given objects are empty
+     *
+     * @example
+     * ObjectUtils.allEmpty(null, undefined);    // true
+     * ObjectUtils.allEmpty(null, {});    // false
+     */
+    static allEmpty(...objects) {
+        return this.isEmpty(objects) || !objects.some(object => this.isNotEmpty(object));
+    }
+    /**
+     * Returns whether all the given objects are not empty
+     *
+     * @param objects the objects to check
+     * @return ture if all the given objects are not empty
+     *
+     * @example
+     * ObjectUtils.allNotEmpty(null, undefined);    // false
+     * ObjectUtils.allNotEmpty(null, {});    // false
+     * ObjectUtils.allNotEmpty('foo', 'bar');    // true
+     */
+    static allNotEmpty(...objects) {
+        return this.isNotEmpty(objects) &amp;&amp; !objects.some(object => this.isEmpty(object));
+    }
+    /**
+     * Returns whether any of the given objects is empty
+     *
+     * @param objects the objects to check
+     * @return ture if any of the given objects is empty
+     *
+     * @example
+     * ObjectUtils.anyEmpty(null, undefined);    // true
+     * ObjectUtils.anyEmpty(null, {});    // true
+     */
+    static anyEmpty(...objects) {
+        return this.isEmpty(objects) || objects.some(object => this.isEmpty(object));
+    }
+    /**
+     * Returns whether any of the given objects is not empty
+     *
+     * @param objects the objects to check
+     * @return ture if any of the given objects is not empty
+     *
+     * @example
+     * ObjectUtils.anyNotEmpty(null, undefined);    // false
+     * ObjectUtils.anyNotEmpty(null, {});    // true
+     */
+    static anyNotEmpty(...objects) {
+        return this.isNotEmpty(objects) &amp;&amp; objects.some(object => this.isNotEmpty(object));
+    }
+    /**
+     * Returns the first none nil element in the given array, or null if all elements are nil
+     *
+     * @param objects the objects to check
+     * @returns any the first none nil element in the given array, or null if all elements are nil
+     *
+     * @example
+     * ObjectUtils.firstNonNil(undefined, 'foo', 'bar');    // 'foo'
+     */
+    static firstNonNil(...objects) {
+        if (!objects || objects.length === 0) {
+            return null;
+        }
+        for (const object of objects) {
+            if (this.isNotNil(object)) {
+                return object;
+            }
+        }
+        return null;
+    }
+    /**
+     * Returns whether the given object has the specified property
+     *
+     * @param object the object to check
+     * @param prop the property name to check
+     * @return true if the object has the specified property
+     *
+     * @example
+     * ObjectUtils.hasProperty({foo: 'bar'}, 'foo');    // true
+     * ObjectUtils.hasProperty({foo: 'bar'}, 'bar');    // false
+     */
+    static hasProperty(object, prop) {
+        return this.allNotNil(object, prop) &amp;&amp; typeof object === 'object' &amp;&amp; (prop === null || prop === void 0 ? void 0 : prop.length) > 0 &amp;&amp; Object.prototype.hasOwnProperty.call(object, prop);
+    }
+    /**
+     * Returns a string array representation of keys in the given object
+     *
+     * @param object the object to inspect
+     * @returns Array&lt;string> the keys of the given object
+     *
+     * @example
+     * ObjectUtils.keys({foo: 'bar'});    // ['foo']
+     */
+    static keys(object) {
+        if (this.isNil(object)) {
+            return [];
+        }
+        if (!this.isPrototype(object)) {
+            return Object.keys(object);
+        }
+        const result = [];
+        for (const key in Object(object)) {
+            if (key !== 'constructor' &amp;&amp; this.hasProperty(object, key)) {
+                result.push(key);
+            }
+        }
+        return result;
+    }
+    /**
+     * Returns the string representation of the given object
+     *
+     * @param object the object to inspect
+     * @param nil the default string if the object is nil
+     * @return string the string representation of the given object
+     */
+    static toString(object, nil) {
+        return object ? object.toString() : (nil ? nil : null);
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sun Sep 10 2023 23:08:38 GMT+0800 using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
