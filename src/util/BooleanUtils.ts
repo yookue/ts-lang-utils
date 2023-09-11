@@ -58,7 +58,7 @@ export abstract class BooleanUtils {
      * @example
      * BooleanUtils.toString(undefined, 'true', 'false');    // 'true'
      */
-    public static toString(value?: boolean, truthy?: string, falsy?: string, nil?: string): string | null | undefined {
+    public static toString(value?: boolean, truthy?: string, falsy?: string, nil?: string): string | undefined {
         return ObjectUtils.isNil(value) ? nil : (value ? truthy : falsy);
     }
 
@@ -71,7 +71,7 @@ export abstract class BooleanUtils {
      * @example
      * BooleanUtils.toStringTrueFalse(true);    // 'true'
      */
-    public static toStringTrueFalse(value?: boolean): string | null | undefined {
+    public static toStringTrueFalse(value?: boolean): string | undefined {
         return this.toString(value, 'true', 'false', undefined);
     }
 
@@ -84,7 +84,7 @@ export abstract class BooleanUtils {
      * @example
      * BooleanUtils.toStringOnOff(true);    // 'on'
      */
-    public static toStringOnOff(value?: boolean): string | null | undefined {
+    public static toStringOnOff(value?: boolean): string | undefined {
         return this.toString(value, 'on', 'off', undefined);
     }
 
@@ -97,7 +97,7 @@ export abstract class BooleanUtils {
      * @example
      * BooleanUtils.toStringYesNo(true);    // 'yes'
      */
-    public static toStringYesNo(value?: boolean): string | null | undefined {
+    public static toStringYesNo(value?: boolean): string | undefined {
         return this.toString(value, 'yes', 'no', undefined);
     }
 
@@ -110,7 +110,7 @@ export abstract class BooleanUtils {
      * @example
      * BooleanUtils.toStringYN(true);    // 'Y'
      */
-    public static toStringYN(value?: boolean): string | null | undefined {
+    public static toStringYN(value?: boolean): string | undefined {
         return this.toString(value, 'Y', 'N', undefined);
     }
 
@@ -123,7 +123,7 @@ export abstract class BooleanUtils {
      * @example
      * BooleanUtils.toStringTF(true);    // "T"
      */
-    public static toStringTF(value?: boolean): string | null | undefined {
+    public static toStringTF(value?: boolean): string | undefined {
         return this.toString(value, 'T', 'F', undefined);
     }
 
@@ -136,7 +136,7 @@ export abstract class BooleanUtils {
      * @example
      * BooleanUtils.toString10(true);    // '1'
      */
-    public static toString10(value?: boolean): string | null | undefined {
+    public static toString10(value?: boolean): string | undefined {
         return this.toString(value, '1', '0', undefined);
     }
 }

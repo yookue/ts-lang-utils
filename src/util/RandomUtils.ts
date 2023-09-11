@@ -34,7 +34,7 @@ export abstract class RandomUtils {
      * RandomUtils.randomBoolean();
      */
     public static randomBoolean(): boolean {
-        return Math.random() > 0.5;
+        return Math.random() >= 0.5;
     }
 
     /**
@@ -50,38 +50,39 @@ export abstract class RandomUtils {
     }
 
     /**
-     * Returns a random non-negative integer that between the start value (inclusive) and the end value (exclusive)
+     * Returns a random integer that between the min value (inclusive) and the max value (exclusive)
      *
      * @param minInclusive the min value, inclusive
      * @param maxExclusive the max value, exclusive
-     * @return number the random non-negative integer that between the start value (inclusive) and the end value (exclusive)
+     * @return number the random integer that between the min value (inclusive) and the max value (exclusive)
      *
      * @example
-     * RandomUtils.randomInteger(1, 100);
+     * RandomUtils.randomInteger(1, 10);
+     * RandomUtils.randomInteger(-6, 8);
      */
     public static randomInteger(minInclusive?: number, maxExclusive?: number): number {
         return Math.floor(this.randomNumber(minInclusive, maxExclusive));
     }
 
     /**
-     * Returns a random non-negative number that between the start min (inclusive) and the max value (exclusive)
+     * Returns a random number that between the min (inclusive) and the max value (exclusive)
      *
      * @param minInclusive the min value, inclusive
      * @param maxExclusive the max value, exclusive
-     * @return number the random non-negative number that between the min value (inclusive) and the max value (exclusive)
+     * @return number the random number that between the min value (inclusive) and the max value (exclusive)
      *
      * @example
      * RandomUtils.randomNumber(1.1, 1.2);
+     * RandomUtils.randomNumber(-3.6, 2.8);
      */
     public static randomNumber(minInclusive?: number, maxExclusive?: number): number {
-        const start = minInclusive || 0;
-        const end = maxExclusive || (Number.MAX_SAFE_INTEGER - 1);
-        if (start < 0) {
-            throw SyntaxError('The min value must not be negative');
-        }
-        if (start > end) {
+        const min = minInclusive || 0;
+        const max = maxExclusive || (Number.MAX_SAFE_INTEGER - 1);
+        if (min > max) {
             throw SyntaxError('The min value must not be greater than max value');
+        } else if (min === max) {
+            return min;
         }
-        return (start === end) ? start : (start + (end - start) * Math.random());
+        return min + (max - min) * Math.random();
     }
 }

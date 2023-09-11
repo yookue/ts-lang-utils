@@ -82,4 +82,10 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.keys({foo: 'bar'})).toContain('foo');
         expect(ObjectUtils.keys({foo: 'bar'})).not.toContain('bar');
     });
+
+    test('Testing toString', () => {
+        expect(ObjectUtils.toString(undefined, undefined)).toBe(undefined);
+        expect(ObjectUtils.toString(undefined, 'foobar')).toBe('foobar');
+        expect(ObjectUtils.toString('hello', 'foobar')).toBe('hello');
+    });
 });

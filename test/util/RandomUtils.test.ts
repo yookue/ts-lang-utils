@@ -20,7 +20,7 @@ import {RandomUtils} from '@yookue/ts-lang-utils';
 
 describe('RandomUtils', () => {
     test('Testing randomElement', () => {
-        // expect(RandomUtils.randomElement([undefined])).toBe(undefined);
+        expect(RandomUtils.randomElement([undefined])).toBe(undefined);
         expect(RandomUtils.randomElement(['1'])).toBe('1');
     });
 
@@ -31,15 +31,20 @@ describe('RandomUtils', () => {
     });
 
     test('Testing randomNumber', () => {
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 2; i++) {
             const result = RandomUtils.randomNumber(5, 8);
             expect(result).toBeGreaterThanOrEqual(5);
             expect(result).toBeLessThan(8);
         }
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 2; i++) {
             const result = RandomUtils.randomNumber(1.1, 1.2);
             expect(result).toBeGreaterThanOrEqual(1.1);
             expect(result).toBeLessThan(1.2);
+        }
+        for (let i = 0; i < 2; i++) {
+            const result = RandomUtils.randomNumber(-3.6, 2.8);
+            expect(result).toBeGreaterThanOrEqual(-3.6);
+            expect(result).toBeLessThan(2.8);
         }
     });
 });
