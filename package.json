@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "title": "TsLangUtils",
     "description": "Common Lang Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -11,10 +11,12 @@
         "commons-lang",
         "array-utils",
         "boolean-utils",
+        "date-utils",
+        "json-utils",
         "object-utils",
         "random-utils",
         "string-utils",
-        "time-utils"
+        "thread-utils"
     ],
     "files": [
         "dist"
