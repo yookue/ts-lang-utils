@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - TsLangUtils</title>
+    <title>ThreadUtils.js - TsLangUtils</title>
     
     <meta name="description" content="Common Lang Utilities for TypeScript" />
     
@@ -49,66 +49,57 @@
 
 <div id="main">
     
+    <h1 class="page-title">ThreadUtils.js</h1>
+    
 
     
 
 
 
     
-
-
-    <section class="package">
-        <h3> </h3>		
-    </section>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    <section class="readme usertext">
-        <article><h1>@yookue/ts-lang-utils</h1>
-<p><a href="LICENSE.txt"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat" alt="Software License"></a>
-<a href="https://npmjs.org/package/@yookue/ts-lang-utils"><img src="https://img.shields.io/npm/v/@yookue/ts-lang-utils.svg?style=flat" alt="NPM version"></a>
-<a href="https://npmjs.org/package/@yookue/ts-lang-utils"><img src="http://img.shields.io/npm/dm/@yookue/ts-lang-utils.svg?style=flat" alt="NPM downloads"></a></p>
-<p>🏅 Common Lang Utilities for TypeScript 👍</p>
-<h2>Features</h2>
-<p>1️⃣ Utilities for array
-2️⃣ Utilities for boolean
-3️⃣️ Utilities for date time
-4️⃣ Utilities for json
-5️⃣ Utilities for object
-6️⃣ Utilities for random
-7️⃣ Utilities for string
-8️⃣ Utilities for thread</p>
-<h2>Quickstart</h2>
-<p>You can install ts-lang-utils package in your existing TypeScript project as follows:</p>
-<pre class="prettyprint source lang-bash"><code>$ npm install @yookue/ts-lang-utils --save
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) 2023 Yookue Ltd. All rights reserved.
+ *
+ * Licensed under the MIT License (the "License")
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+/**
+ * Utility functions for thread
+ *
+ * @abstract
+ * @hideconstructor
+ */
+export class ThreadUtils {
+    /**
+     * Sleeps current thread for a specified amount of time
+     *
+     * @param microseconds the amount of time to sleep, in microseconds
+     * @return Promise&lt;void> a promise that could be resolved
+     *
+     * @example
+     * TimeUtils.sleep();
+     * TimeUtils.sleep().then(() => {});
+     */
+    static sleep(microseconds = 1000) {
+        return new Promise(resolve => {
+            setTimeout(resolve, microseconds);
+        });
+    }
+}
 </code></pre>
-<p>Then, you may import components of ts-lang-utils as follows:</p>
-<pre class="prettyprint source lang-jsx"><code>import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, ObjectUtils, RandomUtils, StringUtils, ThreadUtils} from '@yookue/ts-lang-utils';
-</code></pre>
-<p>Enjoy your journey in coding your projects with ts-lang-utils. ✌️</p>
-<h2>Document</h2>
-<ul>
-<li>GitHub pages: <a href="https://yookue.github.io/ts-lang-utils" target="_blank">https://yookue.github.io/ts-lang-utils</a></li>
-</ul>
-<h2>License</h2>
-<p>This project is under the <a href="https://mit-license.org/">MIT</a> License (MIT)</p>
-<h2>Website</h2>
-<ul>
-<li>Yookue: <a href="https://yookue.com" target="_blank">https://yookue.com</a></li>
-</ul></article>
+        </article>
     </section>
-
-
 
 
 

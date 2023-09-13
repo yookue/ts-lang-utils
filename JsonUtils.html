@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>BooleanUtils - TsLangUtils</title>
+    <title>JsonUtils - TsLangUtils</title>
     
     <meta name="description" content="Common Lang Utilities for TypeScript" />
     
@@ -49,7 +49,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">BooleanUtils</h1>
+    <h1 class="page-title">JsonUtils</h1>
     
 
     
@@ -63,11 +63,11 @@
     
         <h2>
         
-            BooleanUtils
+            JsonUtils
         
         </h2>
         
-            <div class="class-description usertext"><p>Utility functions for boolean</p></div>
+            <div class="class-description usertext"><p>Utility functions for json</p></div>
         
     
 </header>
@@ -97,7 +97,7 @@
 
     
 
-    <h4 class="name" id=".fromString"><span class="type-signature type-signature-static">(static) </span>fromString<span class="signature">(value)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".isJsonObject"><span class="type-signature type-signature-static">(static) </span>isJsonObject<span class="signature">(object)</span><span class="type-signature"></span></h4>
 
     
 
@@ -107,13 +107,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns a boolean value from the string value, or undefined if the value cannot be converted</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns whether the given object is a JSON object</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="BooleanUtils.js.html">BooleanUtils.js</a>, <a href="BooleanUtils.js.html#line35">line 35</a>
+        <a href="JsonUtils.js.html">JsonUtils.js</a>, <a href="JsonUtils.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -160,7 +160,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>BooleanUtils.fromString('true');    // trueBooleanUtils.fromString('yes');    // true</code></pre>
+    <pre class="prettyprint"><code>JsonUtils.isJsonObject(undefined);    // falseJsonUtils.isJsonObject(['foo', 'bar']);    // falseJsonUtils.isJsonObject({foo: 'bar'});    // true</code></pre>
 
 
 
@@ -190,7 +190,7 @@
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>object</code></td>
             
 
             <td class="type">
@@ -201,7 +201,7 @@
 
             
 
-            <td class="description last"><p>the string value to check</p></td>
+            <td class="description last"><p>the object to check</p></td>
         </tr>
 
     
@@ -227,7 +227,7 @@
 
         
 <div class="param-desc">
-    <p>boolean a boolean value from the string value, or undefined if the value cannot be converted</p>
+    <p>true if the given object is a JSON object</p>
 </div>
 
 
@@ -241,7 +241,7 @@
 
     
 
-    <h4 class="name" id=".toString"><span class="type-signature type-signature-static">(static) </span>toString<span class="signature">(value, truthy, falsy, nil)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".isJsonString"><span class="type-signature type-signature-static">(static) </span>isJsonString<span class="signature">(text)</span><span class="type-signature"></span></h4>
 
     
 
@@ -251,13 +251,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns a string value from the boolean value</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns whether the given string is a JSON string</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="BooleanUtils.js.html">BooleanUtils.js</a>, <a href="BooleanUtils.js.html#line56">line 56</a>
+        <a href="JsonUtils.js.html">JsonUtils.js</a>, <a href="JsonUtils.js.html#line49">line 49</a>
     </li></ul></dd>
     
 
@@ -304,7 +304,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>BooleanUtils.toString(undefined, 'true', 'false');    // 'true'</code></pre>
+    <pre class="prettyprint"><code>JsonUtils.isJsonString(`{"foo": "bar"}`);    // trueJsonUtils.isJsonString(`[{"foo": "bar"}]`);    // trueJsonUtils.isJsonString(`[{"foo": "bar"}, {"hello": "world"}]`);    // true</code></pre>
 
 
 
@@ -334,7 +334,7 @@
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>text</code></td>
             
 
             <td class="type">
@@ -345,61 +345,7 @@
 
             
 
-            <td class="description last"><p>the boolean value to check</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>truthy</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the string to represent true</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>falsy</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the string to represent false</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>nil</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the string to represent undefined or null</p></td>
+            <td class="description last"><p>the string to check</p></td>
         </tr>
 
     
@@ -425,7 +371,7 @@
 
         
 <div class="param-desc">
-    <p>string a string value from the boolean value</p>
+    <p>true if the given object is a JSON string</p>
 </div>
 
 
@@ -439,7 +385,7 @@
 
     
 
-    <h4 class="name" id=".toString10"><span class="type-signature type-signature-static">(static) </span>toString10<span class="signature">(value)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".toJsonString"><span class="type-signature type-signature-static">(static) </span>toJsonString<span class="signature">(object)</span><span class="type-signature"></span></h4>
 
     
 
@@ -449,13 +395,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns a string value of '1'/'0' from the boolean value</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns a JSON string that represents the given object</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="BooleanUtils.js.html">BooleanUtils.js</a>, <a href="BooleanUtils.js.html#line128">line 128</a>
+        <a href="JsonUtils.js.html">JsonUtils.js</a>, <a href="JsonUtils.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -502,7 +448,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>BooleanUtils.toString10(true);    // '1'</code></pre>
+    <pre class="prettyprint"><code>JsonUtils.toJsonString({foo: 'bar'});    // `{"foo":"bar"}`</code></pre>
 
 
 
@@ -532,7 +478,7 @@
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>object</code></td>
             
 
             <td class="type">
@@ -543,7 +489,7 @@
 
             
 
-            <td class="description last"><p>the boolean value to check</p></td>
+            <td class="description last"><p>the object to inspect</p></td>
         </tr>
 
     
@@ -569,727 +515,7 @@
 
         
 <div class="param-desc">
-    <p>string the string value of '1'/'0' from the boolean value</p>
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".toStringOnOff"><span class="type-signature type-signature-static">(static) </span>toStringOnOff<span class="signature">(value)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns a string value of 'on'/'off' from the boolean value</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="BooleanUtils.js.html">BooleanUtils.js</a>, <a href="BooleanUtils.js.html#line80">line 80</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>BooleanUtils.toStringOnOff(true);    // 'on'</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the boolean value to check</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>string the string value of 'on'/'off' from the boolean value</p>
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".toStringTF"><span class="type-signature type-signature-static">(static) </span>toStringTF<span class="signature">(value)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns a string value of 'T'/'F' from the boolean value</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="BooleanUtils.js.html">BooleanUtils.js</a>, <a href="BooleanUtils.js.html#line116">line 116</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>BooleanUtils.toStringTF(true);    // "T"</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the boolean value to check</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>string the string value of 'T'/'F' from the boolean value</p>
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".toStringTrueFalse"><span class="type-signature type-signature-static">(static) </span>toStringTrueFalse<span class="signature">(value)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns a string value of 'true'/'false' from the boolean value</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="BooleanUtils.js.html">BooleanUtils.js</a>, <a href="BooleanUtils.js.html#line68">line 68</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>BooleanUtils.toStringTrueFalse(true);    // 'true'</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the boolean value to check</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>string the string value of 'true'/'false' from the boolean value</p>
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".toStringYN"><span class="type-signature type-signature-static">(static) </span>toStringYN<span class="signature">(value)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns a string value of 'Y'/'N' from the boolean value</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="BooleanUtils.js.html">BooleanUtils.js</a>, <a href="BooleanUtils.js.html#line104">line 104</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>BooleanUtils.toStringYN(true);    // 'Y'</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the boolean value to check</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>string the string value of 'Y'/'N' from the boolean value</p>
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".toStringYesNo"><span class="type-signature type-signature-static">(static) </span>toStringYesNo<span class="signature">(value)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns a string value of 'yes'/'no' from the boolean value</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="BooleanUtils.js.html">BooleanUtils.js</a>, <a href="BooleanUtils.js.html#line92">line 92</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>BooleanUtils.toStringYesNo(true);    // 'yes'</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the boolean value to check</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>string the string value of 'yes'/'no' from the boolean value</p>
+    <p>string that represents the given object</p>
 </div>
 
 

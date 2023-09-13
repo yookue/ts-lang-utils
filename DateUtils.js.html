@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - TsLangUtils</title>
+    <title>DateUtils.js - TsLangUtils</title>
     
     <meta name="description" content="Common Lang Utilities for TypeScript" />
     
@@ -49,66 +49,132 @@
 
 <div id="main">
     
+    <h1 class="page-title">DateUtils.js</h1>
+    
 
     
 
 
 
     
-
-
-    <section class="package">
-        <h3> </h3>		
-    </section>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    <section class="readme usertext">
-        <article><h1>@yookue/ts-lang-utils</h1>
-<p><a href="LICENSE.txt"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat" alt="Software License"></a>
-<a href="https://npmjs.org/package/@yookue/ts-lang-utils"><img src="https://img.shields.io/npm/v/@yookue/ts-lang-utils.svg?style=flat" alt="NPM version"></a>
-<a href="https://npmjs.org/package/@yookue/ts-lang-utils"><img src="http://img.shields.io/npm/dm/@yookue/ts-lang-utils.svg?style=flat" alt="NPM downloads"></a></p>
-<p>🏅 Common Lang Utilities for TypeScript 👍</p>
-<h2>Features</h2>
-<p>1️⃣ Utilities for array
-2️⃣ Utilities for boolean
-3️⃣️ Utilities for date time
-4️⃣ Utilities for json
-5️⃣ Utilities for object
-6️⃣ Utilities for random
-7️⃣ Utilities for string
-8️⃣ Utilities for thread</p>
-<h2>Quickstart</h2>
-<p>You can install ts-lang-utils package in your existing TypeScript project as follows:</p>
-<pre class="prettyprint source lang-bash"><code>$ npm install @yookue/ts-lang-utils --save
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) 2023 Yookue Ltd. All rights reserved.
+ *
+ * Licensed under the MIT License (the "License")
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+import { StringUtils } from './StringUtils';
+/**
+ * Utility functions for date and time
+ *
+ * @abstract
+ * @hideconstructor
+ */
+export class DateUtils {
+    /**
+     * Returns the formatted string that represent the given date
+     *
+     * @param date the date to inspect
+     * @param format the date/time format string
+     * @return string the formatted string that represent the given date
+     */
+    static formatDateTime(date, format) {
+        if (StringUtils.isBlank(format)) {
+            return undefined;
+        }
+        const entries = {
+            'y+': date.getFullYear(),
+            'M+': date.getMonth() + 1,
+            'd+': date.getDate(),
+            'h+': (date.getHours() % 12 == 0) ? 12 : date.getHours() % 12,
+            'H+': date.getHours(),
+            'm+': date.getMinutes(),
+            's+': date.getSeconds(),
+            'q+': Math.floor((date.getMonth() + 3) / 3),
+            'S': date.getMilliseconds(),
+        };
+        let result = format;
+        for (const entry in entries) {
+            const array = new RegExp(`(${entry})`).exec(result);
+            if (array) {
+                if (/(y+)/.test(entry)) {
+                    result = result.replace(array[1], entries[entry].toString().substring(4 - array[1].length));
+                }
+                else {
+                    result = result.replace(array[1], (array[1].length === 1) ? (entries[entry].toString()) : (entries[entry].toString().padStart(array[1].length, '0')));
+                }
+            }
+        }
+        return result;
+    }
+    /**
+     * Returns the current date
+     *
+     * @param format the date format string
+     * @return string the current date
+     */
+    static getCurrentDate(format = 'yyyy-MM-dd') {
+        return this.formatDateTime(new Date(), format);
+    }
+    /**
+     * Returns the current date time
+     *
+     * @param format the date time format string
+     * @return string the current date time
+     */
+    static getCurrentDateTime(format = 'yyyy-MM-dd hh:mm:ss') {
+        return this.formatDateTime(new Date(), format);
+    }
+    /**
+     * Returns the current time
+     *
+     * @param format the time format string
+     * @return string the current time
+     */
+    static getCurrentTime(format = 'hh:mm:ss') {
+        return this.formatDateTime(new Date(), format);
+    }
+    /**
+     * Returns the timezone of the given date
+     *
+     * @param date the date to inspect
+     * @returns the timezone of the given date
+     */
+    static getTimezone(date = new Date()) {
+        const offset = date.getTimezoneOffset();
+        const absOffset = Math.abs(offset);
+        const hours = Math.floor(absOffset / 60);
+        const minutes = absOffset % 60;
+        const minutesOut = minutes > 0 ? ':' + ('0' + minutes).slice(-2) : '';
+        return (offset &lt; 0 ? '+' : '-') + hours + minutesOut;
+    }
+    /**
+     * Returns whether the year is leap year
+     *
+     * @param year the year to check
+     * @return boolean whether the year is leap year
+     *
+     * @example
+     * TimeUtils.isLeapYear(2000);    // true
+     */
+    static isLeapYear(year) {
+        return (!(year % 4) &amp;&amp; !!(year % 100)) || !(year % 400);
+    }
+}
 </code></pre>
-<p>Then, you may import components of ts-lang-utils as follows:</p>
-<pre class="prettyprint source lang-jsx"><code>import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, ObjectUtils, RandomUtils, StringUtils, ThreadUtils} from '@yookue/ts-lang-utils';
-</code></pre>
-<p>Enjoy your journey in coding your projects with ts-lang-utils. ✌️</p>
-<h2>Document</h2>
-<ul>
-<li>GitHub pages: <a href="https://yookue.github.io/ts-lang-utils" target="_blank">https://yookue.github.io/ts-lang-utils</a></li>
-</ul>
-<h2>License</h2>
-<p>This project is under the <a href="https://mit-license.org/">MIT</a> License (MIT)</p>
-<h2>Website</h2>
-<ul>
-<li>Yookue: <a href="https://yookue.com" target="_blank">https://yookue.com</a></li>
-</ul></article>
+        </article>
     </section>
-
-
 
 
 
