@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023 Yookue Ltd. All rights reserved.
  *
- * Licensed under the MIT License.
+ * Licensed under the MIT License (the "License")
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -15,25 +15,26 @@
  */
 
 
-import {TimeUtils} from '@yookue/ts-lang-utils';
-
-
-describe('TimeUtils', () => {
-    beforeAll(() => {
-        jest.useFakeTimers();
-    });
-
-    afterAll(() => {
-        jest.useRealTimers();
-    });
-
-    test('Testing sleep', () => {
-        const start = Date.now();
-        TimeUtils.sleep().then(() => {
-            const end = Date.now();
-            const elapsed = end - start;
-            expect(elapsed).toBe(1000);
+/**
+ * Utility functions for thread
+ *
+ * @abstract
+ * @hideconstructor
+ */
+export abstract class ThreadUtils {
+    /**
+     * Sleeps current thread for a specified amount of time
+     *
+     * @param microseconds the amount of time to sleep, in microseconds
+     * @return Promise<void> a promise that could be resolved
+     *
+     * @example
+     * TimeUtils.sleep();
+     * TimeUtils.sleep().then(() => {});
+     */
+    public static sleep(microseconds = 1000): Promise<void> {
+        return new Promise(resolve => {
+            setTimeout(resolve, microseconds);
         });
-        jest.advanceTimersByTime(1000);
-    });
-});
+    }
+}

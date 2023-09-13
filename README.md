@@ -10,10 +10,12 @@
 
 1️⃣ Utilities for array
 2️⃣ Utilities for boolean
-3️⃣ Utilities for object
-4️⃣ Utilities for random
-5️⃣ Utilities for string
-6️⃣ Utilities for time
+3️⃣️ Utilities for date time
+4️⃣ Utilities for json
+5️⃣ Utilities for object
+6️⃣ Utilities for random
+7️⃣ Utilities for string
+8️⃣ Utilities for thread
 
 ## Quickstart
 
@@ -26,7 +28,7 @@ $ npm install @yookue/ts-lang-utils --save
 Then, you may import components of ts-lang-utils as follows:
 
 ```jsx | pure
-import {ArrayUtils, BooleanUtils, ObjectUtils, RandomUtils, StringUtils, TimeUtils} from '@yookue/ts-lang-utils';
+import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, ObjectUtils, RandomUtils, StringUtils, ThreadUtils} from '@yookue/ts-lang-utils';
 ```
 
 Enjoy your journey in coding your projects with ts-lang-utils. ✌️

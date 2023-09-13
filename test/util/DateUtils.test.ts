@@ -15,11 +15,19 @@
  */
 
 
-export {ArrayUtils} from './util/ArrayUtils';
-export {BooleanUtils} from './util/BooleanUtils';
-export {JsonUtils} from './util/JsonUtils';
-export {ObjectUtils} from './util/ObjectUtils';
-export {RandomUtils} from './util/RandomUtils';
-export {StringUtils} from './util/StringUtils';
-export {ThreadUtils} from './util/ThreadUtils';
-export {DateUtils} from './util/DateUtils';
+import {DateUtils} from '@yookue/ts-lang-utils';
+
+
+describe('DateUtils', () => {
+    test('Testing getCurrentDate', () => {
+        expect(DateUtils.getCurrentDate()).not.toBe(undefined);
+    });
+
+    test('Testing getTimezone', () => {
+        expect(DateUtils.getTimezone()).toBe('+8');
+    });
+
+    test('Testing isLeapYear', () => {
+        expect(DateUtils.isLeapYear(2000)).toBeTruthy();
+    });
+});

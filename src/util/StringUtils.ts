@@ -27,6 +27,16 @@ import {ObjectUtils} from './ObjectUtils';
  */
 export abstract class StringUtils {
     /**
+     * Returns the length of the given string
+     *
+     * @param text the source string to check
+     * @return number the length of the given string
+     */
+    public static getLength(text?: string) : number {
+        return text ? text.length : 0;
+    }
+
+    /**
      * Returns whether the given string is empty
      *
      * @param text the string to check
@@ -65,17 +75,7 @@ export abstract class StringUtils {
      * StringUtils.isBlank('foobar');    // false
      */
     public static isBlank(text?: string): boolean {
-        if (!text || text.length === 0) {
-            return true;
-        }
-        const length = text.length;
-        for (let i = 0; i < length; i++) {
-            const character = text.charAt(i);
-            if (character !== ' ' && character !== '\\r' && character !== '\\n') {
-                return false;
-            }
-        }
-        return true;
+        return !text || text.length === 0 || /^\s*$/.test(text);
     }
 
     /**
@@ -89,25 +89,6 @@ export abstract class StringUtils {
      */
     public static isNotBlank(text?: string) : boolean {
         return !this.isBlank(text);
-    }
-
-    /**
-     * Returns whether all the characters in the given string is whitespace
-     *
-     * @param text the string to check
-     * @returns true if all the characters in the given string is whitespace
-     */
-    public static isWhitespace(text?: string): boolean {
-        if (!text || text.length === 0) {
-            return false;
-        }
-        const length = text.length;
-        for (let i = 0; i < length; i++) {
-            if (text.charAt(i) !== ' ') {
-                return false;
-            }
-        }
-        return true;
     }
 
     /**
@@ -323,6 +304,66 @@ export abstract class StringUtils {
         }
         // @ts-ignore
         return comparisons.some(comparison => this.equalsIgnoreCase(text, comparison));
+    }
+
+    /**
+     * Returns the replaced string of the source string ("{}" placeholder) with the parameters
+     *
+     * @param text the source string to inspect
+     * @param params the parameters to replaced with
+     * @return string the replaced string of the source string
+     *
+     * @example
+     * StringUtils.formatBraces("foo{}", "bar");    //  "foobar"
+     * StringUtils.formatBraces("foobar{}");    //  "foobar{}"
+     * StringUtils.formatBraces("hello {}, foo{}", "world", "bar");    //  "hello world, foobar"
+     */
+    public static formatBraces(text?: string, ...params: Array<any>): string | undefined {
+        if (!text || text.length <= 2 || ArrayUtils.isEmpty(params)) {
+            return text;
+        }
+        let result = text;
+        for (const param of params) {
+            result = result.replace('{}', (param ? param.toString() : ''));
+        }
+        return result;
+    }
+
+    /**
+     * Returns the replaced string of the source string (named placeholder) with the parameters
+     *
+     * @param text the source string to inspect
+     * @param params the parameters to replaced with, in the form of key values
+     * @return string the replaced string of the source string
+     *
+     * @example
+     * StringUtils.formatPlaceholders("foo{bar}", {bar: "bar"});    //  "foobar"
+     * StringUtils.formatPlaceholders("foobar{none}");    //  "foobar{none}"
+     * StringUtils.formatPlaceholders("foobar{none}", {});    //  "foobar{none}"
+     * StringUtils.formatPlaceholders("hello {name}, foo{bar}", {name: "world", bar: "bar"});    //  "hello world, foobar"
+     */
+    public static formatPlaceholders(text?: string, params?: {[key: string]: any}): string | undefined {
+        if (!text || text.length <= 2 || !params) {
+            return text;
+        }
+        // const keys = ObjectUtils.keys(params);
+        // if (ArrayUtils.isEmpty(keys)) {
+        //     return text;
+        // }
+        // let result = text;
+        // for (const key of keys) {
+        //     const regex = new RegExp(`\\{${key}\\}`, 'gi');
+        //     const value = Reflect.get(params, key);
+        //     // @ts-ignore
+        //     result = result.replace(regex, (value ? value.toString() : ''));
+        // }
+        let result = text;
+        for (const param in params) {
+            const regex = new RegExp(`\\{${param}\\}`, 'gi');
+            const value = params[param];
+            result = result.replace(regex, (value ? value.toString() : ''));
+        }
+        return result;
     }
 
     /**

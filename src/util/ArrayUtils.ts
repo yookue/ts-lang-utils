@@ -26,6 +26,16 @@ import {ObjectUtils} from './ObjectUtils';
  */
 export abstract class ArrayUtils {
     /**
+     * Returns the length of the given array
+     *
+     * @param array the array to check
+     * @return number the length of the given array
+     */
+    public static getLength(array?: Array<any>): number {
+        return array ? array.length : 0;
+    }
+
+    /**
      * Returns whether the given array is empty
      *
      * @param array the array to check
