@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "title": "TsLangUtils",
     "description": "Common Lang Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -64,18 +64,6 @@
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org/"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
     },
     "author": {
         "name": "Yookue Ltd",
