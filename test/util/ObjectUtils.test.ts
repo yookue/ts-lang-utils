@@ -77,6 +77,15 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.hasProperty({foo: 'bar'}, 'bar')).toBeFalsy();
     });
 
+    test('Testing isPromise', () => {
+        expect(ObjectUtils.isPromise(undefined)).toBeFalsy();
+        expect(ObjectUtils.isPromise({foo: 'bar'})).toBeFalsy()
+        const promise = new Promise((resolve, reject) => {
+            resolve(true);
+        });
+        expect(ObjectUtils.isPromise(promise)).toBeTruthy();
+    });
+
     test('Testing keys', () => {
         expect(ObjectUtils.keys([1, 2, 3])).toContain('1');
         expect(ObjectUtils.keys({foo: 'bar'})).toContain('foo');

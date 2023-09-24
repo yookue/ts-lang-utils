@@ -37,7 +37,7 @@ export abstract class JsonUtils {
      * JsonUtils.isJsonObject({foo: 'bar'});    // true
      */
     public static isJsonObject(object: any) : boolean {
-        return typeof object === 'object' && Object.prototype.toString.call(object).toLowerCase() === '[object object]' && !object.length;
+        return typeof object === 'object' && Object.prototype.toString.call(object) === '[object Object]' && !object.length;
     }
 
     /**

@@ -148,10 +148,24 @@ export abstract class ObjectUtils {
     }
 
     /**
-     * Returns whether the given object is prototyped
+     * Returns whether the given object is a promise
      *
      * @param object the object to check
-     * @return ture if the given object is prototyped
+     * @return ture if the given object is a promise
+     *
+     * @example
+     * ObjectUtils.isPromise({});    // false
+     * ObjectUtils.isPromise('foobar');    // false
+     */
+    public static isPromise(object: any): boolean {
+        return typeof object === 'object' && Object.prototype.toString.call(object) === '[object Promise]' && !object.length;
+    }
+
+    /**
+     * Returns whether the given object is a prototype
+     *
+     * @param object the object to check
+     * @return ture if the given object is a prototype
      *
      * @example
      * ObjectUtils.isPrototype({});    // false
