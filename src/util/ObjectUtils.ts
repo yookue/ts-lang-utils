@@ -148,17 +148,31 @@ export abstract class ObjectUtils {
     }
 
     /**
+     * Returns whether the given object is a plain object
+     *
+     * @param object the object to check
+     * @return true if the given object is a plain object
+     *
+     * @example
+     * ObjectUtils.isPlainObject(undefined);    // false
+     * ObjectUtils.isPlainObject({foo: 'bar'});    // true
+     */
+    public static isPlainObject(object: any) : boolean {
+        return typeof object === 'object' && Object.prototype.toString.call(object) === '[object Object]';
+    }
+
+    /**
      * Returns whether the given object is a promise
      *
      * @param object the object to check
      * @return ture if the given object is a promise
      *
      * @example
-     * ObjectUtils.isPromise({});    // false
-     * ObjectUtils.isPromise('foobar');    // false
+     * ObjectUtils.isPromiseObject({});    // false
+     * ObjectUtils.isPromiseObject('foobar');    // false
      */
-    public static isPromise(object: any): boolean {
-        return typeof object === 'object' && Object.prototype.toString.call(object) === '[object Promise]' && !object.length;
+    public static isPromiseObject(object: any): boolean {
+        return typeof object === 'object' && Object.prototype.toString.call(object) === '[object Promise]';
     }
 
     /**
@@ -316,6 +330,27 @@ export abstract class ObjectUtils {
     }
 
     /**
+     * Returns the property value if property name is present on the given object
+     *
+     * @param object the object to inspect
+     * @param prop the property name to inspect, parent property and child property are concat with dot (.)
+     * @return any the property value if property name is present on the given object
+     *
+     * @example
+     * ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foo.bar');    // foobar
+     */
+    public static getProperty(object: any, prop: string) : any {
+        if (this.anyNil(object, prop) || typeof object !== 'object' || prop?.length === 0) {
+            return undefined;
+        }
+        const props = prop.replace(/\[/g, '.').replace(/]/g, '').split('.');
+        if (!props || props?.length === 0) {
+            return undefined;
+        }
+        return (props?.length === 1) ? object[props[0]] : props.reduce((value, name) => (value || {})[name], object);
+    }
+
+    /**
      * Returns whether the given object has the specified property
      *
      * @param object the object to check
@@ -362,7 +397,7 @@ export abstract class ObjectUtils {
      * @param nil the default string if the object is nil
      * @return string the string representation of the given object
      */
-    public static toString(object?: any, nil?: string): string | undefined {
+    public static toString(object?: any, nil?: string): string {
         return object ? object.toString() : nil;
     }
 }

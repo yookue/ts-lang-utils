@@ -314,17 +314,17 @@ export abstract class StringUtils {
      * @return string the replaced string of the source string
      *
      * @example
-     * StringUtils.formatBraces("foo{}", "bar");    //  "foobar"
-     * StringUtils.formatBraces("foobar{}");    //  "foobar{}"
-     * StringUtils.formatBraces("hello {}, foo{}", "world", "bar");    //  "hello world, foobar"
+     * StringUtils.formatBrace("foo{}", "bar");    //  "foobar"
+     * StringUtils.formatBrace("foobar{}");    //  "foobar{}"
+     * StringUtils.formatBrace("hello {}, foo{}", "world", "bar");    //  "hello world, foobar"
      */
-    public static formatBraces(text?: string, ...params: Array<any>): string | undefined {
+    public static formatBrace(text?: string, ...params: Array<any>): string | undefined {
         if (!text || text.length <= 2 || ArrayUtils.isEmpty(params)) {
             return text;
         }
         let result = text;
         for (const param of params) {
-            result = result.replace('{}', (param ? param.toString() : ''));
+            result = result.replace('{}', ObjectUtils.toString(param, ''));
         }
         return result;
     }
@@ -337,12 +337,12 @@ export abstract class StringUtils {
      * @return string the replaced string of the source string
      *
      * @example
-     * StringUtils.formatPlaceholders("foo{bar}", {bar: "bar"});    //  "foobar"
-     * StringUtils.formatPlaceholders("foobar{none}");    //  "foobar{none}"
-     * StringUtils.formatPlaceholders("foobar{none}", {});    //  "foobar{none}"
-     * StringUtils.formatPlaceholders("hello {name}, foo{bar}", {name: "world", bar: "bar"});    //  "hello world, foobar"
+     * StringUtils.formatPlaceholder("foo{bar}", {bar: "bar"});    //  "foobar"
+     * StringUtils.formatPlaceholder("foobar{none}");    //  "foobar{none}"
+     * StringUtils.formatPlaceholder("foobar{none}", {});    //  "foobar{none}"
+     * StringUtils.formatPlaceholder("hello {name}, foo{bar}", {name: "world", bar: "bar"});    //  "hello world, foobar"
      */
-    public static formatPlaceholders(text?: string, params?: {[key: string]: any}): string | undefined {
+    public static formatPlaceholder(text?: string, params?: {[key: string]: any}): string | undefined {
         if (!text || text.length <= 2 || !params) {
             return text;
         }

@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "title": "TsLangUtils",
     "description": "Common Lang Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -37,7 +37,7 @@
         "test:coverage": "jest --coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.22.15"
+        "@babel/runtime": "^7.23.1"
     },
     "devDependencies": {
         "@types/jest": "^29.5.5",
@@ -65,6 +65,19 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
+    "collective" : {
+        "url": "https://opencollective.com/yookue-awesome"
+    },
+    "funding": [
+        {
+            "type": "opencollective",
+            "url": "https://opencollective.com/yookue-awesome"
+        },
+        {
+            "type": "individual",
+            "url": "http://yookue.com/public/donate"
+        }
+    ],
     "author": {
         "name": "Yookue Ltd",
         "email": "yookue@outlook.com",

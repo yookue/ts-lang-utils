@@ -119,18 +119,18 @@ describe('StringUtils', () => {
         expect(StringUtils.equalsAnyIgnoreCase('foo', ['bar', undefined])).toBeFalsy();
     });
 
-    test('Testing formatBraces', () => {
-        expect(StringUtils.formatBraces('foo{}', 'bar')).toBe('foobar');
-        expect(StringUtils.formatBraces('foobar{}')).toBe('foobar{}');
-        expect(StringUtils.formatBraces('hello {}, foo{}', 'world', 'bar')).toBe('hello world, foobar');
-        expect(StringUtils.formatBraces('welcome {} {} {}', 'to', 'the', 'world')).toBe('welcome to the world');
+    test('Testing formatBrace', () => {
+        expect(StringUtils.formatBrace('foo{}', 'bar')).toBe('foobar');
+        expect(StringUtils.formatBrace('foobar{}')).toBe('foobar{}');
+        expect(StringUtils.formatBrace('hello {}, foo{}', 'world', 'bar')).toBe('hello world, foobar');
+        expect(StringUtils.formatBrace('welcome {} {} {}', 'to', 'the', 'world')).toBe('welcome to the world');
     });
 
-    test('Testing formatPlaceholders', () => {
-        expect(StringUtils.formatPlaceholders('foo{bar}', {bar: 'bar'})).toBe('foobar');
-        expect(StringUtils.formatPlaceholders('foobar{none}', {})).toBe('foobar{none}');
-        expect(StringUtils.formatPlaceholders('hello {name}, foo{bar}', {name: 'world', bar: 'bar'})).toBe('hello world, foobar');
-        expect(StringUtils.formatPlaceholders('welcome {a} {b} {c}', {a: 'to', b: 'the', c: 'world'})).toBe('welcome to the world');
+    test('Testing formatPlaceholder', () => {
+        expect(StringUtils.formatPlaceholder('foo{bar}', {bar: 'bar'})).toBe('foobar');
+        expect(StringUtils.formatPlaceholder('foobar{none}', {})).toBe('foobar{none}');
+        expect(StringUtils.formatPlaceholder('hello {name}, foo{bar}', {name: 'world', bar: 'bar'})).toBe('hello world, foobar');
+        expect(StringUtils.formatPlaceholder('welcome {a} {b} {c}', {a: 'to', b: 'the', c: 'world'})).toBe('welcome to the world');
     });
 
     test('Testing includes', () => {

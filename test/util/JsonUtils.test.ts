@@ -19,14 +19,6 @@ import {JsonUtils} from '@yookue/ts-lang-utils';
 
 
 describe('JsonUtils', () => {
-    test('Testing isJsonObject', () => {
-        expect(JsonUtils.isJsonObject(undefined)).toBeFalsy();
-        expect(JsonUtils.isJsonObject(null)).toBeFalsy();
-        expect(JsonUtils.isJsonObject('foobar')).toBeFalsy();
-        expect(JsonUtils.isJsonObject(['foo', 'bar'])).toBeFalsy();
-        expect(JsonUtils.isJsonObject({foo: 'bar'})).toBeTruthy();
-    });
-
     test('Testing isJsonString', () => {
         expect(JsonUtils.isJsonString('foobar')).toBeFalsy();
         expect(JsonUtils.isJsonString(`{"foo": "bar"}`)).toBeTruthy();

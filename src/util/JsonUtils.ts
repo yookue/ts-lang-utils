@@ -15,6 +15,7 @@
  */
 
 
+import {ObjectUtils} from './ObjectUtils';
 import {StringUtils} from './StringUtils';
 
 
@@ -25,21 +26,6 @@ import {StringUtils} from './StringUtils';
  * @hideconstructor
  */
 export abstract class JsonUtils {
-    /**
-     * Returns whether the given object is a JSON object
-     *
-     * @param object the object to check
-     * @return true if the given object is a JSON object
-     *
-     * @example
-     * JsonUtils.isJsonObject(undefined);    // false
-     * JsonUtils.isJsonObject(['foo', 'bar']);    // false
-     * JsonUtils.isJsonObject({foo: 'bar'});    // true
-     */
-    public static isJsonObject(object: any) : boolean {
-        return typeof object === 'object' && Object.prototype.toString.call(object) === '[object Object]' && !object.length;
-    }
-
     /**
      * Returns whether the given string is a JSON string
      *
@@ -83,7 +69,7 @@ export abstract class JsonUtils {
             } catch(ex) {
             }
         }
-        if (typeof object === 'object' && this.isJsonObject(object)) {
+        if (ObjectUtils.isPlainObject(object)) {
             return JSON.stringify(object);
         }
         return undefined;
