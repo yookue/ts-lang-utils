@@ -156,7 +156,7 @@ describe('StringUtils', () => {
     });
 
     test('Testing trim', () => {
-        expect(StringUtils.trim(undefined)).toBe(undefined);
+        expect(StringUtils.trim(undefined)).toBeUndefined();
         expect(StringUtils.trim('foobar  ')).toBe('foobar');
         expect(StringUtils.trim(' ', true)).toBe(null);
     });

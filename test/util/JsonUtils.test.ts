@@ -27,9 +27,9 @@ describe('JsonUtils', () => {
     });
 
     test('Testing toJsonString', () => {
-        expect(JsonUtils.toJsonString(undefined)).toBe(undefined);
-        expect(JsonUtils.toJsonString(null)).toBe(undefined);
-        expect(JsonUtils.toJsonString('foobar')).toBe(undefined);
+        expect(JsonUtils.toJsonString(undefined)).toBeUndefined();
+        expect(JsonUtils.toJsonString(null)).toBeUndefined();
+        expect(JsonUtils.toJsonString('foobar')).toBeUndefined();
         expect(JsonUtils.toJsonString(`{"foo": "bar"}`)).toBe(`{"foo":"bar"}`);
         expect(JsonUtils.toJsonString({foo: 'bar'})).toBe(`{"foo":"bar"}`);
     });

@@ -73,7 +73,7 @@ describe('ObjectUtils', () => {
     });
 
     test('Testing getProperty', () => {
-        expect(ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foobar')).toBe(undefined);
+        expect(ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foobar')).toBeUndefined();
         expect(ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foo.bar')).toBe('foobar');
     });
 
@@ -106,7 +106,7 @@ describe('ObjectUtils', () => {
     });
 
     test('Testing toString', () => {
-        expect(ObjectUtils.toString(undefined, undefined)).toBe(undefined);
+        expect(ObjectUtils.toString(undefined, undefined)).toBeUndefined();
         expect(ObjectUtils.toString(undefined, 'foobar')).toBe('foobar');
         expect(ObjectUtils.toString('hello', 'foobar')).toBe('hello');
     });

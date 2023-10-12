@@ -20,7 +20,7 @@ import {RandomUtils} from '@yookue/ts-lang-utils';
 
 describe('RandomUtils', () => {
     test('Testing randomElement', () => {
-        expect(RandomUtils.randomElement([undefined])).toBe(undefined);
+        expect(RandomUtils.randomElement([undefined])).toBeUndefined();
         expect(RandomUtils.randomElement(['1'])).toBe('1');
     });
 

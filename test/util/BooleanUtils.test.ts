@@ -27,7 +27,7 @@ describe('BooleanUtils', () => {
     });
 
     test('Testing toString', () => {
-        expect(BooleanUtils.toString(undefined, 'true', 'false')).toBe(undefined);
+        expect(BooleanUtils.toString(undefined, 'true', 'false')).toBeUndefined();
         expect(BooleanUtils.toStringTrueFalse(true)).toBe('true');
         expect(BooleanUtils.toStringTrueFalse(false)).toBe('false');
         expect(BooleanUtils.toStringYesNo(true)).toBe('yes');

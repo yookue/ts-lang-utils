@@ -34,7 +34,7 @@ describe('DateUtils', () => {
     });
 
     test('Testing getCurrentDate', () => {
-        expect(DateUtils.getCurrentDate()).not.toBe(undefined);
+        expect(DateUtils.getCurrentDate()).toBeDefined();
     });
 
     test('Testing getTimezone', () => {
