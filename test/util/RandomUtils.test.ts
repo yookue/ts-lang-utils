@@ -24,10 +24,19 @@ describe('RandomUtils', () => {
         expect(RandomUtils.randomElement(['1'])).toBe('1');
     });
 
+    test('Testing randomElements', () => {
+        expect(RandomUtils.randomElements([undefined], 3)).toHaveLength(1);
+        expect(RandomUtils.randomElements([1, 2, 3], 2)).toHaveLength(2);
+    });
+
     test('Testing randomInteger', () => {
         const result = RandomUtils.randomInteger(1, 100);
         expect(result).toBeGreaterThanOrEqual(1);
         expect(result).toBeLessThan(100);
+    });
+
+    test('Testing randomIntegers', () => {
+        expect(RandomUtils.randomIntegers(3,1, 100)).toHaveLength(3);
     });
 
     test('Testing randomNumber', () => {
@@ -47,4 +56,9 @@ describe('RandomUtils', () => {
             expect(result).toBeLessThan(2.8);
         }
     });
+
+    test('Testing randomNumbers', () => {
+        expect(RandomUtils.randomNumbers(3,1.1, 1.8)).toHaveLength(3);
+    });
+
 });

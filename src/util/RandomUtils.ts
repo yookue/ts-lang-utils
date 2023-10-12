@@ -40,6 +40,7 @@ export abstract class RandomUtils {
     /**
      * Returns a random element of the array
      *
+     * @param array the array to random
      * @return any a random element of the array
      *
      * @example
@@ -47,6 +48,30 @@ export abstract class RandomUtils {
      */
     public static randomElement(array: Array<any>): any {
         return ArrayUtils.isNotEmpty(array) ? array.at(this.randomInteger(0, array.length)) : undefined;
+    }
+
+    /**
+     * Returns a random element array with the specified length within the given array
+     *
+     * @param array the array to random
+     * @param size the size to generate
+     * @return Array<any> a random element array with the specified length within the given array
+     *
+     * @example
+     * RandomUtils.randomElements(['1', '2', '3'], 2);
+     */
+    public static randomElements(array: Array<any>, size: number): any[] {
+        if (ArrayUtils.isEmpty(array) || size <= 0) {
+            return [];
+        }
+        if (ArrayUtils.getLength(array) <= size) {
+            return array;
+        }
+        const indexes = new Set<number>();
+        while (indexes.size < size) {
+            indexes.add(this.randomInteger(0, array.length));
+        }
+        return array.filter((_value, index) => indexes.has(index));
     }
 
     /**
@@ -62,6 +87,29 @@ export abstract class RandomUtils {
      */
     public static randomInteger(minInclusive?: number, maxExclusive?: number): number {
         return Math.floor(this.randomNumber(minInclusive, maxExclusive));
+    }
+
+    /**
+     * Returns a random integer array that between the min value (inclusive) and the max value (exclusive), matching the given size
+     *
+     * @param size the size of the expected array
+     * @param minInclusive the min value, inclusive
+     * @param maxExclusive the max value, exclusive
+     * @return Array<number> the random integer array that between the min value (inclusive) and the max value (exclusive), matching the given size
+     *
+     * @example
+     * RandomUtils.randomIntegers(3, 1, 10);
+     * RandomUtils.randomIntegers(3, -6, 8);
+     */
+    public static randomIntegers(size: number, minInclusive?: number, maxExclusive?: number): number[] {
+        if (size <= 0) {
+            return [];
+        }
+        const result: number[] = [];
+        for (let i = 0; i < size; i++) {
+            result.push(this.randomInteger(minInclusive, maxExclusive));
+        }
+        return result;
     }
 
     /**
@@ -84,5 +132,28 @@ export abstract class RandomUtils {
             return min;
         }
         return min + (max - min) * Math.random();
+    }
+
+    /**
+     * Returns a random number array that between the min value (inclusive) and the max value (exclusive), matching the given size
+     *
+     * @param size the size of the expected array
+     * @param minInclusive the min value, inclusive
+     * @param maxExclusive the max value, exclusive
+     * @return Array<number> the random number array that between the min value (inclusive) and the max value (exclusive), matching the given size
+     *
+     * @example
+     * RandomUtils.randomNumbers(3, 1.1, 1.2);
+     * RandomUtils.randomNumbers(3, -3.6, 2.8);
+     */
+    public static randomNumbers(size: number, minInclusive?: number, maxExclusive?: number): number[] {
+        if (size <= 0) {
+            return [];
+        }
+        const result: number[] = [];
+        for (let i = 0; i < size; i++) {
+            result.push(this.randomNumber(minInclusive, maxExclusive));
+        }
+        return result;
     }
 }
