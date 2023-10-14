@@ -37,7 +37,7 @@
         "test:coverage": "jest --coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.23.1"
+        "@babel/runtime": "^7.23.2"
     },
     "devDependencies": {
         "@types/jest": "^29.5.5",
