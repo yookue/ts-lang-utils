@@ -19,6 +19,14 @@ import {ArrayUtils} from '@yookue/ts-lang-utils';
 
 
 describe('ArrayUtils', () => {
+    test('Testing getLength', () => {
+        expect(ArrayUtils.getLength([])).toBe(0);
+    });
+
+    test('Testing getTypeof', () => {
+        expect(ArrayUtils.getTypeof(['foo', 'bar'])).toStrictEqual(['string', 'string']);
+    });
+
     test('Testing isEmpty', () => {
         expect(ArrayUtils.isEmpty([])).toBeTruthy();
     });
@@ -26,6 +34,13 @@ describe('ArrayUtils', () => {
     test('Testing isNotEmpty', () => {
         expect(ArrayUtils.isNotEmpty([undefined, null])).toBeTruthy();
         expect(ArrayUtils.isNotEmpty(['foo', 'bar'])).toBeTruthy();
+    });
+
+    test('Testing isTypeof', () => {
+        expect(ArrayUtils.isTypeof([undefined, null], 'object')).toBeFalsy();
+        expect(ArrayUtils.isTypeof(['foo', 'bar'], 'string')).toBeTruthy();
+        expect(ArrayUtils.isTypeof(['foo', 'bar', null], 'string', true)).toBeTruthy();
+        expect(ArrayUtils.isTypeof([1, 2, 3], 'number')).toBeTruthy();
     });
 
     test('Testing includes', () => {

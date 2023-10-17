@@ -75,7 +75,7 @@ export abstract class StringUtils {
      * StringUtils.isBlank('foobar');    // false
      */
     public static isBlank(text?: string): boolean {
-        return !text || text.length === 0 || /^\s*$/.test(text);
+        return !text || text?.length === 0 || /^\s*$/.test(text);
     }
 
     /**

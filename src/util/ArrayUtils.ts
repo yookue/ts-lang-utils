@@ -16,6 +16,7 @@
 
 
 import {ObjectUtils} from './ObjectUtils';
+import {StringUtils} from './StringUtils';
 
 
 /**
@@ -33,6 +34,27 @@ export abstract class ArrayUtils {
      */
     public static getLength(array?: Array<any>): number {
         return array ? array.length : 0;
+    }
+
+    /**
+     * Returns the element types of the given array
+     *
+     * @param array the array to check
+     * @return the element types of the given array
+     */
+    public static getTypeof(array?: Array<any>): string[] | undefined {
+        if (this.isEmpty(array)) {
+            return undefined;
+        }
+        return array?.map(item => {
+            if (Array.isArray(item)) {
+                return 'array';
+            }
+            if (typeof item === 'object') {
+                return (item === null) ? 'null' : 'object';
+            }
+            return typeof item;
+        });
     }
 
     /**
@@ -59,6 +81,24 @@ export abstract class ArrayUtils {
      */
     public static isNotEmpty(array?: Array<any>): boolean {
         return !this.isEmpty(array);
+    }
+
+    /**
+     * Returns whether each element in the given array is the expected type
+     *
+     * @param array the array to check
+     * @param type the expected element type
+     * @param relaxed treat null as string or object
+     * @return true if each element in the given array is the expected type
+     */
+    public static isTypeof(array?: Array<any>, type?: string, relaxed = false): boolean {
+        if (this.isEmpty(array) || StringUtils.isBlank(type)) {
+            return false;
+        }
+        // @ts-ignore
+        return array?.every(item => {
+            return (typeof item === type) || (relaxed && item === null && StringUtils.equalsAny(type, ['string', 'object']));
+        });
     }
 
     /**
