@@ -107,6 +107,7 @@ describe('ObjectUtils', () => {
 
     test('Testing toString', () => {
         expect(ObjectUtils.toString(undefined, undefined)).toBeUndefined();
+        expect(ObjectUtils.toString(undefined, null)).toBeNull();
         expect(ObjectUtils.toString(undefined, 'foobar')).toBe('foobar');
         expect(ObjectUtils.toString('hello', 'foobar')).toBe('hello');
     });

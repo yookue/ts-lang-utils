@@ -47,4 +47,22 @@ describe('ArrayUtils', () => {
         expect(ArrayUtils.includes(['foo', 'bar'], 'foo')).toBeTruthy();
         expect(ArrayUtils.includes(['foo', 'bar'], 'foobar')).toBeFalsy();
     });
+
+    test('Testing maxLength', () => {
+        expect(ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3])).toBe(3);
+        expect(ArrayUtils.maxLength(['foo', 'bar'], ['hello', 'word'])).toBe(2);
+    });
+
+    test('Testing minLength', () => {
+        expect(ArrayUtils.minLength(['foo', 'bar'], [1, 2, 3], [])).toBe(0);
+        expect(ArrayUtils.minLength(['foo', 'bar'], ['hello', 'word'])).toBe(2);
+    });
+
+    test('Testing reverse', () => {
+        const array = ['foo', 'bar'];
+        ArrayUtils.reverse(array);
+        expect(array).toStrictEqual(['bar', 'foo']);
+        ArrayUtils.reverse(array);
+        expect(array).toStrictEqual(['foo', 'bar']);
+    });
 });

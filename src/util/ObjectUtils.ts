@@ -397,7 +397,7 @@ export abstract class ObjectUtils {
      * @param nil the default string if the object is nil
      * @return string the string representation of the given object
      */
-    public static toString(object?: any, nil?: string): string {
+    public static toString(object?: any, nil?: string | null): string {
         return object ? object.toString() : nil;
     }
 }

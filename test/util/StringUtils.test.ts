@@ -91,6 +91,10 @@ describe('StringUtils', () => {
         expect(StringUtils.anyNotBlank('foo', 'bar')).toBeTruthy();
     });
 
+    test('Testing defaultString', () => {
+        expect(StringUtils.defaultString(undefined)).toBe('');
+    });
+
     test('Testing defaultIfEmpty', () => {
         expect(StringUtils.defaultIfEmpty(undefined, 'foobar')).toBe('foobar');
     });
@@ -124,6 +128,13 @@ describe('StringUtils', () => {
         expect(StringUtils.formatBrace('foobar{}')).toBe('foobar{}');
         expect(StringUtils.formatBrace('hello {}, foo{}', 'world', 'bar')).toBe('hello world, foobar');
         expect(StringUtils.formatBrace('welcome {} {} {}', 'to', 'the', 'world')).toBe('welcome to the world');
+    });
+
+    test('Testing formatPercent', () => {
+        expect(StringUtils.formatPercent('foo%s', 'bar')).toBe('foobar');
+        expect(StringUtils.formatPercent('foobar %d', 2023)).toBe('foobar 2023');
+        expect(StringUtils.formatPercent('hello %s, foo%s', 'world', 'bar')).toBe('hello world, foobar');
+        expect(StringUtils.formatPercent('welcome %s %s %s', 'to', 'the', 'world')).toBe('welcome to the world');
     });
 
     test('Testing formatPlaceholder', () => {

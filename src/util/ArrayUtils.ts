@@ -115,4 +115,72 @@ export abstract class ArrayUtils {
         // @ts-ignore
         return ObjectUtils.allNotNil(array, element) && array.includes(element);
     }
+
+    /**
+     * Returns the max length of the given arrays
+     *
+     * @param arrays the arrays to check
+     * @return number the max length of the given arrays
+     *
+     * @example
+     * ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3]);    // 3
+     */
+    public static maxLength(...arrays: any[][]): number {
+        if (this.isEmpty(arrays)) {
+            return 0;
+        }
+        let result = 0;
+        for (const array of arrays) {
+            result = Math.max(result, this.getLength(array));
+        }
+        return result;
+    }
+
+    /**
+     * Returns the min length of the given arrays
+     *
+     * @param arrays the arrays to check
+     * @return number the min length of the given arrays
+     *
+     * @example
+     * ArrayUtils.minLength(['foo', 'bar'], [1, 2, 3], []);    // 0
+     */
+    public static minLength(...arrays: any[][]): number {
+        if (this.isEmpty(arrays)) {
+            return 0;
+        }
+        let result = arrays[0]?.length;
+        for (const array of arrays.slice(1)) {
+            result = Math.min(result, this.getLength(array));
+            if (result === 0) {
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Reverses the given array
+     *
+     * @param array the arrays to inspect
+     * @param startInclusive the starting index, inclusive
+     * @param endExclusive the ending index, exclusive
+     *
+     * @example
+     * ArrayUtils.reverse(['foo', 'bar']);    // ['bar', 'foo']
+     */
+    public static reverse(array?: Array<any>, startInclusive?: number, endExclusive?: number): void {
+        if (this.isEmpty(array)) {
+            return;
+        }
+        let start = Math.max(startInclusive || 0, 0);
+        let end = Math.min(endExclusive || this.getLength(array), this.getLength(array)) - 1;
+        while (array && end > start) {
+            const tmp = array[end];
+            array[end] = array[start];
+            array[start] = tmp;
+            end--;
+            start++;
+        }
+    }
 }

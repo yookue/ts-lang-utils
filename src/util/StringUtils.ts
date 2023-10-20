@@ -16,6 +16,7 @@
 
 
 import {ArrayUtils} from './ArrayUtils';
+import {JsonUtils} from './JsonUtils';
 import {ObjectUtils} from './ObjectUtils';
 
 
@@ -206,6 +207,19 @@ export abstract class StringUtils {
     }
 
     /**
+     * Returns an empty value if the given text is undefined
+     *
+     * @param text the text to check
+     * @return string an empty value if the given text is undefined
+     *
+     * @example
+     * StringUtils.defaultString(undefined);    // ''
+     */
+    public static defaultString(text?: string): string {
+        return text ? text : '';
+    }
+
+    /**
      * Returns the default value if the given text is empty, or the text self if it is not empty
      *
      * @param text the text to check
@@ -307,7 +321,7 @@ export abstract class StringUtils {
     }
 
     /**
-     * Returns the replaced string of the source string ("{}" placeholder) with the parameters
+     * Returns the replaced string of the source string ("{}" placeholder) with the given parameters
      *
      * @param text the source string to inspect
      * @param params the parameters to replaced with
@@ -330,7 +344,99 @@ export abstract class StringUtils {
     }
 
     /**
-     * Returns the replaced string of the source string (named placeholder) with the parameters
+     * Returns the replaced string of the source string ("%" placeholder) with the given parameters
+     *
+     * @param text the source string to inspect
+     * @param params the parameters to replaced with
+     * @return string the replaced string of the source string
+     *
+     * @see "https://github.com/samsonjs/format/blob/main/format.js"
+     *
+     * @example
+     * StringUtils.formatPercent("foo%s", "bar");    // "foobar"
+     * StringUtils.formatPercent("foobar %d", 2023);    // "foobar 2023"
+     * StringUtils.formatPercent("hello %s, foo%s", "world", "bar");    // "hello world, foobar"
+     */
+    public static formatPercent(text: string, ...params: Array<any>): string | undefined {
+        if (!text || text.length <= 2 || ArrayUtils.isEmpty(params)) {
+            return text;
+        }
+        const matches = text.match(/%[bcdfjosxX]/g) || [];
+        const count = ArrayUtils.minLength(matches, params);
+        if (count === 0) {
+            return text;
+        }
+        let result = text;
+        for (let i = 0; i < count; i++) {
+            const param = params[i];
+            const pattern = matches[i].substring(1);
+            switch (pattern) {
+                case 'b':
+                case 'c':
+                case 'd':
+                case 'o':
+                case 'x':
+                case 'X':
+                    try {
+                        let value = undefined;
+                        if (typeof param === 'string') {
+                            value = parseInt(param);
+                        } else if (param instanceof String) {
+                            value = parseInt(param.toString());
+                        } else if (typeof param === 'number') {
+                            value = param;
+                        }
+                        if (value) {
+                            if (pattern === 'b') {
+                                result = result.replace(`%${pattern}`, (value as number).toString(2));
+                            } else if (pattern === 'c') {
+                                result = result.replace(`%${pattern}`, String.fromCharCode(value as number));
+                            } else if (pattern === 'd') {
+                                result = result.replace(`%${pattern}`, (value as number).toString(10));
+                            } else if (pattern === 'o') {
+                                result = result.replace(`%${pattern}`, '0' + (value as number).toString(8));
+                            } else if (pattern === 'x') {
+                                result = result.replace(`%${pattern}`, '0x' + (value as number).toString(16));
+                            } else if (pattern === 'X') {
+                                result = result.replace(`%${pattern}`, '0x' + (value as number).toString(16).toUpperCase());
+                            }
+                        }
+                    } catch (ignored) {
+                        throw new TypeError(`Invalid parameter type of '${param}', index ${i}`);
+                    }
+                    break;
+                case 'f':
+                    try {
+                        let value = undefined;
+                        if (typeof param === 'string') {
+                            value = parseFloat(param);
+                        } else if (param instanceof String) {
+                            value = parseFloat(param.toString());
+                        } else if (typeof param === 'number') {
+                            value = param;
+                        }
+                        if (value) {
+                            result = result.replace(`%${pattern}`, '0x' + (value as number).toString());
+                        }
+                    } catch (ignored) {
+                        throw new TypeError(`Invalid parameter type of '${param}', index ${i}`);
+                    }
+                    break;
+                case 'j':
+                    result = result.replace('%j', JsonUtils.toJsonString(param) || '');
+                    break;
+                case 's':
+                    result = result.replace('%s', ObjectUtils.toString(param, ''));
+                    break;
+                default:
+                    break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Returns the replaced string of the source string (named placeholder) with the given parameters
      *
      * @param text the source string to inspect
      * @param params the parameters to replaced with, in the form of key values
@@ -346,20 +452,9 @@ export abstract class StringUtils {
         if (!text || text.length <= 2 || !params) {
             return text;
         }
-        // const keys = ObjectUtils.keys(params);
-        // if (ArrayUtils.isEmpty(keys)) {
-        //     return text;
-        // }
-        // let result = text;
-        // for (const key of keys) {
-        //     const regex = new RegExp(`\\{${key}\\}`, 'gi');
-        //     const value = Reflect.get(params, key);
-        //     // @ts-ignore
-        //     result = result.replace(regex, (value ? value.toString() : ''));
-        // }
         let result = text;
         for (const param in params) {
-            const regex = new RegExp(`\\{${param}\\}`, 'gi');
+            const regex = new RegExp(`\\{${param}\\}`, 'g');
             const value = params[param];
             result = result.replace(regex, (value ? value.toString() : ''));
         }

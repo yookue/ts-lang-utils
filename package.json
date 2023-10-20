@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "title": "TsLangUtils",
     "description": "Common Lang Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -40,7 +40,7 @@
         "@babel/runtime": "^7.23.2"
     },
     "devDependencies": {
-        "@types/jest": "^29.5.5",
+        "@types/jest": "^29.5.6",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
         "babel-plugin-comments": "^1.0.4",
@@ -65,7 +65,7 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
-    "collective" : {
+    "collective": {
         "url": "https://opencollective.com/yookue-awesome"
     },
     "funding": [
