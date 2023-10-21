@@ -16,7 +16,6 @@
 
 
 import {ArrayUtils} from './ArrayUtils';
-import {JsonUtils} from './JsonUtils';
 import {ObjectUtils} from './ObjectUtils';
 
 
@@ -380,9 +379,9 @@ export abstract class StringUtils {
                     try {
                         let value = undefined;
                         if (typeof param === 'string') {
-                            value = parseInt(param);
+                            value = Number.parseInt(param);
                         } else if (param instanceof String) {
-                            value = parseInt(param.toString());
+                            value = Number.parseInt(param.toString());
                         } else if (typeof param === 'number') {
                             value = param;
                         }
@@ -409,9 +408,9 @@ export abstract class StringUtils {
                     try {
                         let value = undefined;
                         if (typeof param === 'string') {
-                            value = parseFloat(param);
+                            value = Number.parseFloat(param);
                         } else if (param instanceof String) {
-                            value = parseFloat(param.toString());
+                            value = Number.parseFloat(param.toString());
                         } else if (typeof param === 'number') {
                             value = param;
                         }
@@ -423,10 +422,16 @@ export abstract class StringUtils {
                     }
                     break;
                 case 'j':
-                    result = result.replace('%j', JsonUtils.toJsonString(param) || '');
-                    break;
+                    if (param === undefined || param === null) {
+                        result = result.replace(`%${pattern}`, '');
+                        break;
+                    } else if (ObjectUtils.isPlainObject(param)) {
+                        result = result.replace(`%${pattern}`, JSON.stringify(param));
+                        break;
+                    }
+                    throw new TypeError(`Invalid parameter type of '${param}', index ${i}`);
                 case 's':
-                    result = result.replace('%s', ObjectUtils.toString(param, ''));
+                    result = result.replace(`%${pattern}`, ObjectUtils.toString(param, ''));
                     break;
                 default:
                     break;

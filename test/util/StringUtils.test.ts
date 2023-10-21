@@ -19,6 +19,12 @@ import {StringUtils} from '@yookue/ts-lang-utils';
 
 
 describe('StringUtils', () => {
+    test('Testing getLength', () => {
+        expect(StringUtils.getLength(undefined)).toBe(0);
+        expect(StringUtils.getLength('')).toBe(0);
+        expect(StringUtils.getLength('foobar')).toBe(6);
+    });
+
     test('Testing isEmpty', () => {
         expect(StringUtils.isEmpty(undefined)).toBeTruthy();
         expect(StringUtils.isEmpty('')).toBeTruthy();
@@ -131,6 +137,7 @@ describe('StringUtils', () => {
     });
 
     test('Testing formatPercent', () => {
+        expect(StringUtils.formatPercent('%bcdfjo%sxX', 1, '-')).toBe('1cdfjo-xX');
         expect(StringUtils.formatPercent('foo%s', 'bar')).toBe('foobar');
         expect(StringUtils.formatPercent('foobar %d', 2023)).toBe('foobar 2023');
         expect(StringUtils.formatPercent('hello %s, foo%s', 'world', 'bar')).toBe('hello world, foobar');
