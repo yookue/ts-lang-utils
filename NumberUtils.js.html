@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - TsLangUtils</title>
+    <title>NumberUtils.js - TsLangUtils</title>
     
     <meta name="description" content="Common Lang Utilities for TypeScript" />
     
@@ -49,67 +49,166 @@
 
 <div id="main">
     
+    <h1 class="page-title">NumberUtils.js</h1>
+    
 
     
 
 
 
     
-
-
-    <section class="package">
-        <h3> </h3>		
-    </section>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    <section class="readme usertext">
-        <article><h1>@yookue/ts-lang-utils</h1>
-<p><a href="LICENSE.txt"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat" alt="Software License"></a>
-<a href="https://npmjs.org/package/@yookue/ts-lang-utils"><img src="https://img.shields.io/npm/v/@yookue/ts-lang-utils.svg?style=flat" alt="NPM version"></a>
-<a href="https://npmjs.org/package/@yookue/ts-lang-utils"><img src="http://img.shields.io/npm/dm/@yookue/ts-lang-utils.svg?style=flat" alt="NPM downloads"></a></p>
-<p>🏅 Common Lang Utilities for TypeScript 👍</p>
-<h2>Features</h2>
-<p>1️⃣ Utilities for array
-2️⃣ Utilities for boolean
-3️⃣️ Utilities for date time
-4️⃣ Utilities for json
-5️⃣ Utilities for number
-6️⃣ Utilities for object
-7️⃣ Utilities for random
-8️⃣ Utilities for string
-9️⃣ Utilities for thread</p>
-<h2>Quickstart</h2>
-<p>You can install ts-lang-utils package in your existing TypeScript project as follows:</p>
-<pre class="prettyprint source lang-bash"><code>$ npm install @yookue/ts-lang-utils --save
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) 2023 Yookue Ltd. All rights reserved.
+ *
+ * Licensed under the MIT License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+/**
+ * Utility functions for number
+ *
+ * @abstract
+ * @hideconstructor
+ */
+export class NumberUtils {
+    /**
+     * Returns whether the given value is an integer
+     *
+     * @param {number} value the number value to check
+     * @returns {boolean} whether the given value is an integer
+     *
+     * @example
+     * NumberUtils.isInteger(1);    // true
+     */
+    static isInteger(value) {
+        if (!value) {
+            return false;
+        }
+        return Math.floor(value) === Math.ceil(value);
+    }
+    /**
+     * Returns an integer value from the string value, or undefined if the value cannot be converted
+     *
+     * @param {string} value the string value to check
+     * @returns {number} an integer value from the string value, or undefined if the value cannot be converted
+     *
+     * @example
+     * NumberUtils.toInteger('1');    // 1
+     */
+    static toInteger(value) {
+        if (!value) {
+            return undefined;
+        }
+        try {
+            // @ts-ignore
+            const result = Number.parseInt(value);
+            return Number.isNaN(result) ? undefined : result;
+        }
+        catch (ignored) {
+        }
+        return undefined;
+    }
+    /**
+     * Returns a float value from the string value, or undefined if the value cannot be converted
+     *
+     * @param {string} value the string value to check
+     * @returns {number} a float value from the string value, or undefined if the value cannot be converted
+     *
+     * @example
+     * NumberUtils.toFloat('1.0');    // 1.0
+     */
+    static toFloat(value) {
+        if (!value) {
+            return undefined;
+        }
+        try {
+            const result = Number.parseFloat(value);
+            return Number.isNaN(result) ? undefined : result;
+        }
+        catch (ignored) {
+        }
+        return undefined;
+    }
+    /**
+     * Returns the max value of the given array
+     *
+     * @param {Array&lt;number>} values the array to calculate
+     * @returns {number} the max value of the given array
+     *
+     * @example
+     * NumberUtils.max([1, 2, 3]);    // 3
+     */
+    static max(values) {
+        if (!values || (values === null || values === void 0 ? void 0 : values.length) === 0) {
+            return undefined;
+        }
+        let result = values[0];
+        for (let i = 1; i &lt; values.length; i++) {
+            if (result &lt; values[i]) {
+                result = values[i];
+            }
+        }
+        return result;
+    }
+    /**
+     * Returns the min value of the given array
+     *
+     * @param {Array&lt;number>} values the array to calculate
+     * @returns {number} the min value of the given array
+     *
+     * @example
+     * NumberUtils.min([1, 2, 3]);    // 1
+     */
+    static min(values) {
+        if (!values || (values === null || values === void 0 ? void 0 : values.length) === 0) {
+            return undefined;
+        }
+        let result = values[0];
+        for (let i = 1; i &lt; values.length; i++) {
+            if (result > values[i]) {
+                result = values[i];
+            }
+        }
+        return result;
+    }
+    /**
+     * Returns the sum value of the given array
+     *
+     * @param {Array&lt;number>} values the array to calculate
+     * @returns {number} the sum value of the given array
+     *
+     * @example
+     * NumberUtils.sum([1, 2, 3]);    // 6
+     */
+    static sum(values) {
+        return values.reduce((a, b) => a + b);
+    }
+    /**
+     * Returns the average value of the given array
+     *
+     * @param {Array&lt;number>} values the array to calculate
+     * @returns {number} the average value of the given array
+     *
+     * @example
+     * NumberUtils.average([1, 2, 3]);    // 2
+     */
+    static average(values) {
+        return this.sum(values) / values.length;
+    }
+}
 </code></pre>
-<p>Then, you may import components of ts-lang-utils as follows:</p>
-<pre class="prettyprint source lang-jsx"><code>import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, NumberUtils, ObjectUtils, RandomUtils, StringUtils, ThreadUtils} from '@yookue/ts-lang-utils';
-</code></pre>
-<p>Enjoy your journey in coding your projects with ts-lang-utils. ✌️</p>
-<h2>Document</h2>
-<ul>
-<li>GitHub pages: <a href="https://yookue.github.io/ts-lang-utils" target="_blank">https://yookue.github.io/ts-lang-utils</a></li>
-</ul>
-<h2>License</h2>
-<p>This project is under the <a href="https://mit-license.org/">MIT</a> License (MIT)</p>
-<h2>Website</h2>
-<ul>
-<li>Yookue: <a href="https://yookue.com" target="_blank">https://yookue.com</a></li>
-</ul></article>
+        </article>
     </section>
-
-
 
 
 
