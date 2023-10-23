@@ -17,10 +17,10 @@
 
 export {ArrayUtils} from './util/ArrayUtils';
 export {BooleanUtils} from './util/BooleanUtils';
+export {DateUtils} from './util/DateUtils';
 export {JsonUtils} from './util/JsonUtils';
 export {NumberUtils} from './util/NumberUtils';
 export {ObjectUtils} from './util/ObjectUtils';
 export {RandomUtils} from './util/RandomUtils';
 export {StringUtils} from './util/StringUtils';
 export {ThreadUtils} from './util/ThreadUtils';
-export {DateUtils} from './util/DateUtils';
