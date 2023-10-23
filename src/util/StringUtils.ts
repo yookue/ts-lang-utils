@@ -29,37 +29,37 @@ export abstract class StringUtils {
     /**
      * Returns the length of the given string
      *
-     * @param text the source string to check
-     * @return number the length of the given string
+     * @param {string} text the source string to check
+     * @return {number} the length of the given string
      */
-    public static getLength(text?: string) : number {
+    public static getLength(text?: string): number {
         return text ? text.length : 0;
     }
 
     /**
      * Returns whether the given string is empty
      *
-     * @param text the string to check
-     * @returns true if the given string is empty
+     * @param {string} text the string to check
+     * @return {boolean} whether the given string is empty
      *
      * @example
      * StringUtils.isEmpty(undefined);    // true
      * StringUtils.isEmpty('foobar');    // false
      */
-    public static isEmpty(text?: string) : boolean {
+    public static isEmpty(text?: string): boolean {
         return !text || text.length === 0;
     }
 
     /**
      * Returns whether the given string is not empty
      *
-     * @param text the string to check
-     * @returns true if the given string is not empty
+     * @param {string} text the string to check
+     * @return {boolean} whether the given string is not empty
      *
      * @example
      * StringUtils.isNotEmpty('foobar');    // true
      */
-    public static isNotEmpty(text?: string) : boolean {
+    public static isNotEmpty(text?: string): boolean {
         return !this.isEmpty(text);
     }
 
@@ -67,8 +67,8 @@ export abstract class StringUtils {
      * Returns whether the given string is blank
      *
      * @description check if all the characters in the given string is whitespace or line separators
-     * @param text the string to check
-     * @returns true if the given string is blank
+     * @param {string} text the string to check
+     * @return {boolean} whether the given string is blank
      *
      * @example
      * StringUtils.isBlank(undefined);    // true
@@ -81,21 +81,21 @@ export abstract class StringUtils {
     /**
      * Returns whether the given string is not blank
      *
-     * @param text the string to check
-     * @returns true if the given string is not blank
+     * @param {string} text the string to check
+     * @return {boolean} whether the given string is not blank
      *
      * @example
      * StringUtils.isNotBlank('foobar');    // true
      */
-    public static isNotBlank(text?: string) : boolean {
+    public static isNotBlank(text?: string): boolean {
         return !this.isBlank(text);
     }
 
     /**
      * Returns whether all the given texts are empty
      *
-     * @param texts the texts to check
-     * @return true if all the given texts are empty
+     * @param {Array<string>} texts the texts to check
+     * @return {boolean} whether all the given texts are empty
      *
      * @example
      * StringUtils.allEmpty(null, undefined);    // true
@@ -108,8 +108,8 @@ export abstract class StringUtils {
     /**
      * Returns whether all the given texts are not empty
      *
-     * @param texts the texts to check
-     * @return true if all the given texts are not empty
+     * @param {Array<string>} texts the texts to check
+     * @return {boolean} whether all the given texts are not empty
      *
      * @example
      * StringUtils.allNotEmpty(null, undefined);    // false
@@ -123,8 +123,8 @@ export abstract class StringUtils {
     /**
      * Returns whether any of the given texts is empty
      *
-     * @param texts the texts to check
-     * @return true if any of the given texts is empty
+     * @param {Array<string>} texts the texts to check
+     * @return {boolean} whether any of the given texts is empty
      *
      * @example
      * StringUtils.anyEmpty(null, undefined);    // true
@@ -137,22 +137,22 @@ export abstract class StringUtils {
     /**
      * Returns whether any of the given texts is not empty
      *
-     * @param texts the texts to check
-     * @return true if any of the given texts is not empty
+     * @param {Array<string>} texts the texts to check
+     * @return {boolean} whether any of the given texts is not empty
      *
      * @example
      * StringUtils.anyNotEmpty(null, undefined);    // false
      * StringUtils.anyNotEmpty(null, 'world');    // true
      */
     public static anyNotEmpty(...texts: Array<string | undefined>): boolean {
-        return texts && texts.length > 0 && texts.some(text => this.isNotEmpty(text));
+        return texts && texts?.length > 0 && texts.some(text => this.isNotEmpty(text));
     }
 
     /**
      * Returns whether all the given texts are blank
      *
-     * @param texts the texts to check
-     * @return true if all the given texts are blank
+     * @param {Array<string>} texts the texts to check
+     * @return {boolean} whether all the given texts are blank
      *
      * @example
      * StringUtils.allBlank(null, undefined);    // true
@@ -165,8 +165,8 @@ export abstract class StringUtils {
     /**
      * Returns whether all the given texts are not blank
      *
-     * @param texts the texts to check
-     * @return true if all the given texts are not blank
+     * @param {Array<string>} texts the texts to check
+     * @return {boolean} whether all the given texts are not blank
      *
      * @example
      * StringUtils.allNotBlank(null, undefined);    // false
@@ -180,8 +180,8 @@ export abstract class StringUtils {
     /**
      * Returns whether any of the given texts is blank
      *
-     * @param texts the texts to check
-     * @return true if any of the given texts is blank
+     * @param {Array<string>} texts the texts to check
+     * @return {boolean} whether any of the given texts is blank
      *
      * @example
      * StringUtils.anyBlank(null, undefined);    // true
@@ -194,8 +194,8 @@ export abstract class StringUtils {
     /**
      * Returns whether any of the given texts is not blank
      *
-     * @param texts the texts to check
-     * @return true if any of the given texts is not blank
+     * @param {Array<string>} texts the texts to check
+     * @return {boolean} whether any of the given texts is not blank
      *
      * @example
      * StringUtils.anyNotBlank(null, undefined);    // false
@@ -208,8 +208,8 @@ export abstract class StringUtils {
     /**
      * Returns an empty value if the given text is undefined
      *
-     * @param text the text to check
-     * @return string an empty value if the given text is undefined
+     * @param {string} text the text to check
+     * @return {string} an empty value if the given text is undefined
      *
      * @example
      * StringUtils.defaultString(undefined);    // ''
@@ -221,9 +221,9 @@ export abstract class StringUtils {
     /**
      * Returns the default value if the given text is empty, or the text self if it is not empty
      *
-     * @param text the text to check
-     * @param defaultValue the default value placeholder
-     * @return string the default value if the given text is empty, or the text self if it is not empty
+     * @param {string} text the text to check
+     * @param {string} defaultValue the default value placeholder
+     * @return {string} the default value if the given text is empty, or the text self if it is not empty
      *
      * @example
      * StringUtils.defaultIfEmpty(undefined, 'foobar');    // 'foobar'
@@ -235,9 +235,9 @@ export abstract class StringUtils {
     /**
      * Returns the default value if the given text is blank, or the text self if it is not blank
      *
-     * @param text the text to check
-     * @param defaultValue the default value placeholder
-     * @return string the default value if the given text is blank, or the text self if it is not blank
+     * @param {string} text the text to check
+     * @param {string} defaultValue the default value placeholder
+     * @return {string} the default value if the given text is blank, or the text self if it is not blank
      *
      * @example
      * StringUtils.defaultIfBlank(undefined, 'foobar');    // 'foobar'
@@ -249,9 +249,9 @@ export abstract class StringUtils {
     /**
      * Returns whether the given strings are equal
      *
-     * @param text the source string to check
-     * @param comparison the target string to compare
-     * @returns true if the given strings are equal
+     * @param {string} text the source string to check
+     * @param {string} comparison the target string to compare
+     * @return {boolean} whether the given strings are equal
      *
      * @example
      * StringUtils.equals('foo', 'foo');    // true
@@ -270,9 +270,9 @@ export abstract class StringUtils {
     /**
      * Returns whether the given strings are equal, case-insensitive
      *
-     * @param text the source string to check
-     * @param comparison the target string to compare
-     * @returns true if the given strings are equal, case-insensitive
+     * @param {string} text the source string to check
+     * @param {string} comparison the target string to compare
+     * @return {boolean} whether the given strings are equal, case-insensitive
      *
      * @example
      * StringUtils.equalsIgnoreCase('foo', 'FOO');    // true
@@ -290,9 +290,9 @@ export abstract class StringUtils {
     /**
      * Returns whether the given string equals to any of the comparison strings
      *
-     * @param text the source string to check
-     * @param comparisons the target strings to compare
-     * @returns true if the given string equals to any of the comparison strings
+     * @param {string} text the source string to check
+     * @param {Array<string>} comparisons the target strings to compare
+     * @return {boolean} whether the given string equals to any of the comparison strings
      *
      * @example
      * StringUtils.equalsAny('foo', ['foo', 'bar']);    // true
@@ -304,9 +304,9 @@ export abstract class StringUtils {
     /**
      * Returns whether the given text equals to any of the comparison strings, case-insensitive
      *
-     * @param text the source string to check
-     * @param comparisons the target strings to compare
-     * @returns true if the given string equals to any of the comparison strings, case-insensitive
+     * @param {string} text the source string to check
+     * @param {Array<string>} comparisons the target strings to compare
+     * @return {boolean} whether the given string equals to any of the comparison strings, case-insensitive
      *
      * @example
      * StringUtils.equalsAnyIgnoreCase('foo', ['FOO', 'bar']);    // true
@@ -322,14 +322,14 @@ export abstract class StringUtils {
     /**
      * Returns the replaced string of the source string ("{}" placeholder) with the given parameters
      *
-     * @param text the source string to inspect
-     * @param params the parameters to replaced with
-     * @return string the replaced string of the source string
+     * @param {string} text the source string to inspect
+     * @param {Array<any>} params the parameters to replaced with
+     * @return {string} the replaced string of the source string
      *
      * @example
-     * StringUtils.formatBrace("foo{}", "bar");    //  "foobar"
-     * StringUtils.formatBrace("foobar{}");    //  "foobar{}"
-     * StringUtils.formatBrace("hello {}, foo{}", "world", "bar");    //  "hello world, foobar"
+     * StringUtils.formatBrace('foo{}', 'bar');    //  'foobar'
+     * StringUtils.formatBrace('foobar{}');    //  'foobar{}'
+     * StringUtils.formatBrace('hello {}, foo{}', 'world', 'bar');    //  'hello world, foobar'
      */
     public static formatBrace(text?: string, ...params: Array<any>): string | undefined {
         if (!text || text.length <= 2 || ArrayUtils.isEmpty(params)) {
@@ -345,9 +345,9 @@ export abstract class StringUtils {
     /**
      * Returns the replaced string of the source string ("%" placeholder) with the given parameters
      *
-     * @param text the source string to inspect
-     * @param params the parameters to replaced with
-     * @return string the replaced string of the source string
+     * @param {string} text the source string to inspect
+     * @param {Array<any>} params the parameters to replaced with
+     * @return {string} the replaced string of the source string
      *
      * @see "https://github.com/samsonjs/format/blob/main/format.js"
      *
@@ -356,7 +356,7 @@ export abstract class StringUtils {
      * StringUtils.formatPercent("foobar %d", 2023);    // "foobar 2023"
      * StringUtils.formatPercent("hello %s, foo%s", "world", "bar");    // "hello world, foobar"
      */
-    public static formatPercent(text: string, ...params: Array<any>): string | undefined {
+    public static formatPercent(text?: string, ...params: Array<any>): string | undefined {
         if (!text || text.length <= 2 || ArrayUtils.isEmpty(params)) {
             return text;
         }
@@ -443,9 +443,9 @@ export abstract class StringUtils {
     /**
      * Returns the replaced string of the source string (named placeholder) with the given parameters
      *
-     * @param text the source string to inspect
-     * @param params the parameters to replaced with, in the form of key values
-     * @return string the replaced string of the source string
+     * @param {string} text the source string to inspect
+     * @param {Record<string, any>} params the parameters to replaced with, in the form of key values
+     * @return {string} the replaced string of the source string
      *
      * @example
      * StringUtils.formatPlaceholder("foo{bar}", {bar: "bar"});    //  "foobar"
@@ -469,9 +469,9 @@ export abstract class StringUtils {
     /**
      * Returns whether the given text includes the comparison string
      *
-     * @param text the source string to check
-     * @param comparison the target string to compare
-     * @returns true if the given text includes the comparison string
+     * @param {string} text the source string to check
+     * @param {string} comparison the target string to compare
+     * @return {boolean} whether the given text includes the comparison string
      *
      * @example
      * StringUtils.includes('foobar', 'foo');    // true
@@ -484,9 +484,9 @@ export abstract class StringUtils {
     /**
      * Returns whether the given text includes the comparison string, case-insensitive
      *
-     * @param text the source string to check
-     * @param comparison the target string to compare
-     * @returns true if the given text includes the comparison string, case-insensitive
+     * @param {string} text the source string to check
+     * @param {string} comparison the target string to compare
+     * @return {boolean} whether the given text includes the comparison string, case-insensitive
      *
      * @example
      * StringUtils.includesIgnoreCase('foobar', 'FOO');    // true
@@ -499,37 +499,45 @@ export abstract class StringUtils {
     /**
      * Returns whether the given text includes to any of the comparison strings
      *
-     * @param text the source string to check
-     * @param comparisons the target strings to compare
-     * @returns true if the given text includes the comparison string
+     * @param {string} text the source string to check
+     * @param {Array<string>} comparisons the target strings to compare
+     * @return {boolean} whether the given text includes the comparison string
      *
      * @example
      * StringUtils.includesAny('foobar', ['foo', 'bar']);    // true
      */
-    public static includesAny(text: string, comparisons: Array<string | undefined>): boolean {
-        return ObjectUtils.allNotNil(text, comparisons) && comparisons?.some(comparison => this.includes(text, comparison));
+    public static includesAny(text?: string, comparisons?: Array<string | undefined>): boolean {
+        if (ObjectUtils.anyNil(text, comparisons)) {
+            return false;
+        }
+        // @ts-ignore
+        return comparisons?.some(comparison => this.includes(text, comparison));
     }
 
     /**
      * Returns whether the given text includes to any of the comparison strings, case-insensitive
      *
-     * @param text the source string to check
-     * @param comparisons the target strings to compare
-     * @returns true if the text includes the comparison string, case-insensitive
+     * @param {string} text the source string to check
+     * @param {Array<string>} comparisons the target strings to compare
+     * @return {boolean} whether the text includes the comparison string, case-insensitive
      *
      * @example
      * StringUtils.includesAnyIgnoreCase('foobar', ['FOO', 'world']);    // true
      */
-    public static includesAnyIgnoreCase(text: string, comparisons: Array<string | undefined>): boolean {
-        return ObjectUtils.allNotNil(text, comparisons) && comparisons?.some(comparison => this.includesIgnoreCase(text, comparison));
+    public static includesAnyIgnoreCase(text?: string, comparisons?: Array<string | undefined>): boolean {
+        if (ObjectUtils.anyNil(text, comparisons)) {
+            return false;
+        }
+        // @ts-ignore
+        return comparisons?.some(comparison => this.includesIgnoreCase(text, comparison));
     }
 
     /**
      * Returns a string that trimmed from the given string
      *
-     * @param text the string to trim
-     * @param emptyAsNull whether to return null if the trimmed result is empty
-     * @return string the trimmed string value from the given string
+     * @param {string} text the string to trim
+     * @param {boolean} emptyAsNull whether to return null if the trimmed result is empty
+     * @return {string} the trimmed string value from the given string
      *
      * @example
      * StringUtils.trim('foobar', true);    // 'foobar'

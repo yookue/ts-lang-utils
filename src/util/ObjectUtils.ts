@@ -25,8 +25,8 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is null or undefined
      *
-     * @param object the object to check
-     * @return ture if the given object is null or undefined
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is null or undefined
      *
      * @example
      * ObjectUtils.isNil(null);    // true
@@ -40,8 +40,8 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is not null or undefined
      *
-     * @param object the object to check
-     * @return ture if the given object is not null or undefined
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is not null or undefined
      *
      * @example
      * ObjectUtils.isNotNil('foobar');    // true
@@ -54,8 +54,8 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is null
      *
-     * @param object the object to check
-     * @return ture if the given object is null
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is null
      *
      * @example
      * ObjectUtils.isNull(null);    // true
@@ -68,8 +68,8 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is not null
      *
-     * @param object the object to check
-     * @return ture if the given object is not null
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is not null
      *
      * @example
      * ObjectUtils.isNotNull('foobar');    // true
@@ -81,8 +81,8 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is undefined
      *
-     * @param object the object to check
-     * @return ture if the given object is undefined
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is undefined
      *
      * @example
      * ObjectUtils.isUndefined(undefined);    // true
@@ -95,8 +95,8 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is not undefined
      *
-     * @param object the object to check
-     * @return ture if the given object is not undefined
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is not undefined
      *
      * @example
      * ObjectUtils.isNotUndefined('foobar');    // true
@@ -108,8 +108,8 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is empty
      *
-     * @param object the object to check
-     * @return ture if the given object is empty
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is empty
      *
      * @example
      * ObjectUtils.isEmpty(null);    // true
@@ -136,8 +136,8 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is not empty
      *
-     * @param object the object to check
-     * @return ture if the given object is not empty
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is not empty
      *
      * @example
      * ObjectUtils.isNotEmpty('foobar');    // true
@@ -150,22 +150,22 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is a plain object
      *
-     * @param object the object to check
-     * @return true if the given object is a plain object
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is a plain object
      *
      * @example
      * ObjectUtils.isPlainObject(undefined);    // false
      * ObjectUtils.isPlainObject({foo: 'bar'});    // true
      */
-    public static isPlainObject(object: any) : boolean {
+    public static isPlainObject(object: any): boolean {
         return typeof object === 'object' && Object.prototype.toString.call(object) === '[object Object]';
     }
 
     /**
      * Returns whether the given object is a promise
      *
-     * @param object the object to check
-     * @return ture if the given object is a promise
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is a promise
      *
      * @example
      * ObjectUtils.isPromiseObject({});    // false
@@ -178,8 +178,8 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object is a prototype
      *
-     * @param object the object to check
-     * @return ture if the given object is a prototype
+     * @param {any} object the object to check
+     * @return {boolean} whether the given object is a prototype
      *
      * @example
      * ObjectUtils.isPrototype({});    // false
@@ -197,127 +197,127 @@ export abstract class ObjectUtils {
     /**
      * Returns whether all the given objects are null or undefined
      *
-     * @param objects the objects to check
-     * @return ture if all the given objects are null or undefined
+     * @param {Array<any>} objects the objects to check
+     * @return {boolean} whether all the given objects are null or undefined
      *
      * @example
      * ObjectUtils.allNil(null, undefined);    // true
      * ObjectUtils.allNil(null, {});    // false
      */
-    public static allNil(...objects: Array<any>): boolean {
+    public static allNil(...objects: any[]): boolean {
         return this.isEmpty(objects) || !objects.some(object => this.isNotNil(object));
     }
 
     /**
      * Returns whether all the given objects are not null or undefined
      *
-     * @param objects the objects to check
-     * @return ture if all the given objects are not null or undefined
+     * @param {Array<any>} objects the objects to check
+     * @return {boolean} whether all the given objects are not null or undefined
      *
      * @example
      * ObjectUtils.allNotNil(null, undefined);    // false
      * ObjectUtils.allNotNil(null, {});    // false
      * ObjectUtils.allNotNil('foo', 'bar');    // true
      */
-    public static allNotNil(...objects: Array<any>): boolean {
+    public static allNotNil(...objects: any[]): boolean {
         return this.isNotEmpty(objects) && !objects.some(object => this.isNil(object));
     }
 
     /**
      * Returns whether any of the given objects is null or undefined
      *
-     * @param objects the objects to check
-     * @return ture if any of the given objects is null or undefined
+     * @param {Array<any>} objects the objects to check
+     * @return {boolean} whether any of the given objects is null or undefined
      *
      * @example
      * ObjectUtils.anyNil(null, undefined);    // true
      * ObjectUtils.anyNil(null, {});    // true
      */
-    public static anyNil(...objects: Array<any>): boolean {
+    public static anyNil(...objects: any[]): boolean {
         return this.isEmpty(objects) || objects.some(object => this.isNil(object));
     }
 
     /**
      * Returns whether any of the given objects is not null or undefined
      *
-     * @param objects the objects to check
-     * @return ture if any of the given objects is not null or undefined
+     * @param {Array<any>} objects the objects to check
+     * @return {boolean} whether any of the given objects is not null or undefined
      *
      * @example
      * ObjectUtils.anyNotNil(null, undefined);    // false
      * ObjectUtils.anyNotNil(null, {});    // true
      */
-    public static anyNotNil(...objects: Array<any>): boolean {
+    public static anyNotNil(...objects: any[]): boolean {
         return this.isNotEmpty(objects) && objects.some(object => this.isNotNil(object));
     }
 
     /**
      * Returns whether all the given objects are empty
      *
-     * @param objects the objects to check
-     * @return ture if all the given objects are empty
+     * @param {Array<any>} objects the objects to check
+     * @return {boolean} whether all the given objects are empty
      *
      * @example
      * ObjectUtils.allEmpty(null, undefined);    // true
      * ObjectUtils.allEmpty(null, {});    // false
      */
-    public static allEmpty(...objects: Array<any>): boolean {
+    public static allEmpty(...objects: any[]): boolean {
         return this.isEmpty(objects) || !objects.some(object => this.isNotEmpty(object));
     }
 
     /**
      * Returns whether all the given objects are not empty
      *
-     * @param objects the objects to check
-     * @return ture if all the given objects are not empty
+     * @param {Array<any>} objects the objects to check
+     * @return {boolean} whether all the given objects are not empty
      *
      * @example
      * ObjectUtils.allNotEmpty(null, undefined);    // false
      * ObjectUtils.allNotEmpty(null, {});    // false
      * ObjectUtils.allNotEmpty('foo', 'bar');    // true
      */
-    public static allNotEmpty(...objects: Array<any>): boolean {
+    public static allNotEmpty(...objects: any[]): boolean {
         return this.isNotEmpty(objects) && !objects.some(object => this.isEmpty(object));
     }
 
     /**
      * Returns whether any of the given objects is empty
      *
-     * @param objects the objects to check
-     * @return ture if any of the given objects is empty
+     * @param {Array<any>} objects the objects to check
+     * @return {boolean} whether any of the given objects is empty
      *
      * @example
      * ObjectUtils.anyEmpty(null, undefined);    // true
      * ObjectUtils.anyEmpty(null, {});    // true
      */
-    public static anyEmpty(...objects: Array<any>): boolean {
+    public static anyEmpty(...objects: any[]): boolean {
         return this.isEmpty(objects) || objects.some(object => this.isEmpty(object));
     }
 
     /**
      * Returns whether any of the given objects is not empty
      *
-     * @param objects the objects to check
-     * @return ture if any of the given objects is not empty
+     * @param {Array<any>} objects the objects to check
+     * @return {boolean} whether any of the given objects is not empty
      *
      * @example
      * ObjectUtils.anyNotEmpty(null, undefined);    // false
      * ObjectUtils.anyNotEmpty(null, {});    // true
      */
-    public static anyNotEmpty(...objects: Array<any>): boolean {
+    public static anyNotEmpty(...objects: any[]): boolean {
         return this.isNotEmpty(objects) && objects.some(object => this.isNotEmpty(object));
     }
 
     /**
      * Returns the first none nil element in the given array, or null if all elements are nil
      *
-     * @param objects the objects to check
-     * @returns any the first none nil element in the given array, or null if all elements are nil
+     * @param {Array<any>} objects the objects to check
+     * @returns {any} the first none nil element in the given array, or null if all elements are nil
      *
      * @example
      * ObjectUtils.firstNonNil(undefined, 'foo', 'bar');    // 'foo'
      */
-    public static firstNonNil(...objects: Array<any>): any {
+    public static firstNonNil(...objects: any[]): any {
         if (!objects || objects.length === 0) {
             return null;
         }
@@ -332,14 +332,14 @@ export abstract class ObjectUtils {
     /**
      * Returns the property value if property name is present on the given object
      *
-     * @param object the object to inspect
-     * @param prop the property name to inspect, parent property and child property are concat with dot (.)
-     * @return any the property value if property name is present on the given object
+     * @param {any} object the object to inspect
+     * @param {string} prop the property name to inspect, parent property and child property are concat with dot (.)
+     * @return {any} the property value if property name is present on the given object
      *
      * @example
      * ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foo.bar');    // foobar
      */
-    public static getProperty(object: any, prop: string) : any {
+    public static getProperty(object: any, prop: string): any {
         if (this.anyNil(object, prop) || typeof object !== 'object' || prop?.length === 0) {
             return undefined;
         }
@@ -353,23 +353,23 @@ export abstract class ObjectUtils {
     /**
      * Returns whether the given object has the specified property
      *
-     * @param object the object to check
-     * @param prop the property name to check
-     * @return true if the object has the specified property
+     * @param {any} object the object to check
+     * @param {string} prop the property name to check
+     * @return {boolean} whether the object has the specified property
      *
      * @example
      * ObjectUtils.hasProperty({foo: 'bar'}, 'foo');    // true
      * ObjectUtils.hasProperty({foo: 'bar'}, 'bar');    // false
      */
-    public static hasProperty(object: any, prop: string) : boolean {
+    public static hasProperty(object: any, prop: string): boolean {
         return this.allNotNil(object, prop) && typeof object === 'object' && prop?.length > 0 && Object.prototype.hasOwnProperty.call(object, prop);
     }
 
     /**
      * Returns a string array representation of keys in the given object
      *
-     * @param object the object to inspect
-     * @returns Array<string> the keys of the given object
+     * @param {any} object the object to inspect
+     * @returns {Array<string>} the keys of the given object
      *
      * @example
      * ObjectUtils.keys({foo: 'bar'});    // ['foo']
@@ -393,9 +393,9 @@ export abstract class ObjectUtils {
     /**
      * Returns the string representation of the given object
      *
-     * @param object the object to inspect
-     * @param nil the default string if the object is nil
-     * @return string the string representation of the given object
+     * @param {any} object the object to inspect
+     * @param {string} nil the default string if the object is nil
+     * @return {string} a string representation of the given object
      */
     public static toString(object?: any, nil?: string | null): string {
         return object ? object.toString() : nil;

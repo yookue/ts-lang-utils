@@ -29,15 +29,15 @@ export abstract class JsonUtils {
     /**
      * Returns whether the given string is a JSON string
      *
-     * @param text the string to check
-     * @return true if the given object is a JSON string
+     * @param {string} text the string to check
+     * @return {boolean} whether the given object is a JSON string
      *
      * @example
      * JsonUtils.isJsonString(`{"foo": "bar"}`);    // true
      * JsonUtils.isJsonString(`[{"foo": "bar"}]`);    // true
      * JsonUtils.isJsonString(`[{"foo": "bar"}, {"hello": "world"}]`);    // true
      */
-    public static isJsonString(text: string) : boolean {
+    public static isJsonString(text: string): boolean {
         if (StringUtils.isBlank(text)) {
             return false;
         }
@@ -53,13 +53,13 @@ export abstract class JsonUtils {
     /**
      * Returns a JSON string that represents the given object
      *
-     * @param object the object to inspect
-     * @return string that represents the given object
+     * @param {any} object the object to inspect
+     * @return {string} a JSON string that represents the given object
      *
      * @example
      * JsonUtils.toJsonString({foo: 'bar'});    // `{"foo":"bar"}`
      */
-    public static toJsonString(object: any) : string | undefined {
+    public static toJsonString(object: any): string | undefined {
         if (typeof object === 'string' && (object as string).length > 0) {
             try {
                 const json = JSON.parse(object as string);

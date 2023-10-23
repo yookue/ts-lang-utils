@@ -25,8 +25,8 @@ export abstract class ThreadUtils {
     /**
      * Sleeps current thread for a specified amount of time
      *
-     * @param microseconds the amount of time to sleep, in microseconds
-     * @return Promise<void> a promise that could be resolved
+     * @param {number} microseconds the amount of time to sleep, in microseconds
+     * @return {Promise<void>} a promise that could be resolved
      *
      * @example
      * TimeUtils.sleep();

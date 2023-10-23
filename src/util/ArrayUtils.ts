@@ -29,20 +29,20 @@ export abstract class ArrayUtils {
     /**
      * Returns the length of the given array
      *
-     * @param array the array to check
-     * @return number the length of the given array
+     * @param {Array<any>} array the array to check
+     * @return {number} the length of the given array
      */
-    public static getLength(array?: Array<any>): number {
+    public static getLength(array?: any[]): number {
         return array ? array.length : 0;
     }
 
     /**
      * Returns the element types of the given array
      *
-     * @param array the array to check
-     * @return the element types of the given array
+     * @param {Array<any>} array the array to check
+     * @return {Array<string>} the element types of the given array
      */
-    public static getTypeof(array?: Array<any>): string[] | undefined {
+    public static getTypeof(array?: any[]): string[] | undefined {
         if (this.isEmpty(array)) {
             return undefined;
         }
@@ -60,38 +60,38 @@ export abstract class ArrayUtils {
     /**
      * Returns whether the given array is empty
      *
-     * @param array the array to check
-     * @return true if the given array is empty
+     * @param {Array<any>} array the array to check
+     * @return {boolean} whether the given array is empty
      *
      * @example
      * ArrayUtils.isEmpty([]);    // true
      */
-    public static isEmpty(array?: Array<any>): boolean {
+    public static isEmpty(array?: any[]): boolean {
         return !array || array.length === 0;
     }
 
     /**
      * Returns whether the given array is not empty
      *
-     * @param array the array to check
-     * @return true if the given array is not empty
+     * @param {Array<any>} array the array to check
+     * @return {boolean} whether the given array is not empty
      *
      * @example
      * ArrayUtils.isNotEmpty(['foo', 'bar']);    // true
      */
-    public static isNotEmpty(array?: Array<any>): boolean {
+    public static isNotEmpty(array?: any[]): boolean {
         return !this.isEmpty(array);
     }
 
     /**
      * Returns whether each element in the given array is the expected type
      *
-     * @param array the array to check
-     * @param type the expected element type
-     * @param relaxed treat null as string or object
-     * @return true if each element in the given array is the expected type
+     * @param {Array<any>} array the array to check
+     * @param {string} type the expected element type
+     * @param {boolean} relaxed treat null as string or object
+     * @return {boolean} whether each element in the given array is the expected type
      */
-    public static isTypeof(array?: Array<any>, type?: string, relaxed = false): boolean {
+    public static isTypeof(array?: any[], type?: string, relaxed = false): boolean {
         if (this.isEmpty(array) || StringUtils.isBlank(type)) {
             return false;
         }
@@ -104,14 +104,14 @@ export abstract class ArrayUtils {
     /**
      * Returns whether the given array includes the given element
      *
-     * @param array the array to check
-     * @param element the element to compare
-     * @return true if the given array includes the given element
+     * @param {Array<any>} array the array to check
+     * @param {any} element the element to compare
+     * @return {boolean} whether the given array includes the given element
      *
      * @example
      * ArrayUtils.includes(['foo', 'bar'], 'foo');    // true
      */
-    public static includes<T>(array?: Array<T>, element?: T) : boolean {
+    public static includes<T>(array?: T[], element?: T): boolean {
         // @ts-ignore
         return ObjectUtils.allNotNil(array, element) && array.includes(element);
     }
@@ -119,8 +119,8 @@ export abstract class ArrayUtils {
     /**
      * Returns the max length of the given arrays
      *
-     * @param arrays the arrays to check
-     * @return number the max length of the given arrays
+     * @param {Array<any>} arrays the arrays to check
+     * @return {number} the max length of the given arrays
      *
      * @example
      * ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3]);    // 3
@@ -139,8 +139,8 @@ export abstract class ArrayUtils {
     /**
      * Returns the min length of the given arrays
      *
-     * @param arrays the arrays to check
-     * @return number the min length of the given arrays
+     * @param {Array<any>} arrays the arrays to check
+     * @return {number} the min length of the given arrays
      *
      * @example
      * ArrayUtils.minLength(['foo', 'bar'], [1, 2, 3], []);    // 0
@@ -162,14 +162,14 @@ export abstract class ArrayUtils {
     /**
      * Reverses the given array
      *
-     * @param array the arrays to inspect
-     * @param startInclusive the starting index, inclusive
-     * @param endExclusive the ending index, exclusive
+     * @param {Array<any>} array the arrays to inspect
+     * @param {number} startInclusive the starting index, inclusive
+     * @param {number} endExclusive the ending index, exclusive
      *
      * @example
      * ArrayUtils.reverse(['foo', 'bar']);    // ['bar', 'foo']
      */
-    public static reverse(array?: Array<any>, startInclusive?: number, endExclusive?: number): void {
+    public static reverse(array?: any[], startInclusive?: number, endExclusive?: number): void {
         if (this.isEmpty(array)) {
             return;
         }

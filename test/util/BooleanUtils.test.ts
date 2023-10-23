@@ -19,11 +19,11 @@ import {BooleanUtils} from '@yookue/ts-lang-utils';
 
 
 describe('BooleanUtils', () => {
-    test('Testing fromString', () => {
-        expect(BooleanUtils.fromString('true')).toBeTruthy();
-        expect(BooleanUtils.fromString('false')).toBeFalsy();
-        expect(BooleanUtils.fromString('yes')).toBeTruthy();
-        expect(BooleanUtils.fromString('no')).toBeFalsy();
+    test('Testing toBoolean', () => {
+        expect(BooleanUtils.toBoolean('true')).toBeTruthy();
+        expect(BooleanUtils.toBoolean('false')).toBeFalsy();
+        expect(BooleanUtils.toBoolean('yes')).toBeTruthy();
+        expect(BooleanUtils.toBoolean('no')).toBeFalsy();
     });
 
     test('Testing toString', () => {
@@ -32,6 +32,10 @@ describe('BooleanUtils', () => {
         expect(BooleanUtils.toStringTrueFalse(false)).toBe('false');
         expect(BooleanUtils.toStringYesNo(true)).toBe('yes');
         expect(BooleanUtils.toStringYesNo(false)).toBe('no');
+        expect(BooleanUtils.toStringYN(true)).toBe('Y');
+        expect(BooleanUtils.toStringYN(false)).toBe('N');
+        expect(BooleanUtils.toStringTF(true)).toBe('T');
+        expect(BooleanUtils.toStringTF(false)).toBe('F');
         expect(BooleanUtils.toString10(true)).toBe('1');
         expect(BooleanUtils.toString10(false)).toBe('0');
     });

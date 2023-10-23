@@ -29,19 +29,24 @@ export abstract class BooleanUtils {
     /**
      * Returns a boolean value from the string value, or undefined if the value cannot be converted
      *
-     * @param value the string value to check
-     * @returns boolean a boolean value from the string value, or undefined if the value cannot be converted
+     * @param {string | number} value the string value to check
+     * @returns {boolean} a boolean value from the string value, or undefined if the value cannot be converted
      *
      * @example
-     * BooleanUtils.fromString('true');    // true
-     * BooleanUtils.fromString('yes');    // true
+     * BooleanUtils.toBoolean(1);    // true
+     * BooleanUtils.toBoolean('true');    // true
+     * BooleanUtils.toBoolean('yes');    // true
      */
-    public static fromString(value?: string) : boolean | undefined {
-        if (StringUtils.equalsAnyIgnoreCase(value, ['true', 'yes', 'on', 'y', 't', '1'])) {
-            return true;
-        }
-        if (StringUtils.equalsAnyIgnoreCase(value, ['false', 'no', 'off', 'n', 'f', '0'])) {
-            return false;
+    public static toBoolean(value?: string | number): boolean | undefined {
+        if (typeof value === 'number') {
+            return (value as number) > 0;
+        } else if (typeof value === 'string') {
+            if (StringUtils.equalsAnyIgnoreCase(value, ['true', 'yes', 'on', 'y', 't', '1'])) {
+                return true;
+            }
+            if (StringUtils.equalsAnyIgnoreCase(value, ['false', 'no', 'off', 'n', 'f', '0'])) {
+                return false;
+            }
         }
         return undefined;
     }
@@ -49,11 +54,11 @@ export abstract class BooleanUtils {
     /**
      * Returns a string value from the boolean value
      *
-     * @param value the boolean value to check
-     * @param truthy the string to represent true
-     * @param falsy the string to represent false
-     * @param nil the string to represent undefined or null
-     * @returns string a string value from the boolean value
+     * @param {boolean} value the boolean value to check
+     * @param {string} truthy the string to represent true
+     * @param {string} falsy the string to represent false
+     * @param {string} nil the string to represent undefined or null
+     * @returns {string} a string value from the boolean value
      *
      * @example
      * BooleanUtils.toString(undefined, 'true', 'false');    // 'true'
@@ -65,8 +70,8 @@ export abstract class BooleanUtils {
     /**
      * Returns a string value of 'true'/'false' from the boolean value
      *
-     * @param value the boolean value to check
-     * @returns string the string value of 'true'/'false' from the boolean value
+     * @param {boolean} value the boolean value to check
+     * @returns {string} the string value of 'true'/'false' from the boolean value
      *
      * @example
      * BooleanUtils.toStringTrueFalse(true);    // 'true'
@@ -78,8 +83,8 @@ export abstract class BooleanUtils {
     /**
      * Returns a string value of 'on'/'off' from the boolean value
      *
-     * @param value the boolean value to check
-     * @returns string the string value of 'on'/'off' from the boolean value
+     * @param {boolean} value the boolean value to check
+     * @returns {string} the string value of 'on'/'off' from the boolean value
      *
      * @example
      * BooleanUtils.toStringOnOff(true);    // 'on'
@@ -91,8 +96,8 @@ export abstract class BooleanUtils {
     /**
      * Returns a string value of 'yes'/'no' from the boolean value
      *
-     * @param value the boolean value to check
-     * @returns string the string value of 'yes'/'no' from the boolean value
+     * @param {boolean} value the boolean value to check
+     * @returns {string} the string value of 'yes'/'no' from the boolean value
      *
      * @example
      * BooleanUtils.toStringYesNo(true);    // 'yes'
@@ -104,8 +109,8 @@ export abstract class BooleanUtils {
     /**
      * Returns a string value of 'Y'/'N' from the boolean value
      *
-     * @param value the boolean value to check
-     * @returns string the string value of 'Y'/'N' from the boolean value
+     * @param {boolean} value the boolean value to check
+     * @returns {string} the string value of 'Y'/'N' from the boolean value
      *
      * @example
      * BooleanUtils.toStringYN(true);    // 'Y'
@@ -117,8 +122,8 @@ export abstract class BooleanUtils {
     /**
      * Returns a string value of 'T'/'F' from the boolean value
      *
-     * @param value the boolean value to check
-     * @returns string the string value of 'T'/'F' from the boolean value
+     * @param {boolean} value the boolean value to check
+     * @returns {string} the string value of 'T'/'F' from the boolean value
      *
      * @example
      * BooleanUtils.toStringTF(true);    // "T"
@@ -130,8 +135,8 @@ export abstract class BooleanUtils {
     /**
      * Returns a string value of '1'/'0' from the boolean value
      *
-     * @param value the boolean value to check
-     * @returns string the string value of '1'/'0' from the boolean value
+     * @param {boolean} value the boolean value to check
+     * @returns {string} the string value of '1'/'0' from the boolean value
      *
      * @example
      * BooleanUtils.toString10(true);    // '1'

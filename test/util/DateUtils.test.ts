@@ -67,4 +67,8 @@ describe('DateUtils', () => {
     test('Testing isSameDay', () => {
         expect(DateUtils.isSameDay(new Date(2023, 8, 30), new Date(2023, 8, 30))).toBeTruthy();
     });
+
+    test('Testing isWeekend', () => {
+        expect(DateUtils.isWeekend(new Date(2023, 8, 30))).toBeTruthy();
+    });
 });
