@@ -20,7 +20,7 @@
 
 ## Quickstart
 
-You can install ts-lang-utils package in your existing TypeScript project as follows:
+You can install ts-lang-utils package in your existing typescript project as follows:
 
 ```bash
 $ npm install @yookue/ts-lang-utils --save
@@ -36,7 +36,7 @@ Enjoy your journey in coding your projects with ts-lang-utils. ✌️
 
 ## Document
 
-- GitHub pages: https://yookue.github.io/ts-lang-utils
+- GitHub pages: [https://yookue.github.io/ts-lang-utils](https://yookue.github.io/ts-lang-utils)
 
 ## License
 
@@ -44,4 +44,4 @@ This project is under the [MIT](https://mit-license.org/) License (MIT)
 
 ## Website
 
-- Yookue: https://yookue.com
+- Yookue: [https://yookue.com](https://yookue.com)
