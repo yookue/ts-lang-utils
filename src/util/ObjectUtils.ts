@@ -118,7 +118,7 @@ export abstract class ObjectUtils {
      * ObjectUtils.isEmpty('foobar');    // false
      */
     public static isEmpty(object: any): boolean {
-        if (this.isNil(object)) {
+        if (!object) {
             return true;
         }
         if (typeof object === 'string' || Array.isArray(object)) {
@@ -374,8 +374,8 @@ export abstract class ObjectUtils {
      * @example
      * ObjectUtils.keys({foo: 'bar'});    // ['foo']
      */
-    public static keys(object: any): Array<string> {
-        if (this.isNil(object)) {
+    public static keys(object?: any): Array<string> {
+        if (!object) {
             return [];
         }
         if (!this.isPrototype(object)) {
