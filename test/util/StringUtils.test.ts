@@ -173,6 +173,22 @@ describe('StringUtils', () => {
         expect(StringUtils.includesAnyIgnoreCase('foobar', ['world', undefined])).toBeFalsy();
     });
 
+    test('Testing substringAfter', () => {
+        expect(StringUtils.substringAfter('foo/bar/foo/bar', '/')).toBe('bar/foo/bar');
+    });
+
+    test('Testing substringAfterLast', () => {
+        expect(StringUtils.substringAfterLast('foo/bar/foo/bar', '/')).toBe('bar');
+    });
+
+    test('Testing substringBefore', () => {
+        expect(StringUtils.substringBefore('foo/bar/foo/bar', '/')).toBe('foo');
+    });
+
+    test('Testing substringBeforeLast', () => {
+        expect(StringUtils.substringBeforeLast('foo/bar/foo/bar', '/')).toBe('foo/bar/foo');
+    });
+
     test('Testing trim', () => {
         expect(StringUtils.trim(undefined)).toBeUndefined();
         expect(StringUtils.trim('foobar  ')).toBe('foobar');

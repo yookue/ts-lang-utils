@@ -258,10 +258,10 @@ export abstract class StringUtils {
      * StringUtils.equals('foo', 'bar');    // false
      */
     public static equals(text?: string, comparison?: string): boolean {
-        if (text === comparison || ObjectUtils.allNil(text, comparison)) {
+        if (text === comparison || (!text && !comparison)) {
             return true;
         }
-        if (ObjectUtils.anyNil(text, comparison) || text?.length !== comparison?.length) {
+        if (!text || !comparison || text?.length !== comparison?.length) {
             return false;
         }
         return text === comparison;
@@ -278,10 +278,10 @@ export abstract class StringUtils {
      * StringUtils.equalsIgnoreCase('foo', 'FOO');    // true
      */
     public static equalsIgnoreCase(text?: string, comparison?: string): boolean {
-        if (text === comparison || ObjectUtils.allNil(text, comparison)) {
+        if (text === comparison || (!text && !comparison)) {
             return true;
         }
-        if (ObjectUtils.anyNil(text, comparison) || text?.length !== comparison?.length) {
+        if (!text || !comparison || text?.length !== comparison?.length) {
             return false;
         }
         return text?.toUpperCase() === comparison?.toUpperCase();
@@ -312,10 +312,9 @@ export abstract class StringUtils {
      * StringUtils.equalsAnyIgnoreCase('foo', ['FOO', 'bar']);    // true
      */
     public static equalsAnyIgnoreCase(text?: string, comparisons?: Array<string | undefined>): boolean {
-        if (ObjectUtils.isNil(text) || ArrayUtils.isEmpty(comparisons)) {
+        if (!text || !comparisons || comparisons.length === 0) {
             return false;
         }
-        // @ts-ignore
         return comparisons.some(comparison => this.equalsIgnoreCase(text, comparison));
     }
 
@@ -332,7 +331,7 @@ export abstract class StringUtils {
      * StringUtils.formatBrace('hello {}, foo{}', 'world', 'bar');    //  'hello world, foobar'
      */
     public static formatBrace(text?: string, ...params: Array<any>): string | undefined {
-        if (!text || text.length <= 2 || ArrayUtils.isEmpty(params)) {
+        if (!text || text.length <= 2 || !params || params.length === 0) {
             return text;
         }
         let result = text;
@@ -357,7 +356,7 @@ export abstract class StringUtils {
      * StringUtils.formatPercent("hello %s, foo%s", "world", "bar");    // "hello world, foobar"
      */
     public static formatPercent(text?: string, ...params: Array<any>): string | undefined {
-        if (!text || text.length <= 2 || ArrayUtils.isEmpty(params)) {
+        if (!text || text.length <= 2 || !params || params.length === 0) {
             return text;
         }
         const matches = text.match(/%[bcdfjosxX]/g) || [];
@@ -477,8 +476,7 @@ export abstract class StringUtils {
      * StringUtils.includes('foobar', 'foo');    // true
      */
     public static includes(text?: string, comparison?: string): boolean {
-        // @ts-ignore
-        return text === comparison || (ObjectUtils.allNotNil(text, comparison) && text.includes(comparison));
+        return text === comparison || (!!text && !!comparison && text.includes(comparison));
     }
 
     /**
@@ -492,8 +490,7 @@ export abstract class StringUtils {
      * StringUtils.includesIgnoreCase('foobar', 'FOO');    // true
      */
     public static includesIgnoreCase(text?: string, comparison?: string): boolean {
-        // @ts-ignore
-        return text === comparison || (ObjectUtils.allNotNil(text, comparison) && text?.toUpperCase()?.includes(comparison?.toUpperCase()));
+        return text === comparison || (!!text && !!comparison && text?.toUpperCase()?.includes(comparison?.toUpperCase()));
     }
 
     /**
@@ -507,10 +504,9 @@ export abstract class StringUtils {
      * StringUtils.includesAny('foobar', ['foo', 'bar']);    // true
      */
     public static includesAny(text?: string, comparisons?: Array<string | undefined>): boolean {
-        if (ObjectUtils.anyNil(text, comparisons)) {
+        if (!text || !comparisons) {
             return false;
         }
-        // @ts-ignore
         return comparisons?.some(comparison => this.includes(text, comparison));
     }
 
@@ -525,11 +521,82 @@ export abstract class StringUtils {
      * StringUtils.includesAnyIgnoreCase('foobar', ['FOO', 'world']);    // true
      */
     public static includesAnyIgnoreCase(text?: string, comparisons?: Array<string | undefined>): boolean {
-        if (ObjectUtils.anyNil(text, comparisons)) {
+        if (!text || !comparisons || comparisons.length === 0) {
             return false;
         }
-        // @ts-ignore
         return comparisons?.some(comparison => this.includesIgnoreCase(text, comparison));
+    }
+
+    /**
+     * Returns the substring after the first occurrence of the given separator (the separator is not returned)
+     *
+     * @param {string} text the string to get a substring from
+     * @param {boolean} separator the String to search for
+     * @return {string} the substring after the first occurrence of the given separator
+     *
+     * @example
+     * StringUtils.substringAfter("foo/bar/foo/bar", "/");    // 'bar/foo/bar'
+     */
+    public static substringAfter(text?: string, separator?: string): string | undefined {
+        if (!text || !separator || separator.length === 0) {
+            return undefined;
+        }
+        const index = text.indexOf(separator);
+        return (index === -1) ? undefined : text.substring(index + separator.length);
+    }
+
+    /**
+     * Returns the substring after the last occurrence of the given separator (the separator is not returned)
+     *
+     * @param {string} text the string to get a substring from
+     * @param {boolean} separator the String to search for
+     * @return {string} the substring after the last occurrence of the given separator
+     *
+     * @example
+     * StringUtils.substringAfterLast("foo/bar/foo/bar", "/");    // 'bar'
+     */
+    public static substringAfterLast(text?: string, separator?: string): string | undefined {
+        if (!text || !separator || separator.length === 0) {
+            return undefined;
+        }
+        const index = text.lastIndexOf(separator);
+        return (index === -1) ? undefined : text.substring(index + separator.length);
+    }
+
+    /**
+     * Returns the substring before the first occurrence of the given separator (the separator is not returned)
+     *
+     * @param {string} text the string to get a substring from
+     * @param {boolean} separator the String to search for
+     * @return {string} the substring before the first occurrence of the given separator
+     *
+     * @example
+     * StringUtils.substringBefore("foo/bar/foo/bar", "/");    // 'foo'
+     */
+    public static substringBefore(text?: string, separator?: string): string | undefined {
+        if (!text || !separator || separator.length === 0) {
+            return undefined;
+        }
+        const index = text.indexOf(separator);
+        return (index === -1) ? undefined : text.substring(0, index);
+    }
+
+    /**
+     * Returns the substring before the last occurrence of the given separator (the separator is not returned)
+     *
+     * @param {string} text the string to get a substring from
+     * @param {boolean} separator the String to search for
+     * @return {string} the substring before the last occurrence of the given separator
+     *
+     * @example
+     * StringUtils.substringBeforeLast("foo/bar/foo/bar", "/");    // 'foo/bar/foo'
+     */
+    public static substringBeforeLast(text?: string, separator?: string): string | undefined {
+        if (!text || !separator || separator.length === 0) {
+            return undefined;
+        }
+        const index = text.lastIndexOf(separator);
+        return (index === -1) ? undefined : text.substring(0, index);
     }
 
     /**
@@ -540,7 +607,7 @@ export abstract class StringUtils {
      * @return {string} the trimmed string value from the given string
      *
      * @example
-     * StringUtils.trim('foobar', true);    // 'foobar'
+     * StringUtils.trim("foobar", true);    // 'foobar'
      */
     public static trim(text?: string, emptyAsNull?: boolean): string | null | undefined {
         if (!text) {
