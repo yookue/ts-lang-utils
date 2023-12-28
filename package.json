@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.12",
+    "version": "0.1.13",
     "title": "TsLangUtils",
     "description": "Common Lang Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -48,7 +48,7 @@
         "docdash": "^2.0.2",
         "eslint": "^7.32.0",
         "father": "^4.3.8",
-        "gh-pages": "^6.1.0",
+        "gh-pages": "^6.1.1",
         "jsdoc": "^4.0.2",
         "prettier": "^2.8.8",
         "ts-jest": "^29.1.1",

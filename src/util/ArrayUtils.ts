@@ -30,6 +30,7 @@ export abstract class ArrayUtils {
      * Returns the length of the given array
      *
      * @param {Array<any>} array the array to check
+     *
      * @return {number} the length of the given array
      */
     public static getLength(array?: any[]): number {
@@ -40,6 +41,7 @@ export abstract class ArrayUtils {
      * Returns the element types of the given array
      *
      * @param {Array<any>} array the array to check
+     *
      * @return {Array<string>} the element types of the given array
      */
     public static getTypeof(array?: any[]): string[] | undefined {
@@ -61,6 +63,7 @@ export abstract class ArrayUtils {
      * Returns whether the given array is empty
      *
      * @param {Array<any>} array the array to check
+     *
      * @return {boolean} whether the given array is empty
      *
      * @example
@@ -74,6 +77,7 @@ export abstract class ArrayUtils {
      * Returns whether the given array is not empty
      *
      * @param {Array<any>} array the array to check
+     *
      * @return {boolean} whether the given array is not empty
      *
      * @example
@@ -89,6 +93,7 @@ export abstract class ArrayUtils {
      * @param {Array<any>} array the array to check
      * @param {string} type the expected element type
      * @param {boolean} relaxed treat null as string or object
+     *
      * @return {boolean} whether each element in the given array is the expected type
      */
     public static isTypeof(array?: any[], type?: string, relaxed = false): boolean {
@@ -106,6 +111,7 @@ export abstract class ArrayUtils {
      *
      * @param {Array<any>} array the array to check
      * @param {any} element the element to compare
+     *
      * @return {boolean} whether the given array includes the given element
      *
      * @example
@@ -120,6 +126,7 @@ export abstract class ArrayUtils {
      * Returns the max length of the given arrays
      *
      * @param {Array<any>} arrays the arrays to check
+     *
      * @return {number} the max length of the given arrays
      *
      * @example
@@ -140,6 +147,7 @@ export abstract class ArrayUtils {
      * Returns the min length of the given arrays
      *
      * @param {Array<any>} arrays the arrays to check
+     *
      * @return {number} the min length of the given arrays
      *
      * @example

@@ -97,6 +97,16 @@ describe('StringUtils', () => {
         expect(StringUtils.anyNotBlank('foo', 'bar')).toBeTruthy();
     });
 
+    test('Testing appendIfMissing', () => {
+        expect(StringUtils.appendIfMissing('foo', 'bar')).toBe('foobar');
+        expect(StringUtils.appendIfMissing('foobar', 'bar')).toBe('foobar');
+    });
+
+    test('Testing appendIfMissingIgnoreCase', () => {
+        expect(StringUtils.appendIfMissingIgnoreCase('foo', 'bar')).toBe('foobar');
+        expect(StringUtils.appendIfMissingIgnoreCase('foobar', 'BAR')).toBe('foobar');
+    });
+
     test('Testing defaultString', () => {
         expect(StringUtils.defaultString(undefined)).toBe('');
     });
@@ -107,6 +117,26 @@ describe('StringUtils', () => {
 
     test('Testing defaultIfBlank', () => {
         expect(StringUtils.defaultIfBlank(' ', 'foobar')).toBe('foobar');
+    });
+
+    test('Testing endsWith', () => {
+        expect(StringUtils.endsWith('foobar', 'bar')).toBeTruthy();
+        expect(StringUtils.endsWith('hello', 'bar')).toBeFalsy();
+    });
+
+    test('Testing endsWithIgnoreCase', () => {
+        expect(StringUtils.endsWithIgnoreCase('foobar', 'BAR')).toBeTruthy();
+        expect(StringUtils.endsWithIgnoreCase('hello', 'BAR')).toBeFalsy();
+    });
+
+    test('Testing endsWithAny', () => {
+        expect(StringUtils.endsWithAny('foobar', ['foo', 'bar'])).toBeTruthy();
+        expect(StringUtils.endsWithAny('hello', ['foo', 'bar'])).toBeFalsy();
+    });
+
+    test('Testing endsWithAnyIgnoreCase', () => {
+        expect(StringUtils.endsWithAnyIgnoreCase('foobar', ['FOO', 'BAR'])).toBeTruthy();
+        expect(StringUtils.endsWithAnyIgnoreCase('hello', ['FOO', 'BAR'])).toBeFalsy();
     });
 
     test('Testing equals', () => {
@@ -171,6 +201,36 @@ describe('StringUtils', () => {
     test('Testing includesAnyIgnoreCase', () => {
         expect(StringUtils.includesAnyIgnoreCase('foobar', ['FOO', 'jest'])).toBeTruthy();
         expect(StringUtils.includesAnyIgnoreCase('foobar', ['world', undefined])).toBeFalsy();
+    });
+
+    test('Testing prependIfMissing', () => {
+        expect(StringUtils.prependIfMissing('bar', 'foo')).toBe('foobar');
+        expect(StringUtils.prependIfMissing('foobar', 'foo')).toBe('foobar');
+    });
+
+    test('Testing prependIfMissingIgnoreCase', () => {
+        expect(StringUtils.prependIfMissingIgnoreCase('bar', 'foo')).toBe('foobar');
+        expect(StringUtils.prependIfMissingIgnoreCase('foobar', 'FOO')).toBe('foobar');
+    });
+
+    test('Testing startsWith', () => {
+        expect(StringUtils.startsWith('foobar', 'foo')).toBeTruthy();
+        expect(StringUtils.startsWith('hello', 'bar')).toBeFalsy();
+    });
+
+    test('Testing startsWithIgnoreCase', () => {
+        expect(StringUtils.startsWithIgnoreCase('foobar', 'FOO')).toBeTruthy();
+        expect(StringUtils.startsWithIgnoreCase('hello', 'BAR')).toBeFalsy();
+    });
+
+    test('Testing startsWithAny', () => {
+        expect(StringUtils.startsWithAny('foobar', ['foo', 'bar'])).toBeTruthy();
+        expect(StringUtils.startsWithAny('hello', ['foo', 'bar'])).toBeFalsy();
+    });
+
+    test('Testing startsWithAnyIgnoreCase', () => {
+        expect(StringUtils.startsWithAnyIgnoreCase('foobar', ['FOO', 'BAR'])).toBeTruthy();
+        expect(StringUtils.startsWithAnyIgnoreCase('hello', ['FOO', 'BAR'])).toBeFalsy();
     });
 
     test('Testing substringAfter', () => {

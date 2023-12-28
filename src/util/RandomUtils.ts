@@ -41,6 +41,7 @@ export abstract class RandomUtils {
      * Returns a random element of the array
      *
      * @param {Array<any>} array the array to random
+     *
      * @return {any} a random element of the array
      *
      * @example
@@ -55,6 +56,7 @@ export abstract class RandomUtils {
      *
      * @param {Array<any>} array the array to random
      * @param {number} size the size to generate
+     *
      * @return {Array<any>} a random element array with the specified length within the given array
      *
      * @example
@@ -79,6 +81,7 @@ export abstract class RandomUtils {
      *
      * @param {number} minInclusive the min value, inclusive
      * @param {number} maxExclusive the max value, exclusive
+     *
      * @return {number} a random integer that between the min value (inclusive) and the max value (exclusive)
      *
      * @example
@@ -95,6 +98,7 @@ export abstract class RandomUtils {
      * @param {number} size the size of the expected array
      * @param {number} minInclusive the min value, inclusive
      * @param {number} maxExclusive the max value, exclusive
+     *
      * @return {Array<number>} a random integer array that between the min value (inclusive) and the max value (exclusive), matching the given size
      *
      * @example
@@ -117,6 +121,7 @@ export abstract class RandomUtils {
      *
      * @param {number} minInclusive the min value, inclusive
      * @param {number} maxExclusive the max value, exclusive
+     *
      * @return {number} a random number that between the min value (inclusive) and the max value (exclusive)
      *
      * @example
@@ -140,6 +145,7 @@ export abstract class RandomUtils {
      * @param {number} size the size of the expected array
      * @param {number} minInclusive the min value, inclusive
      * @param {number} maxExclusive the max value, exclusive
+     *
      * @return {Array<number>} a random number array that between the min value (inclusive) and the max value (exclusive), matching the given size
      *
      * @example

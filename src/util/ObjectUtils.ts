@@ -26,6 +26,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is null or undefined
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is null or undefined
      *
      * @example
@@ -41,6 +42,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is not null or undefined
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is not null or undefined
      *
      * @example
@@ -55,6 +57,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is null
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is null
      *
      * @example
@@ -69,6 +72,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is not null
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is not null
      *
      * @example
@@ -82,6 +86,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is undefined
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is undefined
      *
      * @example
@@ -96,6 +101,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is not undefined
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is not undefined
      *
      * @example
@@ -109,6 +115,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is empty
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is empty
      *
      * @example
@@ -137,6 +144,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is not empty
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is not empty
      *
      * @example
@@ -151,6 +159,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is a plain object
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is a plain object
      *
      * @example
@@ -165,6 +174,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is a promise
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is a promise
      *
      * @example
@@ -179,6 +189,7 @@ export abstract class ObjectUtils {
      * Returns whether the given object is a prototype
      *
      * @param {any} object the object to check
+     *
      * @return {boolean} whether the given object is a prototype
      *
      * @example
@@ -198,6 +209,7 @@ export abstract class ObjectUtils {
      * Returns whether all the given objects are null or undefined
      *
      * @param {Array<any>} objects the objects to check
+     *
      * @return {boolean} whether all the given objects are null or undefined
      *
      * @example
@@ -212,6 +224,7 @@ export abstract class ObjectUtils {
      * Returns whether all the given objects are not null or undefined
      *
      * @param {Array<any>} objects the objects to check
+     *
      * @return {boolean} whether all the given objects are not null or undefined
      *
      * @example
@@ -227,6 +240,7 @@ export abstract class ObjectUtils {
      * Returns whether any of the given objects is null or undefined
      *
      * @param {Array<any>} objects the objects to check
+     *
      * @return {boolean} whether any of the given objects is null or undefined
      *
      * @example
@@ -241,6 +255,7 @@ export abstract class ObjectUtils {
      * Returns whether any of the given objects is not null or undefined
      *
      * @param {Array<any>} objects the objects to check
+     *
      * @return {boolean} whether any of the given objects is not null or undefined
      *
      * @example
@@ -255,6 +270,7 @@ export abstract class ObjectUtils {
      * Returns whether all the given objects are empty
      *
      * @param {Array<any>} objects the objects to check
+     *
      * @return {boolean} whether all the given objects are empty
      *
      * @example
@@ -269,6 +285,7 @@ export abstract class ObjectUtils {
      * Returns whether all the given objects are not empty
      *
      * @param {Array<any>} objects the objects to check
+     *
      * @return {boolean} whether all the given objects are not empty
      *
      * @example
@@ -284,6 +301,7 @@ export abstract class ObjectUtils {
      * Returns whether any of the given objects is empty
      *
      * @param {Array<any>} objects the objects to check
+     *
      * @return {boolean} whether any of the given objects is empty
      *
      * @example
@@ -298,6 +316,7 @@ export abstract class ObjectUtils {
      * Returns whether any of the given objects is not empty
      *
      * @param {Array<any>} objects the objects to check
+     *
      * @return {boolean} whether any of the given objects is not empty
      *
      * @example
@@ -312,6 +331,7 @@ export abstract class ObjectUtils {
      * Returns the first none nil element in the given array, or null if all elements are nil
      *
      * @param {Array<any>} objects the objects to check
+     *
      * @returns {any} the first none nil element in the given array, or null if all elements are nil
      *
      * @example
@@ -334,6 +354,7 @@ export abstract class ObjectUtils {
      *
      * @param {any} object the object to inspect
      * @param {string} prop the property name to inspect, parent property and child property are concat with dot (.)
+     *
      * @return {any} the property value if property name is present on the given object
      *
      * @example
@@ -355,6 +376,7 @@ export abstract class ObjectUtils {
      *
      * @param {any} object the object to check
      * @param {string} prop the property name to check
+     *
      * @return {boolean} whether the object has the specified property
      *
      * @example
@@ -369,6 +391,7 @@ export abstract class ObjectUtils {
      * Returns a string array representation of keys in the given object
      *
      * @param {any} object the object to inspect
+     *
      * @returns {Array<string>} the keys of the given object
      *
      * @example
@@ -395,6 +418,7 @@ export abstract class ObjectUtils {
      *
      * @param {any} object the object to inspect
      * @param {string} nil the default string if the object is nil
+     *
      * @return {string} a string representation of the given object
      */
     public static toString(object?: any, nil?: string | null): string {

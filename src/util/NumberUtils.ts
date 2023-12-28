@@ -26,6 +26,7 @@ export abstract class NumberUtils {
      * Returns whether the given value is an integer
      *
      * @param {number} value the number value to check
+     *
      * @returns {boolean} whether the given value is an integer
      *
      * @example
@@ -42,6 +43,7 @@ export abstract class NumberUtils {
      * Returns an integer value from the string value, or undefined if the value cannot be converted
      *
      * @param {string} value the string value to check
+     *
      * @returns {number} an integer value from the string value, or undefined if the value cannot be converted
      *
      * @example
@@ -64,6 +66,7 @@ export abstract class NumberUtils {
      * Returns a float value from the string value, or undefined if the value cannot be converted
      *
      * @param {string} value the string value to check
+     *
      * @returns {number} a float value from the string value, or undefined if the value cannot be converted
      *
      * @example
@@ -85,6 +88,7 @@ export abstract class NumberUtils {
      * Returns the max value of the given array
      *
      * @param {Array<number>} values the array to calculate
+     *
      * @returns {number} the max value of the given array
      *
      * @example
@@ -107,6 +111,7 @@ export abstract class NumberUtils {
      * Returns the min value of the given array
      *
      * @param {Array<number>} values the array to calculate
+     *
      * @returns {number} the min value of the given array
      *
      * @example
@@ -129,6 +134,7 @@ export abstract class NumberUtils {
      * Returns the sum value of the given array
      *
      * @param {Array<number>} values the array to calculate
+     *
      * @returns {number} the sum value of the given array
      *
      * @example
@@ -142,6 +148,7 @@ export abstract class NumberUtils {
      * Returns the average value of the given array
      *
      * @param {Array<number>} values the array to calculate
+     *
      * @returns {number} the average value of the given array
      *
      * @example

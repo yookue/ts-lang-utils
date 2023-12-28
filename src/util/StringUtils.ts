@@ -30,6 +30,7 @@ export abstract class StringUtils {
      * Returns the length of the given string
      *
      * @param {string} text the source string to check
+     *
      * @return {number} the length of the given string
      */
     public static getLength(text?: string): number {
@@ -40,6 +41,7 @@ export abstract class StringUtils {
      * Returns whether the given string is empty
      *
      * @param {string} text the string to check
+     *
      * @return {boolean} whether the given string is empty
      *
      * @example
@@ -54,6 +56,7 @@ export abstract class StringUtils {
      * Returns whether the given string is not empty
      *
      * @param {string} text the string to check
+     *
      * @return {boolean} whether the given string is not empty
      *
      * @example
@@ -67,7 +70,9 @@ export abstract class StringUtils {
      * Returns whether the given string is blank
      *
      * @description check if all the characters in the given string is whitespace or line separators
+     *
      * @param {string} text the string to check
+     *
      * @return {boolean} whether the given string is blank
      *
      * @example
@@ -82,6 +87,7 @@ export abstract class StringUtils {
      * Returns whether the given string is not blank
      *
      * @param {string} text the string to check
+     *
      * @return {boolean} whether the given string is not blank
      *
      * @example
@@ -95,6 +101,7 @@ export abstract class StringUtils {
      * Returns whether all the given texts are empty
      *
      * @param {Array<string>} texts the texts to check
+     *
      * @return {boolean} whether all the given texts are empty
      *
      * @example
@@ -109,6 +116,7 @@ export abstract class StringUtils {
      * Returns whether all the given texts are not empty
      *
      * @param {Array<string>} texts the texts to check
+     *
      * @return {boolean} whether all the given texts are not empty
      *
      * @example
@@ -124,6 +132,7 @@ export abstract class StringUtils {
      * Returns whether any of the given texts is empty
      *
      * @param {Array<string>} texts the texts to check
+     *
      * @return {boolean} whether any of the given texts is empty
      *
      * @example
@@ -138,6 +147,7 @@ export abstract class StringUtils {
      * Returns whether any of the given texts is not empty
      *
      * @param {Array<string>} texts the texts to check
+     *
      * @return {boolean} whether any of the given texts is not empty
      *
      * @example
@@ -152,6 +162,7 @@ export abstract class StringUtils {
      * Returns whether all the given texts are blank
      *
      * @param {Array<string>} texts the texts to check
+     *
      * @return {boolean} whether all the given texts are blank
      *
      * @example
@@ -166,6 +177,7 @@ export abstract class StringUtils {
      * Returns whether all the given texts are not blank
      *
      * @param {Array<string>} texts the texts to check
+     *
      * @return {boolean} whether all the given texts are not blank
      *
      * @example
@@ -181,6 +193,7 @@ export abstract class StringUtils {
      * Returns whether any of the given texts is blank
      *
      * @param {Array<string>} texts the texts to check
+     *
      * @return {boolean} whether any of the given texts is blank
      *
      * @example
@@ -195,6 +208,7 @@ export abstract class StringUtils {
      * Returns whether any of the given texts is not blank
      *
      * @param {Array<string>} texts the texts to check
+     *
      * @return {boolean} whether any of the given texts is not blank
      *
      * @example
@@ -206,9 +220,42 @@ export abstract class StringUtils {
     }
 
     /**
+     * Returns a string that concat the given text and suffix
+     *
+     * @param {string} text the text to check
+     * @param {string} suffix the suffix to append
+     *
+     * @return {string} a string that concat the given text and suffix
+     *
+     * @example
+     * StringUtils.appendIfMissing('foo', 'bar');    // 'foobar'
+     * StringUtils.appendIfMissing('foobar', 'bar');    // 'foobar'
+     */
+    public static appendIfMissing(text?: string, suffix?: string): string | undefined {
+        return (!text || this.isEmpty(suffix) || this.endsWith(text, suffix)) ? text : (text + suffix);
+    }
+
+    /**
+     * Returns a string that concat the given text and suffix, case-insensitive
+     *
+     * @param {string} text the text to check
+     * @param {string} suffix the suffix to append
+     *
+     * @return {string} a string that concat the given text and suffix, case-insensitive
+     *
+     * @example
+     * StringUtils.appendIfMissingIgnoreCase('foo', 'bar');    // 'foobar'
+     * StringUtils.appendIfMissingIgnoreCase('foobar', 'BAR');    // 'foobar'
+     */
+    public static appendIfMissingIgnoreCase(text?: string, suffix?: string): string | undefined {
+        return (!text || this.isEmpty(suffix) || this.endsWithIgnoreCase(text, suffix)) ? text : (text + suffix);
+    }
+
+    /**
      * Returns an empty value if the given text is undefined
      *
      * @param {string} text the text to check
+     *
      * @return {string} an empty value if the given text is undefined
      *
      * @example
@@ -223,6 +270,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the text to check
      * @param {string} defaultValue the default value placeholder
+     *
      * @return {string} the default value if the given text is empty, or the text self if it is not empty
      *
      * @example
@@ -237,6 +285,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the text to check
      * @param {string} defaultValue the default value placeholder
+     *
      * @return {string} the default value if the given text is blank, or the text self if it is not blank
      *
      * @example
@@ -247,10 +296,93 @@ export abstract class StringUtils {
     }
 
     /**
+     * Returns whether the given string ends with the suffix
+     *
+     * @param {string} text the source string to check
+     * @param {string} suffix the target string to compare
+     *
+     * @return {boolean} whether the given string ends with the suffix
+     *
+     * @example
+     * StringUtils.endsWith('foobar', 'bar');    // true
+     * StringUtils.endsWith('hello', 'bar');    // false
+     */
+    public static endsWith(text?: string, suffix?: string): boolean {
+        if (!text || !suffix) {
+            return text === suffix;
+        }
+        if (text.length < suffix.length) {
+            return false;
+        }
+        return text.endsWith(suffix);
+    }
+
+    /**
+     * Returns whether the given string ends with the suffix, case-insensitive
+     *
+     * @param {string} text the source string to check
+     * @param {string} suffix the target string to compare
+     *
+     * @return {boolean} whether the given string ends with the suffix, case-insensitive
+     *
+     * @example
+     * StringUtils.endsWithIgnoreCase('foobar', 'BAR');    // true
+     * StringUtils.endsWithIgnoreCase('hello', 'BAR');    // false
+     */
+    public static endsWithIgnoreCase(text?: string, suffix?: string): boolean {
+        if (!text || !suffix) {
+            return text === suffix;
+        }
+        if (text.length < suffix.length) {
+            return false;
+        }
+        return text.toLowerCase().endsWith(suffix.toLowerCase());
+    }
+
+    /**
+     * Returns whether the given string ends with any of the suffixes
+     *
+     * @param {string} text the source string to check
+     * @param {Array<string>} suffixes the target strings to compare
+     *
+     * @return {boolean} whether the given string ends with any of the suffixes
+     *
+     * @example
+     * StringUtils.endsWithAny('foobar', ['foo', 'bar']);    // true
+     * StringUtils.endsWithAny('hello', ['foo', 'bar']);    // false
+     */
+    public static endsWithAny(text?: string, suffixes?: Array<string | undefined>): boolean {
+        if (!text || !suffixes || suffixes.length === 0) {
+            return false;
+        }
+        return suffixes.some(suffix => this.endsWith(text, suffix));
+    }
+
+    /**
+     * Returns whether the given string ends with any of the suffixes, case-insensitive
+     *
+     * @param {string} text the source string to check
+     * @param {Array<string>} suffixes the target strings to compare
+     *
+     * @return {boolean} whether the given string ends with any of the suffixes, case-insensitive
+     *
+     * @example
+     * StringUtils.endsWithAnyIgnoreCase('foobar', ['FOO', 'BAR']);    // true
+     * StringUtils.endsWithAnyIgnoreCase('hello', ['FOO', 'BAR']);    // false
+     */
+    public static endsWithAnyIgnoreCase(text?: string, suffixes?: Array<string | undefined>): boolean {
+        if (!text || !suffixes || suffixes.length === 0) {
+            return false;
+        }
+        return suffixes.some(suffix => this.endsWithIgnoreCase(text, suffix));
+    }
+
+    /**
      * Returns whether the given strings are equal
      *
      * @param {string} text the source string to check
      * @param {string} comparison the target string to compare
+     *
      * @return {boolean} whether the given strings are equal
      *
      * @example
@@ -272,6 +404,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to check
      * @param {string} comparison the target string to compare
+     *
      * @return {boolean} whether the given strings are equal, case-insensitive
      *
      * @example
@@ -292,6 +425,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to check
      * @param {Array<string>} comparisons the target strings to compare
+     *
      * @return {boolean} whether the given string equals to any of the comparison strings
      *
      * @example
@@ -306,6 +440,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to check
      * @param {Array<string>} comparisons the target strings to compare
+     *
      * @return {boolean} whether the given string equals to any of the comparison strings, case-insensitive
      *
      * @example
@@ -323,6 +458,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to inspect
      * @param {Array<any>} params the parameters to replaced with
+     *
      * @return {string} the replaced string of the source string
      *
      * @example
@@ -346,6 +482,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to inspect
      * @param {Array<any>} params the parameters to replaced with
+     *
      * @return {string} the replaced string of the source string
      *
      * @see "https://github.com/samsonjs/format/blob/main/format.js"
@@ -444,6 +581,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to inspect
      * @param {Record<string, any>} params the parameters to replaced with, in the form of key values
+     *
      * @return {string} the replaced string of the source string
      *
      * @example
@@ -470,6 +608,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to check
      * @param {string} comparison the target string to compare
+     *
      * @return {boolean} whether the given text includes the comparison string
      *
      * @example
@@ -484,6 +623,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to check
      * @param {string} comparison the target string to compare
+     *
      * @return {boolean} whether the given text includes the comparison string, case-insensitive
      *
      * @example
@@ -498,6 +638,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to check
      * @param {Array<string>} comparisons the target strings to compare
+     *
      * @return {boolean} whether the given text includes the comparison string
      *
      * @example
@@ -515,6 +656,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the source string to check
      * @param {Array<string>} comparisons the target strings to compare
+     *
      * @return {boolean} whether the text includes the comparison string, case-insensitive
      *
      * @example
@@ -528,10 +670,125 @@ export abstract class StringUtils {
     }
 
     /**
+     * Returns a string that concat the given prefix and text
+     *
+     * @param {string} text the text to check
+     * @param {string} prefix the prefix to prepend
+     *
+     * @return {string} a string that concat the given prefix and text
+     *
+     * @example
+     * StringUtils.prependIfMissing('bar', 'foo');    // 'foobar'
+     * StringUtils.prependIfMissing('foobar', 'foo');    // 'foobar'
+     */
+    public static prependIfMissing(text?: string, prefix?: string): string | undefined {
+        return (!text || this.isEmpty(prefix) || this.startsWith(text, prefix)) ? text : (prefix + text);
+    }
+
+    /**
+     * Returns a string that concat the given prefix and text, case-insensitive
+     *
+     * @param {string} text the text to check
+     * @param {string} prefix the prefix to prepend
+     *
+     * @return {string} a string that concat the given prefix and text, case-insensitive
+     *
+     * @example
+     * StringUtils.prependIfMissingIgnoreCase('bar', 'foo');    // 'foobar'
+     * StringUtils.prependIfMissingIgnoreCase('foobar', 'FOO');    // 'foobar'
+     */
+    public static prependIfMissingIgnoreCase(text?: string, prefix?: string): string | undefined {
+        return (!text || this.isEmpty(prefix) || this.startsWithIgnoreCase(text, prefix)) ? text : (prefix + text);
+    }
+
+    /**
+     * Returns whether the given string starts with the prefix
+     *
+     * @param {string} text the source string to check
+     * @param {string} prefix the target string to compare
+     *
+     * @return {boolean} whether the given string starts with the prefix
+     *
+     * @example
+     * StringUtils.startsWith('foobar', 'foo');    // true
+     * StringUtils.startsWith('hello', 'bar');    // false
+     */
+    public static startsWith(text?: string, prefix?: string): boolean {
+        if (!text || !prefix) {
+            return text === prefix;
+        }
+        if (text.length < prefix.length) {
+            return false;
+        }
+        return text.startsWith(prefix);
+    }
+
+    /**
+     * Returns whether the given string starts with the prefix, case-insensitive
+     *
+     * @param {string} text the source string to check
+     * @param {string} prefix the target string to compare
+     *
+     * @return {boolean} whether the given string starts with the prefix, case-insensitive
+     *
+     * @example
+     * StringUtils.startsWithIgnoreCase('foobar', 'FOO');    // true
+     * StringUtils.startsWithIgnoreCase('hello', 'BAR');    // false
+     */
+    public static startsWithIgnoreCase(text?: string, prefix?: string): boolean {
+        if (!text || !prefix) {
+            return text === prefix;
+        }
+        if (text.length < prefix.length) {
+            return false;
+        }
+        return text.toLowerCase().startsWith(prefix.toLowerCase());
+    }
+
+    /**
+     * Returns whether the given string starts with any of the prefixes
+     *
+     * @param {string} text the source string to check
+     * @param {Array<string>} prefixes the target strings to compare
+     *
+     * @return {boolean} whether the given string starts with any of the prefixes
+     *
+     * @example
+     * StringUtils.startsWithAny('foobar', ['foo', 'bar']);    // true
+     * StringUtils.startsWithAny('hello', ['foo', 'bar']);    // false
+     */
+    public static startsWithAny(text?: string, prefixes?: Array<string | undefined>): boolean {
+        if (!text || !prefixes || prefixes.length === 0) {
+            return false;
+        }
+        return prefixes.some(prefix => this.startsWith(text, prefix));
+    }
+
+    /**
+     * Returns whether the given string starts with any of the prefixes, case-insensitive
+     *
+     * @param {string} text the source string to check
+     * @param {Array<string>} prefixes the target strings to compare
+     *
+     * @return {boolean} whether the given string starts with any of the prefixes, case-insensitive
+     *
+     * @example
+     * StringUtils.startsWithAnyIgnoreCase('foobar', ['FOO', 'BAR']);    // true
+     * StringUtils.startsWithAnyIgnoreCase('hello', ['FOO', 'BAR']);    // false
+     */
+    public static startsWithAnyIgnoreCase(text?: string, prefixes?: Array<string | undefined>): boolean {
+        if (!text || !prefixes || prefixes.length === 0) {
+            return false;
+        }
+        return prefixes.some(prefix => this.startsWithIgnoreCase(text, prefix));
+    }
+
+    /**
      * Returns the substring after the first occurrence of the given separator (the separator is not returned)
      *
      * @param {string} text the string to get a substring from
      * @param {boolean} separator the String to search for
+     *
      * @return {string} the substring after the first occurrence of the given separator
      *
      * @example
@@ -550,6 +807,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the string to get a substring from
      * @param {boolean} separator the String to search for
+     *
      * @return {string} the substring after the last occurrence of the given separator
      *
      * @example
@@ -586,6 +844,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the string to get a substring from
      * @param {boolean} separator the String to search for
+     *
      * @return {string} the substring before the last occurrence of the given separator
      *
      * @example
@@ -604,6 +863,7 @@ export abstract class StringUtils {
      *
      * @param {string} text the string to trim
      * @param {boolean} emptyAsNull whether to return null if the trimmed result is empty
+     *
      * @return {string} the trimmed string value from the given string
      *
      * @example

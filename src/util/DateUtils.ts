@@ -30,6 +30,7 @@ export abstract class DateUtils {
      *
      * @param {Date} date the date to inspect
      * @param {number} amount the amount to add, negative number means minus
+     *
      * @return {Date} the year calculated date with the source date and the specified amount
      *
      * @example
@@ -49,6 +50,7 @@ export abstract class DateUtils {
      *
      * @param {Date} date the date to inspect
      * @param {number} amount the amount to add, negative number means minus
+     *
      * @return {Date} the month calculated date with the source date and the specified amount
      *
      * @example
@@ -68,6 +70,7 @@ export abstract class DateUtils {
      *
      * @param {Date} date the date to inspect
      * @param {number} amount the amount to add, negative number means minus
+     *
      * @return {Date} the day calculated date with the source date and the specified amount
      *
      * @example
@@ -87,6 +90,7 @@ export abstract class DateUtils {
      *
      * @param {Date} date the date to inspect
      * @param {string} format the date/time format string
+     *
      * @return {string} the formatted string that represent the given date
      */
     public static formatDateTime(date: Date, format: string): string | undefined {
@@ -122,6 +126,7 @@ export abstract class DateUtils {
      * Returns the current date
      *
      * @param {string} format the date format string
+     *
      * @return {string} the current date
      */
     public static getCurrentDate(format = 'yyyy-MM-dd'): string {
@@ -132,6 +137,7 @@ export abstract class DateUtils {
      * Returns the current date time
      *
      * @param {string} format the date time format string
+     *
      * @return {string} the current date time
      */
     public static getCurrentDateTime(format = 'yyyy-MM-dd hh:mm:ss'): string {
@@ -142,6 +148,7 @@ export abstract class DateUtils {
      * Returns the current time
      *
      * @param {string} format the time format string
+     *
      * @return {string} the current time
      */
     public static getCurrentTime(format = 'hh:mm:ss'): string {
@@ -152,6 +159,7 @@ export abstract class DateUtils {
      * Returns the start year date of the given date
      *
      * @param {Date} date the date to inspect
+     *
      * @return {Date} the start year date of the given date
      *
      * @example
@@ -168,6 +176,7 @@ export abstract class DateUtils {
      * Returns the start month date of the given date
      *
      * @param {Date} date the date to inspect
+     *
      * @return {Date} the start month date of the given date
      *
      * @example
@@ -184,6 +193,7 @@ export abstract class DateUtils {
      * Returns the start day date of the given date
      *
      * @param {Date} date the date to inspect
+     *
      * @return {Date} the start day date of the given date
      *
      * @example
@@ -199,6 +209,7 @@ export abstract class DateUtils {
      * Returns the end year date of the given date
      *
      * @param {Date} date the date to inspect
+     *
      * @return {Date} the end year date of the given date
      *
      * @example
@@ -215,6 +226,7 @@ export abstract class DateUtils {
      * Returns the end month date of the given date
      *
      * @param {Date} date the date to inspect
+     *
      * @return {Date} the end month date of the given date
      *
      * @example
@@ -231,6 +243,7 @@ export abstract class DateUtils {
      * Returns the end day date of the given date
      *
      * @param {Date} date the date to inspect
+     *
      * @return {Date} the end day date of the given date
      *
      * @example
@@ -246,6 +259,7 @@ export abstract class DateUtils {
      * Returns the timezone of the given date
      *
      * @param {Date} date the date to inspect
+     *
      * @returns {string} the timezone of the given date
      */
     public static getTimezone(date = new Date()) {
@@ -261,6 +275,7 @@ export abstract class DateUtils {
      * Returns whether the given date is the first day of month
      *
      * @param {Date} date the date to check
+     *
      * @return {boolean} whether the date is the first day of month
      *
      * @example
@@ -275,6 +290,7 @@ export abstract class DateUtils {
      * Returns whether the given date is the last day of month
      *
      * @param {Date} date the date to check
+     *
      * @return {boolean} whether the date is the last day of month
      *
      * @example
@@ -289,6 +305,7 @@ export abstract class DateUtils {
      * Returns whether the date or year is a leap year
      *
      * @param {Date | number} dateYear the date or year to check
+     *
      * @return {boolean} whether the date or year is a leap year
      *
      * @example
@@ -305,6 +322,7 @@ export abstract class DateUtils {
      *
      * @param {Date} date the date to check
      * @param {Date} comparison the date to compare
+     *
      * @return {boolean} whether the given date is same year with the comparison date
      *
      * @example
@@ -320,6 +338,7 @@ export abstract class DateUtils {
      * @param {Date} date the date to check
      * @param {Date} comparison the date to compare
      * @param {boolean} deepCompare whether compare deeply with year
+     *
      * @return {boolean} whether the given date is same month with the comparison date
      *
      * @example
@@ -335,6 +354,7 @@ export abstract class DateUtils {
      * @param {Date} date the date to check
      * @param {Date} comparison the date to compare
      * @param {boolean} deepCompare whether compare deeply with year
+     *
      * @return {boolean} whether the given date is same day with the comparison date
      *
      * @example
@@ -348,6 +368,7 @@ export abstract class DateUtils {
      * Returns whether the date is a weekend
      *
      * @param {Date} date the date to check
+     *
      * @return {boolean} whether the date is a weekend
      *
      * @example
@@ -361,6 +382,7 @@ export abstract class DateUtils {
      * Returns whether the date is yesterday
      *
      * @param {Date} date the date to check
+     *
      * @return {boolean} whether the date is yesterday
      */
     public static isYesterday(date: Date): boolean {
@@ -371,6 +393,7 @@ export abstract class DateUtils {
      * Returns whether the date is tomorrow
      *
      * @param {Date} date the date to check
+     *
      * @return {boolean} whether the date is tomorrow
      */
     public static isTomorrow(date: Date): boolean {

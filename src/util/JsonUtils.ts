@@ -30,6 +30,7 @@ export abstract class JsonUtils {
      * Returns whether the given string is a JSON string
      *
      * @param {string} text the string to check
+     *
      * @return {boolean} whether the given object is a JSON string
      *
      * @example
@@ -54,6 +55,7 @@ export abstract class JsonUtils {
      * Returns a JSON string that represents the given object
      *
      * @param {any} object the object to inspect
+     *
      * @return {string} a JSON string that represents the given object
      *
      * @example
