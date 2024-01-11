@@ -130,7 +130,7 @@ export abstract class DateUtils {
      * @return {string} the current date
      */
     public static getCurrentDate(format = 'yyyy-MM-dd'): string {
-        return <string>this.formatDateTime(new Date(), format);
+        return this.formatDateTime(new Date(), format) as string;
     }
 
     /**
@@ -141,7 +141,7 @@ export abstract class DateUtils {
      * @return {string} the current date time
      */
     public static getCurrentDateTime(format = 'yyyy-MM-dd hh:mm:ss'): string {
-        return <string>this.formatDateTime(new Date(), format);
+        return this.formatDateTime(new Date(), format) as string;
     }
 
     /**
@@ -152,7 +152,7 @@ export abstract class DateUtils {
      * @return {string} the current time
      */
     public static getCurrentTime(format = 'hh:mm:ss'): string {
-        return <string>this.formatDateTime(new Date(), format);
+        return this.formatDateTime(new Date(), format) as string;
     }
 
     /**
