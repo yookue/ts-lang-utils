@@ -107,6 +107,10 @@ describe('StringUtils', () => {
         expect(StringUtils.appendIfMissingIgnoreCase('foobar', 'BAR')).toBe('foobar');
     });
 
+    test('Testing capitalizeFirst', () => {
+        expect(StringUtils.capitalizeFirst('foobar')).toBe('Foobar');
+    });
+
     test('Testing defaultString', () => {
         expect(StringUtils.defaultString(undefined)).toBe('');
     });
@@ -247,6 +251,16 @@ describe('StringUtils', () => {
 
     test('Testing substringBeforeLast', () => {
         expect(StringUtils.substringBeforeLast('foo/bar/foo/bar', '/')).toBe('foo/bar/foo');
+    });
+
+    test('Testing toCamelCase', () => {
+        expect(StringUtils.toCamelCase('FOO BAR')).toBe('fooBar');
+        expect(StringUtils.toCamelCase('--FOO-BAR--')).toBe('fooBar');
+    });
+
+    test('Testing toKebabCase', () => {
+        expect(StringUtils.toKebabCase('FOO BAR')).toBe('foo-bar');
+        expect(StringUtils.toKebabCase('--FOO-BAR--')).toBe('foo-bar');
     });
 
     test('Testing trim', () => {

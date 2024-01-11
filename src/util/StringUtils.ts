@@ -17,6 +17,7 @@
 
 import {ArrayUtils} from './ArrayUtils';
 import {ObjectUtils} from './ObjectUtils';
+import {RegexUtils} from './RegexUtils';
 
 
 /**
@@ -249,6 +250,20 @@ export abstract class StringUtils {
      */
     public static appendIfMissingIgnoreCase(text?: string, suffix?: string): string | undefined {
         return (!text || this.isEmpty(suffix) || this.endsWithIgnoreCase(text, suffix)) ? text : (text + suffix);
+    }
+
+    /**
+     * Returns the first letter capitalized representation of the given string
+     *
+     * @param {string} text the source string to check
+     *
+     * @return {string} the first letter capitalized representation of the given string
+
+     @example
+     StringUtils.capitalizeFirst('foobar');    // 'Foobar'
+     */
+    public static capitalizeFirst(text?: string): string | undefined {
+        return (!text || text.length === 0) ? undefined : text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 
     /**
@@ -856,6 +871,51 @@ export abstract class StringUtils {
         }
         const index = text.lastIndexOf(separator);
         return (index === -1) ? undefined : text.substring(0, index);
+    }
+
+    /**
+     * Returns the camel case representation of the given string
+     *
+     * @param {string} text the source string to inspect
+     * @param {RegExp | string} pattern the regular expression to match
+     *
+     * @return {string} the camel case representation of the given string
+     *
+     * @example
+     * StringUtils.toCamelCase('FOO BAR');    // 'fooBar'
+     * StringUtils.toCamelCase('--FOO-BAR--');    // 'fooBar'
+     */
+    public static toCamelCase(text?: string, pattern?: RegExp | string): string | undefined {
+        if (!text || text.length === 0) {
+            return text;
+        }
+        const words = RegexUtils.extractWords(text, pattern);
+        return !words ? undefined : words.reduce((previous, current, index) => {
+            current = current.toLowerCase();
+            return previous + (index > 0 ? this.capitalizeFirst(current) : current);
+        }, '');
+    }
+
+    /**
+     * Returns the kebab case representation of the given string
+     *
+     * @param {string} text the source string to inspect
+     * @param {RegExp | string} pattern the regular expression to match
+     *
+     * @return {string} the kebab case representation of the given string
+     *
+     * @example
+     * StringUtils.toKebabCase('FOO BAR');    // 'foo-bar'
+     * StringUtils.toKebabCase('--FOO-BAR--');    // 'foo-bar'
+     */
+    public static toKebabCase(text?: string, pattern?: RegExp | string): string | undefined {
+        if (!text || text.length === 0) {
+            return text;
+        }
+        const words = RegexUtils.extractWords(text, pattern);
+        return !words ? undefined : words.reduce((previous, current, index) => {
+            return previous + (index > 0 ? '-' : '') + current.toLowerCase();
+        }, '');
     }
 
     /**
