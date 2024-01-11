@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>NumberUtils.js - TsLangUtils</title>
+    <title>RegexUtils - TsLangUtils</title>
     
     <meta name="description" content="Common Lang Utilities for TypeScript" />
     
@@ -49,173 +49,260 @@
 
 <div id="main">
     
-    <h1 class="page-title">NumberUtils.js</h1>
+    <h1 class="page-title">RegexUtils</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/*
- * Copyright (c) 2023 Yookue Ltd. All rights reserved.
- *
- * Licensed under the MIT License.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- */
-/**
- * Utility functions for number
- *
- * @abstract
- * @hideconstructor
- */
-export class NumberUtils {
-    /**
-     * Returns whether the given value is an integer
-     *
-     * @param {number} value the number value to check
-     *
-     * @returns {boolean} whether the given value is an integer
-     *
-     * @example
-     * NumberUtils.isInteger(1);    // true
-     */
-    static isInteger(value) {
-        if (!value) {
-            return false;
-        }
-        return Math.floor(value) === Math.ceil(value);
-    }
-    /**
-     * Returns an integer value from the string value, or undefined if the value cannot be converted
-     *
-     * @param {string} value the string value to check
-     *
-     * @returns {number} an integer value from the string value, or undefined if the value cannot be converted
-     *
-     * @example
-     * NumberUtils.toInteger('1');    // 1
-     */
-    static toInteger(value) {
-        if (!value) {
-            return undefined;
-        }
-        try {
-            // @ts-ignore
-            const result = Number.parseInt(value);
-            return Number.isNaN(result) ? undefined : result;
-        }
-        catch (ignored) {
-        }
-        return undefined;
-    }
-    /**
-     * Returns a float value from the string value, or undefined if the value cannot be converted
-     *
-     * @param {string} value the string value to check
-     *
-     * @returns {number} a float value from the string value, or undefined if the value cannot be converted
-     *
-     * @example
-     * NumberUtils.toFloat('1.0');    // 1.0
-     */
-    static toFloat(value) {
-        if (!value) {
-            return undefined;
-        }
-        try {
-            const result = Number.parseFloat(value);
-            return Number.isNaN(result) ? undefined : result;
-        }
-        catch (ignored) {
-        }
-        return undefined;
-    }
-    /**
-     * Returns the max value of the given array
-     *
-     * @param {Array&lt;number>} values the array to calculate
-     *
-     * @returns {number} the max value of the given array
-     *
-     * @example
-     * NumberUtils.max([1, 2, 3]);    // 3
-     */
-    static max(values) {
-        if (!values || (values === null || values === void 0 ? void 0 : values.length) === 0) {
-            return undefined;
-        }
-        let result = values[0];
-        for (let i = 1; i &lt; values.length; i++) {
-            if (result &lt; values[i]) {
-                result = values[i];
-            }
-        }
-        return result;
-    }
-    /**
-     * Returns the min value of the given array
-     *
-     * @param {Array&lt;number>} values the array to calculate
-     *
-     * @returns {number} the min value of the given array
-     *
-     * @example
-     * NumberUtils.min([1, 2, 3]);    // 1
-     */
-    static min(values) {
-        if (!values || (values === null || values === void 0 ? void 0 : values.length) === 0) {
-            return undefined;
-        }
-        let result = values[0];
-        for (let i = 1; i &lt; values.length; i++) {
-            if (result > values[i]) {
-                result = values[i];
-            }
-        }
-        return result;
-    }
-    /**
-     * Returns the sum value of the given array
-     *
-     * @param {Array&lt;number>} values the array to calculate
-     *
-     * @returns {number} the sum value of the given array
-     *
-     * @example
-     * NumberUtils.sum([1, 2, 3]);    // 6
-     */
-    static sum(values) {
-        return values.reduce((a, b) => a + b);
-    }
-    /**
-     * Returns the average value of the given array
-     *
-     * @param {Array&lt;number>} values the array to calculate
-     *
-     * @returns {number} the average value of the given array
-     *
-     * @example
-     * NumberUtils.average([1, 2, 3]);    // 2
-     */
-    static average(values) {
-        return this.sum(values) / values.length;
-    }
-}
-</code></pre>
-        </article>
-    </section>
+        <h2>
+        
+            RegexUtils
+        
+        </h2>
+        
+            <div class="class-description usertext"><p>Utility functions for regular expressions</p></div>
+        
+    
+</header>
+
+<article>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".extractWords"><span class="type-signature type-signature-static">(static) </span>extractWords<span class="signature">(text, pattern)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns the array of strings that match the given pattern in the text</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RegexUtils.js.html">RegexUtils.js</a>, <a href="RegexUtils.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>RegexUtils.extractWords('foo, &amp; bar');    // ['foo', 'bar']</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the text on inspect</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pattern</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>/[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>the regular expression to match</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>the array of strings that match the given pattern in the text</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

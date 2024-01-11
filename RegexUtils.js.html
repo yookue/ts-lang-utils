@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>NumberUtils.js - TsLangUtils</title>
+    <title>RegexUtils.js - TsLangUtils</title>
     
     <meta name="description" content="Common Lang Utilities for TypeScript" />
     
@@ -49,7 +49,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">NumberUtils.js</h1>
+    <h1 class="page-title">RegexUtils.js</h1>
     
 
     
@@ -62,7 +62,7 @@
             <pre class="prettyprint source linenums"><code>/*
  * Copyright (c) 2023 Yookue Ltd. All rights reserved.
  *
- * Licensed under the MIT License.
+ * Licensed under the MIT License (the "License")
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -75,142 +75,25 @@
  * copies or substantial portions of the Software.
  */
 /**
- * Utility functions for number
+ * Utility functions for regular expressions
  *
  * @abstract
  * @hideconstructor
  */
-export class NumberUtils {
+export class RegexUtils {
     /**
-     * Returns whether the given value is an integer
+     * Returns the array of strings that match the given pattern in the text
      *
-     * @param {number} value the number value to check
+     * @param {string} text the text on inspect
+     * @param {RegExp | string} pattern the regular expression to match
      *
-     * @returns {boolean} whether the given value is an integer
+     * @return {Array&lt;string>} the array of strings that match the given pattern in the text
      *
      * @example
-     * NumberUtils.isInteger(1);    // true
+     * RegexUtils.extractWords('foo, &amp; bar');    // ['foo', 'bar']
      */
-    static isInteger(value) {
-        if (!value) {
-            return false;
-        }
-        return Math.floor(value) === Math.ceil(value);
-    }
-    /**
-     * Returns an integer value from the string value, or undefined if the value cannot be converted
-     *
-     * @param {string} value the string value to check
-     *
-     * @returns {number} an integer value from the string value, or undefined if the value cannot be converted
-     *
-     * @example
-     * NumberUtils.toInteger('1');    // 1
-     */
-    static toInteger(value) {
-        if (!value) {
-            return undefined;
-        }
-        try {
-            // @ts-ignore
-            const result = Number.parseInt(value);
-            return Number.isNaN(result) ? undefined : result;
-        }
-        catch (ignored) {
-        }
-        return undefined;
-    }
-    /**
-     * Returns a float value from the string value, or undefined if the value cannot be converted
-     *
-     * @param {string} value the string value to check
-     *
-     * @returns {number} a float value from the string value, or undefined if the value cannot be converted
-     *
-     * @example
-     * NumberUtils.toFloat('1.0');    // 1.0
-     */
-    static toFloat(value) {
-        if (!value) {
-            return undefined;
-        }
-        try {
-            const result = Number.parseFloat(value);
-            return Number.isNaN(result) ? undefined : result;
-        }
-        catch (ignored) {
-        }
-        return undefined;
-    }
-    /**
-     * Returns the max value of the given array
-     *
-     * @param {Array&lt;number>} values the array to calculate
-     *
-     * @returns {number} the max value of the given array
-     *
-     * @example
-     * NumberUtils.max([1, 2, 3]);    // 3
-     */
-    static max(values) {
-        if (!values || (values === null || values === void 0 ? void 0 : values.length) === 0) {
-            return undefined;
-        }
-        let result = values[0];
-        for (let i = 1; i &lt; values.length; i++) {
-            if (result &lt; values[i]) {
-                result = values[i];
-            }
-        }
-        return result;
-    }
-    /**
-     * Returns the min value of the given array
-     *
-     * @param {Array&lt;number>} values the array to calculate
-     *
-     * @returns {number} the min value of the given array
-     *
-     * @example
-     * NumberUtils.min([1, 2, 3]);    // 1
-     */
-    static min(values) {
-        if (!values || (values === null || values === void 0 ? void 0 : values.length) === 0) {
-            return undefined;
-        }
-        let result = values[0];
-        for (let i = 1; i &lt; values.length; i++) {
-            if (result > values[i]) {
-                result = values[i];
-            }
-        }
-        return result;
-    }
-    /**
-     * Returns the sum value of the given array
-     *
-     * @param {Array&lt;number>} values the array to calculate
-     *
-     * @returns {number} the sum value of the given array
-     *
-     * @example
-     * NumberUtils.sum([1, 2, 3]);    // 6
-     */
-    static sum(values) {
-        return values.reduce((a, b) => a + b);
-    }
-    /**
-     * Returns the average value of the given array
-     *
-     * @param {Array&lt;number>} values the array to calculate
-     *
-     * @returns {number} the average value of the given array
-     *
-     * @example
-     * NumberUtils.average([1, 2, 3]);    // 2
-     */
-    static average(values) {
-        return this.sum(values) / values.length;
+    static extractWords(text, pattern = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g) {
+        return (!text || text.length === 0) ? undefined : (text.match(pattern) || undefined);
     }
 }
 </code></pre>
