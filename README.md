@@ -1,7 +1,7 @@
 # @yookue/ts-lang-utils
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.txt)
 [![NPM version](https://img.shields.io/npm/v/@yookue/ts-lang-utils.svg?style=flat)](https://npmjs.org/package/@yookue/ts-lang-utils)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.txt)
 [![NPM downloads](http://img.shields.io/npm/dm/@yookue/ts-lang-utils.svg?style=flat)](https://npmjs.org/package/@yookue/ts-lang-utils)
 
 🏅 Common Lang Utilities for TypeScript 👍
@@ -15,8 +15,9 @@
 5️⃣ Utilities for number
 6️⃣ Utilities for object
 7️⃣ Utilities for random
-8️⃣ Utilities for string
-9️⃣ Utilities for thread
+8️⃣ Utilities for regex
+9️⃣ Utilities for string
+🔟 Utilities for thread
 
 ## Quickstart
 
@@ -29,7 +30,7 @@ $ npm install @yookue/ts-lang-utils --save
 Then, you may import components of ts-lang-utils as follows:
 
 ```jsx | pure
-import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, NumberUtils, ObjectUtils, RandomUtils, StringUtils, ThreadUtils} from '@yookue/ts-lang-utils';
+import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, NumberUtils, ObjectUtils, RandomUtils, RegexUtils, StringUtils, ThreadUtils} from '@yookue/ts-lang-utils';
 ```
 
 Enjoy your journey in coding your projects with ts-lang-utils. ✌️
