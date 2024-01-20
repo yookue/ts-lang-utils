@@ -19,11 +19,36 @@ import {BooleanUtils} from '@yookue/ts-lang-utils';
 
 
 describe('BooleanUtils', () => {
-    test('Testing toBoolean', () => {
-        expect(BooleanUtils.toBoolean('true')).toBeTruthy();
-        expect(BooleanUtils.toBoolean('false')).toBeFalsy();
-        expect(BooleanUtils.toBoolean('yes')).toBeTruthy();
-        expect(BooleanUtils.toBoolean('no')).toBeFalsy();
+    test('Testing isTrue', () => {
+        expect(BooleanUtils.isTrue(1)).toBeTruthy();
+        expect(BooleanUtils.isTrue('true')).toBeTruthy();
+        expect(BooleanUtils.isTrue('yes')).toBeTruthy();
+        expect(BooleanUtils.isTrue(undefined)).toBeFalsy();
+        expect(BooleanUtils.isTrue(null)).toBeFalsy();
+    });
+
+    test('Testing isNotTrue', () => {
+        expect(BooleanUtils.isNotTrue(0)).toBeTruthy();
+        expect(BooleanUtils.isNotTrue('false')).toBeTruthy();
+        expect(BooleanUtils.isNotTrue('no')).toBeTruthy();
+        expect(BooleanUtils.isNotTrue(undefined)).toBeTruthy();
+        expect(BooleanUtils.isNotTrue(null)).toBeTruthy();
+    });
+
+    test('Testing isFalse', () => {
+        expect(BooleanUtils.isFalse(0)).toBeTruthy();
+        expect(BooleanUtils.isFalse('false')).toBeTruthy();
+        expect(BooleanUtils.isFalse('no')).toBeTruthy();
+        expect(BooleanUtils.isFalse(undefined)).toBeFalsy();
+        expect(BooleanUtils.isFalse(null)).toBeFalsy();
+    });
+
+    test('Testing isNotFalse', () => {
+        expect(BooleanUtils.isNotFalse(1)).toBeTruthy();
+        expect(BooleanUtils.isNotFalse('true')).toBeTruthy();
+        expect(BooleanUtils.isNotFalse('yes')).toBeTruthy();
+        expect(BooleanUtils.isNotFalse(undefined)).toBeTruthy();
+        expect(BooleanUtils.isNotFalse(null)).toBeTruthy();
     });
 
     test('Testing toString', () => {

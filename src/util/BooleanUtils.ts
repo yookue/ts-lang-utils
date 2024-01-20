@@ -27,29 +27,77 @@ import {StringUtils} from './StringUtils';
  */
 export abstract class BooleanUtils {
     /**
-     * Returns a boolean value from the string value, or undefined if the value cannot be converted
+     * Returns whether the given value can be converted to true
      *
-     * @param {string | number} value the string value to check
+     * @param {number | string | null} value the source value to check
      *
-     * @returns {boolean} a boolean value from the string value, or undefined if the value cannot be converted
+     * @returns {boolean} whether the given value can be converted to true
      *
      * @example
-     * BooleanUtils.toBoolean(1);    // true
-     * BooleanUtils.toBoolean('true');    // true
-     * BooleanUtils.toBoolean('yes');    // true
+     * BooleanUtils.isTrue(1);    // true
+     * BooleanUtils.isTrue('true');    // true
+     * BooleanUtils.isTrue('yes');    // true
      */
-    public static toBoolean(value?: string | number): boolean | undefined {
+    public static isTrue(value?: string | number | null): boolean {
         if (typeof value === 'number') {
             return (value as number) > 0;
         } else if (typeof value === 'string') {
-            if (StringUtils.equalsAnyIgnoreCase(value, ['true', 'yes', 'on', 'y', 't', '1'])) {
-                return true;
-            }
-            if (StringUtils.equalsAnyIgnoreCase(value, ['false', 'no', 'off', 'n', 'f', '0'])) {
-                return false;
-            }
+            return StringUtils.equalsAnyIgnoreCase(value, ['true', 'yes', 'on', 'y', 't', '1']);
         }
-        return undefined;
+        return false;
+    }
+
+    /**
+     * Returns whether the given value is nil or can be converted to false
+     *
+     * @param {number | string | null} value the source value to check
+     *
+     * @returns {boolean} whether the given value is nil or can be converted to false
+     *
+     * @example
+     * BooleanUtils.isNotTrue(undefined);    // true
+     * BooleanUtils.isNotTrue(null);    // true
+     * BooleanUtils.isNotTrue('no');    // true
+     */
+    public static isNotTrue(value?: string | number | null): boolean {
+        return value === undefined || value === null || this.isFalse(value);
+    }
+
+    /**
+     * Returns whether the given value can be converted to false
+     *
+     * @param {number | string | null} value the source value to check
+     *
+     * @returns {boolean} whether the given value can be converted to false
+     *
+     * @example
+     * BooleanUtils.isFalse(0);    // true
+     * BooleanUtils.isFalse('false');    // true
+     * BooleanUtils.isFalse('no');    // true
+     */
+    public static isFalse(value?: string | number | null): boolean {
+        if (typeof value === 'number') {
+            return (value as number) <= 0;
+        } else if (typeof value === 'string') {
+            return StringUtils.equalsAnyIgnoreCase(value, ['false', 'no', 'off', 'n', 'f', '0']);
+        }
+        return false;
+    }
+
+    /**
+     * Returns whether the given value is nil or can be converted to true
+     *
+     * @param {number | string | null} value the source value to check
+     *
+     * @returns {boolean} whether the given value is nil or can be converted to true
+     *
+     * @example
+     * BooleanUtils.isNotFalse(undefined);    // true
+     * BooleanUtils.isNotFalse(null);    // true
+     * BooleanUtils.isNotFalse('yes');    // true
+     */
+    public static isNotFalse(value?: string | number | null): boolean {
+        return value === undefined || value === null || this.isTrue(value);
     }
 
     /**
