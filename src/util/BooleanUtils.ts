@@ -29,17 +29,20 @@ export abstract class BooleanUtils {
     /**
      * Returns whether the given value can be converted to true
      *
-     * @param {number | string | null} value the source value to check
+     * @param {boolean | number | string | null} value the source value to check
      *
      * @returns {boolean} whether the given value can be converted to true
      *
      * @example
+     * BooleanUtils.isTrue(true);    // true
      * BooleanUtils.isTrue(1);    // true
      * BooleanUtils.isTrue('true');    // true
      * BooleanUtils.isTrue('yes');    // true
      */
-    public static isTrue(value?: string | number | null): boolean {
-        if (typeof value === 'number') {
+    public static isTrue(value?: boolean | number | string | null): boolean {
+        if (typeof value === 'boolean') {
+            return (value as boolean);
+        } else if (typeof value === 'number') {
             return (value as number) > 0;
         } else if (typeof value === 'string') {
             return StringUtils.equalsAnyIgnoreCase(value, ['true', 'yes', 'on', 'y', 't', '1']);
@@ -50,33 +53,42 @@ export abstract class BooleanUtils {
     /**
      * Returns whether the given value is nil or can be converted to false
      *
-     * @param {number | string | null} value the source value to check
+     * @param {boolean | number | string | null} value the source value to check
      *
      * @returns {boolean} whether the given value is nil or can be converted to false
      *
      * @example
+     * BooleanUtils.isNotTrue(false);    // true
      * BooleanUtils.isNotTrue(undefined);    // true
      * BooleanUtils.isNotTrue(null);    // true
      * BooleanUtils.isNotTrue('no');    // true
      */
-    public static isNotTrue(value?: string | number | null): boolean {
-        return value === undefined || value === null || this.isFalse(value);
+    public static isNotTrue(value?: boolean | number | string | null): boolean {
+        if (value === undefined || value === null) {
+            return true;
+        } else if (typeof value === 'boolean') {
+            return !(value as boolean);
+        }
+        return this.isFalse(value);
     }
 
     /**
      * Returns whether the given value can be converted to false
      *
-     * @param {number | string | null} value the source value to check
+     * @param {boolean | number | string | null} value the source value to check
      *
      * @returns {boolean} whether the given value can be converted to false
      *
      * @example
+     * BooleanUtils.isFalse(false);    // true
      * BooleanUtils.isFalse(0);    // true
      * BooleanUtils.isFalse('false');    // true
      * BooleanUtils.isFalse('no');    // true
      */
-    public static isFalse(value?: string | number | null): boolean {
-        if (typeof value === 'number') {
+    public static isFalse(value?: boolean | number | string | null): boolean {
+        if (typeof value === 'boolean') {
+            return !(value as boolean);
+        } else if (typeof value === 'number') {
             return (value as number) <= 0;
         } else if (typeof value === 'string') {
             return StringUtils.equalsAnyIgnoreCase(value, ['false', 'no', 'off', 'n', 'f', '0']);
@@ -87,17 +99,23 @@ export abstract class BooleanUtils {
     /**
      * Returns whether the given value is nil or can be converted to true
      *
-     * @param {number | string | null} value the source value to check
+     * @param {boolean | number | string | null} value the source value to check
      *
      * @returns {boolean} whether the given value is nil or can be converted to true
      *
      * @example
+     * BooleanUtils.isNotFalse(true);    // true
      * BooleanUtils.isNotFalse(undefined);    // true
      * BooleanUtils.isNotFalse(null);    // true
      * BooleanUtils.isNotFalse('yes');    // true
      */
-    public static isNotFalse(value?: string | number | null): boolean {
-        return value === undefined || value === null || this.isTrue(value);
+    public static isNotFalse(value?: boolean | number | string | null): boolean {
+        if (value === undefined || value === null) {
+            return true;
+        } else if (typeof value === 'boolean') {
+            return (value as boolean);
+        }
+        return this.isTrue(value);
     }
 
     /**

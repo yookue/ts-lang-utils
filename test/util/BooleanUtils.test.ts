@@ -20,6 +20,7 @@ import {BooleanUtils} from '@yookue/ts-lang-utils';
 
 describe('BooleanUtils', () => {
     test('Testing isTrue', () => {
+        expect(BooleanUtils.isTrue(true)).toBeTruthy();
         expect(BooleanUtils.isTrue(1)).toBeTruthy();
         expect(BooleanUtils.isTrue('true')).toBeTruthy();
         expect(BooleanUtils.isTrue('yes')).toBeTruthy();
@@ -28,6 +29,7 @@ describe('BooleanUtils', () => {
     });
 
     test('Testing isNotTrue', () => {
+        expect(BooleanUtils.isNotTrue(false)).toBeTruthy();
         expect(BooleanUtils.isNotTrue(0)).toBeTruthy();
         expect(BooleanUtils.isNotTrue('false')).toBeTruthy();
         expect(BooleanUtils.isNotTrue('no')).toBeTruthy();
@@ -36,6 +38,7 @@ describe('BooleanUtils', () => {
     });
 
     test('Testing isFalse', () => {
+        expect(BooleanUtils.isFalse(false)).toBeTruthy();
         expect(BooleanUtils.isFalse(0)).toBeTruthy();
         expect(BooleanUtils.isFalse('false')).toBeTruthy();
         expect(BooleanUtils.isFalse('no')).toBeTruthy();
@@ -44,6 +47,7 @@ describe('BooleanUtils', () => {
     });
 
     test('Testing isNotFalse', () => {
+        expect(BooleanUtils.isNotFalse(true)).toBeTruthy();
         expect(BooleanUtils.isNotFalse(1)).toBeTruthy();
         expect(BooleanUtils.isNotFalse('true')).toBeTruthy();
         expect(BooleanUtils.isNotFalse('yes')).toBeTruthy();
