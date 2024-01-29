@@ -19,8 +19,17 @@ import {ArrayUtils} from '@yookue/ts-lang-utils';
 
 
 describe('ArrayUtils', () => {
+    test('Testing getFirst', () => {
+        expect(ArrayUtils.getFirst(['foo', 'bar'])).toBe('foo');
+    });
+
+    test('Testing getLast', () => {
+        expect(ArrayUtils.getLast(['foo', 'bar'])).toBe('bar');
+    });
+
     test('Testing getLength', () => {
         expect(ArrayUtils.getLength([])).toBe(0);
+        expect(ArrayUtils.getLength(['foo', 'bar'])).toBe(2);
     });
 
     test('Testing getTypeof', () => {

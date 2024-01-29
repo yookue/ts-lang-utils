@@ -82,6 +82,12 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.hasProperty({foo: 'bar'}, 'bar')).toBeFalsy();
     });
 
+    test('Testing setProperty', () => {
+        const record = {};
+        ObjectUtils.setProperty(record, 'foo', 'bar');
+        expect(ObjectUtils.getProperty(record, 'foo')).toBe('bar');
+    });
+
     test('Testing isPlainObject', () => {
         expect(ObjectUtils.isPlainObject(undefined)).toBeFalsy();
         expect(ObjectUtils.isPlainObject(null)).toBeFalsy();

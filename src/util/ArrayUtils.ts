@@ -15,7 +15,6 @@
  */
 
 
-import {ObjectUtils} from './ObjectUtils';
 import {StringUtils} from './StringUtils';
 
 
@@ -27,11 +26,43 @@ import {StringUtils} from './StringUtils';
  */
 export abstract class ArrayUtils {
     /**
+     * Returns the first element of the given array
+     *
+     * @param {Array<E>} array the array to inspect
+     *
+     * @return {E} the first element of the given array
+     *
+     * @example
+     * ArrayUtils.getFirst(['foo', 'bar']);    // 'foo'
+     */
+    public static getFirst<E>(array?: E[] | null) : E | undefined {
+        return (!array || array.length === 0) ? undefined : array[0];
+    }
+
+    /**
+     * Returns the last element of the given array
+     *
+     * @param {Array<E>} array the array to inspect
+     *
+     * @return {E} the last element of the given array
+     *
+     * @example
+     * ArrayUtils.getLast(['foo', 'bar']);    // 'bar'
+     */
+    public static getLast<E>(array?: E[] | null) : E | undefined {
+        return (!array || array.length === 0) ? undefined : array[array.length - 1];
+    }
+
+    /**
      * Returns the length of the given array
      *
      * @param {Array<any>} array the array to check
      *
      * @return {number} the length of the given array
+     *
+     * @example
+     * ArrayUtils.getLength([]);    // 0
+     * ArrayUtils.getLength(['foo', 'bar']);    // 2
      */
     public static getLength(array?: any[]): number {
         return array ? array.length : 0;
@@ -43,6 +74,9 @@ export abstract class ArrayUtils {
      * @param {Array<any>} array the array to check
      *
      * @return {Array<string>} the element types of the given array
+     *
+     * @example
+     * ArrayUtils.getTypeof(['foo', 'bar']);    // ['string', 'string']
      */
     public static getTypeof(array?: any[]): string[] | undefined {
         if (this.isEmpty(array)) {
@@ -95,6 +129,10 @@ export abstract class ArrayUtils {
      * @param {boolean} relaxed treat null as string or object
      *
      * @return {boolean} whether each element in the given array is the expected type
+     *
+     * @example
+     * ArrayUtils.isTypeof(['foo', 'bar'], 'string');    // true
+     * ArrayUtils.isTypeof(['foo', 'bar', null], 'string', true);    // true
      */
     public static isTypeof(array?: any[], type?: string, relaxed = false): boolean {
         if (this.isEmpty(array) || StringUtils.isBlank(type)) {
@@ -117,9 +155,8 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.includes(['foo', 'bar'], 'foo');    // true
      */
-    public static includes<T>(array?: T[], element?: T): boolean {
-        // @ts-ignore
-        return ObjectUtils.allNotNil(array, element) && array.includes(element);
+    public static includes<T>(array?: T[] | null, element?: T | null): boolean {
+        return !!array && !!element && array.includes(element);
     }
 
     /**

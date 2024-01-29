@@ -360,8 +360,8 @@ export abstract class ObjectUtils {
      * @example
      * ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foo.bar');    // foobar
      */
-    public static getProperty(object: any, prop: string): any {
-        if (this.anyNil(object, prop) || typeof object !== 'object' || prop?.length === 0) {
+    public static getProperty(object: any, prop?: string | null): any {
+        if (typeof object !== 'object' || !prop || prop?.length === 0) {
             return undefined;
         }
         const props = prop.replace(/\[/g, '.').replace(/]/g, '').split('.');
@@ -383,8 +383,25 @@ export abstract class ObjectUtils {
      * ObjectUtils.hasProperty({foo: 'bar'}, 'foo');    // true
      * ObjectUtils.hasProperty({foo: 'bar'}, 'bar');    // false
      */
-    public static hasProperty(object: any, prop: string): boolean {
-        return this.allNotNil(object, prop) && typeof object === 'object' && prop?.length > 0 && Object.prototype.hasOwnProperty.call(object, prop);
+    public static hasProperty(object: any, prop?: string | null): boolean {
+        return typeof object === 'object' && !!prop && prop?.length > 0 && Object.prototype.hasOwnProperty.call(object, prop);
+    }
+
+    /**
+     * Sets the property value on the given object
+     *
+     * @param {any} object the object to inspect
+     * @param {string} prop the property name to inspect
+     * @param {any} value the value to set
+     *
+     * @example
+     * ObjectUtils.setProperty({}, 'foo', 'bar');
+     */
+    public static setProperty(object?: object, prop?: string | null, value?: any): void {
+        if (this.isPlainObject(object) && prop) {
+            // @ts-ignore
+            object[prop] = value;
+        }
     }
 
     /**
