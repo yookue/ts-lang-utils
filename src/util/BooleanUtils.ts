@@ -31,7 +31,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean | number | string | null} value the source value to check
      *
-     * @returns {boolean} whether the given value can be converted to true
+     * @return {boolean} whether the given value can be converted to true
      *
      * @example
      * BooleanUtils.isTrue(true);    // true
@@ -55,7 +55,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean | number | string | null} value the source value to check
      *
-     * @returns {boolean} whether the given value is nil or can be converted to false
+     * @return {boolean} whether the given value is nil or can be converted to false
      *
      * @example
      * BooleanUtils.isNotTrue(false);    // true
@@ -77,7 +77,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean | number | string | null} value the source value to check
      *
-     * @returns {boolean} whether the given value can be converted to false
+     * @return {boolean} whether the given value can be converted to false
      *
      * @example
      * BooleanUtils.isFalse(false);    // true
@@ -101,7 +101,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean | number | string | null} value the source value to check
      *
-     * @returns {boolean} whether the given value is nil or can be converted to true
+     * @return {boolean} whether the given value is nil or can be converted to true
      *
      * @example
      * BooleanUtils.isNotFalse(true);    // true
@@ -126,7 +126,7 @@ export abstract class BooleanUtils {
      * @param {string} falsy the string to represent false
      * @param {string} nil the string to represent undefined or null
      *
-     * @returns {string} a string value from the boolean value
+     * @return {string} a string value from the boolean value
      *
      * @example
      * BooleanUtils.toString(undefined, 'true', 'false');    // 'true'
@@ -140,7 +140,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean} value the boolean value to check
      *
-     * @returns {string} the string value of 'true'/'false' from the boolean value
+     * @return {string} the string value of 'true'/'false' from the boolean value
      *
      * @example
      * BooleanUtils.toStringTrueFalse(true);    // 'true'
@@ -154,7 +154,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean} value the boolean value to check
      *
-     * @returns {string} the string value of 'on'/'off' from the boolean value
+     * @return {string} the string value of 'on'/'off' from the boolean value
      *
      * @example
      * BooleanUtils.toStringOnOff(true);    // 'on'
@@ -168,7 +168,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean} value the boolean value to check
      *
-     * @returns {string} the string value of 'yes'/'no' from the boolean value
+     * @return {string} the string value of 'yes'/'no' from the boolean value
      *
      * @example
      * BooleanUtils.toStringYesNo(true);    // 'yes'
@@ -182,7 +182,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean} value the boolean value to check
      *
-     * @returns {string} the string value of 'Y'/'N' from the boolean value
+     * @return {string} the string value of 'Y'/'N' from the boolean value
      *
      * @example
      * BooleanUtils.toStringYN(true);    // 'Y'
@@ -196,7 +196,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean} value the boolean value to check
      *
-     * @returns {string} the string value of 'T'/'F' from the boolean value
+     * @return {string} the string value of 'T'/'F' from the boolean value
      *
      * @example
      * BooleanUtils.toStringTF(true);    // "T"
@@ -210,7 +210,7 @@ export abstract class BooleanUtils {
      *
      * @param {boolean} value the boolean value to check
      *
-     * @returns {string} the string value of '1'/'0' from the boolean value
+     * @return {string} the string value of '1'/'0' from the boolean value
      *
      * @example
      * BooleanUtils.toString10(true);    // '1'

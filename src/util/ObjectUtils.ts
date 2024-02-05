@@ -332,7 +332,7 @@ export abstract class ObjectUtils {
      *
      * @param {Array<any>} objects the objects to check
      *
-     * @returns {any} the first none nil element in the given array, or null if all elements are nil
+     * @return {any} the first none nil element in the given array, or null if all elements are nil
      *
      * @example
      * ObjectUtils.firstNonNil(undefined, 'foo', 'bar');    // 'foo'
@@ -409,7 +409,7 @@ export abstract class ObjectUtils {
      *
      * @param {any} object the object to inspect
      *
-     * @returns {Array<string>} the keys of the given object
+     * @return {Array<string>} the keys of the given object
      *
      * @example
      * ObjectUtils.keys({foo: 'bar'});    // ['foo']

@@ -205,6 +205,21 @@ export abstract class ArrayUtils {
     }
 
     /**
+     * Returns the array that excludes the given elements
+     *
+     * @param {Array<any>} array the arrays to inspect
+     * @param {Array<any>} excludes the elements array to exclude
+     *
+     * @return the array that excludes the given elements
+     *
+     * @example
+     * ArrayUtils.remove(['foo', 'bar'], ['bar']);    // ['foo']
+     */
+    public static remove<T>(array?: T[], excludes?: T[]): T[] | undefined {
+        return (!array || array.length === 0 || !excludes || excludes.length === 0) ? array : array.filter(item => !excludes.includes(item));
+    }
+
+    /**
      * Reverses the given array
      *
      * @param {Array<any>} array the arrays to inspect

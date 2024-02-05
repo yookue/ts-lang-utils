@@ -67,6 +67,12 @@ describe('ArrayUtils', () => {
         expect(ArrayUtils.minLength(['foo', 'bar'], ['hello', 'word'])).toBe(2);
     });
 
+    test('Testing remove', () => {
+        expect(ArrayUtils.remove(['foo', 'bar'], undefined)).toStrictEqual(['foo', 'bar']);
+        expect(ArrayUtils.remove(['foo', 'bar'], ['world'])).toStrictEqual(['foo', 'bar']);
+        expect(ArrayUtils.remove(['foo', 'bar'], ['bar'])).toStrictEqual(['foo']);
+    });
+
     test('Testing reverse', () => {
         const array = ['foo', 'bar'];
         ArrayUtils.reverse(array);

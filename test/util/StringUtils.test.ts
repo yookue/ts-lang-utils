@@ -217,6 +217,26 @@ describe('StringUtils', () => {
         expect(StringUtils.prependIfMissingIgnoreCase('foobar', 'FOO')).toBe('foobar');
     });
 
+    test('Testing removeEquals', () => {
+        expect(StringUtils.removeEquals(['foo', 'bar'], undefined)).toStrictEqual(['foo', 'bar']);
+        expect(StringUtils.removeEquals(['foo', 'bar'], ['world'])).toStrictEqual(['foo', 'bar']);
+        expect(StringUtils.removeEquals(['foo', 'bar'], ['bar'])).toStrictEqual(['foo']);
+    });
+
+    test('Testing removeEqualsIgnoreCase', () => {
+        expect(StringUtils.removeEqualsIgnoreCase(['foo', 'bar'], ['BAR'])).toStrictEqual(['foo']);
+    });
+
+    test('Testing removeIncludes', () => {
+        expect(StringUtils.removeIncludes(['foo', 'bar'], undefined)).toStrictEqual(['foo', 'bar']);
+        expect(StringUtils.removeIncludes(['foo', 'bar'], ['world'])).toStrictEqual(['foo', 'bar']);
+        expect(StringUtils.removeIncludes(['foo', 'bar'], ['ar'])).toStrictEqual(['foo']);
+    });
+
+    test('Testing removeIncludesIgnoreCase', () => {
+        expect(StringUtils.removeIncludesIgnoreCase(['foo', 'bar'], ['AR'])).toStrictEqual(['foo']);
+    });
+
     test('Testing startsWith', () => {
         expect(StringUtils.startsWith('foobar', 'foo')).toBeTruthy();
         expect(StringUtils.startsWith('hello', 'bar')).toBeFalsy();

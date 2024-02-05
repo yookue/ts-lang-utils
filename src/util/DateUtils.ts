@@ -260,7 +260,7 @@ export abstract class DateUtils {
      *
      * @param {Date} date the date to inspect
      *
-     * @returns {string} the timezone of the given date
+     * @return {string} the timezone of the given date
      */
     public static getTimezone(date = new Date()) {
         const offset = date.getTimezoneOffset();

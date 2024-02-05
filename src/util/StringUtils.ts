@@ -717,6 +717,66 @@ export abstract class StringUtils {
     }
 
     /**
+     * Returns the array that excludes the elements which equals to any of the given exclusions
+     *
+     * @param {Array<string>} texts the arrays to inspect
+     * @param {string} excludes the elements array to exclude
+     *
+     * @return the array that excludes the elements which equals to any of the given exclusions
+     *
+     * @example
+     * StringUtils.removeEquals(['foo', 'bar'], ['bar']);    // ['foo']
+     */
+    public static removeEquals(texts?: string[], excludes?: string[]): string[] | undefined {
+        return ArrayUtils.remove(texts, excludes);
+    }
+
+    /**
+     * Returns the array that excludes the elements which equals to any of the given exclusions, case-insensitive
+     *
+     * @param {Array<string>} texts the arrays to inspect
+     * @param {string} excludes the elements array to exclude
+     *
+     * @return the array that excludes the elements which equals to any of the given exclusions, case-insensitive
+     *
+     * @example
+     * StringUtils.removeEqualsIgnoreCase(['foo', 'bar'], ['BAR']);    // ['foo']
+     */
+    public static removeEqualsIgnoreCase(texts?: string[], excludes?: string[]): string[] | undefined {
+        return (!texts || texts.length === 0 || !excludes || excludes.length === 0) ? texts : texts.filter(text => !excludes.some(exclude => this.equalsIgnoreCase(text, exclude)));
+    }
+
+    /**
+     * Returns the array that excludes the elements which includes any of the given exclusions
+     *
+     * @param {Array<string>} texts the arrays to inspect
+     * @param {string} excludes the elements array to exclude
+     *
+     * @return the array that excludes the elements which includes any of the given exclusions
+     *
+     * @example
+     * StringUtils.removeIncludes(['foo', 'bar'], ['ar']);    // ['foo']
+     */
+    public static removeIncludes(texts?: string[], excludes?: string[]): string[] | undefined {
+        return (!texts || texts.length === 0 || !excludes || excludes.length === 0) ? texts : texts.filter(text => !excludes.some(exclude => this.includes(text, exclude)));
+    }
+
+    /**
+     * Returns the array that excludes the elements which includes any of the given exclusions, case-insensitive
+     *
+     * @param {Array<string>} texts the arrays to inspect
+     * @param {string} excludes the elements array to exclude
+     *
+     * @return the array that excludes the elements which includes any of the given exclusions, case-insensitive
+     *
+     * @example
+     * StringUtils.removeIncludesIgnoreCase(['foo', 'bar'], ['AR']);    // ['foo']
+     */
+    public static removeIncludesIgnoreCase(texts?: string[], excludes?: string[]): string[] | undefined {
+        return (!texts || texts.length === 0 || !excludes || excludes.length === 0) ? texts : texts.filter(text => !excludes.some(exclude => this.includesIgnoreCase(text, exclude)));
+    }
+
+    /**
      * Returns whether the given string starts with the prefix
      *
      * @param {string} text the source string to check
