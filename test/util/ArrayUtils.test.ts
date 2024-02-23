@@ -19,6 +19,11 @@ import {ArrayUtils} from '@yookue/ts-lang-utils';
 
 
 describe('ArrayUtils', () => {
+    test('Testing asArray', () => {
+        expect(ArrayUtils.asArray(undefined)).toBeUndefined();
+        expect(ArrayUtils.asArray('foobar')).toStrictEqual(['foobar']);
+    });
+
     test('Testing getFirst', () => {
         expect(ArrayUtils.getFirst(['foo', 'bar'])).toBe('foo');
     });

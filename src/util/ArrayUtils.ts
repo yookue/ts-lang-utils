@@ -26,6 +26,20 @@ import {StringUtils} from './StringUtils';
  */
 export abstract class ArrayUtils {
     /**
+     * Returns an array of the given element
+     *
+     * @param {E} element the element to wrap
+     *
+     * @return {Array<E>} an array of the given element
+     *
+     * @example
+     * ArrayUtils.asArray('foobar');    // ['foobar']
+     */
+    public static asArray<E>(element?: E | null): E[] | undefined {
+        return !element ? undefined : [element];
+    }
+
+    /**
      * Returns the first element of the given array
      *
      * @param {Array<E>} array the array to inspect
@@ -35,7 +49,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.getFirst(['foo', 'bar']);    // 'foo'
      */
-    public static getFirst<E>(array?: E[] | null) : E | undefined {
+    public static getFirst<E>(array?: E[] | null): E | undefined {
         return (!array || array.length === 0) ? undefined : array[0];
     }
 
@@ -49,7 +63,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.getLast(['foo', 'bar']);    // 'bar'
      */
-    public static getLast<E>(array?: E[] | null) : E | undefined {
+    public static getLast<E>(array?: E[] | null): E | undefined {
         return (!array || array.length === 0) ? undefined : array[array.length - 1];
     }
 
