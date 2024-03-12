@@ -33,7 +33,7 @@ export abstract class ThreadUtils {
      * TimeUtils.sleep();
      * TimeUtils.sleep().then(() => {});
      */
-    public static sleep(microseconds = 1000): Promise<void> {
+    public static sleep(microseconds: number = 1000): Promise<void> {
         return new Promise(resolve => {
             setTimeout(resolve, microseconds);
         });

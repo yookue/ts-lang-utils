@@ -33,7 +33,7 @@ export abstract class RegexUtils {
      * @example
      * RegexUtils.extractWords('foo, & bar');    // ['foo', 'bar']
      */
-    public static extractWords(text?: string, pattern: RegExp | string = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g): string[] | undefined {
-        return (!text || text.length === 0) ? undefined : (text.match(pattern) || undefined);
+    public static extractWords(text?: string | null, pattern: RegExp | string = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g): string[] | undefined {
+        return !text ? undefined : (text.match(pattern) || undefined);
     }
 }

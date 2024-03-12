@@ -62,7 +62,7 @@ export abstract class RandomUtils {
      * @example
      * RandomUtils.randomElements(['1', '2', '3'], 2);
      */
-    public static randomElements(array: Array<any>, size: number): any[] {
+    public static randomElements(array: any[], size: number): any[] {
         if (ArrayUtils.isEmpty(array) || size <= 0) {
             return [];
         }

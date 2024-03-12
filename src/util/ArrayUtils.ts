@@ -169,7 +169,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.includes(['foo', 'bar'], 'foo');    // true
      */
-    public static includes<T>(array?: T[] | null, element?: T | null): boolean {
+    public static includes<E>(array?: E[] | null, element?: E | null): boolean {
         return !!array && !!element && array.includes(element);
     }
 
@@ -229,7 +229,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.remove(['foo', 'bar'], ['bar']);    // ['foo']
      */
-    public static remove<T>(array?: T[], excludes?: T[]): T[] | undefined {
+    public static remove<E>(array?: E[] | null, excludes?: E[] | null): E[] | undefined | null {
         return (!array || array.length === 0 || !excludes || excludes.length === 0) ? array : array.filter(item => !excludes.includes(item));
     }
 

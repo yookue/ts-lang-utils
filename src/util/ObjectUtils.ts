@@ -414,7 +414,7 @@ export abstract class ObjectUtils {
      * @example
      * ObjectUtils.keys({foo: 'bar'});    // ['foo']
      */
-    public static keys(object?: any): Array<string> {
+    public static keys(object?: any): string[] {
         if (!object) {
             return [];
         }

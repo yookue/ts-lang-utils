@@ -38,12 +38,12 @@ export abstract class JsonUtils {
      * JsonUtils.isJsonString(`[{"foo": "bar"}]`);    // true
      * JsonUtils.isJsonString(`[{"foo": "bar"}, {"hello": "world"}]`);    // true
      */
-    public static isJsonString(text: string): boolean {
+    public static isJsonString(text: string | null): boolean {
         if (StringUtils.isBlank(text)) {
             return false;
         }
         try {
-            if (typeof JSON.parse(text) === 'object') {
+            if (typeof text === 'string' && typeof JSON.parse(text) === 'object') {
                 return true;
             }
         } catch(ex) {

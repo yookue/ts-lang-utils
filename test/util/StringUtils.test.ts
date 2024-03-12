@@ -113,6 +113,7 @@ describe('StringUtils', () => {
 
     test('Testing defaultString', () => {
         expect(StringUtils.defaultString(undefined)).toBe('');
+        expect(StringUtils.defaultString(null)).toBe('');
     });
 
     test('Testing defaultIfEmpty', () => {
@@ -144,6 +145,7 @@ describe('StringUtils', () => {
     });
 
     test('Testing equals', () => {
+        expect(StringUtils.equals(undefined, null)).toBeFalsy();
         expect(StringUtils.equals('foo', 'bar')).toBeFalsy();
         expect(StringUtils.equals('foo', 'foo')).toBeTruthy();
     });
@@ -205,6 +207,12 @@ describe('StringUtils', () => {
     test('Testing includesAnyIgnoreCase', () => {
         expect(StringUtils.includesAnyIgnoreCase('foobar', ['FOO', 'jest'])).toBeTruthy();
         expect(StringUtils.includesAnyIgnoreCase('foobar', ['world', undefined])).toBeFalsy();
+    });
+
+    test('Testing joinWith', () => {
+        expect(StringUtils.joinWith('foobar')).toBe('foobar');
+        expect(StringUtils.joinWith(['foo', 'bar'], undefined)).toBe('foobar');
+        expect(StringUtils.joinWith(['foo', 'bar', 'world'], undefined, (text => text !== 'world'))).toBe('foobar');
     });
 
     test('Testing prependIfMissing', () => {
