@@ -19,7 +19,7 @@ import {ArrayUtils} from './ArrayUtils';
 
 
 /**
- * Utility functions for random
+ * Utilities for random
  *
  * @abstract
  * @hideconstructor

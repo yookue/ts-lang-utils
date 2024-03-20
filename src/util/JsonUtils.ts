@@ -20,7 +20,7 @@ import {StringUtils} from './StringUtils';
 
 
 /**
- * Utility functions for json
+ * Utilities for json
  *
  * @abstract
  * @hideconstructor
@@ -38,7 +38,7 @@ export abstract class JsonUtils {
      * JsonUtils.isJsonString(`[{"foo": "bar"}]`);    // true
      * JsonUtils.isJsonString(`[{"foo": "bar"}, {"hello": "world"}]`);    // true
      */
-    public static isJsonString(text: string | null): boolean {
+    public static isJsonString(text?: string | null): boolean {
         if (StringUtils.isBlank(text)) {
             return false;
         }

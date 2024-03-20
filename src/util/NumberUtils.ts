@@ -16,7 +16,7 @@
 
 
 /**
- * Utility functions for number
+ * Utilities for number
  *
  * @abstract
  * @hideconstructor

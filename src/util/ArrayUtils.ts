@@ -19,7 +19,7 @@ import {StringUtils} from './StringUtils';
 
 
 /**
- * Utility functions for array
+ * Utilities for array
  *
  * @abstract
  * @hideconstructor

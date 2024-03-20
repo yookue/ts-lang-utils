@@ -20,7 +20,7 @@ import {StringUtils} from './StringUtils';
 
 
 /**
- * Utility functions for boolean
+ * Utilities for boolean
  *
  * @abstract
  * @hideconstructor

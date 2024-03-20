@@ -16,7 +16,7 @@
 
 
 /**
- * Utility functions for object
+ * Utilities for object
  *
  * @abstract
  * @hideconstructor
@@ -438,7 +438,19 @@ export abstract class ObjectUtils {
      *
      * @return {string} a string representation of the given object
      */
-    public static toString(object?: any, nil?: string | null): string {
+    public static toString(object?: any, nil?: string | null): string | undefined | null {
         return object ? object.toString() : nil;
+    }
+
+    /**
+     * Returns the string tag representation of the given object
+     *
+     * @param {any} object the object to inspect
+     * @param {string} nil the default string if the object is nil
+     *
+     * @return {string} a string tag representation of the given object
+     */
+    public static toStringTag(object?: any, nil?: string | null): string | undefined | null {
+        return object ? object[Symbol.toStringTag] : nil;
     }
 }

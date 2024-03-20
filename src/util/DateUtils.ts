@@ -19,7 +19,7 @@ import {StringUtils} from './StringUtils';
 
 
 /**
- * Utility functions for date and time
+ * Utilities for date and time
  *
  * @abstract
  * @hideconstructor

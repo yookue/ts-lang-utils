@@ -21,7 +21,7 @@ import {RegexUtils} from './RegexUtils';
 
 
 /**
- * Utility functions for string
+ * Utilities for string
  *
  * @abstract
  * @hideconstructor
@@ -483,13 +483,13 @@ export abstract class StringUtils {
      * StringUtils.formatBrace('foobar{}');    //  'foobar{}'
      * StringUtils.formatBrace('hello {}, foo{}', 'world', 'bar');    //  'hello world, foobar'
      */
-    public static formatBrace(text?: string | null, ...params: Array<any>): string | undefined | null {
+    public static formatBrace(text?: string | null, ...params: any[]): string | undefined | null {
         if (!text || text.length <= 2 || !params || params.length === 0) {
             return text;
         }
         let result = text;
         for (const param of params) {
-            result = result.replace('{}', ObjectUtils.toString(param, ''));
+            result = result.replace('{}', ObjectUtils.toString(param, '') as string);
         }
         return result;
     }
@@ -509,7 +509,7 @@ export abstract class StringUtils {
      * StringUtils.formatPercent("foobar %d", 2023);    // "foobar 2023"
      * StringUtils.formatPercent("hello %s, foo%s", "world", "bar");    // "hello world, foobar"
      */
-    public static formatPercent(text?: string | null, ...params: Array<any>): string | undefined | null {
+    public static formatPercent(text?: string | null, ...params: any[]): string | undefined | null {
         if (!text || text.length <= 2 || !params || params.length === 0) {
             return text;
         }
@@ -584,7 +584,7 @@ export abstract class StringUtils {
                     }
                     throw new TypeError(`Invalid parameter type of '${param}', index ${i}`);
                 case 's':
-                    result = result.replace(`%${pattern}`, ObjectUtils.toString(param, ''));
+                    result = result.replace(`%${pattern}`, ObjectUtils.toString(param, '') as string);
                     break;
                 default:
                     break;

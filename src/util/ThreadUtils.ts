@@ -16,7 +16,7 @@
 
 
 /**
- * Utility functions for thread
+ * Utilities for thread
  *
  * @abstract
  * @hideconstructor

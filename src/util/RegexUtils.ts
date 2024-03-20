@@ -16,7 +16,7 @@
 
 
 /**
- * Utility functions for regular expressions
+ * Utilities for regular expression
  *
  * @abstract
  * @hideconstructor
