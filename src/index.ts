@@ -25,3 +25,4 @@ export {RandomUtils} from './util/RandomUtils';
 export {RegexUtils} from './util/RegexUtils';
 export {StringUtils} from './util/StringUtils';
 export {ThreadUtils} from './util/ThreadUtils';
+export {TreeUtils} from './util/TreeUtils';

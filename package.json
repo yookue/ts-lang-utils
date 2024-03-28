@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.22",
+    "version": "0.1.23",
     "title": "TsLangUtils",
     "description": "Common Lang Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -18,7 +18,8 @@
         "random-utils",
         "regex-utils",
         "string-utils",
-        "thread-utils"
+        "thread-utils",
+        "tree-utils"
     ],
     "files": [
         "dist"
@@ -39,7 +40,7 @@
         "test:coverage": "del-cli ./coverage && jest --coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.24.0"
+        "@babel/runtime": "^7.24.1"
     },
     "devDependencies": {
         "@types/jest": "^29.5.12",

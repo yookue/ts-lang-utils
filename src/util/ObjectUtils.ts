@@ -361,14 +361,17 @@ export abstract class ObjectUtils {
      * ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foo.bar');    // foobar
      */
     public static getProperty(object: any, prop?: string | null): any {
-        if (typeof object !== 'object' || !prop || prop?.length === 0) {
+        if (typeof object !== 'object' || !prop || prop.length === 0) {
             return undefined;
+        }
+        if (!prop.includes('.')) {
+            return object[prop];
         }
         const props = prop.replace(/\[/g, '.').replace(/]/g, '').split('.');
-        if (!props || props?.length === 0) {
+        if (!props || props.length === 0) {
             return undefined;
         }
-        return (props?.length === 1) ? object[props[0]] : props.reduce((value, name) => (value || {})[name], object);
+        return (props.length === 1) ? object[props[0]] : props.reduce((value, name) => (value || {})[name], object);
     }
 
     /**
