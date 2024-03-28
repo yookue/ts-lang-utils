@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>ArrayUtils.js - TsLangUtils</title>
+    <title>TreeUtils - TsLangUtils</title>
     
     <meta name="description" content="Common Lang Utilities for TypeScript" />
     
@@ -49,264 +49,257 @@
 
 <div id="main">
     
-    <h1 class="page-title">ArrayUtils.js</h1>
+    <h1 class="page-title">TreeUtils</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/*
- * Copyright (c) 2023 Yookue Ltd. All rights reserved.
- *
- * Licensed under the MIT License.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- */
-import { StringUtils } from './StringUtils';
-/**
- * Utilities for array
- *
- * @abstract
- * @hideconstructor
- */
-export class ArrayUtils {
-    /**
-     * Returns an array of the given element
-     *
-     * @param {E} element the element to wrap
-     *
-     * @return {Array&lt;E>} an array of the given element
-     *
-     * @example
-     * ArrayUtils.asArray('foobar');    // ['foobar']
-     */
-    static asArray(element) {
-        return !element ? undefined : [element];
-    }
-    /**
-     * Returns the first element of the given array
-     *
-     * @param {Array&lt;E>} array the array to inspect
-     *
-     * @return {E} the first element of the given array
-     *
-     * @example
-     * ArrayUtils.getFirst(['foo', 'bar']);    // 'foo'
-     */
-    static getFirst(array) {
-        return (!array || array.length === 0) ? undefined : array[0];
-    }
-    /**
-     * Returns the last element of the given array
-     *
-     * @param {Array&lt;E>} array the array to inspect
-     *
-     * @return {E} the last element of the given array
-     *
-     * @example
-     * ArrayUtils.getLast(['foo', 'bar']);    // 'bar'
-     */
-    static getLast(array) {
-        return (!array || array.length === 0) ? undefined : array[array.length - 1];
-    }
-    /**
-     * Returns the length of the given array
-     *
-     * @param {Array&lt;any>} array the array to check
-     *
-     * @return {number} the length of the given array
-     *
-     * @example
-     * ArrayUtils.getLength([]);    // 0
-     * ArrayUtils.getLength(['foo', 'bar']);    // 2
-     */
-    static getLength(array) {
-        return array ? array.length : 0;
-    }
-    /**
-     * Returns the element types of the given array
-     *
-     * @param {Array&lt;any>} array the array to check
-     *
-     * @return {Array&lt;string>} the element types of the given array
-     *
-     * @example
-     * ArrayUtils.getTypeof(['foo', 'bar']);    // ['string', 'string']
-     */
-    static getTypeof(array) {
-        if (this.isEmpty(array)) {
-            return undefined;
-        }
-        return array === null || array === void 0 ? void 0 : array.map(item => {
-            if (Array.isArray(item)) {
-                return 'array';
-            }
-            if (typeof item === 'object') {
-                return (item === null) ? 'null' : 'object';
-            }
-            return typeof item;
-        });
-    }
-    /**
-     * Returns whether the given array is empty
-     *
-     * @param {Array&lt;any>} array the array to check
-     *
-     * @return {boolean} whether the given array is empty
-     *
-     * @example
-     * ArrayUtils.isEmpty([]);    // true
-     */
-    static isEmpty(array) {
-        return !array || array.length === 0;
-    }
-    /**
-     * Returns whether the given array is not empty
-     *
-     * @param {Array&lt;any>} array the array to check
-     *
-     * @return {boolean} whether the given array is not empty
-     *
-     * @example
-     * ArrayUtils.isNotEmpty(['foo', 'bar']);    // true
-     */
-    static isNotEmpty(array) {
-        return !this.isEmpty(array);
-    }
-    /**
-     * Returns whether each element in the given array is the expected type
-     *
-     * @param {Array&lt;any>} array the array to check
-     * @param {string} type the expected element type
-     * @param {boolean} relaxed treat null as string or object
-     *
-     * @return {boolean} whether each element in the given array is the expected type
-     *
-     * @example
-     * ArrayUtils.isTypeof(['foo', 'bar'], 'string');    // true
-     * ArrayUtils.isTypeof(['foo', 'bar', null], 'string', true);    // true
-     */
-    static isTypeof(array, type, relaxed = false) {
-        if (this.isEmpty(array) || StringUtils.isBlank(type)) {
-            return false;
-        }
-        // @ts-ignore
-        return array === null || array === void 0 ? void 0 : array.every(item => {
-            return (typeof item === type) || (relaxed &amp;&amp; item === null &amp;&amp; StringUtils.equalsAny(type, ['string', 'object']));
-        });
-    }
-    /**
-     * Returns whether the given array includes the given element
-     *
-     * @param {Array&lt;any>} array the array to check
-     * @param {any} element the element to compare
-     *
-     * @return {boolean} whether the given array includes the given element
-     *
-     * @example
-     * ArrayUtils.includes(['foo', 'bar'], 'foo');    // true
-     */
-    static includes(array, element) {
-        return !!array &amp;&amp; !!element &amp;&amp; array.includes(element);
-    }
-    /**
-     * Returns the max length of the given arrays
-     *
-     * @param {Array&lt;any>} arrays the arrays to check
-     *
-     * @return {number} the max length of the given arrays
-     *
-     * @example
-     * ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3]);    // 3
-     */
-    static maxLength(...arrays) {
-        if (this.isEmpty(arrays)) {
-            return 0;
-        }
-        let result = 0;
-        for (const array of arrays) {
-            result = Math.max(result, this.getLength(array));
-        }
-        return result;
-    }
-    /**
-     * Returns the min length of the given arrays
-     *
-     * @param {Array&lt;any>} arrays the arrays to check
-     *
-     * @return {number} the min length of the given arrays
-     *
-     * @example
-     * ArrayUtils.minLength(['foo', 'bar'], [1, 2, 3], []);    // 0
-     */
-    static minLength(...arrays) {
-        var _a;
-        if (this.isEmpty(arrays)) {
-            return 0;
-        }
-        let result = (_a = arrays[0]) === null || _a === void 0 ? void 0 : _a.length;
-        for (const array of arrays.slice(1)) {
-            result = Math.min(result, this.getLength(array));
-            if (result === 0) {
-                break;
-            }
-        }
-        return result;
-    }
-    /**
-     * Returns the array that excludes the given elements
-     *
-     * @param {Array&lt;any>} array the arrays to inspect
-     * @param {Array&lt;any>} excludes the elements array to exclude
-     *
-     * @return the array that excludes the given elements
-     *
-     * @example
-     * ArrayUtils.remove(['foo', 'bar'], ['bar']);    // ['foo']
-     */
-    static remove(array, excludes) {
-        return (!array || array.length === 0 || !excludes || excludes.length === 0) ? array : array.filter(item => !excludes.includes(item));
-    }
-    /**
-     * Reverses the given array
-     *
-     * @param {Array&lt;any>} array the arrays to inspect
-     * @param {number} startInclusive the starting index, inclusive
-     * @param {number} endExclusive the ending index, exclusive
-     *
-     * @example
-     * ArrayUtils.reverse(['foo', 'bar']);    // ['bar', 'foo']
-     */
-    static reverse(array, startInclusive, endExclusive) {
-        if (this.isEmpty(array)) {
-            return;
-        }
-        let start = Math.max(startInclusive || 0, 0);
-        let end = Math.min(endExclusive || this.getLength(array), this.getLength(array)) - 1;
-        while (array &amp;&amp; end > start) {
-            const tmp = array[end];
-            array[end] = array[start];
-            array[start] = tmp;
-            end--;
-            start++;
-        }
-    }
-}
-</code></pre>
-        </article>
-    </section>
+        <h2>
+        
+            TreeUtils
+        
+        </h2>
+        
+            <div class="class-description usertext"><p>Utilities for tree</p></div>
+        
+    
+</header>
+
+<article>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".forEach"><span class="type-signature type-signature-static">(static) </span>forEach<span class="signature">(nodes, callback, childrenKey)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Traverses the target nodes with the given callback function</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TreeUtils.js.html">TreeUtils.js</a>, <a href="TreeUtils.js.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;any></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the nodes to traverse</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the function to execute during traversing</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>childrenKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>children</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>the property name to children node</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -318,7 +311,7 @@ export class ArrayUtils {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Mar 29 2024 00:25:32 GMT+0800 using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Mar 29 2024 00:25:33 GMT+0800 using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
