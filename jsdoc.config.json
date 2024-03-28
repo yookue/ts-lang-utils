@@ -33,7 +33,7 @@
         "meta": {
             "title": "TsLangUtils",
             "description": "Common Lang Utilities for TypeScript",
-            "keyword": "yookue, commons-lang, array-utils, boolean-utils, date-utils, json-utils, number-utils, object-utils, random-utils, regex-utils, string-utils, thread-utils"
+            "keyword": "yookue, commons-lang, array-utils, boolean-utils, date-utils, json-utils, number-utils, object-utils, random-utils, regex-utils, string-utils, thread-utils, tree-utils"
         },
         "menu": {
             "Github": {
