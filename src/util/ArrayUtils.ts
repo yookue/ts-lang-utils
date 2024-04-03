@@ -15,6 +15,7 @@
  */
 
 
+import {ObjectUtils} from './ObjectUtils';
 import {StringUtils} from './StringUtils';
 
 
@@ -25,6 +26,168 @@ import {StringUtils} from './StringUtils';
  * @hideconstructor
  */
 export abstract class ArrayUtils {
+    /**
+     * Returns whether all the elements in the given array are null or undefined
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {boolean} whether all the elements in the given array are null or undefined
+     *
+     * @example
+     * ArrayUtils.allNil([null, undefined]);    // true
+     * ArrayUtils.allNil([null, {}]);    // false
+     * ArrayUtils.allNil([null, 'foobar']);    // false
+     */
+    public static allNil(array?: any[]): boolean {
+        // @ts-ignore
+        return this.isEmpty(array) || !array.some(item => ObjectUtils.isNotNil(item));
+    }
+
+    /**
+     * Returns whether all the elements in the given array are not null or undefined
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {boolean} whether all the elements in the given array are not null or undefined
+     *
+     * @example
+     * ArrayUtils.allNotNil([null, undefined]);    // false
+     * ArrayUtils.allNotNil([null, {}]);    // false
+     * ArrayUtils.allNotNil(['foo', 'bar']);    // true
+     */
+    public static allNotNil(array?: any[]): boolean {
+        // @ts-ignore
+        return this.isNotEmpty(array) && !array.some(item => ObjectUtils.isNil(item));
+    }
+
+    /**
+     * Returns whether any of the elements in the given array is null or undefined
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {boolean} whether any the elements in the given array is null or undefined
+     *
+     * @example
+     * ArrayUtils.anyNil([null, undefined]);    // true
+     * ArrayUtils.anyNil([null, {}]);    // true
+     * ArrayUtils.anyNil(['foo', 'bar']);    // false
+     */
+    public static anyNil(array?: any[]): boolean {
+        // @ts-ignore
+        return this.isEmpty(array) || array.some(item => ObjectUtils.isNil(item));
+    }
+
+    /**
+     * Returns whether any of the elements in the given array is not null or undefined
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {boolean} whether any of the elements in the given array is not null or undefined
+     *
+     * @example
+     * ArrayUtils.anyNotNil([null, undefined]);    // false
+     * ArrayUtils.anyNotNil([null, {}]);    // true
+     */
+    public static anyNotNil(array?: any[]): boolean {
+        // @ts-ignore
+        return this.isNotEmpty(array) && array.some(item => ObjectUtils.isNotNil(item));
+    }
+
+    /**
+     * Returns whether all the elements in the given array are empty
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {boolean} whether all the elements in the given array are empty
+     *
+     * @example
+     * ArrayUtils.allEmpty([null, undefined]);    // true
+     * ArrayUtils.allEmpty([null, {}]);    // true
+     */
+    public static allEmpty(array?: any[]): boolean {
+        // @ts-ignore
+        return this.isEmpty(array) || !array.some(item => ObjectUtils.isNotEmpty(item));
+    }
+
+    /**
+     * Returns whether all the elements in the given array are not empty
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {boolean} whether all the elements in the given array are not empty
+     *
+     * @example
+     * ArrayUtils.allNotEmpty([null, undefined]);    // false
+     * ArrayUtils.allNotEmpty([null, {}]);    // false
+     * ArrayUtils.allNotEmpty(['foo', 'bar']);    // true
+     */
+    public static allNotEmpty(array?: any[]): boolean {
+        // @ts-ignore
+        return this.isNotEmpty(array) && !array.some(item => ObjectUtils.isEmpty(item));
+    }
+
+    /**
+     * Returns whether any of the elements in the given array is empty
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {boolean} whether any of the elements in the given array is empty
+     *
+     * @example
+     * ArrayUtils.anyEmpty([null, undefined]);    // true
+     * ArrayUtils.anyEmpty([null, {}]);    // true
+     */
+    public static anyEmpty(array?: any[]): boolean {
+        // @ts-ignore
+        return this.isEmpty(array) || array.some(item => ObjectUtils.isEmpty(item));
+    }
+
+    /**
+     * Returns whether any of the elements in the given array is not empty
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {boolean} whether any of the elements in the given array is not empty
+     *
+     * @example
+     * ArrayUtils.anyNotEmpty([null, undefined]);    // false
+     * ArrayUtils.anyNotEmpty([null, {}]);    // false
+     */
+    public static anyNotEmpty(array?: any[]): boolean {
+        // @ts-ignore
+        return this.isNotEmpty(array) && array.some(item => ObjectUtils.isNotEmpty(item));
+    }
+
+    /**
+     * Returns the first not nil element in the given array, or null if all elements are nil
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {any} the first not nil element in the given array, or null if all elements are nil
+     *
+     * @example
+     * ArrayUtils.firstNotNil([undefined, 'foo', 'bar', {}]);    // 'foo'
+     */
+    public static firstNotNil(array?: any[]): any {
+        // @ts-ignore
+        return this.isEmpty(array) ? undefined : array.find(item => ObjectUtils.isNotNil(item));
+    }
+
+    /**
+     * Returns the first not empty element in the given array, or null if all elements are nil
+     *
+     * @param {Array<any>} array the array to check
+     *
+     * @return {any} the first not empty element in the given array, or null if all elements are nil
+     *
+     * @example
+     * ArrayUtils.firstNotEmpty([undefined, {}, 'foo', 'bar']);    // 'foo'
+     */
+    public static firstNotEmpty(array?: any[]): any {
+        // @ts-ignore
+        return this.isEmpty(array) ? undefined : array.find(item => ObjectUtils.isNotEmpty(item));
+    }
+
     /**
      * Returns an array of the given element
      *

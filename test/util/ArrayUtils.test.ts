@@ -19,6 +19,37 @@ import {ArrayUtils} from '@yookue/ts-lang-utils';
 
 
 describe('ArrayUtils', () => {
+    test('Testing allNil', () => {
+        expect(ArrayUtils.allNil([undefined, null])).toBeTruthy();
+        expect(ArrayUtils.allNil([undefined, {}])).toBeFalsy();
+        expect(ArrayUtils.allNil([undefined, 'foobar'])).toBeFalsy();
+    });
+
+    test('Testing allNotNil', () => {
+        expect(ArrayUtils.allNotNil([undefined, 'foobar'])).toBeFalsy();
+        expect(ArrayUtils.allNotNil(['foo', 'bar'])).toBeTruthy();
+    });
+
+    test('Testing anyNil', () => {
+        expect(ArrayUtils.anyNil([undefined, null])).toBeTruthy();
+        expect(ArrayUtils.anyNil([undefined, 'foobar'])).toBeTruthy();
+        expect(ArrayUtils.anyNil(['foo', 'bar'])).toBeFalsy();
+    });
+
+    test('Testing anyNotNil', () => {
+        expect(ArrayUtils.anyNotNil([undefined, null])).toBeFalsy();
+        expect(ArrayUtils.anyNotNil([undefined, 'foobar'])).toBeTruthy();
+        expect(ArrayUtils.anyNotNil(['foo', 'bar'])).toBeTruthy();
+    });
+
+    test('Testing firstNotNil', () => {
+        expect(ArrayUtils.firstNotNil([undefined, 'foo', 'bar', {}])).toBe('foo');
+    });
+
+    test('Testing firstNotEmpty', () => {
+        expect(ArrayUtils.firstNotEmpty([undefined, {}, 'foo', 'bar'])).toBe('foo');
+    });
+
     test('Testing asArray', () => {
         expect(ArrayUtils.asArray(undefined)).toBeUndefined();
         expect(ArrayUtils.asArray('foobar')).toStrictEqual(['foobar']);
