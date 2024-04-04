@@ -26,14 +26,14 @@ export abstract class RegexUtils {
      * Returns the array of strings that match the given pattern in the text
      *
      * @param {string} text the text on inspect
-     * @param {RegExp | string} pattern the regular expression to match
+     * @param {string | RegExp} search the string or regular expression to match
      *
      * @return {Array<string>} the array of strings that match the given pattern in the text
      *
      * @example
      * RegexUtils.extractWords('foo, & bar');    // ['foo', 'bar']
      */
-    public static extractWords(text?: string | null, pattern: RegExp | string = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g): string[] | undefined {
-        return !text ? undefined : (text.match(pattern) || undefined);
+    public static extractWords(text?: string | null, search: string | RegExp = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g): string[] | undefined {
+        return !text ? undefined : (text.match(search) || undefined);
     }
 }

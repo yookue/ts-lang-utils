@@ -761,6 +761,74 @@ export abstract class StringUtils {
     }
 
     /**
+     * Returns the string that removed all occurrences in the given text
+     *
+     * @param {string} text the text on inspect
+     * @param {string | RegExp} search the string or regular expression to match
+     *
+     * @return {string} the string that removed all occurrences in the given text
+     *
+     * @example
+     * StringUtils.removeAll(undefined, undefined);    // undefined
+     * StringUtils.removeAll('foobar-foobar', undefined);    // 'foobar-foobar'
+     * StringUtils.removeAll('foobar-foobar', 'bar');    // 'foo-foo'
+     */
+    public static removeAll(text?: string | null, search?: string | RegExp | null): string | undefined | null {
+        return this.replaceAll(text, search, '');
+    }
+
+    /**
+     * Returns the string that removed all occurrences in the given text, case-insensitive
+     *
+     * @param {string} text the text on inspect
+     * @param {string | RegExp} search the string or regular expression to match
+     *
+     * @return {string} the string that removed all occurrences in the given text, case-insensitive
+     *
+     * @example
+     * StringUtils.removeAllIgnoreCase(undefined, undefined);    // undefined
+     * StringUtils.removeAllIgnoreCase('foobar-foobar', undefined);    // 'foobar-foobar'
+     * StringUtils.removeAllIgnoreCase('foobar-foobar', 'BAR');    // 'foo-foo'
+     */
+    public static removeAllIgnoreCase(text?: string | null, search?: string | RegExp | null): string | undefined | null {
+        return this.replaceAllIgnoreCase(text, search, '');
+    }
+
+    /**
+     * Returns the string that removed the first occurrence in the given text
+     *
+     * @param {string} text the text on inspect
+     * @param {string | RegExp} search the string or regular expression to match
+     *
+     * @return {string} the string that removed the first occurrence in the given text
+     *
+     * @example
+     * StringUtils.removeFirst(undefined, undefined);    // undefined
+     * StringUtils.removeFirst('foobar-foobar', undefined);    // 'foobar-foobar'
+     * StringUtils.removeFirst('foobar-foobar', 'bar');    // 'foo-foobar'
+     */
+    public static removeFirst(text?: string | null, search?: string | RegExp | null): string | undefined | null {
+        return this.replaceFirst(text, search, '');
+    }
+
+    /**
+     * Returns the string that removed the first occurrence in the given text, case-insensitive
+     *
+     * @param {string} text the text on inspect
+     * @param {string | RegExp} search the string or regular expression to match
+     *
+     * @return {string} the string that removed the first occurrence in the given text, case-insensitive
+     *
+     * @example
+     * StringUtils.removeFirstIgnoreCase(undefined, undefined);    // undefined
+     * StringUtils.removeFirstIgnoreCase('foobar-foobar', undefined);    // 'foobar-foobar'
+     * StringUtils.removeFirstIgnoreCase('foobar-foobar', 'BAR');    // 'foo-foobar'
+     */
+    public static removeFirstIgnoreCase(text?: string | null, search?: string | RegExp | null): string | undefined | null {
+        return this.replaceFirstIgnoreCase(text, search, '');
+    }
+
+    /**
      * Returns the array that excludes the elements which equals to any of the given exclusions
      *
      * @param {Array<string>} texts the arrays to inspect
@@ -818,6 +886,78 @@ export abstract class StringUtils {
      */
     public static removeIncludesIgnoreCase(texts?: string[] | null, excludes?: string[] | null): string[] | undefined | null {
         return (!texts || texts.length === 0 || !excludes || excludes.length === 0) ? texts : texts.filter(text => !excludes.some(exclude => this.includesIgnoreCase(text, exclude)));
+    }
+
+    /**
+     * Returns the string that replaced all occurrences in the given text
+     *
+     * @param {string} text the text on inspect
+     * @param {string | RegExp} search the string or regular expression to match
+     * @param {string} replace the expected replacement string
+     *
+     * @return {string} the string that replaced all occurrences in the given text
+     *
+     * @example
+     * StringUtils.replaceAll(undefined, undefined, undefined);    // undefined
+     * StringUtils.replaceAll('foobar-foobar', undefined, 'hello');    // 'foobar-foobar'
+     * StringUtils.replaceAll('foobar-foobar', 'foobar', 'hello');    // 'hello-hello'
+     */
+    public static replaceAll(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
+        return (this.isEmpty(text) || !search) ? text : text?.replace(new RegExp(search, 'g'), (replace ?? ''));
+    }
+
+    /**
+     * Returns the string that replaced all occurrences in the given text, case-insensitive
+     *
+     * @param {string} text the text on inspect
+     * @param {string | RegExp} search the string or regular expression to match
+     * @param {string} replace the expected replacement string
+     *
+     * @return {string} the string that replaced all occurrences in the given text, case-insensitive
+     *
+     * @example
+     * StringUtils.replaceAllIgnoreCase(undefined, undefined, undefined);    // undefined
+     * StringUtils.replaceAllIgnoreCase('foobar-foobar', undefined, 'hello');    // 'foobar-foobar'
+     * StringUtils.replaceAllIgnoreCase('foobar-foobar', 'FOOBAR', 'hello');    // 'hello-hello'
+     */
+    public static replaceAllIgnoreCase(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
+        return (this.isEmpty(text) || !search) ? text : text?.replace(new RegExp(search, 'gi'), (replace ?? ''));
+    }
+
+    /**
+     * Returns the string that replaced the first occurrence in the given text
+     *
+     * @param {string} text the text on inspect
+     * @param {string | RegExp} search the string or regular expression to match
+     * @param {string} replace the expected replacement string
+     *
+     * @return {string} the string that replaced the first occurrence in the given text
+     *
+     * @example
+     * StringUtils.replaceFirst(undefined, undefined, undefined);    // undefined
+     * StringUtils.replaceFirst('foobar-foobar', 'foobar', undefined);    // 'foobar-foobar'
+     * StringUtils.replaceFirst('foobar-foobar', 'foobar', 'hello');    // 'hello-foobar'
+     */
+    public static replaceFirst(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
+        return (this.isEmpty(text) || !search) ? text : text?.replace(search, (replace ?? ''));
+    }
+
+    /**
+     * Returns the string that replaced the first occurrence in the given text, case-insensitive
+     *
+     * @param {string} text the text on inspect
+     * @param {string | RegExp} search the string or regular expression to match
+     * @param {string} replace the expected replacement string
+     *
+     * @return {string} the string that replaced the first occurrence in the given text, case-insensitive
+     *
+     * @example
+     * StringUtils.replaceFirstIgnoreCase(undefined, undefined, undefined);    // undefined
+     * StringUtils.replaceFirstIgnoreCase('foobar-foobar', 'foobar', undefined);    // 'foobar-foobar'
+     * StringUtils.replaceFirstIgnoreCase('foobar-foobar', 'FOOBAR', 'hello');    // 'hello-foobar'
+     */
+    public static replaceFirstIgnoreCase(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
+        return (this.isEmpty(text) || !search) ? text : text?.replace(new RegExp(search, 'i'), (replace ?? ''));
     }
 
     /**

@@ -231,6 +231,30 @@ describe('StringUtils', () => {
         expect(StringUtils.prependIfMissingIgnoreCase('foobar', 'FOO')).toBe('foobar');
     });
 
+    test('Testing removeAll', () => {
+        expect(StringUtils.removeAll(undefined, undefined)).toBeUndefined();
+        expect(StringUtils.removeAll('foobar-foobar', undefined)).toBe('foobar-foobar');
+        expect(StringUtils.removeAll('foobar-foobar', 'bar')).toBe('foo-foo');
+    });
+
+    test('Testing removeAllIgnoreCase', () => {
+        expect(StringUtils.removeAllIgnoreCase(undefined, undefined)).toBeUndefined();
+        expect(StringUtils.removeAllIgnoreCase('foobar-foobar', undefined)).toBe('foobar-foobar');
+        expect(StringUtils.removeAllIgnoreCase('foobar-foobar', 'BAR')).toBe('foo-foo');
+    });
+
+    test('Testing removeFirst', () => {
+        expect(StringUtils.removeFirst(undefined, undefined)).toBeUndefined();
+        expect(StringUtils.removeFirst('foobar-foobar', undefined)).toBe('foobar-foobar');
+        expect(StringUtils.removeFirst('foobar-foobar', 'bar')).toBe('foo-foobar');
+    });
+
+    test('Testing removeFirstIgnoreCase', () => {
+        expect(StringUtils.removeFirstIgnoreCase(undefined, undefined)).toBeUndefined();
+        expect(StringUtils.removeFirstIgnoreCase('foobar-foobar', undefined)).toBe('foobar-foobar');
+        expect(StringUtils.removeFirstIgnoreCase('foobar-foobar', 'BAR')).toBe('foo-foobar');
+    });
+
     test('Testing removeEquals', () => {
         expect(StringUtils.removeEquals(['foo', 'bar'], undefined)).toStrictEqual(['foo', 'bar']);
         expect(StringUtils.removeEquals(['foo', 'bar'], ['world'])).toStrictEqual(['foo', 'bar']);
@@ -249,6 +273,30 @@ describe('StringUtils', () => {
 
     test('Testing removeIncludesIgnoreCase', () => {
         expect(StringUtils.removeIncludesIgnoreCase(['foo', 'bar'], ['AR'])).toStrictEqual(['foo']);
+    });
+
+    test('Testing replaceAll', () => {
+        expect(StringUtils.replaceAll(undefined, undefined, undefined)).toBeUndefined();
+        expect(StringUtils.replaceAll('foobar-foobar', undefined, 'hello')).toBe('foobar-foobar');
+        expect(StringUtils.replaceAll('foobar-foobar', 'foobar', 'hello')).toBe('hello-hello');
+    });
+
+    test('Testing replaceAllIgnoreCase', () => {
+        expect(StringUtils.replaceAllIgnoreCase(undefined, undefined, undefined)).toBeUndefined();
+        expect(StringUtils.replaceAllIgnoreCase('foobar-foobar', undefined, 'hello')).toBe('foobar-foobar');
+        expect(StringUtils.replaceAllIgnoreCase('foobar-foobar', 'FOOBAR', 'hello')).toBe('hello-hello');
+    });
+
+    test('Testing replaceFirst', () => {
+        expect(StringUtils.replaceFirst(undefined, undefined, undefined)).toBeUndefined();
+        expect(StringUtils.replaceFirst('foobar-foobar', undefined, 'hello')).toBe('foobar-foobar');
+        expect(StringUtils.replaceFirst('foobar-foobar', 'foobar', 'hello')).toBe('hello-foobar');
+    });
+
+    test('Testing replaceFirstIgnoreCase', () => {
+        expect(StringUtils.replaceFirstIgnoreCase(undefined, undefined, undefined)).toBeUndefined();
+        expect(StringUtils.replaceFirstIgnoreCase('foobar-foobar', undefined, 'hello')).toBe('foobar-foobar');
+        expect(StringUtils.replaceFirstIgnoreCase('foobar-foobar', 'FOOBAR', 'hello')).toBe('hello-foobar');
     });
 
     test('Testing startsWith', () => {
