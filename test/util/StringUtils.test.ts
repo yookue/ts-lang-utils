@@ -108,7 +108,13 @@ describe('StringUtils', () => {
     });
 
     test('Testing capitalizeFirst', () => {
-        expect(StringUtils.capitalizeFirst('foobar')).toBe('Foobar');
+        expect(StringUtils.capitalizeFirst('f')).toBe('F');
+        expect(StringUtils.capitalizeFirst('fooBar')).toBe('FooBar');
+    });
+
+    test('Testing capitalizeFirstLowerTail', () => {
+        expect(StringUtils.capitalizeFirstLowerTail('f')).toBe('F');
+        expect(StringUtils.capitalizeFirstLowerTail('fooBar')).toBe('Foobar');
     });
 
     test('Testing defaultString', () => {

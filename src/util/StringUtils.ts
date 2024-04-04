@@ -253,17 +253,31 @@ export abstract class StringUtils {
     }
 
     /**
-     * Returns the first letter capitalized representation of the given string
+     * Returns the first letter uppercase representation of the given string
      *
      * @param {string} text the source string to check
      *
-     * @return {string} the first letter capitalized representation of the given string
+     * @return {string} the first letter uppercase representation of the given string
 
      @example
-     StringUtils.capitalizeFirst('foobar');    // 'Foobar'
+     StringUtils.capitalizeFirst('fooBar');    // 'FooBar'
      */
     public static capitalizeFirst(text?: string | null): string | undefined | null {
-        return !text ? text : text.substring(0, 1).toUpperCase() + text.substring(1);
+        return !text ? text : (text.charAt(0).toUpperCase() + text.substring(1));
+    }
+
+    /**
+     * Returns the first letter uppercase and others lowercase representation of the given string
+     *
+     * @param {string} text the source string to check
+     *
+     * @return {string} the letter uppercase and others lowercase representation of the given string
+
+     @example
+     StringUtils.capitalizeFirstLowerTail('fooBar');    // 'Foobar'
+     */
+    public static capitalizeFirstLowerTail(text?: string | null): string | undefined | null {
+        return !text ? text : (text.charAt(0).toUpperCase() + text.substring(1)?.toLowerCase());
     }
 
     /**
