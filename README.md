@@ -42,7 +42,7 @@ Enjoy your journey in coding your projects with ts-lang-utils. ✌️
 
 ## License
 
-This project is under the [MIT](https://mit-license.org/) License (MIT)
+This project is under the [MIT License](https://mit-license.org/).
 
 ## Website
 
