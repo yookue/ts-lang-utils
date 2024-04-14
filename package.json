@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.26",
+    "version": "0.1.27",
     "title": "TsLangUtils",
     "description": "Common Lang Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -33,7 +33,7 @@
         "build": "del-cli ./dist && father build",
         "build:watch": "father dev",
         "docs:build": "del-cli ./docs-dist && tsc --outDir ./docs-temp && jsdoc -c jsdoc.config.json && del-cli ./docs-temp",
-        "docs:deploy": "gh-pages -d ./docs-dist",
+        "docs:publish": "gh-pages -d ./docs-dist",
         "doctor": "father doctor",
         "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
         "test": "jest",
