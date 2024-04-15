@@ -23,6 +23,130 @@
  */
 export abstract class ObjectUtils {
     /**
+     * Returns whether all the elements in the given objects are null or undefined
+     *
+     * @param {Array<any>} objects the objects to check
+     *
+     * @return {boolean} whether all the elements in the given objects are null or undefined
+     *
+     * @example
+     * ObjectUtils.allNil([null, undefined]);    // true
+     * ObjectUtils.allNil([null, {}]);    // false
+     * ObjectUtils.allNil([null, 'foobar']);    // false
+     */
+    public static allNil(objects?: any[]): boolean {
+        return !objects || objects.length === 0 || objects?.every(item => this.isNil(item));
+    }
+
+    /**
+     * Returns whether all the elements in the given objects are not null or undefined
+     *
+     * @param {Array<any>} objects the objects to check
+     *
+     * @return {boolean} whether all the elements in the given objects are not null or undefined
+     *
+     * @example
+     * ObjectUtils.allNotNil([null, undefined]);    // false
+     * ObjectUtils.allNotNil([null, {}]);    // false
+     * ObjectUtils.allNotNil(['foo', 'bar']);    // true
+     */
+    public static allNotNil(objects?: any[]): boolean {
+        return !!objects && objects.length > 0 && objects.every(item => this.isNotNil(item));
+    }
+
+    /**
+     * Returns whether any of the elements in the given objects is null or undefined
+     *
+     * @param {Array<any>} objects the objects to check
+     *
+     * @return {boolean} whether any the elements in the given objects is null or undefined
+     *
+     * @example
+     * ObjectUtils.anyNil([null, undefined]);    // true
+     * ObjectUtils.anyNil([null, {}]);    // true
+     * ObjectUtils.anyNil(['foo', 'bar']);    // false
+     */
+    public static anyNil(objects?: any[]): boolean {
+        return !objects || objects.length === 0 || objects.some(item => this.isNil(item));
+    }
+
+    /**
+     * Returns whether any of the elements in the given objects is not null or undefined
+     *
+     * @param {Array<any>} objects the objects to check
+     *
+     * @return {boolean} whether any of the elements in the given objects is not null or undefined
+     *
+     * @example
+     * ObjectUtils.anyNotNil([null, undefined]);    // false
+     * ObjectUtils.anyNotNil([null, {}]);    // true
+     */
+    public static anyNotNil(objects?: any[]): boolean {
+        return !!objects && objects.length > 0 && objects.some(item => this.isNotNil(item));
+    }
+
+    /**
+     * Returns whether all the elements in the given objects are empty
+     *
+     * @param {Array<any>} objects the objects to check
+     *
+     * @return {boolean} whether all the elements in the given objects are empty
+     *
+     * @example
+     * ObjectUtils.allEmpty([null, undefined]);    // true
+     * ObjectUtils.allEmpty([null, {}]);    // true
+     */
+    public static allEmpty(objects?: any[]): boolean {
+        return !objects || objects.length === 0 || objects.every(item => this.isEmpty(item));
+    }
+
+    /**
+     * Returns whether all the elements in the given objects are not empty
+     *
+     * @param {Array<any>} objects the objects to check
+     *
+     * @return {boolean} whether all the elements in the given objects are not empty
+     *
+     * @example
+     * ObjectUtils.allNotEmpty([null, undefined]);    // false
+     * ObjectUtils.allNotEmpty([null, {}]);    // false
+     * ObjectUtils.allNotEmpty(['foo', 'bar']);    // true
+     */
+    public static allNotEmpty(objects?: any[]): boolean {
+        return !!objects && objects.length > 0 && objects.every(item => this.isNotEmpty(item));
+    }
+
+    /**
+     * Returns whether any of the elements in the given objects is empty
+     *
+     * @param {Array<any>} objects the objects to check
+     *
+     * @return {boolean} whether any of the elements in the given objects is empty
+     *
+     * @example
+     * ObjectUtils.anyEmpty([null, undefined]);    // true
+     * ObjectUtils.anyEmpty([null, {}]);    // true
+     */
+    public static anyEmpty(objects?: any[]): boolean {
+        return !objects || objects.length === 0 || objects.some(item => this.isEmpty(item));
+    }
+
+    /**
+     * Returns whether any of the elements in the given objects is not empty
+     *
+     * @param {Array<any>} objects the objects to check
+     *
+     * @return {boolean} whether any of the elements in the given objects is not empty
+     *
+     * @example
+     * ObjectUtils.anyNotEmpty([null, undefined]);    // false
+     * ObjectUtils.anyNotEmpty([null, {}]);    // false
+     */
+    public static anyNotEmpty(objects?: any[]): boolean {
+        return !!objects && objects.length > 0 && objects.some(item => this.isNotEmpty(item));
+    }
+
+    /**
      * Returns whether the given object is null or undefined
      *
      * @param {any} object the object to check

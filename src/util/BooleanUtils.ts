@@ -27,6 +27,134 @@ import {StringUtils} from './StringUtils';
  */
 export abstract class BooleanUtils {
     /**
+     * Returns whether all the given elements are true
+     *
+     * @param {Array<boolean | number | string>} values the elements to check
+     *
+     * @return {boolean} whether all the given elements are true
+     *
+     * @example
+     * BooleanUtils.allTrue([null, undefined]);    // false
+     * BooleanUtils.allTrue([null, true]);    // false
+     * BooleanUtils.allTrue([true, true]);    // true
+     */
+    public static allTrue(values?: Array<boolean | number | string | undefined | null>): boolean {
+        return !!values && values.length > 0 && values.every(item => this.isTrue(item));
+    }
+
+    /**
+     * Returns whether all the given elements are not true
+     *
+     * @param {Array<boolean | number | string>} values the elements to check
+     *
+     * @return {boolean} whether all the given elements are not true
+     *
+     * @example
+     * BooleanUtils.allNotTrue([null, undefined]);    // true
+     * BooleanUtils.allNotTrue([null, true]);    // false
+     * BooleanUtils.allNotTrue([null, false]);    // true
+     */
+    public static allNotTrue(values?: Array<boolean | number | string | undefined | null>): boolean {
+        return !values || values.length === 0 || values.every(item => this.isNotTrue(item));
+    }
+
+    /**
+     * Returns whether all the given elements are false
+     *
+     * @param {Array<boolean | number | string>} values the elements to check
+     *
+     * @return {boolean} whether all the given elements are false
+     *
+     * @example
+     * BooleanUtils.allFalse([null, undefined]);    // false
+     * BooleanUtils.allFalse([null, false]);    // false
+     * BooleanUtils.allFalse([false, false]);    // true
+     */
+    public static allFalse(values?: Array<boolean | number | string | undefined | null>): boolean {
+        return !!values && values.length > 0 && values.every(item => this.isFalse(item));
+    }
+
+    /**
+     * Returns whether all the given elements are not false
+     *
+     * @param {Array<boolean | number | string>} values the elements to check
+     *
+     * @return {boolean} whether all the given elements are not false
+     *
+     * @example
+     * BooleanUtils.allNotFalse([null, undefined]);    // true
+     * BooleanUtils.allNotFalse([null, false]);    // false
+     * BooleanUtils.allNotFalse([null, true]);    // true
+     */
+    public static allNotFalse(values?: Array<boolean | number | string | undefined | null>): boolean {
+        return !values || values.length === 0 || values.every(item => this.isNotFalse(item));
+    }
+
+    /**
+     * Returns whether any of the given elements is true
+     *
+     * @param {Array<boolean | number | string>} values the elements to check
+     *
+     * @return {boolean} whether any of the given elements is true
+     *
+     * @example
+     * BooleanUtils.anyTrue([null, undefined]);    // false
+     * BooleanUtils.anyTrue([null, true]);    // true
+     * BooleanUtils.anyTrue([null, false]);    // false
+     */
+    public static anyTrue(values?: Array<boolean | number | string | undefined | null>): boolean {
+        return !!values && values.length > 0 && values.some(item => this.isTrue(item));
+    }
+
+    /**
+     * Returns whether any of the given elements is not true
+     *
+     * @param {Array<boolean | number | string>} values the elements to check
+     *
+     * @return {boolean} whether any of the given elements is not true
+     *
+     * @example
+     * BooleanUtils.anyNotTrue([null, undefined]);    // true
+     * BooleanUtils.anyNotTrue([null, true]);    // true
+     * BooleanUtils.anyNotTrue([null, false]);    // true
+     */
+    public static anyNotTrue(values?: Array<boolean | number | string | undefined | null>): boolean {
+        return !values || values.length === 0 || values.some(item => this.isNotTrue(item));
+    }
+
+    /**
+     * Returns whether any of the given elements is false
+     *
+     * @param {Array<boolean | number | string>} values the elements to check
+     *
+     * @return {boolean} whether any of the given elements is false
+     *
+     * @example
+     * BooleanUtils.anyFalse([null, undefined]);    // false
+     * BooleanUtils.anyFalse([null, true]);    // false
+     * BooleanUtils.anyFalse([null, false]);    // true
+     */
+    public static anyFalse(values?: Array<boolean | number | string | undefined | null>): boolean {
+        return !!values && values.length > 0 && values.some(item => this.isFalse(item));
+    }
+
+    /**
+     * Returns whether any of the given elements is not false
+     *
+     * @param {Array<boolean | number | string>} values the elements to check
+     *
+     * @return {boolean} whether any of the given elements is not false
+     *
+     * @example
+     * BooleanUtils.anyNotFalse([null, undefined]);    // true
+     * BooleanUtils.anyNotFalse([null, false]);    // true
+     * BooleanUtils.anyNotFalse([false, false]);    // false
+     */
+    public static anyNotFalse(values?: Array<boolean | number | string | undefined | null>): boolean {
+        return !values || values.length === 0 || values.some(item => this.isNotFalse(item));
+    }
+
+    /**
      * Returns whether the given value can be converted to true
      *
      * @param {boolean | number | string | null} value the source value to check

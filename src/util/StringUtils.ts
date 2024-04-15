@@ -28,77 +28,6 @@ import {RegexUtils} from './RegexUtils';
  */
 export abstract class StringUtils {
     /**
-     * Returns the length of the given string
-     *
-     * @param {string} text the source string to check
-     *
-     * @return {number} the length of the given string
-     */
-    public static getLength(text?: string | null): number {
-        return text ? text.length : 0;
-    }
-
-    /**
-     * Returns whether the given string is empty
-     *
-     * @param {string} text the string to check
-     *
-     * @return {boolean} whether the given string is empty
-     *
-     * @example
-     * StringUtils.isEmpty(undefined);    // true
-     * StringUtils.isEmpty('foobar');    // false
-     */
-    public static isEmpty(text?: string | null): boolean {
-        return !text || text.length === 0;
-    }
-
-    /**
-     * Returns whether the given string is not empty
-     *
-     * @param {string} text the string to check
-     *
-     * @return {boolean} whether the given string is not empty
-     *
-     * @example
-     * StringUtils.isNotEmpty('foobar');    // true
-     */
-    public static isNotEmpty(text?: string | null): boolean {
-        return !this.isEmpty(text);
-    }
-
-    /**
-     * Returns whether the given string is blank
-     *
-     * @description check if all the characters in the given string is whitespace or line separators
-     *
-     * @param {string} text the string to check
-     *
-     * @return {boolean} whether the given string is blank
-     *
-     * @example
-     * StringUtils.isBlank(undefined);    // true
-     * StringUtils.isBlank('foobar');    // false
-     */
-    public static isBlank(text?: string | null): boolean {
-        return !text || text?.length === 0 || /^\s*$/.test(text);
-    }
-
-    /**
-     * Returns whether the given string is not blank
-     *
-     * @param {string} text the string to check
-     *
-     * @return {boolean} whether the given string is not blank
-     *
-     * @example
-     * StringUtils.isNotBlank('foobar');    // true
-     */
-    public static isNotBlank(text?: string | null): boolean {
-        return !this.isBlank(text);
-    }
-
-    /**
      * Returns whether all the given texts are empty
      *
      * @param {Array<string>} texts the texts to check
@@ -106,11 +35,11 @@ export abstract class StringUtils {
      * @return {boolean} whether all the given texts are empty
      *
      * @example
-     * StringUtils.allEmpty(null, undefined);    // true
-     * StringUtils.allEmpty(null, 'true');    // false
+     * StringUtils.allEmpty([null, undefined]);    // true
+     * StringUtils.allEmpty([null, 'true']);    // false
      */
-    public static allEmpty(...texts: Array<string | undefined | null>): boolean {
-        return !texts || texts.length === 0 || !texts.some(text => this.isNotEmpty(text));
+    public static allEmpty(texts?: Array<string | undefined | null>): boolean {
+        return !texts || texts.length === 0 || texts.every(item => this.isEmpty(item));
     }
 
     /**
@@ -121,12 +50,12 @@ export abstract class StringUtils {
      * @return {boolean} whether all the given texts are not empty
      *
      * @example
-     * StringUtils.allNotEmpty(null, undefined);    // false
-     * StringUtils.allNotEmpty(null, 'world');    // false
-     * StringUtils.allNotEmpty('foo', 'bar');    // true
+     * StringUtils.allNotEmpty([null, undefined]);    // false
+     * StringUtils.allNotEmpty([null, 'world']);    // false
+     * StringUtils.allNotEmpty(['foo', 'bar']);    // true
      */
-    public static allNotEmpty(...texts: Array<string | undefined | null>): boolean {
-        return texts && texts.length > 0 && !texts.some(text => this.isEmpty(text));
+    public static allNotEmpty(texts?: Array<string | undefined | null>): boolean {
+        return !!texts && texts.length > 0 && texts.every(item => this.isNotEmpty(item));
     }
 
     /**
@@ -137,11 +66,11 @@ export abstract class StringUtils {
      * @return {boolean} whether any of the given texts is empty
      *
      * @example
-     * StringUtils.anyEmpty(null, undefined);    // true
-     * StringUtils.anyEmpty('foo', 'bar');    // false
+     * StringUtils.anyEmpty([null, undefined]);    // true
+     * StringUtils.anyEmpty(['foo', 'bar']);    // false
      */
-    public static anyEmpty(...texts: Array<string | undefined | null>): boolean {
-        return !texts || texts.length === 0 || texts.some(text => this.isEmpty(text));
+    public static anyEmpty(texts?: Array<string | undefined | null>): boolean {
+        return !texts || texts.length === 0 || texts.some(item => this.isEmpty(item));
     }
 
     /**
@@ -152,11 +81,11 @@ export abstract class StringUtils {
      * @return {boolean} whether any of the given texts is not empty
      *
      * @example
-     * StringUtils.anyNotEmpty(null, undefined);    // false
-     * StringUtils.anyNotEmpty(null, 'world');    // true
+     * StringUtils.anyNotEmpty([null, undefined]);    // false
+     * StringUtils.anyNotEmpty([null, 'world']);    // true
      */
-    public static anyNotEmpty(...texts: Array<string | undefined | null>): boolean {
-        return texts && texts?.length > 0 && texts.some(text => this.isNotEmpty(text));
+    public static anyNotEmpty(texts?: Array<string | undefined | null>): boolean {
+        return !!texts && texts?.length > 0 && texts.some(item => this.isNotEmpty(item));
     }
 
     /**
@@ -167,11 +96,11 @@ export abstract class StringUtils {
      * @return {boolean} whether all the given texts are blank
      *
      * @example
-     * StringUtils.allBlank(null, undefined);    // true
-     * StringUtils.allBlank(null, 'true');    // false
+     * StringUtils.allBlank([null, undefined]);    // true
+     * StringUtils.allBlank([null, 'true']);    // false
      */
-    public static allBlank(...texts: Array<string | undefined | null>): boolean {
-        return !texts || texts.length === 0 || !texts.some(text => this.isNotBlank(text));
+    public static allBlank(texts?: Array<string | undefined | null>): boolean {
+        return !texts || texts.length === 0 || texts.every(item => this.isBlank(item));
     }
 
     /**
@@ -182,12 +111,12 @@ export abstract class StringUtils {
      * @return {boolean} whether all the given texts are not blank
      *
      * @example
-     * StringUtils.allNotBlank(null, undefined);    // false
-     * StringUtils.allNotBlank(null, 'world');    // false
-     * StringUtils.allNotBlank('foo', 'bar');    // true
+     * StringUtils.allNotBlank([null, undefined]);    // false
+     * StringUtils.allNotBlank([null, 'world']);    // false
+     * StringUtils.allNotBlank(['foo', 'bar']);    // true
      */
-    public static allNotBlank(...texts: Array<string | undefined | null>): boolean {
-        return texts && texts.length > 0 && !texts.some(text => this.isBlank(text));
+    public static allNotBlank(texts?: Array<string | undefined | null>): boolean {
+        return !!texts && texts.length > 0 && texts.every(item => this.isNotBlank(item));
     }
 
     /**
@@ -198,11 +127,11 @@ export abstract class StringUtils {
      * @return {boolean} whether any of the given texts is blank
      *
      * @example
-     * StringUtils.anyBlank(null, undefined);    // true
-     * StringUtils.anyBlank('foo', 'bar');    // false
+     * StringUtils.anyBlank([null, undefined]);    // true
+     * StringUtils.anyBlank(['foo', 'bar']);    // false
      */
-    public static anyBlank(...texts: Array<string | undefined | null>): boolean {
-        return !texts || texts.length === 0 || texts.some(text => this.isBlank(text));
+    public static anyBlank(texts?: Array<string | undefined | null>): boolean {
+        return !texts || texts.length === 0 || texts.some(item => this.isBlank(item));
     }
 
     /**
@@ -213,11 +142,11 @@ export abstract class StringUtils {
      * @return {boolean} whether any of the given texts is not blank
      *
      * @example
-     * StringUtils.anyNotBlank(null, undefined);    // false
-     * StringUtils.anyNotBlank(null, 'world');    // true
+     * StringUtils.anyNotBlank([null, undefined]);    // false
+     * StringUtils.anyNotBlank([null, 'world']);    // true
      */
-    public static anyNotBlank(...texts: Array<string | undefined | null>): boolean {
-        return texts && texts.length > 0 && texts.some(text => this.isNotBlank(text));
+    public static anyNotBlank(texts?: Array<string | undefined | null>): boolean {
+        return !!texts && texts.length > 0 && texts.some(item => this.isNotBlank(item));
     }
 
     /**
@@ -632,6 +561,77 @@ export abstract class StringUtils {
             result = result.replace(regex, (value ? value.toString() : ''));
         }
         return result;
+    }
+
+    /**
+     * Returns the length of the given string
+     *
+     * @param {string} text the source string to check
+     *
+     * @return {number} the length of the given string
+     */
+    public static getLength(text?: string | null): number {
+        return text ? text.length : 0;
+    }
+
+    /**
+     * Returns whether the given string is empty
+     *
+     * @param {string} text the string to check
+     *
+     * @return {boolean} whether the given string is empty
+     *
+     * @example
+     * StringUtils.isEmpty(undefined);    // true
+     * StringUtils.isEmpty('foobar');    // false
+     */
+    public static isEmpty(text?: string | null): boolean {
+        return !text || text.length === 0;
+    }
+
+    /**
+     * Returns whether the given string is not empty
+     *
+     * @param {string} text the string to check
+     *
+     * @return {boolean} whether the given string is not empty
+     *
+     * @example
+     * StringUtils.isNotEmpty('foobar');    // true
+     */
+    public static isNotEmpty(text?: string | null): boolean {
+        return !this.isEmpty(text);
+    }
+
+    /**
+     * Returns whether the given string is blank
+     *
+     * @description check if all the characters in the given string is whitespace or line separators
+     *
+     * @param {string} text the string to check
+     *
+     * @return {boolean} whether the given string is blank
+     *
+     * @example
+     * StringUtils.isBlank(undefined);    // true
+     * StringUtils.isBlank('foobar');    // false
+     */
+    public static isBlank(text?: string | null): boolean {
+        return !text || text?.length === 0 || /^\s*$/.test(text);
+    }
+
+    /**
+     * Returns whether the given string is not blank
+     *
+     * @param {string} text the string to check
+     *
+     * @return {boolean} whether the given string is not blank
+     *
+     * @example
+     * StringUtils.isNotBlank('foobar');    // true
+     */
+    public static isNotBlank(text?: string | null): boolean {
+        return !this.isBlank(text);
     }
 
     /**

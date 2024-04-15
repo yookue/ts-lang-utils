@@ -19,82 +19,52 @@ import {StringUtils} from '@yookue/ts-lang-utils';
 
 
 describe('StringUtils', () => {
-    test('Testing getLength', () => {
-        expect(StringUtils.getLength(undefined)).toBe(0);
-        expect(StringUtils.getLength('')).toBe(0);
-        expect(StringUtils.getLength('foobar')).toBe(6);
-    });
-
-    test('Testing isEmpty', () => {
-        expect(StringUtils.isEmpty(undefined)).toBeTruthy();
-        expect(StringUtils.isEmpty('')).toBeTruthy();
-        expect(StringUtils.isEmpty('foobar')).toBeFalsy();
-    });
-
-    test('Testing isNotEmpty', () => {
-        expect(StringUtils.isNotEmpty(undefined)).toBeFalsy();
-        expect(StringUtils.isNotEmpty('')).toBeFalsy();
-        expect(StringUtils.isNotEmpty('foobar')).toBeTruthy();
-    });
-
-    test('Testing isBlank', () => {
-        expect(StringUtils.isBlank(undefined)).toBeTruthy();
-        expect(StringUtils.isBlank(' ')).toBeTruthy();
-        expect(StringUtils.isBlank('foobar')).toBeFalsy();
-    });
-
-    test('Testing isNotBlank', () => {
-        expect(StringUtils.isNotBlank(undefined)).toBeFalsy();
-        expect(StringUtils.isNotBlank(' ')).toBeFalsy();
-        expect(StringUtils.isNotBlank('foobar')).toBeTruthy();
-    });
-
     test('Testing allEmpty', () => {
-        expect(StringUtils.allEmpty(undefined, '')).toBeTruthy();
-        expect(StringUtils.allEmpty(undefined, ' ')).toBeFalsy();
-        expect(StringUtils.allEmpty('foo', 'bar')).toBeFalsy();
+        expect(StringUtils.allEmpty([undefined, ''])).toBeTruthy();
+        expect(StringUtils.allEmpty([undefined, ' '])).toBeFalsy();
+        expect(StringUtils.allEmpty(['foo', 'bar'])).toBeFalsy();
     });
 
     test('Testing allNotEmpty', () => {
-        expect(StringUtils.allNotEmpty(undefined, '')).toBeFalsy();
-        expect(StringUtils.allNotEmpty(undefined, ' ')).toBeFalsy();
-        expect(StringUtils.allNotEmpty('foo', 'bar')).toBeTruthy();
+        expect(StringUtils.allNotEmpty([undefined, ''])).toBeFalsy();
+        expect(StringUtils.allNotEmpty([undefined, ' '])).toBeFalsy();
+        expect(StringUtils.allNotEmpty(['foo', 'bar'])).toBeTruthy();
     });
 
     test('Testing anyEmpty', () => {
-        expect(StringUtils.anyEmpty(undefined, '')).toBeTruthy();
-        expect(StringUtils.anyEmpty(undefined, ' ')).toBeTruthy();
-        expect(StringUtils.anyEmpty('foo', 'bar')).toBeFalsy();
+        expect(StringUtils.anyEmpty([undefined, ''])).toBeTruthy();
+        expect(StringUtils.anyEmpty([undefined, ' '])).toBeTruthy();
+        expect(StringUtils.anyEmpty(['foo', 'bar'])).toBeFalsy();
     });
 
     test('Testing anyNotEmpty', () => {
-        expect(StringUtils.anyNotEmpty(undefined, '')).toBeFalsy();
-        expect(StringUtils.anyNotEmpty(undefined, ' ')).toBeTruthy();
-        expect(StringUtils.anyNotEmpty('foo', 'bar')).toBeTruthy();
+        expect(StringUtils.anyNotEmpty([undefined, ''])).toBeFalsy();
+        expect(StringUtils.anyNotEmpty([undefined, ' '])).toBeTruthy();
+        expect(StringUtils.anyNotEmpty(['foo', 'bar'])).toBeTruthy();
     });
 
     test('Testing allBlank', () => {
-        expect(StringUtils.allBlank(undefined, '')).toBeTruthy();
-        expect(StringUtils.allBlank(undefined, ' ')).toBeTruthy();
-        expect(StringUtils.allBlank('foo', 'bar')).toBeFalsy();
+        expect(StringUtils.allBlank([undefined, ''])).toBeTruthy();
+        expect(StringUtils.allBlank([undefined, ' '])).toBeTruthy();
+        expect(StringUtils.allBlank(['foo', 'bar'])).toBeFalsy();
     });
 
     test('Testing allNotBlank', () => {
-        expect(StringUtils.allNotBlank(undefined, '')).toBeFalsy();
-        expect(StringUtils.allNotBlank(undefined, ' ')).toBeFalsy();
-        expect(StringUtils.allNotBlank('foo', 'bar')).toBeTruthy();
+        expect(StringUtils.allNotBlank([undefined, ''])).toBeFalsy();
+        expect(StringUtils.allNotBlank([undefined, ' '])).toBeFalsy();
+        expect(StringUtils.allNotBlank(['foo', 'bar'])).toBeTruthy();
     });
 
     test('Testing anyBlank', () => {
-        expect(StringUtils.anyBlank(undefined, '')).toBeTruthy();
-        expect(StringUtils.anyBlank(undefined, ' ')).toBeTruthy();
-        expect(StringUtils.anyBlank('foo', 'bar')).toBeFalsy();
+        expect(StringUtils.anyBlank([undefined, ''])).toBeTruthy();
+        expect(StringUtils.anyBlank([undefined, ' '])).toBeTruthy();
+        expect(StringUtils.anyBlank(['foo', 'bar'])).toBeFalsy();
     });
 
     test('Testing anyNotBlank', () => {
-        expect(StringUtils.anyNotBlank(undefined, '')).toBeFalsy();
-        expect(StringUtils.anyNotBlank(undefined, ' ')).toBeFalsy();
-        expect(StringUtils.anyNotBlank('foo', 'bar')).toBeTruthy();
+        expect(StringUtils.anyNotBlank([undefined, ''])).toBeFalsy();
+        expect(StringUtils.anyNotBlank([undefined, ' '])).toBeFalsy();
+        expect(StringUtils.anyNotBlank(['foo', 'bar'])).toBeTruthy();
     });
 
     test('Testing appendIfMissing', () => {
@@ -191,6 +161,36 @@ describe('StringUtils', () => {
         expect(StringUtils.formatPlaceholder('foobar{none}', {})).toBe('foobar{none}');
         expect(StringUtils.formatPlaceholder('hello {name}, foo{bar}', {name: 'world', bar: 'bar'})).toBe('hello world, foobar');
         expect(StringUtils.formatPlaceholder('welcome {a} {b} {c}', {a: 'to', b: 'the', c: 'world'})).toBe('welcome to the world');
+    });
+
+    test('Testing getLength', () => {
+        expect(StringUtils.getLength(undefined)).toBe(0);
+        expect(StringUtils.getLength('')).toBe(0);
+        expect(StringUtils.getLength('foobar')).toBe(6);
+    });
+
+    test('Testing isEmpty', () => {
+        expect(StringUtils.isEmpty(undefined)).toBeTruthy();
+        expect(StringUtils.isEmpty('')).toBeTruthy();
+        expect(StringUtils.isEmpty('foobar')).toBeFalsy();
+    });
+
+    test('Testing isNotEmpty', () => {
+        expect(StringUtils.isNotEmpty(undefined)).toBeFalsy();
+        expect(StringUtils.isNotEmpty('')).toBeFalsy();
+        expect(StringUtils.isNotEmpty('foobar')).toBeTruthy();
+    });
+
+    test('Testing isBlank', () => {
+        expect(StringUtils.isBlank(undefined)).toBeTruthy();
+        expect(StringUtils.isBlank(' ')).toBeTruthy();
+        expect(StringUtils.isBlank('foobar')).toBeFalsy();
+    });
+
+    test('Testing isNotBlank', () => {
+        expect(StringUtils.isNotBlank(undefined)).toBeFalsy();
+        expect(StringUtils.isNotBlank(' ')).toBeFalsy();
+        expect(StringUtils.isNotBlank('foobar')).toBeTruthy();
     });
 
     test('Testing includes', () => {

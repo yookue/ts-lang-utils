@@ -19,6 +19,54 @@ import {BooleanUtils} from '@yookue/ts-lang-utils';
 
 
 describe('BooleanUtils', () => {
+    test('Testing allTrue', () => {
+        expect(BooleanUtils.allTrue([null, undefined])).toBeFalsy();
+        expect(BooleanUtils.allTrue([null, true])).toBeFalsy();
+        expect(BooleanUtils.allTrue([true, true])).toBeTruthy();
+    });
+
+    test('Testing allNotTrue', () => {
+        expect(BooleanUtils.allNotTrue([null, undefined])).toBeTruthy();
+        expect(BooleanUtils.allNotTrue([null, true])).toBeFalsy();
+        expect(BooleanUtils.allNotTrue([null, false])).toBeTruthy();
+    });
+
+    test('Testing allFalse', () => {
+        expect(BooleanUtils.allFalse([null, undefined])).toBeFalsy();
+        expect(BooleanUtils.allFalse([null, false])).toBeFalsy();
+        expect(BooleanUtils.allFalse([false, false])).toBeTruthy();
+    });
+
+    test('Testing allNotFalse', () => {
+        expect(BooleanUtils.allNotFalse([null, undefined])).toBeTruthy();
+        expect(BooleanUtils.allNotFalse([null, false])).toBeFalsy();
+        expect(BooleanUtils.allNotFalse([null, true])).toBeTruthy();
+    });
+
+    test('Testing anyTrue', () => {
+        expect(BooleanUtils.anyTrue([null, undefined])).toBeFalsy();
+        expect(BooleanUtils.anyTrue([null, true])).toBeTruthy();
+        expect(BooleanUtils.anyTrue([null, false])).toBeFalsy();
+    });
+
+    test('Testing anyNotTrue', () => {
+        expect(BooleanUtils.anyNotTrue([null, undefined])).toBeTruthy();
+        expect(BooleanUtils.anyNotTrue([null, true])).toBeTruthy();
+        expect(BooleanUtils.anyNotTrue([null, false])).toBeTruthy();
+    });
+
+    test('Testing anyFalse', () => {
+        expect(BooleanUtils.anyFalse([null, undefined])).toBeFalsy();
+        expect(BooleanUtils.anyFalse([null, true])).toBeFalsy();
+        expect(BooleanUtils.anyFalse([null, false])).toBeTruthy();
+    });
+
+    test('Testing anyNotFalse', () => {
+        expect(BooleanUtils.anyNotFalse([null, undefined])).toBeTruthy();
+        expect(BooleanUtils.anyNotFalse([null, false])).toBeTruthy();
+        expect(BooleanUtils.anyNotFalse([false, false])).toBeFalsy();
+    });
+
     test('Testing isTrue', () => {
         expect(BooleanUtils.isTrue(true)).toBeTruthy();
         expect(BooleanUtils.isTrue(1)).toBeTruthy();

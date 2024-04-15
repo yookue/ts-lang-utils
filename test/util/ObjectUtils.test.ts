@@ -19,6 +19,29 @@ import {ObjectUtils} from '@yookue/ts-lang-utils';
 
 
 describe('ObjectUtils', () => {
+    test('Testing allNil', () => {
+        expect(ObjectUtils.allNil([undefined, null])).toBeTruthy();
+        expect(ObjectUtils.allNil([undefined, {}])).toBeFalsy();
+        expect(ObjectUtils.allNil([undefined, 'foobar'])).toBeFalsy();
+    });
+
+    test('Testing allNotNil', () => {
+        expect(ObjectUtils.allNotNil([undefined, 'foobar'])).toBeFalsy();
+        expect(ObjectUtils.allNotNil(['foo', 'bar'])).toBeTruthy();
+    });
+
+    test('Testing anyNil', () => {
+        expect(ObjectUtils.anyNil([undefined, null])).toBeTruthy();
+        expect(ObjectUtils.anyNil([undefined, 'foobar'])).toBeTruthy();
+        expect(ObjectUtils.anyNil(['foo', 'bar'])).toBeFalsy();
+    });
+
+    test('Testing anyNotNil', () => {
+        expect(ObjectUtils.anyNotNil([undefined, null])).toBeFalsy();
+        expect(ObjectUtils.anyNotNil([undefined, 'foobar'])).toBeTruthy();
+        expect(ObjectUtils.anyNotNil(['foo', 'bar'])).toBeTruthy();
+    });
+
     test('Testing isNil', () => {
         expect(ObjectUtils.isNil(undefined)).toBeTruthy();
         expect(ObjectUtils.isNil(null)).toBeTruthy();
