@@ -59,36 +59,6 @@ export abstract class StringUtils {
     }
 
     /**
-     * Returns whether any of the given texts is empty
-     *
-     * @param {Array<string>} texts the texts to check
-     *
-     * @return {boolean} whether any of the given texts is empty
-     *
-     * @example
-     * StringUtils.anyEmpty([null, undefined]);    // true
-     * StringUtils.anyEmpty(['foo', 'bar']);    // false
-     */
-    public static anyEmpty(texts?: Array<string | undefined | null>): boolean {
-        return !texts || texts.length === 0 || texts.some(item => this.isEmpty(item));
-    }
-
-    /**
-     * Returns whether any of the given texts is not empty
-     *
-     * @param {Array<string>} texts the texts to check
-     *
-     * @return {boolean} whether any of the given texts is not empty
-     *
-     * @example
-     * StringUtils.anyNotEmpty([null, undefined]);    // false
-     * StringUtils.anyNotEmpty([null, 'world']);    // true
-     */
-    public static anyNotEmpty(texts?: Array<string | undefined | null>): boolean {
-        return !!texts && texts?.length > 0 && texts.some(item => this.isNotEmpty(item));
-    }
-
-    /**
      * Returns whether all the given texts are blank
      *
      * @param {Array<string>} texts the texts to check
@@ -117,6 +87,36 @@ export abstract class StringUtils {
      */
     public static allNotBlank(texts?: Array<string | undefined | null>): boolean {
         return !!texts && texts.length > 0 && texts.every(item => this.isNotBlank(item));
+    }
+
+    /**
+     * Returns whether any of the given texts is empty
+     *
+     * @param {Array<string>} texts the texts to check
+     *
+     * @return {boolean} whether any of the given texts is empty
+     *
+     * @example
+     * StringUtils.anyEmpty([null, undefined]);    // true
+     * StringUtils.anyEmpty(['foo', 'bar']);    // false
+     */
+    public static anyEmpty(texts?: Array<string | undefined | null>): boolean {
+        return !texts || texts.length === 0 || texts.some(item => this.isEmpty(item));
+    }
+
+    /**
+     * Returns whether any of the given texts is not empty
+     *
+     * @param {Array<string>} texts the texts to check
+     *
+     * @return {boolean} whether any of the given texts is not empty
+     *
+     * @example
+     * StringUtils.anyNotEmpty([null, undefined]);    // false
+     * StringUtils.anyNotEmpty([null, 'world']);    // true
+     */
+    public static anyNotEmpty(texts?: Array<string | undefined | null>): boolean {
+        return !!texts && texts?.length > 0 && texts.some(item => this.isNotEmpty(item));
     }
 
     /**
@@ -411,6 +411,44 @@ export abstract class StringUtils {
             return false;
         }
         return comparisons.some(comparison => this.equalsIgnoreCase(text, comparison));
+    }
+
+    /**
+     * Returns the filtered array of the gaven strings, without empties
+     *
+     * @param {Array<string>} texts the source string to inspect
+     *
+     * @return {Array<string>} the filtered array of the gaven strings, without empties
+     *
+     * @example
+     * StringUtils.filterIgnoreEmpty([null, undefined, '', 'foobar']);    //  ['foobar']
+     */
+    public static filterIgnoreEmpty(texts?: Array<string | undefined | null>): string[] | undefined {
+        if (!texts || texts.length === 0) {
+            return undefined;
+        }
+        const result = texts.filter(item => this.isNotEmpty(item));
+        // @ts-ignore
+        return (!result || result.length === 0) ? undefined : result;
+    }
+
+    /**
+     * Returns the filtered array of the gaven strings, without blanks
+     *
+     * @param {Array<string>} texts the source string to inspect
+     *
+     * @return {Array<string>} the filtered array of the gaven strings, without blanks
+     *
+     * @example
+     * StringUtils.filterIgnoreEmpty([null, undefined, ' ', 'foobar']);    //  ['foobar']
+     */
+    public static filterIgnoreBlank(texts?: Array<string | undefined | null>): string[] | undefined {
+        if (!texts || texts.length === 0) {
+            return undefined;
+        }
+        const result = texts.filter(item => this.isNotBlank(item));
+        // @ts-ignore
+        return (!result || result.length === 0) ? undefined : result;
     }
 
     /**
@@ -958,6 +996,31 @@ export abstract class StringUtils {
      */
     public static replaceFirstIgnoreCase(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
         return (this.isEmpty(text) || !search) ? text : text?.replace(new RegExp(search, 'i'), (replace ?? ''));
+    }
+
+    /**
+     * Returns the split array of the given string by the given delimiter
+     *
+     * @param {string} text the source string to inspect
+     * @param {string} delimiter the delimiter to split strings, defaults to comma
+     * @param {number} max the max elements expected, negative means unlimited, defaults to -1
+     * @param {boolean} trim whether trim each element before returning, defaults to true
+     *
+     * @return {Array<string>} the split array of the given string by the given delimiter
+     *
+     * @example
+     * StringUtils.split('foo,bar');    // ['foo', 'bar']
+     * StringUtils.split('hello | world | wonderful', '|', 2);    // ['hello', 'world']
+     */
+    public static split(text?: string | null, delimiter: string = ',', max: number = -1, trim: boolean = true): string[] | undefined {
+        if (!text) {
+            return undefined;
+        }
+        const result = text.split(delimiter, max);
+        if (!result || result.length === 0) {
+            return undefined;
+        }
+        return !trim ? result : result.map(item => !item ? item : item.trim());
     }
 
     /**

@@ -31,18 +31,6 @@ describe('StringUtils', () => {
         expect(StringUtils.allNotEmpty(['foo', 'bar'])).toBeTruthy();
     });
 
-    test('Testing anyEmpty', () => {
-        expect(StringUtils.anyEmpty([undefined, ''])).toBeTruthy();
-        expect(StringUtils.anyEmpty([undefined, ' '])).toBeTruthy();
-        expect(StringUtils.anyEmpty(['foo', 'bar'])).toBeFalsy();
-    });
-
-    test('Testing anyNotEmpty', () => {
-        expect(StringUtils.anyNotEmpty([undefined, ''])).toBeFalsy();
-        expect(StringUtils.anyNotEmpty([undefined, ' '])).toBeTruthy();
-        expect(StringUtils.anyNotEmpty(['foo', 'bar'])).toBeTruthy();
-    });
-
     test('Testing allBlank', () => {
         expect(StringUtils.allBlank([undefined, ''])).toBeTruthy();
         expect(StringUtils.allBlank([undefined, ' '])).toBeTruthy();
@@ -53,6 +41,18 @@ describe('StringUtils', () => {
         expect(StringUtils.allNotBlank([undefined, ''])).toBeFalsy();
         expect(StringUtils.allNotBlank([undefined, ' '])).toBeFalsy();
         expect(StringUtils.allNotBlank(['foo', 'bar'])).toBeTruthy();
+    });
+
+    test('Testing anyEmpty', () => {
+        expect(StringUtils.anyEmpty([undefined, ''])).toBeTruthy();
+        expect(StringUtils.anyEmpty([undefined, ' '])).toBeTruthy();
+        expect(StringUtils.anyEmpty(['foo', 'bar'])).toBeFalsy();
+    });
+
+    test('Testing anyNotEmpty', () => {
+        expect(StringUtils.anyNotEmpty([undefined, ''])).toBeFalsy();
+        expect(StringUtils.anyNotEmpty([undefined, ' '])).toBeTruthy();
+        expect(StringUtils.anyNotEmpty(['foo', 'bar'])).toBeTruthy();
     });
 
     test('Testing anyBlank', () => {
@@ -139,6 +139,14 @@ describe('StringUtils', () => {
     test('Testing equalsAnyIgnoreCase', () => {
         expect(StringUtils.equalsAnyIgnoreCase('foo', ['FOO', 'bar'])).toBeTruthy();
         expect(StringUtils.equalsAnyIgnoreCase('foo', ['bar', undefined])).toBeFalsy();
+    });
+
+    test('Testing filterIgnoreEmpty', () => {
+        expect(StringUtils.filterIgnoreEmpty([null, undefined, '', 'foobar'])).toStrictEqual(['foobar']);
+    });
+
+    test('Testing filterIgnoreBlank', () => {
+        expect(StringUtils.filterIgnoreBlank([null, undefined, ' ', 'foobar'])).toStrictEqual(['foobar']);
     });
 
     test('Testing formatBrace', () => {
@@ -297,6 +305,11 @@ describe('StringUtils', () => {
         expect(StringUtils.replaceFirstIgnoreCase(undefined, undefined, undefined)).toBeUndefined();
         expect(StringUtils.replaceFirstIgnoreCase('foobar-foobar', undefined, 'hello')).toBe('foobar-foobar');
         expect(StringUtils.replaceFirstIgnoreCase('foobar-foobar', 'FOOBAR', 'hello')).toBe('hello-foobar');
+    });
+
+    test('Testing split', () => {
+        expect(StringUtils.split('foo,bar')).toStrictEqual(['foo', 'bar']);
+        expect(StringUtils.split('hello | world | wonderful', '|', 2)).toStrictEqual(['hello', 'world']);
     });
 
     test('Testing startsWith', () => {

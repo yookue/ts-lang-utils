@@ -327,7 +327,7 @@ export abstract class BooleanUtils {
      * @return {string} the string value of 'T'/'F' from the boolean value
      *
      * @example
-     * BooleanUtils.toStringTF(true);    // "T"
+     * BooleanUtils.toStringTF(true);    // 'T'
      */
     public static toStringTF(value?: boolean): string | undefined {
         return this.toString(value, 'T', 'F', undefined);
