@@ -70,6 +70,16 @@ describe('ArrayUtils', () => {
         expect(ArrayUtils.includes(['foo', 'bar'], 'foobar')).toBeFalsy();
     });
 
+    test('Testing includesAll', () => {
+        expect(ArrayUtils.includesAll(['foo', 'bar'], ['foo', 'bar'])).toBeTruthy();
+        expect(ArrayUtils.includesAll(['foo', 'bar'], ['foo', 'world'])).toBeFalsy();
+    });
+
+    test('Testing includesAny', () => {
+        expect(ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'bar'])).toBeTruthy();
+        expect(ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'world'])).toBeTruthy();
+    });
+
     test('Testing maxLength', () => {
         expect(ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3])).toBe(3);
         expect(ArrayUtils.maxLength(['foo', 'bar'], ['hello', 'word'])).toBe(2);

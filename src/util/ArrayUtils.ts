@@ -205,6 +205,38 @@ export abstract class ArrayUtils {
     }
 
     /**
+     * Returns whether the given array includes all the given elements
+     *
+     * @param {Array<any>} array the array to check
+     * @param {Array<any>} elements the elements to compare
+     *
+     * @return {boolean} whether the given array includes all the given elements
+     *
+     * @example
+     * ArrayUtils.includesAll(['foo', 'bar'], ['foo', 'bar']);    // true
+     * ArrayUtils.includesAll(['foo', 'bar'], ['foo', 'world']);    // false
+     */
+    public static includesAll<E>(array?: E[] | null, elements?: E[] | null): boolean {
+        return !!array && !!elements && elements.every(item => array.includes(item));
+    }
+
+    /**
+     * Returns whether the given array includes any of the given elements
+     *
+     * @param {Array<any>} array the array to check
+     * @param {Array<any>} elements the elements to compare
+     *
+     * @return {boolean} whether the given array includes any of the given elements
+     *
+     * @example
+     * ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'bar']);    // true
+     * ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'world']);    // true
+     */
+    public static includesAny<E>(array?: E[] | null, elements?: E[] | null): boolean {
+        return !!array && !!elements && elements.some(item => array.includes(item));
+    }
+
+    /**
      * Returns the max length of the given arrays
      *
      * @param {Array<any>} arrays the arrays to check
