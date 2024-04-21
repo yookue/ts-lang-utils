@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.30",
+    "version": "0.1.31",
     "title": "TsLangUtils",
     "description": "Common Lang Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -32,7 +32,7 @@
     "scripts": {
         "build": "del-cli ./dist && father build",
         "build:watch": "father dev",
-        "docs:build": "del-cli ./docs-dist && tsc --outDir ./docs-temp && jsdoc -c jsdoc.config.json && del-cli ./docs-temp",
+        "docs:build": "typedoc --out ./docs-dist",
         "docs:publish": "gh-pages -d ./docs-dist",
         "doctor": "father doctor",
         "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
@@ -48,13 +48,13 @@
         "@typescript-eslint/parser": "^5.62.0",
         "babel-plugin-comments": "^1.0.4",
         "del-cli": "^5.1.0",
-        "docdash": "^2.0.2",
         "eslint": "^7.32.0",
         "father": "^4.4.0",
         "gh-pages": "^6.1.1",
-        "jsdoc": "^4.0.2",
         "prettier": "^2.8.8",
         "ts-jest": "^29.1.2",
+        "typedoc": "^0.25.13",
+        "typedoc-plugin-extra-footer": "^1.0.1",
         "typescript": "^4.9.5"
     },
     "repository": {

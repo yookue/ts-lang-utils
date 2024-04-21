@@ -18,16 +18,23 @@
 /**
  * Utilities for number
  *
- * @abstract
- * @hideconstructor
+ * @author David Hsing
  */
 export abstract class NumberUtils {
     /**
+     * Construct an instance of this class
+     *
+     * @ignore
+     */
+    private constructor() {
+    }
+
+    /**
      * Returns whether the given value is an integer
      *
-     * @param {number} value the number value to check
+     * @param value the number value to check
      *
-     * @return {boolean} whether the given value is an integer
+     * @return whether the given value is an integer
      *
      * @example
      * NumberUtils.isInteger(1);    // true
@@ -42,9 +49,9 @@ export abstract class NumberUtils {
     /**
      * Returns an integer value from the string value, or undefined if the value cannot be converted
      *
-     * @param {string} value the string value to check
+     * @param value the string value to check
      *
-     * @return {number} an integer value from the string value, or undefined if the value cannot be converted
+     * @return an integer value from the string value, or undefined if the value cannot be converted
      *
      * @example
      * NumberUtils.toInteger('1');    // 1
@@ -65,9 +72,9 @@ export abstract class NumberUtils {
     /**
      * Returns a float value from the string value, or undefined if the value cannot be converted
      *
-     * @param {string} value the string value to check
+     * @param value the string value to check
      *
-     * @return {number} a float value from the string value, or undefined if the value cannot be converted
+     * @return a float value from the string value, or undefined if the value cannot be converted
      *
      * @example
      * NumberUtils.toFloat('1.0');    // 1.0
@@ -87,9 +94,9 @@ export abstract class NumberUtils {
     /**
      * Returns the max value of the given array
      *
-     * @param {Array<number>} values the array to calculate
+     * @param values the array to calculate
      *
-     * @return {number} the max value of the given array
+     * @return the max value of the given array
      *
      * @example
      * NumberUtils.max([1, 2, 3]);    // 3
@@ -110,9 +117,9 @@ export abstract class NumberUtils {
     /**
      * Returns the min value of the given array
      *
-     * @param {Array<number>} values the array to calculate
+     * @param values the array to calculate
      *
-     * @return {number} the min value of the given array
+     * @return the min value of the given array
      *
      * @example
      * NumberUtils.min([1, 2, 3]);    // 1
@@ -133,9 +140,9 @@ export abstract class NumberUtils {
     /**
      * Returns the sum value of the given array
      *
-     * @param {Array<number>} values the array to calculate
+     * @param values the array to calculate
      *
-     * @return {number} the sum value of the given array
+     * @return the sum value of the given array
      *
      * @example
      * NumberUtils.sum([1, 2, 3]);    // 6
@@ -147,9 +154,9 @@ export abstract class NumberUtils {
     /**
      * Returns the average value of the given array
      *
-     * @param {Array<number>} values the array to calculate
+     * @param values the array to calculate
      *
-     * @return {number} the average value of the given array
+     * @return the average value of the given array
      *
      * @example
      * NumberUtils.average([1, 2, 3]);    // 2

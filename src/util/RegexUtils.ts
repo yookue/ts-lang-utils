@@ -18,17 +18,24 @@
 /**
  * Utilities for regular expression
  *
- * @abstract
- * @hideconstructor
+ * @author David Hsing
  */
 export abstract class RegexUtils {
     /**
+     * Construct an instance of this class
+     *
+     * @ignore
+     */
+    private constructor() {
+    }
+
+    /**
      * Returns the array of strings that match the given pattern in the text
      *
-     * @param {string} text the text on inspect
-     * @param {string | RegExp} search the string or regular expression to match
+     * @param text the text on inspect
+     * @param search the string or regular expression to match
      *
-     * @return {Array<string>} the array of strings that match the given pattern in the text
+     * @return the array of strings that match the given pattern in the text
      *
      * @example
      * RegexUtils.extractWords('foo, & bar');    // ['foo', 'bar']

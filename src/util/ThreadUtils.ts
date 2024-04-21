@@ -18,16 +18,23 @@
 /**
  * Utilities for thread
  *
- * @abstract
- * @hideconstructor
+ * @author David Hsing
  */
 export abstract class ThreadUtils {
     /**
+     * Construct an instance of this class
+     *
+     * @ignore
+     */
+    private constructor() {
+    }
+
+    /**
      * Sleeps current thread for a specified amount of time
      *
-     * @param {number} microseconds the amount of time to sleep, in microseconds
+     * @param microseconds the amount of time to sleep, in microseconds
      *
-     * @return {Promise<void>} a promise that could be resolved
+     * @return a promise that could be resolved
      *
      * @example
      * TimeUtils.sleep();

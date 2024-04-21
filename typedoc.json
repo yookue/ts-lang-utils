@@ -1,0 +1,22 @@
+{
+    "name": "TsLangUtils",
+    "entryPoints": [
+        "src/index.ts"
+    ],
+    "disableSources": true,
+    "excludeExternals": true,
+    "excludeInternal": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "hideGenerator": true,
+    "includeVersion": false,
+    "navigationLinks": {
+        "GitHub": "https://github.com/yookue/ts-lang-utils",
+        "Yookue": "https://yookue.com"
+    },
+    "plugin": [
+        "typedoc-plugin-extra-footer"
+    ],
+    "extraFooter": "<div style='text-align: center'>Copyright &copy; 2023 Yookue Ltd. All rights reserved</div>",
+    "extraFooterNoDefaultWrapper": true
+}

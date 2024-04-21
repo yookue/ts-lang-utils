@@ -21,17 +21,24 @@ import {StringUtils} from './StringUtils';
 /**
  * Utilities for date and time
  *
- * @abstract
- * @hideconstructor
+ * @author David Hsing
  */
 export abstract class DateUtils {
     /**
+     * Construct an instance of this class
+     *
+     * @ignore
+     */
+    private constructor() {
+    }
+
+    /**
      * Returns the year calculated date with the source date and the specified amount
      *
-     * @param {Date} date the date to inspect
-     * @param {number} amount the amount to add, negative number means minus
+     * @param date the date to inspect
+     * @param amount the amount to add, negative number means minus
      *
-     * @return {Date} the year calculated date with the source date and the specified amount
+     * @return the year calculated date with the source date and the specified amount
      *
      * @example
      * DateUtils.addYear(new Date(2023, 8, 30), 1);    // Date(2024, 8, 30)
@@ -48,10 +55,10 @@ export abstract class DateUtils {
     /**
      * Returns the month calculated date with the source date and the specified amount
      *
-     * @param {Date} date the date to inspect
-     * @param {number} amount the amount to add, negative number means minus
+     * @param date the date to inspect
+     * @param amount the amount to add, negative number means minus
      *
-     * @return {Date} the month calculated date with the source date and the specified amount
+     * @return the month calculated date with the source date and the specified amount
      *
      * @example
      * DateUtils.addMonth(new Date(2023, 8, 30), 1);    // Date(2023, 9, 30)
@@ -68,10 +75,10 @@ export abstract class DateUtils {
     /**
      * Returns the day calculated date with the source date and the specified amount
      *
-     * @param {Date} date the date to inspect
-     * @param {number} amount the amount to add, negative number means minus
+     * @param date the date to inspect
+     * @param amount the amount to add, negative number means minus
      *
-     * @return {Date} the day calculated date with the source date and the specified amount
+     * @return the day calculated date with the source date and the specified amount
      *
      * @example
      * DateUtils.addDay(new Date(2023, 8, 30), 1);    // Date(2023, 9, 1)
@@ -88,10 +95,10 @@ export abstract class DateUtils {
     /**
      * Returns the formatted string that represent the given date
      *
-     * @param {Date} date the date to inspect
-     * @param {string} format the date/time format string
+     * @param date the date to inspect
+     * @param format the date/time format string
      *
-     * @return {string} the formatted string that represent the given date
+     * @return the formatted string that represent the given date
      */
     public static formatDateTime(date: Date, format: string): string | undefined {
         if (StringUtils.isBlank(format)) {
@@ -125,9 +132,9 @@ export abstract class DateUtils {
     /**
      * Returns the current date
      *
-     * @param {string} format the date format string
+     * @param format the date format string
      *
-     * @return {string} the current date
+     * @return the current date
      */
     public static getCurrentDate(format = 'yyyy-MM-dd'): string {
         return this.formatDateTime(new Date(), format) as string;
@@ -136,9 +143,9 @@ export abstract class DateUtils {
     /**
      * Returns the current date time
      *
-     * @param {string} format the date time format string
+     * @param format the date time format string
      *
-     * @return {string} the current date time
+     * @return the current date time
      */
     public static getCurrentDateTime(format = 'yyyy-MM-dd hh:mm:ss'): string {
         return this.formatDateTime(new Date(), format) as string;
@@ -147,9 +154,9 @@ export abstract class DateUtils {
     /**
      * Returns the current time
      *
-     * @param {string} format the time format string
+     * @param format the time format string
      *
-     * @return {string} the current time
+     * @return the current time
      */
     public static getCurrentTime(format = 'hh:mm:ss'): string {
         return this.formatDateTime(new Date(), format) as string;
@@ -158,9 +165,9 @@ export abstract class DateUtils {
     /**
      * Returns the start year date of the given date
      *
-     * @param {Date} date the date to inspect
+     * @param date the date to inspect
      *
-     * @return {Date} the start year date of the given date
+     * @return the start year date of the given date
      *
      * @example
      * DateUtils.getStartOfYear(new Date(2023, 8, 30));    // Date(2023, 0, 1, 0, 0, 0)
@@ -175,9 +182,9 @@ export abstract class DateUtils {
     /**
      * Returns the start month date of the given date
      *
-     * @param {Date} date the date to inspect
+     * @param date the date to inspect
      *
-     * @return {Date} the start month date of the given date
+     * @return the start month date of the given date
      *
      * @example
      * DateUtils.getStartOfMonth(new Date(2023, 8, 30));    // Date(2023, 8, 1, 0, 0, 0)
@@ -192,9 +199,9 @@ export abstract class DateUtils {
     /**
      * Returns the start day date of the given date
      *
-     * @param {Date} date the date to inspect
+     * @param date the date to inspect
      *
-     * @return {Date} the start day date of the given date
+     * @return the start day date of the given date
      *
      * @example
      * DateUtils.getStartOfDay(new Date(2023, 8, 30, 12, 12, 12));    // Date(2023, 8, 30, 0, 0, 0)
@@ -208,9 +215,9 @@ export abstract class DateUtils {
     /**
      * Returns the end year date of the given date
      *
-     * @param {Date} date the date to inspect
+     * @param date the date to inspect
      *
-     * @return {Date} the end year date of the given date
+     * @return the end year date of the given date
      *
      * @example
      * DateUtils.getEndOfYear(new Date(2023, 8, 30));    // Date(2023, 11, 31, 23, 59, 59)
@@ -225,9 +232,9 @@ export abstract class DateUtils {
     /**
      * Returns the end month date of the given date
      *
-     * @param {Date} date the date to inspect
+     * @param date the date to inspect
      *
-     * @return {Date} the end month date of the given date
+     * @return the end month date of the given date
      *
      * @example
      * DateUtils.getEndOfMonth(new Date(2023, 8, 1));    // Date(2023, 8, 30, 23, 59, 59)
@@ -242,9 +249,9 @@ export abstract class DateUtils {
     /**
      * Returns the end day date of the given date
      *
-     * @param {Date} date the date to inspect
+     * @param date the date to inspect
      *
-     * @return {Date} the end day date of the given date
+     * @return the end day date of the given date
      *
      * @example
      * DateUtils.getEndOfDay(new Date(2023, 8, 30, 12, 12, 12));    // Date(2023, 8, 30, 23, 59, 59)
@@ -258,9 +265,9 @@ export abstract class DateUtils {
     /**
      * Returns the timezone of the given date
      *
-     * @param {Date} date the date to inspect
+     * @param date the date to inspect
      *
-     * @return {string} the timezone of the given date
+     * @return the timezone of the given date
      */
     public static getTimezone(date = new Date()) {
         const offset = date.getTimezoneOffset();
@@ -274,9 +281,9 @@ export abstract class DateUtils {
     /**
      * Returns whether the given date is the first day of month
      *
-     * @param {Date} date the date to check
+     * @param date the date to check
      *
-     * @return {boolean} whether the date is the first day of month
+     * @return whether the date is the first day of month
      *
      * @example
      * DateUtils.isFirstDayOfMonth(new Date(2023, 8, 1));    // true
@@ -289,9 +296,9 @@ export abstract class DateUtils {
     /**
      * Returns whether the given date is the last day of month
      *
-     * @param {Date} date the date to check
+     * @param date the date to check
      *
-     * @return {boolean} whether the date is the last day of month
+     * @return whether the date is the last day of month
      *
      * @example
      * DateUtils.isLastDayOfMonth(new Date(2023, 8, 1));    // false
@@ -304,9 +311,9 @@ export abstract class DateUtils {
     /**
      * Returns whether the date or year is a leap year
      *
-     * @param {Date | number} dateYear the date or year to check
+     * @param dateYear the date or year to check
      *
-     * @return {boolean} whether the date or year is a leap year
+     * @return whether the date or year is a leap year
      *
      * @example
      * DateUtils.isLeapYear(2000);    // true
@@ -320,10 +327,10 @@ export abstract class DateUtils {
     /**
      * Returns whether the given date is same year with the comparison date
      *
-     * @param {Date} date the date to check
-     * @param {Date} comparison the date to compare
+     * @param date the date to check
+     * @param comparison the date to compare
      *
-     * @return {boolean} whether the given date is same year with the comparison date
+     * @return whether the given date is same year with the comparison date
      *
      * @example
      * DateUtils.isSameYear(new Date(2023, 1, 1), new Date(2023, 8, 30));    // true
@@ -335,11 +342,11 @@ export abstract class DateUtils {
     /**
      * Returns whether the given date is same month with the comparison date
      *
-     * @param {Date} date the date to check
-     * @param {Date} comparison the date to compare
-     * @param {boolean} deepCompare whether compare deeply with year
+     * @param date the date to check
+     * @param comparison the date to compare
+     * @param deepCompare whether compare deeply with year
      *
-     * @return {boolean} whether the given date is same month with the comparison date
+     * @return whether the given date is same month with the comparison date
      *
      * @example
      * DateUtils.isSameMonth(new Date(2023, 8, 1), new Date(2023, 8, 30));    // true
@@ -351,11 +358,11 @@ export abstract class DateUtils {
     /**
      * Returns whether the given date is same day with the comparison date
      *
-     * @param {Date} date the date to check
-     * @param {Date} comparison the date to compare
-     * @param {boolean} deepCompare whether compare deeply with year
+     * @param date the date to check
+     * @param comparison the date to compare
+     * @param deepCompare whether compare deeply with year
      *
-     * @return {boolean} whether the given date is same day with the comparison date
+     * @return whether the given date is same day with the comparison date
      *
      * @example
      * DateUtils.isSameDay(new Date(), new Date());    // true
@@ -367,9 +374,9 @@ export abstract class DateUtils {
     /**
      * Returns whether the date is a weekend
      *
-     * @param {Date} date the date to check
+     * @param date the date to check
      *
-     * @return {boolean} whether the date is a weekend
+     * @return whether the date is a weekend
      *
      * @example
      * DateUtils.isWeekend(new Date(2023, 8, 30));    // true
@@ -381,9 +388,9 @@ export abstract class DateUtils {
     /**
      * Returns whether the date is yesterday
      *
-     * @param {Date} date the date to check
+     * @param date the date to check
      *
-     * @return {boolean} whether the date is yesterday
+     * @return whether the date is yesterday
      */
     public static isYesterday(date: Date): boolean {
         return this.isSameDay(new Date(), this.addDay(date, 1));
@@ -392,9 +399,9 @@ export abstract class DateUtils {
     /**
      * Returns whether the date is tomorrow
      *
-     * @param {Date} date the date to check
+     * @param date the date to check
      *
-     * @return {boolean} whether the date is tomorrow
+     * @return whether the date is tomorrow
      */
     public static isTomorrow(date: Date): boolean {
         return this.isSameDay(new Date(), this.addDay(date, -1));

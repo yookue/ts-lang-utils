@@ -22,16 +22,23 @@ import {StringUtils} from './StringUtils';
 /**
  * Utilities for json
  *
- * @abstract
- * @hideconstructor
+ * @author David Hsing
  */
 export abstract class JsonUtils {
     /**
+     * Construct an instance of this class
+     *
+     * @ignore
+     */
+    private constructor() {
+    }
+
+    /**
      * Returns whether the given string is a JSON string
      *
-     * @param {string} text the string to check
+     * @param text the string to check
      *
-     * @return {boolean} whether the given object is a JSON string
+     * @return whether the given object is a JSON string
      *
      * @example
      * JsonUtils.isJsonString(`{"foo": "bar"}`);    // true
@@ -54,9 +61,9 @@ export abstract class JsonUtils {
     /**
      * Returns a JSON string that represents the given object
      *
-     * @param {any} object the object to inspect
+     * @param object the object to inspect
      *
-     * @return {string} a JSON string that represents the given object
+     * @return a JSON string that represents the given object
      *
      * @example
      * JsonUtils.toJsonString({foo: 'bar'});    // `{"foo":"bar"}`

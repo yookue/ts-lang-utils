@@ -21,16 +21,23 @@ import {ObjectUtils} from './ObjectUtils';
 /**
  * Utilities for tree
  *
- * @abstract
- * @hideconstructor
+ * @author David Hsing
  */
 export abstract class TreeUtils {
     /**
+     * Construct an instance of this class
+     *
+     * @ignore
+     */
+    private constructor() {
+    }
+
+    /**
      * Traverses the target nodes with the given callback function
      *
-     * @param {Array<any>} nodes the nodes to traverse
-     * @param {function} callback the function to execute during traversing
-     * @param {string} childrenKey the property name to children node
+     * @param nodes the nodes to traverse
+     * @param callback the function to execute during traversing
+     * @param childrenKey the property name to children node
      */
     public static forEach<T>(nodes?: T[], callback?: (node: T, nodes?: T[]) => void, childrenKey: string = 'children'): void {
         if (!nodes || nodes.length === 0 || !callback || !childrenKey) {
