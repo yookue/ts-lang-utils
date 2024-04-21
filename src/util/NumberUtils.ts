@@ -24,7 +24,7 @@ export abstract class NumberUtils {
     /**
      * Construct an instance of this class
      *
-     * @hidden
+     * @ignore
      */
     private constructor() {
     }

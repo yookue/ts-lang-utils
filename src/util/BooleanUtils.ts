@@ -28,7 +28,7 @@ export abstract class BooleanUtils {
     /**
      * Construct an instance of this class
      *
-     * @hidden
+     * @ignore
      */
     private constructor() {
     }

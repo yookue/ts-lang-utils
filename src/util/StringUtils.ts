@@ -29,7 +29,7 @@ export abstract class StringUtils {
     /**
      * Construct an instance of this class
      *
-     * @hidden
+     * @ignore
      */
     private constructor() {
     }

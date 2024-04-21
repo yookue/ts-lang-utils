@@ -27,7 +27,7 @@ export abstract class TreeUtils {
     /**
      * Construct an instance of this class
      *
-     * @hidden
+     * @ignore
      */
     private constructor() {
     }

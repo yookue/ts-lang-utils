@@ -24,7 +24,7 @@ export abstract class ObjectUtils {
     /**
      * Construct an instance of this class
      *
-     * @hidden
+     * @ignore
      */
     private constructor() {
     }

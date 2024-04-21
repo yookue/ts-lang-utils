@@ -24,7 +24,7 @@ export abstract class ThreadUtils {
     /**
      * Construct an instance of this class
      *
-     * @hidden
+     * @ignore
      */
     private constructor() {
     }

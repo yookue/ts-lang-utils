@@ -27,7 +27,7 @@ export abstract class RandomUtils {
     /**
      * Construct an instance of this class
      *
-     * @hidden
+     * @ignore
      */
     private constructor() {
     }
