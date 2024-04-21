@@ -27,7 +27,7 @@ export abstract class DateUtils {
     /**
      * Construct an instance of this class
      *
-     * @ignore
+     * @hidden
      */
     private constructor() {
     }

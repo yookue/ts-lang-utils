@@ -24,7 +24,7 @@ export abstract class RegexUtils {
     /**
      * Construct an instance of this class
      *
-     * @ignore
+     * @hidden
      */
     private constructor() {
     }
