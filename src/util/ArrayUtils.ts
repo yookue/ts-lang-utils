@@ -244,6 +244,37 @@ export abstract class ArrayUtils {
     }
 
     /**
+     * Returns the array that contains all the given elements at the index of the source array
+     *
+     * @param array the array to inspect
+     * @param index the index to insert, negative or greater than the length of source array, means at the end of the source array
+     * @param elements the elements to insert
+     *
+     * @return the array that contains all the given elements at the index of the source array
+     *
+     * @example
+     * ArrayUtils.insert(['foo', 'bar'], -1, ['hello', 'world']);    // ['foo', 'bar', 'hello', 'world']
+     * ArrayUtils.insert(['foo', 'bar'], 0, ['hello', 'world']);    // ['hello', 'world', 'foo', 'bar']
+     * ArrayUtils.insert(['foo', 'bar'], 1, ['hello', 'world']);    // ['foo', 'hello', 'world', 'bar']
+     * ArrayUtils.insert(['foo', 'bar'], 9, ['hello', 'world']);    // ['foo', 'bar', 'hello', 'world']
+     */
+    public static insert<E>(array?: E[] | null, index?: number, elements?: E[] | null): E[] | undefined | null {
+        if (index === undefined || !elements || elements.length === 0) {
+            return array;
+        }
+        if (!array || array.length === 0) {
+            return elements;
+        }
+        if (index < 0 || index >= array.length) {
+            return array.concat(elements);
+        } else if (index === 0) {
+            return elements.concat(array);
+        }
+        const order = Math.min(index, array.length);
+        return array.slice(0, order).concat(elements).concat(array.slice(order));
+    }
+
+    /**
      * Returns the max length of the given arrays
      *
      * @param arrays the arrays to check
@@ -292,15 +323,15 @@ export abstract class ArrayUtils {
      * Returns the array that excludes the given elements
      *
      * @param array the arrays to inspect
-     * @param excludes the elements array to exclude
+     * @param elements the elements to remove
      *
      * @return the array that excludes the given elements
      *
      * @example
      * ArrayUtils.remove(['foo', 'bar'], ['bar']);    // ['foo']
      */
-    public static remove<E>(array?: E[] | null, excludes?: E[] | null): E[] | undefined | null {
-        return (!array || array.length === 0 || !excludes || excludes.length === 0) ? array : array.filter(item => !excludes.includes(item));
+    public static remove<E>(array?: E[] | null, elements?: E[] | null): E[] | undefined | null {
+        return (!array || array.length === 0 || !elements || elements.length === 0) ? array : array.filter(item => !elements.includes(item));
     }
 
     /**

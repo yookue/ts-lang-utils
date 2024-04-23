@@ -80,6 +80,13 @@ describe('ArrayUtils', () => {
         expect(ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'world'])).toBeTruthy();
     });
 
+    test('Testing insert', () => {
+        expect(ArrayUtils.insert(['foo', 'bar'], -1, ['hello', 'world'])).toStrictEqual(['foo', 'bar', 'hello', 'world']);
+        expect(ArrayUtils.insert(['foo', 'bar'], 0, ['hello', 'world'])).toStrictEqual(['hello', 'world', 'foo', 'bar']);
+        expect(ArrayUtils.insert(['foo', 'bar'], 1, ['hello', 'world'])).toStrictEqual(['foo', 'hello', 'world', 'bar']);
+        expect(ArrayUtils.insert(['foo', 'bar'], 9, ['hello', 'world'])).toStrictEqual(['foo', 'bar', 'hello', 'world']);
+    });
+
     test('Testing maxLength', () => {
         expect(ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3])).toBe(3);
         expect(ArrayUtils.maxLength(['foo', 'bar'], ['hello', 'word'])).toBe(2);
