@@ -27,11 +27,6 @@ describe('ArrayUtils', () => {
         expect(ArrayUtils.firstNotEmpty([null, undefined, {}, 'foo', 'bar'])).toBe('foo');
     });
 
-    test('Testing asArray', () => {
-        expect(ArrayUtils.asArray(undefined)).toBeUndefined();
-        expect(ArrayUtils.asArray('foobar')).toStrictEqual(['foobar']);
-    });
-
     test('Testing getFirst', () => {
         expect(ArrayUtils.getFirst(['foo', 'bar'])).toBe('foo');
     });
@@ -97,6 +92,10 @@ describe('ArrayUtils', () => {
         expect(ArrayUtils.minLength(['foo', 'bar'], ['hello', 'word'])).toBe(2);
     });
 
+    test('Testing readonly', () => {
+        expect(ArrayUtils.getLength(ArrayUtils.readonly(['foo', 'bar']))).toBe(2);
+    });
+
     test('Testing remove', () => {
         expect(ArrayUtils.remove(['foo', 'bar'], undefined)).toStrictEqual(['foo', 'bar']);
         expect(ArrayUtils.remove(['foo', 'bar'], ['world'])).toStrictEqual(['foo', 'bar']);
@@ -109,5 +108,10 @@ describe('ArrayUtils', () => {
         expect(array).toStrictEqual(['bar', 'foo']);
         ArrayUtils.reverse(array);
         expect(array).toStrictEqual(['foo', 'bar']);
+    });
+
+    test('Testing singleton', () => {
+        expect(ArrayUtils.singleton(undefined)).toBeUndefined();
+        expect(ArrayUtils.singleton('foobar')).toStrictEqual(['foobar']);
     });
 });

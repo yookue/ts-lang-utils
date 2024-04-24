@@ -43,7 +43,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.firstNotNil([null, undefined, 'foo', 'bar', {}]);    // 'foo'
      */
-    public static firstNotNil(array?: any[]): any {
+    public static firstNotNil(array?: any[] | readonly any[] | null): any {
         // @ts-ignore
         return this.isEmpty(array) ? undefined : array.find(item => ObjectUtils.isNotNil(item));
     }
@@ -58,23 +58,9 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.firstNotEmpty([null, undefined, {}, 'foo', 'bar']);    // 'foo'
      */
-    public static firstNotEmpty(array?: any[]): any {
+    public static firstNotEmpty(array?: any[] | readonly any[] | null): any {
         // @ts-ignore
         return this.isEmpty(array) ? undefined : array.find(item => ObjectUtils.isNotEmpty(item));
-    }
-
-    /**
-     * Returns an array of the given element
-     *
-     * @param element the element to wrap
-     *
-     * @return an array of the given element
-     *
-     * @example
-     * ArrayUtils.asArray('foobar');    // ['foobar']
-     */
-    public static asArray<E>(element?: E | null): E[] | undefined {
-        return !element ? undefined : [element];
     }
 
     /**
@@ -87,7 +73,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.getFirst(['foo', 'bar']);    // 'foo'
      */
-    public static getFirst<E>(array?: E[] | null): E | undefined {
+    public static getFirst<E>(array?: E[] | readonly E[] | null): E | undefined {
         return (!array || array.length === 0) ? undefined : array[0];
     }
 
@@ -101,7 +87,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.getLast(['foo', 'bar']);    // 'bar'
      */
-    public static getLast<E>(array?: E[] | null): E | undefined {
+    public static getLast<E>(array?: E[] | readonly E[] | null): E | undefined {
         return (!array || array.length === 0) ? undefined : array[array.length - 1];
     }
 
@@ -116,7 +102,7 @@ export abstract class ArrayUtils {
      * ArrayUtils.getLength([]);    // 0
      * ArrayUtils.getLength(['foo', 'bar']);    // 2
      */
-    public static getLength(array?: any[]): number {
+    public static getLength(array?: any[] | readonly any[] | null): number {
         return array ? array.length : 0;
     }
 
@@ -130,7 +116,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.getTypeof(['foo', 'bar']);    // ['string', 'string']
      */
-    public static getTypeof(array?: any[]): string[] | undefined {
+    public static getTypeof(array?: any[] | readonly any[] | null): string[] | undefined {
         if (this.isEmpty(array)) {
             return undefined;
         }
@@ -155,7 +141,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.isEmpty([]);    // true
      */
-    public static isEmpty(array?: any[]): boolean {
+    public static isEmpty(array?: any[] | readonly any[] | null): boolean {
         return !array || array.length === 0;
     }
 
@@ -169,7 +155,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.isNotEmpty(['foo', 'bar']);    // true
      */
-    public static isNotEmpty(array?: any[]): boolean {
+    public static isNotEmpty(array?: any[] | readonly any[] | null): boolean {
         return !this.isEmpty(array);
     }
 
@@ -186,7 +172,7 @@ export abstract class ArrayUtils {
      * ArrayUtils.isTypeof(['foo', 'bar'], 'string');    // true
      * ArrayUtils.isTypeof(['foo', 'bar', null], 'string', true);    // true
      */
-    public static isTypeof(array?: any[], type?: string, relaxed = false): boolean {
+    public static isTypeof(array?: any[] | readonly any[] | null, type?: string, relaxed = false): boolean {
         if (this.isEmpty(array) || StringUtils.isBlank(type)) {
             return false;
         }
@@ -207,7 +193,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.includes(['foo', 'bar'], 'foo');    // true
      */
-    public static includes<E>(array?: E[] | null, element?: E | null): boolean {
+    public static includes<E>(array?: E[] | readonly E[] | null, element?: E | null): boolean {
         return !!array && !!element && array.includes(element);
     }
 
@@ -223,7 +209,7 @@ export abstract class ArrayUtils {
      * ArrayUtils.includesAll(['foo', 'bar'], ['foo', 'bar']);    // true
      * ArrayUtils.includesAll(['foo', 'bar'], ['foo', 'world']);    // false
      */
-    public static includesAll<E>(array?: E[] | null, elements?: E[] | null): boolean {
+    public static includesAll<E>(array?: E[] | readonly E[] | null, elements?: E[] | null): boolean {
         return !!array && !!elements && elements.every(item => array.includes(item));
     }
 
@@ -239,7 +225,7 @@ export abstract class ArrayUtils {
      * ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'bar']);    // true
      * ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'world']);    // true
      */
-    public static includesAny<E>(array?: E[] | null, elements?: E[] | null): boolean {
+    public static includesAny<E>(array?: E[] | readonly E[] | null, elements?: E[] | null): boolean {
         return !!array && !!elements && elements.some(item => array.includes(item));
     }
 
@@ -284,7 +270,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3]);    // 3
      */
-    public static maxLength(...arrays: any[][]): number {
+    public static maxLength(...arrays: any[][] | readonly any[][]): number {
         if (this.isEmpty(arrays)) {
             return 0;
         }
@@ -305,7 +291,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.minLength(['foo', 'bar'], [1, 2, 3], []);    // 0
      */
-    public static minLength(...arrays: any[][]): number {
+    public static minLength(...arrays: any[][] | readonly any[][]): number {
         if (this.isEmpty(arrays)) {
             return 0;
         }
@@ -317,6 +303,17 @@ export abstract class ArrayUtils {
             }
         }
         return result;
+    }
+
+    /**
+     * Returns a readonly instance of the given array
+     *
+     * @param array the arrays to inspect
+     *
+     * @returns a readonly instance of the given array
+     */
+    public static readonly<E>(array?: E[] | null): ReadonlyArray<E> | undefined | null {
+        return !array ? array : Object.freeze(array);
     }
 
     /**
@@ -357,5 +354,19 @@ export abstract class ArrayUtils {
             end--;
             start++;
         }
+    }
+
+    /**
+     * Returns an array that only contains the given element
+     *
+     * @param element the element to wrap
+     *
+     * @return an array that only contains the given element
+     *
+     * @example
+     * ArrayUtils.singleton('foobar');    // ['foobar']
+     */
+    public static singleton<E>(element?: E | null): E[] | undefined {
+        return !element ? undefined : [element];
     }
 }
