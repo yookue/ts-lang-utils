@@ -19,7 +19,17 @@ import {RegexUtils} from '@yookue/ts-lang-utils';
 
 
 describe('RegexUtils', () => {
+    test('Testing compilePattern', () => {
+        expect(RegexUtils.compilePattern('/[0-9a-zA-Z]+/g')).toBeDefined();
+    });
+
     test('Testing extractWords', () => {
         expect(RegexUtils.extractWords('foo, & bar')).toStrictEqual(['foo', 'bar']);
+    });
+
+    test('Testing isCompilable', () => {
+        expect(RegexUtils.isCompilable(undefined)).toBeFalsy();
+        expect(RegexUtils.isCompilable('foobar')).toBeTruthy();
+        expect(RegexUtils.isCompilable('/[0-9a-zA-Z]+/g')).toBeTruthy();
     });
 });

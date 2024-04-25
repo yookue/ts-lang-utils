@@ -38,7 +38,7 @@ export abstract class ArrayUtils {
      *
      * @param array the array to check
      *
-     * @return the first not nil element in the given array, or null if all elements are nil
+     * @returns the first not nil element in the given array, or null if all elements are nil
      *
      * @example
      * ArrayUtils.firstNotNil([null, undefined, 'foo', 'bar', {}]);    // 'foo'
@@ -53,7 +53,7 @@ export abstract class ArrayUtils {
      *
      * @param array the array to check
      *
-     * @return the first not empty element in the given array, or null if all elements are nil
+     * @returns the first not empty element in the given array, or null if all elements are nil
      *
      * @example
      * ArrayUtils.firstNotEmpty([null, undefined, {}, 'foo', 'bar']);    // 'foo'
@@ -68,7 +68,7 @@ export abstract class ArrayUtils {
      *
      * @param array the array to inspect
      *
-     * @return the first element of the given array
+     * @returns the first element of the given array
      *
      * @example
      * ArrayUtils.getFirst(['foo', 'bar']);    // 'foo'
@@ -82,7 +82,7 @@ export abstract class ArrayUtils {
      *
      * @param array the array to inspect
      *
-     * @return the last element of the given array
+     * @returns the last element of the given array
      *
      * @example
      * ArrayUtils.getLast(['foo', 'bar']);    // 'bar'
@@ -96,7 +96,7 @@ export abstract class ArrayUtils {
      *
      * @param array the array to check
      *
-     * @return the length of the given array
+     * @returns the length of the given array
      *
      * @example
      * ArrayUtils.getLength([]);    // 0
@@ -111,7 +111,7 @@ export abstract class ArrayUtils {
      *
      * @param array the array to check
      *
-     * @return the element types of the given array
+     * @returns the element types of the given array
      *
      * @example
      * ArrayUtils.getTypeof(['foo', 'bar']);    // ['string', 'string']
@@ -136,7 +136,7 @@ export abstract class ArrayUtils {
      *
      * @param array the array to check
      *
-     * @return whether the given array is empty
+     * @returns whether the given array is empty
      *
      * @example
      * ArrayUtils.isEmpty([]);    // true
@@ -150,7 +150,7 @@ export abstract class ArrayUtils {
      *
      * @param array the array to check
      *
-     * @return whether the given array is not empty
+     * @returns whether the given array is not empty
      *
      * @example
      * ArrayUtils.isNotEmpty(['foo', 'bar']);    // true
@@ -166,7 +166,7 @@ export abstract class ArrayUtils {
      * @param type the expected element type
      * @param relaxed treat null as string or object
      *
-     * @return whether each element in the given array is the expected type
+     * @returns whether each element in the given array is the expected type
      *
      * @example
      * ArrayUtils.isTypeof(['foo', 'bar'], 'string');    // true
@@ -188,7 +188,7 @@ export abstract class ArrayUtils {
      * @param array the array to check
      * @param element the element to compare
      *
-     * @return whether the given array includes the given element
+     * @returns whether the given array includes the given element
      *
      * @example
      * ArrayUtils.includes(['foo', 'bar'], 'foo');    // true
@@ -203,7 +203,7 @@ export abstract class ArrayUtils {
      * @param array the array to check
      * @param elements the elements to compare
      *
-     * @return whether the given array includes all the given elements
+     * @returns whether the given array includes all the given elements
      *
      * @example
      * ArrayUtils.includesAll(['foo', 'bar'], ['foo', 'bar']);    // true
@@ -219,7 +219,7 @@ export abstract class ArrayUtils {
      * @param array the array to check
      * @param elements the elements to compare
      *
-     * @return whether the given array includes any of the given elements
+     * @returns whether the given array includes any of the given elements
      *
      * @example
      * ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'bar']);    // true
@@ -236,7 +236,7 @@ export abstract class ArrayUtils {
      * @param index the index to insert, negative or greater than the length of source array, means at the end of the source array
      * @param elements the elements to insert
      *
-     * @return the array that contains all the given elements at the index of the source array
+     * @returns the array that contains all the given elements at the index of the source array
      *
      * @example
      * ArrayUtils.insert(['foo', 'bar'], -1, ['hello', 'world']);    // ['foo', 'bar', 'hello', 'world']
@@ -265,7 +265,7 @@ export abstract class ArrayUtils {
      *
      * @param arrays the arrays to check
      *
-     * @return the max length of the given arrays
+     * @returns the max length of the given arrays
      *
      * @example
      * ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3]);    // 3
@@ -286,7 +286,7 @@ export abstract class ArrayUtils {
      *
      * @param arrays the arrays to check
      *
-     * @return the min length of the given arrays
+     * @returns the min length of the given arrays
      *
      * @example
      * ArrayUtils.minLength(['foo', 'bar'], [1, 2, 3], []);    // 0
@@ -322,7 +322,7 @@ export abstract class ArrayUtils {
      * @param array the arrays to inspect
      * @param elements the elements to remove
      *
-     * @return the array that excludes the given elements
+     * @returns the array that excludes the given elements
      *
      * @example
      * ArrayUtils.remove(['foo', 'bar'], ['bar']);    // ['foo']
@@ -361,7 +361,7 @@ export abstract class ArrayUtils {
      *
      * @param element the element to wrap
      *
-     * @return an array that only contains the given element
+     * @returns an array that only contains the given element
      *
      * @example
      * ArrayUtils.singleton('foobar');    // ['foobar']

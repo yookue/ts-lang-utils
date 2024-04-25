@@ -35,7 +35,7 @@ export abstract class RandomUtils {
     /**
      * Returns a random boolean value
      *
-     * @return the random boolean value
+     * @returns the random boolean value
      *
      * @example
      * RandomUtils.randomBoolean();
@@ -49,7 +49,7 @@ export abstract class RandomUtils {
      *
      * @param array the array to random
      *
-     * @return a random element of the array
+     * @returns a random element of the array
      *
      * @example
      * RandomUtils.randomElement(['1', '2', '3']);
@@ -64,7 +64,7 @@ export abstract class RandomUtils {
      * @param array the array to random
      * @param size the size to generate
      *
-     * @return a random element array with the specified length within the given array
+     * @returns a random element array with the specified length within the given array
      *
      * @example
      * RandomUtils.randomElements(['1', '2', '3'], 2);
@@ -89,7 +89,7 @@ export abstract class RandomUtils {
      * @param minInclusive the min value, inclusive
      * @param maxExclusive the max value, exclusive
      *
-     * @return a random integer that between the min value (inclusive) and the max value (exclusive)
+     * @returns a random integer that between the min value (inclusive) and the max value (exclusive)
      *
      * @example
      * RandomUtils.randomInteger(1, 10);
@@ -106,7 +106,7 @@ export abstract class RandomUtils {
      * @param minInclusive the min value, inclusive
      * @param maxExclusive the max value, exclusive
      *
-     * @return a random integer array that between the min value (inclusive) and the max value (exclusive), matching the given size
+     * @returns a random integer array that between the min value (inclusive) and the max value (exclusive), matching the given size
      *
      * @example
      * RandomUtils.randomIntegers(3, 1, 10);
@@ -129,7 +129,7 @@ export abstract class RandomUtils {
      * @param minInclusive the min value, inclusive
      * @param maxExclusive the max value, exclusive
      *
-     * @return a random number that between the min value (inclusive) and the max value (exclusive)
+     * @returns a random number that between the min value (inclusive) and the max value (exclusive)
      *
      * @example
      * RandomUtils.randomNumber(1.1, 1.2);
@@ -153,7 +153,7 @@ export abstract class RandomUtils {
      * @param minInclusive the min value, inclusive
      * @param maxExclusive the max value, exclusive
      *
-     * @return a random number array that between the min value (inclusive) and the max value (exclusive), matching the given size
+     * @returns a random number array that between the min value (inclusive) and the max value (exclusive), matching the given size
      *
      * @example
      * RandomUtils.randomNumbers(3, 1.1, 1.2);

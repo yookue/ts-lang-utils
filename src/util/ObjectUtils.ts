@@ -34,7 +34,7 @@ export abstract class ObjectUtils {
      *
      * @param objects the objects to check
      *
-     * @return whether all the elements in the given objects are null or undefined
+     * @returns whether all the elements in the given objects are null or undefined
      *
      * @example
      * ObjectUtils.allNil([null, undefined]);    // true
@@ -50,7 +50,7 @@ export abstract class ObjectUtils {
      *
      * @param objects the objects to check
      *
-     * @return whether all the elements in the given objects are not null or undefined
+     * @returns whether all the elements in the given objects are not null or undefined
      *
      * @example
      * ObjectUtils.allNotNil([null, undefined]);    // false
@@ -66,7 +66,7 @@ export abstract class ObjectUtils {
      *
      * @param objects the objects to check
      *
-     * @return whether any the elements in the given objects is null or undefined
+     * @returns whether any the elements in the given objects is null or undefined
      *
      * @example
      * ObjectUtils.anyNil([null, undefined]);    // true
@@ -82,7 +82,7 @@ export abstract class ObjectUtils {
      *
      * @param objects the objects to check
      *
-     * @return whether any of the elements in the given objects is not null or undefined
+     * @returns whether any of the elements in the given objects is not null or undefined
      *
      * @example
      * ObjectUtils.anyNotNil([null, undefined]);    // false
@@ -97,7 +97,7 @@ export abstract class ObjectUtils {
      *
      * @param objects the objects to check
      *
-     * @return whether all the elements in the given objects are empty
+     * @returns whether all the elements in the given objects are empty
      *
      * @example
      * ObjectUtils.allEmpty([null, undefined]);    // true
@@ -112,7 +112,7 @@ export abstract class ObjectUtils {
      *
      * @param objects the objects to check
      *
-     * @return whether all the elements in the given objects are not empty
+     * @returns whether all the elements in the given objects are not empty
      *
      * @example
      * ObjectUtils.allNotEmpty([null, undefined]);    // false
@@ -128,7 +128,7 @@ export abstract class ObjectUtils {
      *
      * @param objects the objects to check
      *
-     * @return whether any of the elements in the given objects is empty
+     * @returns whether any of the elements in the given objects is empty
      *
      * @example
      * ObjectUtils.anyEmpty([null, undefined]);    // true
@@ -143,7 +143,7 @@ export abstract class ObjectUtils {
      *
      * @param objects the objects to check
      *
-     * @return whether any of the elements in the given objects is not empty
+     * @returns whether any of the elements in the given objects is not empty
      *
      * @example
      * ObjectUtils.anyNotEmpty([null, undefined]);    // false
@@ -158,7 +158,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is null or undefined
+     * @returns whether the given object is null or undefined
      *
      * @example
      * ObjectUtils.isNil(null);    // true
@@ -174,7 +174,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is not null or undefined
+     * @returns whether the given object is not null or undefined
      *
      * @example
      * ObjectUtils.isNotNil('foobar');    // true
@@ -189,7 +189,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is null
+     * @returns whether the given object is null
      *
      * @example
      * ObjectUtils.isNull(null);    // true
@@ -204,7 +204,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is not null
+     * @returns whether the given object is not null
      *
      * @example
      * ObjectUtils.isNotNull('foobar');    // true
@@ -218,7 +218,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is undefined
+     * @returns whether the given object is undefined
      *
      * @example
      * ObjectUtils.isUndefined(undefined);    // true
@@ -233,7 +233,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is not undefined
+     * @returns whether the given object is not undefined
      *
      * @example
      * ObjectUtils.isNotUndefined('foobar');    // true
@@ -247,7 +247,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is empty
+     * @returns whether the given object is empty
      *
      * @example
      * ObjectUtils.isEmpty(null);    // true
@@ -276,7 +276,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is not empty
+     * @returns whether the given object is not empty
      *
      * @example
      * ObjectUtils.isNotEmpty('foobar');    // true
@@ -291,7 +291,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is a plain object
+     * @returns whether the given object is a plain object
      *
      * @example
      * ObjectUtils.isPlainObject(undefined);    // false
@@ -306,7 +306,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is a promise
+     * @returns whether the given object is a promise
      *
      * @example
      * ObjectUtils.isPromiseObject({});    // false
@@ -321,7 +321,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to check
      *
-     * @return whether the given object is a prototype
+     * @returns whether the given object is a prototype
      *
      * @example
      * ObjectUtils.isPrototype({});    // false
@@ -337,12 +337,27 @@ export abstract class ObjectUtils {
     }
 
     /**
+     * Returns whether the given object is a regular expression
+     *
+     * @param object the object to check
+     *
+     * @returns whether the given object is a regular expression
+     *
+     * @example
+     * ObjectUtils.isRegular(/[0-9a-zA-Z]+/g);    // true
+     * ObjectUtils.isRegular('/[0-9a-zA-Z]+/g');    // false
+     */
+    public static isRegular(object: any): boolean {
+        return (object instanceof RegExp) || (typeof object === 'object' && Object.prototype.toString.call(object) === '[object RegExp]');
+    }
+
+    /**
      * Returns the property value if property name is present on the given object
      *
      * @param object the object to inspect
      * @param prop the property name to inspect, parent property and child property are concat with dot (.)
      *
-     * @return the property value if property name is present on the given object
+     * @returns the property value if property name is present on the given object
      *
      * @example
      * ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foo.bar');    // foobar
@@ -367,7 +382,7 @@ export abstract class ObjectUtils {
      * @param object the object to check
      * @param prop the property name to check
      *
-     * @return whether the object has the specified property
+     * @returns whether the object has the specified property
      *
      * @example
      * ObjectUtils.hasProperty({foo: 'bar'}, 'foo');    // true
@@ -399,7 +414,7 @@ export abstract class ObjectUtils {
      *
      * @param object the object to inspect
      *
-     * @return the keys of the given object
+     * @returns the keys of the given object
      *
      * @example
      * ObjectUtils.keys({foo: 'bar'});    // ['foo']
@@ -426,7 +441,7 @@ export abstract class ObjectUtils {
      * @param object the object to inspect
      * @param nil the default string if the object is nil
      *
-     * @return a string representation of the given object
+     * @returns a string representation of the given object
      */
     public static toString(object?: any, nil?: string | null): string | undefined | null {
         return object ? object.toString() : nil;
@@ -438,7 +453,7 @@ export abstract class ObjectUtils {
      * @param object the object to inspect
      * @param nil the default string if the object is nil
      *
-     * @return a string tag representation of the given object
+     * @returns a string tag representation of the given object
      */
     public static toStringTag(object?: any, nil?: string | null): string | undefined | null {
         return object ? object[Symbol.toStringTag] : nil;

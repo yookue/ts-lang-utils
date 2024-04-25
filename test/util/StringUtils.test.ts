@@ -239,6 +239,16 @@ describe('StringUtils', () => {
         expect(StringUtils.prependIfMissingIgnoreCase('foobar', 'FOO')).toBe('foobar');
     });
 
+    test('Testing quoteSingle', () => {
+        expect(StringUtils.quoteSingle(undefined)).toBeUndefined();
+        expect(StringUtils.quoteSingle('foobar')).toBe('\'foobar\'');
+    });
+
+    test('Testing quoteDouble', () => {
+        expect(StringUtils.quoteDouble(undefined)).toBeUndefined();
+        expect(StringUtils.quoteDouble('foobar')).toBe('"foobar"');
+    });
+
     test('Testing removeAll', () => {
         expect(StringUtils.removeAll(undefined, undefined)).toBeUndefined();
         expect(StringUtils.removeAll('foobar-foobar', undefined)).toBe('foobar-foobar');
@@ -362,5 +372,11 @@ describe('StringUtils', () => {
         expect(StringUtils.trim(undefined)).toBeUndefined();
         expect(StringUtils.trim('foobar  ')).toBe('foobar');
         expect(StringUtils.trim(' ', true)).toBe(null);
+    });
+
+    test('Testing unquote', () => {
+        expect(StringUtils.unquote(undefined)).toBeUndefined();
+        expect(StringUtils.unquote('\'foobar\'')).toBe('foobar');
+        expect(StringUtils.unquote('"foobar"')).toBe('foobar');
     });
 });

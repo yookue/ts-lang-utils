@@ -69,6 +69,11 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.isPrototype('foobar')).toBeFalsy();
     });
 
+    test('Testing isRegular', () => {
+        expect(ObjectUtils.isRegular(/[0-9a-zA-Z]+/g)).toBeTruthy();
+        expect(ObjectUtils.isRegular('/[0-9a-zA-Z]+/g')).toBeFalsy();
+    });
+
     test('Testing getProperty', () => {
         expect(ObjectUtils.getProperty({foo: 'bar'}, 'foo')).toBe('bar');
         expect(ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foobar')).toBeUndefined();

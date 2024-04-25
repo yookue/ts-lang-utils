@@ -34,7 +34,7 @@ export abstract class ThreadUtils {
      *
      * @param microseconds the amount of time to sleep, in microseconds
      *
-     * @return a promise that could be resolved
+     * @returns a promise that could be resolved
      *
      * @example
      * TimeUtils.sleep();

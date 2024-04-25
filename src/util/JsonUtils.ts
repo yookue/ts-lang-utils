@@ -38,7 +38,7 @@ export abstract class JsonUtils {
      *
      * @param text the string to check
      *
-     * @return whether the given object is a JSON string
+     * @returns whether the given object is a JSON string
      *
      * @example
      * JsonUtils.isJsonString(`{"foo": "bar"}`);    // true
@@ -63,7 +63,7 @@ export abstract class JsonUtils {
      *
      * @param object the object to inspect
      *
-     * @return a JSON string that represents the given object
+     * @returns a JSON string that represents the given object
      *
      * @example
      * JsonUtils.toJsonString({foo: 'bar'});    // `{"foo":"bar"}`
