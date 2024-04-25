@@ -23,15 +23,8 @@ import {ArrayUtils} from './ArrayUtils';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class RandomUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Returns a random boolean value
      *

@@ -23,15 +23,8 @@ import {ObjectUtils} from './ObjectUtils';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class TreeUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Traverses the target nodes with the given callback function
      *

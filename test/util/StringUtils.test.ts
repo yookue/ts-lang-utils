@@ -141,6 +141,14 @@ describe('StringUtils', () => {
         expect(StringUtils.equalsAnyIgnoreCase('foo', ['bar', undefined])).toBeFalsy();
     });
 
+    test('Testing escapeHtml', () => {
+        expect(StringUtils.escapeHtml('<div>foobar<div>')).toBe('&lt;div&gt;foobar&lt;div&gt;');
+    });
+
+    test('Testing unescapeHtml', () => {
+        expect(StringUtils.unescapeHtml('&lt;div&gt;foobar&lt;div&gt;')).toBe('<div>foobar<div>');
+    });
+
     test('Testing filterIgnoreEmpty', () => {
         expect(StringUtils.filterIgnoreEmpty([null, undefined, '', 'foobar'])).toStrictEqual(['foobar']);
     });
@@ -247,6 +255,12 @@ describe('StringUtils', () => {
     test('Testing quoteDouble', () => {
         expect(StringUtils.quoteDouble(undefined)).toBeUndefined();
         expect(StringUtils.quoteDouble('foobar')).toBe('"foobar"');
+    });
+
+    test('Testing unquote', () => {
+        expect(StringUtils.unquote(undefined)).toBeUndefined();
+        expect(StringUtils.unquote('\'foobar\'')).toBe('foobar');
+        expect(StringUtils.unquote('"foobar"')).toBe('foobar');
     });
 
     test('Testing removeAll', () => {
@@ -372,11 +386,5 @@ describe('StringUtils', () => {
         expect(StringUtils.trim(undefined)).toBeUndefined();
         expect(StringUtils.trim('foobar  ')).toBe('foobar');
         expect(StringUtils.trim(' ', true)).toBe(null);
-    });
-
-    test('Testing unquote', () => {
-        expect(StringUtils.unquote(undefined)).toBeUndefined();
-        expect(StringUtils.unquote('\'foobar\'')).toBe('foobar');
-        expect(StringUtils.unquote('"foobar"')).toBe('foobar');
     });
 });

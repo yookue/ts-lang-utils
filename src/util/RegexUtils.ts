@@ -20,15 +20,8 @@
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class RegexUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Returns a regular expression that compiled by the given pattern
      *

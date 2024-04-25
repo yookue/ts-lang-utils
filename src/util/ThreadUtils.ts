@@ -20,15 +20,8 @@
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class ThreadUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Sleeps current thread for a specified amount of time
      *

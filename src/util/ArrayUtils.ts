@@ -24,15 +24,8 @@ import {StringUtils} from './StringUtils';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class ArrayUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Returns the first not nil element in the given array, or null if all elements are nil
      *

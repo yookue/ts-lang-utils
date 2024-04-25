@@ -24,15 +24,8 @@ import {StringUtils} from './StringUtils';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class JsonUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Returns whether the given string is a JSON string
      *

@@ -20,15 +20,8 @@
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class ObjectUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Returns whether all the elements in the given objects are null or undefined
      *

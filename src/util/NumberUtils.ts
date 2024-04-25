@@ -20,15 +20,8 @@
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class NumberUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Returns whether the given value is an integer
      *

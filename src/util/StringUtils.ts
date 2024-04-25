@@ -25,15 +25,8 @@ import {RegexUtils} from './RegexUtils';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class StringUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Returns whether all the given texts are empty
      *
@@ -418,6 +411,54 @@ export abstract class StringUtils {
             return false;
         }
         return comparisons.some(comparison => this.equalsIgnoreCase(text, comparison));
+    }
+
+    /**
+     * Returns the escaped html string of the given text
+     *
+     * @param text the source string to inspect
+     *
+     * @returns the escaped html string of the given text
+     *
+     * @example
+     * StringUtils.escapeHtml('<div>foobar<div>');    // '&lt;div&gt;foobar&lt;div&gt;'
+     */
+    public static escapeHtml(text?: string | null): string | undefined | null {
+        if (!text) {
+            return text;
+        }
+        const map: Record<string, string> = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;',
+        };
+        return text.replace( /[&<>"']/g, item => map[item]);
+    }
+
+    /**
+     * Returns the unescaped html string of the given text
+     *
+     * @param text the source string to inspect
+     *
+     * @returns the unescaped html string of the given text
+     *
+     * @example
+     * StringUtils.unescapeHtml('&lt;div&gt;foobar&lt;div&gt;');    // '<div>foobar<div>'
+     */
+    public static unescapeHtml(text?: string | null): string | undefined | null {
+        if (!text) {
+            return text;
+        }
+        const map: Record<string, string> = {
+            '&amp;': '&',
+            '&lt;': '<',
+            '&gt;': '>',
+            '&quot;': '"',
+            '&#039;': "'",
+        };
+        return text.replace( /(&amp;)|(&lt;)|(&gt;)|(&quot;)|(&#039;)/g, item => map[item]);
     }
 
     /**
@@ -833,6 +874,22 @@ export abstract class StringUtils {
      */
     public static quoteDouble(text?: string | null): string | undefined | null {
         return !text ? text : `"${text}"`;
+    }
+
+    /**
+     * Returns a string that unquotes the given text
+     *
+     * @param text the text to inspect
+     *
+     * @returns a string that unquotes the given text
+     *
+     * @example
+     * StringUtils.unquote(undefined);    // undefined
+     * StringUtils.unquote('\'foobar\'');    // 'foobar'
+     * StringUtils.unquote('"foobar"');    // 'foobar'
+     */
+    public static unquote(text?: string | null): string | undefined | null {
+        return !text ? text : text.replace(/^['"`]|['"`]$/g, '');
     }
 
     /**
@@ -1279,21 +1336,5 @@ export abstract class StringUtils {
         }
         const result = text.trim();
         return (emptyAsNull && this.isEmpty(result)) ? null : result;
-    }
-
-    /**
-     * Returns a string that unquotes the given text
-     *
-     * @param text the text to inspect
-     *
-     * @returns a string that unquotes the given text
-     *
-     * @example
-     * StringUtils.unquote(undefined);    // undefined
-     * StringUtils.unquote('\'foobar\'');    // 'foobar'
-     * StringUtils.unquote('"foobar"');    // 'foobar'
-     */
-    public static unquote(text?: string | null): string | undefined | null {
-        return !text ? text : text.replace(/^['"`]|['"`]$/g, '');
     }
 }

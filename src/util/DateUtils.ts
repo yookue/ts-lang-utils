@@ -23,15 +23,8 @@ import {StringUtils} from './StringUtils';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export abstract class DateUtils {
-    /**
-     * Construct an instance of this class
-     *
-     * @ignore
-     */
-    private constructor() {
-    }
-
     /**
      * Returns the year calculated date with the source date and the specified amount
      *
