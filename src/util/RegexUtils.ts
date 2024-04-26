@@ -16,22 +16,22 @@
 
 
 /**
- * Utilities for regular expression
+ * Utilities for regex
  *
  * @author David Hsing
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class RegexUtils {
     /**
-     * Returns a regular expression that compiled by the given pattern
+     * Returns a regex that compiled by the given pattern
      *
      * @param pattern the pattern to inspect
      * @param flags any combination of <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp#flags' target='_blank'>flag values</a>
      *
-     * @returns a regular expression that compiled by the given pattern
+     * @returns a regex that compiled by the given pattern
      *
      * @example
-     * RegexUtils.compilePattern('/[0-9a-zA-Z]+/g');
+     * RegexUtils.compilePattern('[a-zA-Z0-9]+', 'g');
      */
     public static compilePattern(pattern?: string, flags?: string): RegExp | undefined {
         if (!pattern) {
@@ -48,7 +48,7 @@ export abstract class RegexUtils {
      * Returns the array of strings that match the given pattern in the text
      *
      * @param text the text to inspect
-     * @param search the string or regular expression to match
+     * @param search the string or regex to match
      *
      * @returns the array of strings that match the given pattern in the text
      *
@@ -60,17 +60,17 @@ export abstract class RegexUtils {
     }
 
     /**
-     * Returns whether the given pattern can be compiled to a regular expression
+     * Returns whether the given pattern can be compiled to a regex
      *
      * @param pattern the pattern to check
      * @param flags any combination of <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp#flags' target='_blank'>flag values</a>
      *
-     * @returns whether the given pattern can be compiled to a regular expression
+     * @returns whether the given pattern can be compiled to a regex
      *
      * @example
      * RegexUtils.isCompilable(undefined);    // false
      * RegexUtils.isCompilable('foobar');    // true
-     * RegexUtils.isCompilable('/[0-9a-zA-Z]+/g');    // true
+     * RegexUtils.isCompilable('[a-zA-Z0-9]+', 'g');    // true
      */
     public static isCompilable(pattern?: string | null, flags?: string): boolean {
         if (!pattern) {
@@ -82,5 +82,23 @@ export abstract class RegexUtils {
         } catch (ignored) {
         }
         return false;
+    }
+
+    /**
+     * Returns whether the source text can be tested by the given regex, and resets the last index of the regex
+     *
+     * @param regex the regex to match
+     * @param text the source text to check
+     *
+     * @returns whether the source text can be tested by the given pattern, and resets the last index of the regex
+     */
+    public static testResetting(regex?: RegExp, text?: string | null): boolean {
+        if (!regex || !text) {
+            return false;
+        }
+        regex.lastIndex = 0;
+        const result = regex.test(text);
+        regex.lastIndex = 0;
+        return result;
     }
 }

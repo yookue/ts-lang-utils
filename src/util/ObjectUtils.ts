@@ -330,11 +330,11 @@ export abstract class ObjectUtils {
     }
 
     /**
-     * Returns whether the given object is a regular expression
+     * Returns whether the given object is a regex
      *
      * @param object the object to check
      *
-     * @returns whether the given object is a regular expression
+     * @returns whether the given object is a regex
      *
      * @example
      * ObjectUtils.isRegular(/[0-9a-zA-Z]+/g);    // true

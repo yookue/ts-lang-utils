@@ -20,7 +20,7 @@ import {RegexUtils} from '@yookue/ts-lang-utils';
 
 describe('RegexUtils', () => {
     test('Testing compilePattern', () => {
-        expect(RegexUtils.compilePattern('/[0-9a-zA-Z]+/g')).toBeDefined();
+        expect(RegexUtils.compilePattern('[a-zA-Z0-9]+', 'g')).toBeDefined();
     });
 
     test('Testing extractWords', () => {
@@ -30,6 +30,14 @@ describe('RegexUtils', () => {
     test('Testing isCompilable', () => {
         expect(RegexUtils.isCompilable(undefined)).toBeFalsy();
         expect(RegexUtils.isCompilable('foobar')).toBeTruthy();
-        expect(RegexUtils.isCompilable('/[0-9a-zA-Z]+/g')).toBeTruthy();
+        expect(RegexUtils.isCompilable('[a-zA-Z0-9]+', 'g')).toBeTruthy();
+    });
+
+    test('Testing testResetting', () => {
+        const pattern = /^[a-zA-Z0-9]+$/g;
+        expect(RegexUtils.testResetting(pattern, '##')).toBeFalsy();
+        expect(RegexUtils.testResetting(pattern, '11')).toBeTruthy();
+        expect(RegexUtils.testResetting(pattern, '1122')).toBeTruthy();
+        expect(RegexUtils.testResetting(pattern, '112233')).toBeTruthy();
     });
 });

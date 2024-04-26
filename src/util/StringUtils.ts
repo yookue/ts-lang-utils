@@ -896,7 +896,7 @@ export abstract class StringUtils {
      * Returns the string that removed all occurrences in the given text
      *
      * @param text the text to inspect
-     * @param search the string or regular expression to match
+     * @param search the string or regex to match
      *
      * @returns the string that removed all occurrences in the given text
      *
@@ -913,7 +913,7 @@ export abstract class StringUtils {
      * Returns the string that removed all occurrences in the given text, case-insensitive
      *
      * @param text the text to inspect
-     * @param search the string or regular expression to match
+     * @param search the string or regex to match
      *
      * @returns the string that removed all occurrences in the given text, case-insensitive
      *
@@ -930,7 +930,7 @@ export abstract class StringUtils {
      * Returns the string that removed the first occurrence in the given text
      *
      * @param text the text to inspect
-     * @param search the string or regular expression to match
+     * @param search the string or regex to match
      *
      * @returns the string that removed the first occurrence in the given text
      *
@@ -947,7 +947,7 @@ export abstract class StringUtils {
      * Returns the string that removed the first occurrence in the given text, case-insensitive
      *
      * @param text the text to inspect
-     * @param search the string or regular expression to match
+     * @param search the string or regex to match
      *
      * @returns the string that removed the first occurrence in the given text, case-insensitive
      *
@@ -1024,7 +1024,7 @@ export abstract class StringUtils {
      * Returns the string that replaced all occurrences in the given text
      *
      * @param text the text to inspect
-     * @param search the string or regular expression to match
+     * @param search the string or regex to match
      * @param replace the expected replacement string
      *
      * @returns the string that replaced all occurrences in the given text
@@ -1042,7 +1042,7 @@ export abstract class StringUtils {
      * Returns the string that replaced all occurrences in the given text, case-insensitive
      *
      * @param text the text to inspect
-     * @param search the string or regular expression to match
+     * @param search the string or regex to match
      * @param replace the expected replacement string
      *
      * @returns the string that replaced all occurrences in the given text, case-insensitive
@@ -1060,7 +1060,7 @@ export abstract class StringUtils {
      * Returns the string that replaced the first occurrence in the given text
      *
      * @param text the text to inspect
-     * @param search the string or regular expression to match
+     * @param search the string or regex to match
      * @param replace the expected replacement string
      *
      * @returns the string that replaced the first occurrence in the given text
@@ -1078,7 +1078,7 @@ export abstract class StringUtils {
      * Returns the string that replaced the first occurrence in the given text, case-insensitive
      *
      * @param text the text to inspect
-     * @param search the string or regular expression to match
+     * @param search the string or regex to match
      * @param replace the expected replacement string
      *
      * @returns the string that replaced the first occurrence in the given text, case-insensitive
@@ -1278,7 +1278,7 @@ export abstract class StringUtils {
      * Returns the camel case representation of the given string
      *
      * @param text the source string to inspect
-     * @param pattern the regular expression to match
+     * @param pattern the regex to match
      *
      * @returns the camel case representation of the given string
      *
@@ -1301,7 +1301,7 @@ export abstract class StringUtils {
      * Returns the kebab case representation of the given string
      *
      * @param text the source string to inspect
-     * @param pattern the regular expression to match
+     * @param pattern the regex to match
      *
      * @returns the kebab case representation of the given string
      *
