@@ -9,15 +9,25 @@
 ## Features
 
 ✅ Utilities for array
+
 ✅ Utilities for boolean
+
 ✅ Utilities for date time
+
 ✅ Utilities for json
+
 ✅ Utilities for number
+
 ✅ Utilities for object
+
 ✅ Utilities for random
+
 ✅ Utilities for regex
+
 ✅ Utilities for string
+
 ✅ Utilities for thread
+
 ✅ Utilities for tree
 
 ## Quickstart
