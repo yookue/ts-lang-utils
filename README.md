@@ -32,19 +32,19 @@
 
 ## Quickstart
 
-You can install ts-lang-utils package in your existing typescript project as follows:
+You can install this package in your typescript project as follows:
 
 ```bash
 $ npm install @yookue/ts-lang-utils --save
 ```
 
-Then, you may import components of ts-lang-utils as follows:
+Then, you may import components as follows:
 
 ```jsx | pure
 import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, NumberUtils, ObjectUtils, RandomUtils, RegexUtils, StringUtils, ThreadUtils, TreeUtils} from '@yookue/ts-lang-utils';
 ```
 
-Enjoy your journey in coding your projects with ts-lang-utils. ✌️
+Enjoy your coding journey with `ts-lang-utils`. ✌️
 
 ## Document
 
