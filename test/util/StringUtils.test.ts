@@ -67,6 +67,14 @@ describe('StringUtils', () => {
         expect(StringUtils.anyNotBlank(['foo', 'bar'])).toBeTruthy();
     });
 
+    test('Testing abbreviate', () => {
+        expect(StringUtils.abbreviate('foobar', -1)).toBe('foobar');
+        expect(StringUtils.abbreviate('foobar', 0)).toBe('');
+        expect(StringUtils.abbreviate('foobar', 5)).toBe('fo...');
+        expect(StringUtils.abbreviate('foobar', 6)).toBe('foobar');
+        expect(StringUtils.abbreviate('foobar', 10)).toBe('foobar');
+    });
+
     test('Testing appendIfMissing', () => {
         expect(StringUtils.appendIfMissing('foo', 'bar')).toBe('foobar');
         expect(StringUtils.appendIfMissing('foobar', 'bar')).toBe('foobar');
@@ -85,6 +93,14 @@ describe('StringUtils', () => {
     test('Testing capitalizeFirstLowerTail', () => {
         expect(StringUtils.capitalizeFirstLowerTail('f')).toBe('F');
         expect(StringUtils.capitalizeFirstLowerTail('fooBar')).toBe('Foobar');
+    });
+
+    test('Testing center', () => {
+        expect(StringUtils.center('foobar', -1)).toBe('foobar');
+        expect(StringUtils.center('foobar', 0)).toBe('');
+        expect(StringUtils.center('foobar', 3)).toBe('foobar');
+        expect(StringUtils.center('foobar', 7)).toBe('foobar ');
+        expect(StringUtils.center('foobar', 10)).toBe('  foobar  ');
     });
 
     test('Testing defaultString', () => {

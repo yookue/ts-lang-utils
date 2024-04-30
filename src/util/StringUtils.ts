@@ -150,6 +150,35 @@ export abstract class StringUtils {
     }
 
     /**
+     * Returns a string that abbreviates the given text using placeholder
+     *
+     * @param text the text to inspect
+     * @param width the max width of the expected string
+     * @param placeholder the placeholder to append
+     *
+     * @returns a string that abbreviates the given text using placeholder
+     *
+     * @example
+     * StringUtils.abbreviate('foobar', -1);    // 'foobar'
+     * StringUtils.abbreviate('foobar', 0);    // ''
+     * StringUtils.abbreviate('foobar', 5);    // 'fo...'
+     * StringUtils.abbreviate('foobar', 6);    // 'foobar'
+     * StringUtils.abbreviate('foobar', 10);    // 'foobar'
+     */
+    public static abbreviate(text?: string | null, width: number = -1, placeholder: string = '...'): string | undefined | null {
+        if (!text || width < 0 || width >= text.length) {
+            return text;
+        }
+        if (width === 0) {
+            return '';
+        }
+        if (width <= placeholder.length) {
+            return placeholder.substring(0, width);
+        }
+        return text.substring(0, width - placeholder.length) + placeholder;
+    }
+
+    /**
      * Returns a string that concat the given text and suffix
      *
      * @param text the text to check
@@ -207,6 +236,33 @@ export abstract class StringUtils {
      */
     public static capitalizeFirstLowerTail(text?: string | null): string | undefined | null {
         return !text ? text : (text.charAt(0).toUpperCase() + text.substring(1)?.toLowerCase());
+    }
+
+    /**
+     * Returns a string that centers the given text using placeholder
+     *
+     * @param text the text to inspect
+     * @param width the max width of the expected string
+     * @param placeholder the placeholder to pad
+     *
+     * @returns a string that centers the given text using placeholder
+     *
+     * @example
+     * StringUtils.center('foobar', -1);    // 'foobar'
+     * StringUtils.center('foobar', 0);    // ''
+     * StringUtils.center('foobar', 3);    // 'foobar'
+     * StringUtils.center('foobar', 7);    // 'foobar '
+     * StringUtils.center('foobar', 10);    // '  foobar  '
+     */
+    public static center(text?: string | null, width: number = -1, placeholder: string = ' '): string | undefined | null {
+        if (!text || width < 0 || (width > 0 && width <= text.length)) {
+            return text;
+        }
+        if (width === 0) {
+            return '';
+        }
+        const left = Math.floor((width - text.length) / 2);
+        return text.padStart(text.length + left, placeholder ?? ' ').padEnd(width, placeholder ?? ' ');
     }
 
     /**
