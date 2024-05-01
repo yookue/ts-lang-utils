@@ -332,21 +332,17 @@ export abstract class ArrayUtils {
      * @param endExclusive the ending index, exclusive
      *
      * @example
+     * ArrayUtils.reverse(undefined);    // undefined
      * ArrayUtils.reverse(['foo', 'bar']);    // ['bar', 'foo']
+     * ArrayUtils.reverse(['foo', 'bar'], 0, 1);    // ['foo']
      */
-    public static reverse(array?: any[], startInclusive?: number, endExclusive?: number): void {
-        if (this.isEmpty(array)) {
-            return;
+    public static reverse<E>(array?: E[] | null, startInclusive?: number, endExclusive?: number): E[] | undefined | null {
+        if (!array) {
+            return array;
         }
-        let start = Math.max(startInclusive || 0, 0);
-        let end = Math.min(endExclusive || this.getLength(array), this.getLength(array)) - 1;
-        while (array && end > start) {
-            const tmp = array[end];
-            array[end] = array[start];
-            array[start] = tmp;
-            end--;
-            start++;
-        }
+        const subarray = array.slice(startInclusive, endExclusive);
+        subarray.reverse();
+        return subarray;
     }
 
     /**

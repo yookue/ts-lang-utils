@@ -382,7 +382,7 @@ export abstract class ObjectUtils {
      * ObjectUtils.hasProperty({foo: 'bar'}, 'bar');    // false
      */
     public static hasProperty(object: any, prop?: string | null): boolean {
-        return typeof object === 'object' && !!prop && prop?.length > 0 && Object.prototype.hasOwnProperty.call(object, prop);
+        return typeof object === 'object' && !!prop && prop.length > 0 && Object.prototype.hasOwnProperty.call(object, prop);
     }
 
     /**
@@ -395,10 +395,9 @@ export abstract class ObjectUtils {
      * @example
      * ObjectUtils.setProperty({}, 'foo', 'bar');
      */
-    public static setProperty(object?: object, prop?: string | null, value?: any): void {
+    public static setProperty(object?: any, prop?: string | null, value?: any): void {
         if (this.isPlainObject(object) && prop) {
-            // @ts-ignore
-            object[prop] = value;
+            object[prop as keyof typeof object] = value;
         }
     }
 

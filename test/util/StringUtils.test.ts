@@ -195,6 +195,11 @@ describe('StringUtils', () => {
         expect(StringUtils.formatPlaceholder('welcome {a} {b} {c}', {a: 'to', b: 'the', c: 'world'})).toBe('welcome to the world');
     });
 
+    test('Testing fromChars', () => {
+        expect(StringUtils.fromChars(undefined)).toBeUndefined()
+        expect(StringUtils.fromChars(['f', 'o', 'o', 'b', 'a', 'r'])).toBe('foobar');
+    });
+
     test('Testing getLength', () => {
         expect(StringUtils.getLength(undefined)).toBe(0);
         expect(StringUtils.getLength('')).toBe(0);
@@ -251,6 +256,16 @@ describe('StringUtils', () => {
         expect(StringUtils.joinWith('foobar')).toBe('foobar');
         expect(StringUtils.joinWith(['foo', 'bar'], undefined)).toBe('foobar');
         expect(StringUtils.joinWith(['foo', 'bar', 'world'], undefined, (text => text !== 'world'))).toBe('foobar');
+    });
+
+    test('Testing left', () => {
+        expect(StringUtils.left('foobar', 3)).toBe('foo');
+        expect(StringUtils.left('foobar', 10)).toBe('foobar');
+    });
+
+    test('Testing right', () => {
+        expect(StringUtils.right('foobar', 3)).toBe('bar');
+        expect(StringUtils.right('foobar', 10)).toBe('foobar');
     });
 
     test('Testing prependIfMissing', () => {
@@ -323,6 +338,26 @@ describe('StringUtils', () => {
         expect(StringUtils.removeIncludesIgnoreCase(['foo', 'bar'], ['AR'])).toStrictEqual(['foo']);
     });
 
+    test('Testing removeStart', () => {
+        expect(StringUtils.removeStart('foobar', 'hello')).toBe('foobar');
+        expect(StringUtils.removeStart('foobar', 'foo')).toBe('bar');
+    });
+
+    test('Testing removeStartIgnoreCase', () => {
+        expect(StringUtils.removeStartIgnoreCase('foobar', 'Hello')).toBe('foobar');
+        expect(StringUtils.removeStartIgnoreCase('foobar', 'Foo')).toBe('bar');
+    });
+
+    test('Testing removeEnd', () => {
+        expect(StringUtils.removeEnd('foobar', 'hello')).toBe('foobar');
+        expect(StringUtils.removeEnd('foobar', 'bar')).toBe('foo');
+    });
+
+    test('Testing removeEndIgnoreCase', () => {
+        expect(StringUtils.removeEndIgnoreCase('foobar', 'Hello')).toBe('foobar');
+        expect(StringUtils.removeEndIgnoreCase('foobar', 'Bar')).toBe('foo');
+    });
+
     test('Testing replaceAll', () => {
         expect(StringUtils.replaceAll(undefined, undefined, undefined)).toBeUndefined();
         expect(StringUtils.replaceAll('foobar-foobar', undefined, 'hello')).toBe('foobar-foobar');
@@ -345,6 +380,11 @@ describe('StringUtils', () => {
         expect(StringUtils.replaceFirstIgnoreCase(undefined, undefined, undefined)).toBeUndefined();
         expect(StringUtils.replaceFirstIgnoreCase('foobar-foobar', undefined, 'hello')).toBe('foobar-foobar');
         expect(StringUtils.replaceFirstIgnoreCase('foobar-foobar', 'FOOBAR', 'hello')).toBe('hello-foobar');
+    });
+
+    test('Testing reverse', () => {
+        expect(StringUtils.reverse('foobar')).toBe('raboof');
+        expect(StringUtils.reverse('foobar', 1, 5)).toBe('aboo');
     });
 
     test('Testing split', () => {
@@ -386,6 +426,11 @@ describe('StringUtils', () => {
 
     test('Testing substringBeforeLast', () => {
         expect(StringUtils.substringBeforeLast('foo/bar/foo/bar', '/')).toBe('foo/bar/foo');
+    });
+
+    test('Testing toChars', () => {
+        expect(StringUtils.toChars(undefined)).toBeUndefined()
+        expect(StringUtils.toChars('foobar')).toStrictEqual(['f', 'o', 'o', 'b', 'a', 'r']);
     });
 
     test('Testing toCamelCase', () => {

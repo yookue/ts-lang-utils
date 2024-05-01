@@ -706,6 +706,21 @@ export abstract class StringUtils {
     }
 
     /**
+     * Returns a string that represents the given string array
+     *
+     * @param texts the source strings to inspect
+     *
+     * @returns a string that represents the given string array
+     *
+     * @example
+     * StringUtils.fromChars(undefined);    // undefined
+     * StringUtils.fromChars(['f', 'o', 'o', 'b', 'a', 'r']);    // 'foobar'
+     */
+    public static fromChars(texts?: Array<string | undefined | null>): string | undefined {
+        return !texts ? undefined : texts.join('');
+    }
+
+    /**
      * Returns the length of the given string
      *
      * @param text the source string to check
@@ -868,6 +883,50 @@ export abstract class StringUtils {
             return (!array || array.length === 0) ? undefined : array.join(this.defaultString(separator));
         }
         return !filter ? (texts as string) : (filter(texts as string) ? (texts as string) : undefined);
+    }
+
+    /**
+     * Returns the leftmost length characters of the given string
+     *
+     * @param text the text to inspect
+     * @param length the expected length
+     *
+     * @returns the leftmost length characters of the given string
+     *
+     * @example
+     * StringUtils.left('foobar', 3);    // 'foo'
+     * StringUtils.left('foobar', 10);    // 'foobar'
+     */
+    public static left(text?: string | null, length?: number): string | undefined | null {
+        if (!text || length === undefined || length < 0) {
+            return text;
+        }
+        if (length === 0) {
+            return '';
+        }
+        return text.substring(0, length);
+    }
+
+    /**
+     * Returns the rightmost length characters of the given string
+     *
+     * @param text the text to inspect
+     * @param length the expected length
+     *
+     * @returns the rightmost length characters of the given string
+     *
+     * @example
+     * StringUtils.right('foobar', 3);    // 'bar'
+     * StringUtils.right('foobar', 10);    // 'foobar'
+     */
+    public static right(text?: string | null, length?: number): string | undefined | null {
+        if (!text || length === undefined || length < 0) {
+            return text;
+        }
+        if (length === 0) {
+            return '';
+        }
+        return (text.length <= length) ? text : text.substring(text.length - length);
     }
 
     /**
@@ -1077,6 +1136,70 @@ export abstract class StringUtils {
     }
 
     /**
+     * Returns the string that removed the leftmost given string
+     *
+     * @param text the text to inspect
+     * @param remove the string to remove
+     *
+     * @returns the string that removed the leftmost given string
+     *
+     * @example
+     * StringUtils.removeStart('foobar', 'hello');    // 'foobar'
+     * StringUtils.removeStart('foobar', 'foo');    // 'bar'
+     */
+    public static removeStart(text?: string | null, remove?: string | null): string | undefined | null {
+        return (!text || !remove || !this.startsWith(text, remove)) ? text : text.substring(remove.length);
+    }
+
+    /**
+     * Returns the string that removed the leftmost given string, case-insensitive
+     *
+     * @param text the text to inspect
+     * @param remove the string to remove, case-insensitive
+     *
+     * @returns the string that removed the leftmost given string, case-insensitive
+     *
+     * @example
+     * StringUtils.removeStartIgnoreCase('foobar', 'Hello');    // 'foobar'
+     * StringUtils.removeStartIgnoreCase('foobar', 'Foo');    // 'bar'
+     */
+    public static removeStartIgnoreCase(text?: string | null, remove?: string | null): string | undefined | null {
+        return (!text || !remove || !this.startsWithIgnoreCase(text, remove)) ? text : text.substring(remove.length);
+    }
+
+    /**
+     * Returns the string that removed the leftmost given string
+     *
+     * @param text the text to inspect
+     * @param remove the string to remove
+     *
+     * @returns the string that removed the leftmost given string
+     *
+     * @example
+     * StringUtils.removeEnd('foobar', 'hello');    // 'foobar'
+     * StringUtils.removeEnd('foobar', 'bar');    // 'foo'
+     */
+    public static removeEnd(text?: string | null, remove?: string | null): string | undefined | null {
+        return (!text || !remove || !this.endsWith(text, remove)) ? text : text.substring(0, text.length - remove.length);
+    }
+
+    /**
+     * Returns the string that removed the rightmost given string, case-insensitive
+     *
+     * @param text the text to inspect
+     * @param remove the string to remove, case-insensitive
+     *
+     * @returns the string that removed the rightmost given string, case-insensitive
+     *
+     * @example
+     * StringUtils.removeEndIgnoreCase('foobar', 'Hello');    // 'foobar'
+     * StringUtils.removeEndIgnoreCase('foobar', 'Bar');    // 'foo'
+     */
+    public static removeEndIgnoreCase(text?: string | null, remove?: string | null): string | undefined | null {
+        return (!text || !remove || !this.endsWithIgnoreCase(text, remove)) ? text : text.substring(0, text.length - remove.length);
+    }
+
+    /**
      * Returns the string that replaced all occurrences in the given text
      *
      * @param text the text to inspect
@@ -1146,6 +1269,27 @@ export abstract class StringUtils {
      */
     public static replaceFirstIgnoreCase(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
         return (this.isEmpty(text) || !search) ? text : text?.replace(new RegExp(search, 'i'), (replace ?? ''));
+    }
+
+    /**
+     * Returns the reversed representation of the given string
+     *
+     * @param text the source string to inspect
+     * @param startInclusive the starting index, inclusive
+     * @param endExclusive the ending index, exclusive
+     *
+     * @returns the reversed representation of the given string
+     *
+     * @example
+     * StringUtils.reverse('foobar');    // 'raboof'
+     * StringUtils.reverse('foobar', 1, 5);    // 'aboo'
+     */
+    public static reverse(text?: string | null, startInclusive?: number, endExclusive?: number): string | undefined | null {
+        if (!text) {
+            return text;
+        }
+        const substring = text.substring(startInclusive ?? 0, endExclusive);
+        return (this.toChars(substring) as string[]).reverse().join('');
     }
 
     /**
@@ -1328,6 +1472,28 @@ export abstract class StringUtils {
         }
         const index = text.lastIndexOf(separator);
         return (index === -1) ? undefined : text.substring(0, index);
+    }
+
+    /**
+     * Returns a string array that represents the given string
+     *
+     * @param text the source string to inspect
+     *
+     * @returns a string array that represents the given string
+     *
+     * @example
+     * StringUtils.toChars(undefined);    // undefined
+     * StringUtils.toChars('foobar');    // ['f', 'o', 'o', 'b', 'a', 'r']
+     */
+    public static toChars(text?: string | null): string[] | undefined {
+        if (!text) {
+            return undefined;
+        }
+        const result = new Array<string>(text.length);
+        for (let i = 0; i < result.length; i++) {
+            result[i] = text.charAt(i);
+        }
+        return result;
     }
 
     /**

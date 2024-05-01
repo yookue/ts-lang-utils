@@ -103,11 +103,9 @@ describe('ArrayUtils', () => {
     });
 
     test('Testing reverse', () => {
-        const array = ['foo', 'bar'];
-        ArrayUtils.reverse(array);
-        expect(array).toStrictEqual(['bar', 'foo']);
-        ArrayUtils.reverse(array);
-        expect(array).toStrictEqual(['foo', 'bar']);
+        expect(ArrayUtils.reverse(undefined)).toBeUndefined();
+        expect(ArrayUtils.reverse(['foo', 'bar'])).toStrictEqual(['bar', 'foo']);
+        expect(ArrayUtils.reverse(['foo', 'bar'], 0, 1)).toStrictEqual(['foo']);
     });
 
     test('Testing singleton', () => {
