@@ -15,7 +15,7 @@
  */
 
 
-import {ArrayUtils} from './ArrayUtils';
+import {StringUtils} from './StringUtils';
 
 
 /**
@@ -47,8 +47,8 @@ export abstract class RandomUtils {
      * @example
      * RandomUtils.randomElement(['1', '2', '3']);
      */
-    public static randomElement(array: any[]): any {
-        return ArrayUtils.isNotEmpty(array) ? array.at(this.randomInteger(0, array.length)) : undefined;
+    public static randomElement<E>(array?: E[]): E | undefined {
+        return (!array || array.length === 0) ? undefined : array.at(this.randomInteger(0, array.length));
     }
 
     /**
@@ -62,11 +62,11 @@ export abstract class RandomUtils {
      * @example
      * RandomUtils.randomElements(['1', '2', '3'], 2);
      */
-    public static randomElements(array: any[], size: number): any[] {
-        if (ArrayUtils.isEmpty(array) || size <= 0) {
-            return [];
+    public static randomElements<E>(array?: E[], size?: number): E[] | undefined {
+        if (!array || array.length === 0 || !size || size <= 0) {
+            return undefined;
         }
-        if (ArrayUtils.getLength(array) <= size) {
+        if (array.length <= size) {
             return array;
         }
         const indexes = new Set<number>();
@@ -105,9 +105,9 @@ export abstract class RandomUtils {
      * RandomUtils.randomIntegers(3, 1, 10);
      * RandomUtils.randomIntegers(3, -6, 8);
      */
-    public static randomIntegers(size: number, minInclusive?: number, maxExclusive?: number): number[] {
-        if (size <= 0) {
-            return [];
+    public static randomIntegers(size?: number, minInclusive?: number, maxExclusive?: number): number[] | undefined {
+        if (!size || size <= 0) {
+            return undefined;
         }
         const result: number[] = [];
         for (let i = 0; i < size; i++) {
@@ -152,14 +152,40 @@ export abstract class RandomUtils {
      * RandomUtils.randomNumbers(3, 1.1, 1.2);
      * RandomUtils.randomNumbers(3, -3.6, 2.8);
      */
-    public static randomNumbers(size: number, minInclusive?: number, maxExclusive?: number): number[] {
-        if (size <= 0) {
-            return [];
+    public static randomNumbers(size?: number, minInclusive?: number, maxExclusive?: number): number[] | undefined {
+        if (!size || size <= 0) {
+            return undefined;
         }
         const result: number[] = [];
         for (let i = 0; i < size; i++) {
             result.push(this.randomNumber(minInclusive, maxExclusive));
         }
         return result;
+    }
+
+    /**
+     * Returns a random string with the given length
+     *
+     * @param length the length of the expected string
+     * @param characters the source characters to be generated from
+     *
+     * @returns a random string with the given length
+     *
+     * @example
+     * RandomUtils.randomString(8);
+     */
+    public static randomString(length: number, characters: string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'): string | undefined {
+        if (!length || length <= 0 || characters.length === 0) {
+            return undefined;
+        }
+        if (characters.length === 1) {
+            return characters.repeat(length);
+        }
+        const source = StringUtils.toChars(characters) as string[];
+        const result: string[] = [];
+        for (let i = 0; i < length; i++) {
+            result.push(this.randomElement(source) as string);
+        }
+        return StringUtils.fromChars(result);
     }
 }

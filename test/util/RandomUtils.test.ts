@@ -61,4 +61,7 @@ describe('RandomUtils', () => {
         expect(RandomUtils.randomNumbers(3,1.1, 1.8)).toHaveLength(3);
     });
 
+    test('Testing randomString', () => {
+        expect((RandomUtils.randomString(8) as string).length).toBe(8);
+    });
 });

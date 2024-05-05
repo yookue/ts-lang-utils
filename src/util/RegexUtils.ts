@@ -19,6 +19,8 @@
  * Utilities for regex
  *
  * @author David Hsing
+ *
+ * @see "https://regexr.com/"
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class RegexUtils {
@@ -82,6 +84,54 @@ export abstract class RegexUtils {
         } catch (ignored) {
         }
         return false;
+    }
+
+    /**
+     * Returns whether all the characters in the given text is alphabetic
+     *
+     * @param text the text to check
+     *
+     * @returns whether all the characters in the given text is alphabetic
+     *
+     * @example
+     * RegexUtils.isAlphabetic('abc');    // true
+     * RegexUtils.isAlphabetic('abc123');    // false
+     * RegexUtils.isAlphabetic('123456');    // false
+     */
+    public static isAlphabetic(text?: string): boolean {
+        return !!text && /^[A-Za-z]+$/.test(text);
+    }
+
+    /**
+     * Returns whether all the characters in the given text is alphanumeric
+     *
+     * @param text the text to check
+     *
+     * @returns whether all the characters in the given text is alphanumeric
+     *
+     * @example
+     * RegexUtils.isAlphanumeric(undefined);    // false
+     * RegexUtils.isAlphanumeric('abc123');    // true
+     * RegexUtils.isAlphanumeric('--$$##');    // false
+     */
+    public static isAlphanumeric(text?: string): boolean {
+        return !!text && /^[A-Za-z\d]+$/.test(text);
+    }
+
+    /**
+     * Returns whether all the characters in the given text is numeric
+     *
+     * @param text the text to check
+     *
+     * @returns whether all the characters in the given text is numeric
+     *
+     * @example
+     * RegexUtils.isNumeric(undefined);    // false
+     * RegexUtils.isNumeric('abc123');    // false
+     * RegexUtils.isNumeric('123456');    // true
+     */
+    public static isNumeric(text?: string): boolean {
+        return !!text && /^\d+$/.test(text);
     }
 
     /**

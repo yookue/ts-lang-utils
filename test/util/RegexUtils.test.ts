@@ -27,6 +27,24 @@ describe('RegexUtils', () => {
         expect(RegexUtils.extractWords('foo, & bar')).toStrictEqual(['foo', 'bar']);
     });
 
+    test('Testing isAlphabetic', () => {
+        expect(RegexUtils.isAlphabetic('abc')).toBeTruthy();
+        expect(RegexUtils.isAlphabetic('abc123')).toBeFalsy();
+        expect(RegexUtils.isAlphabetic('123456')).toBeFalsy();
+    });
+
+    test('Testing isAlphanumeric', () => {
+        expect(RegexUtils.isAlphanumeric(undefined)).toBeFalsy();
+        expect(RegexUtils.isAlphanumeric('abc123')).toBeTruthy();
+        expect(RegexUtils.isAlphanumeric('--$$##')).toBeFalsy();
+    });
+
+    test('Testing isNumeric', () => {
+        expect(RegexUtils.isNumeric(undefined)).toBeFalsy();
+        expect(RegexUtils.isNumeric('abc123')).toBeFalsy();
+        expect(RegexUtils.isNumeric('123456')).toBeTruthy();
+    });
+
     test('Testing isCompilable', () => {
         expect(RegexUtils.isCompilable(undefined)).toBeFalsy();
         expect(RegexUtils.isCompilable('foobar')).toBeTruthy();
