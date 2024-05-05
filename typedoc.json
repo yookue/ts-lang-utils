@@ -22,7 +22,7 @@
         "@yookue/typedoc-raw-content"
     ],
     "rawHeadEnds": [
-        "<meta name='keywords' content='typescript, yookue, lang-utils'/>"
+        "<meta name='keywords' content='typescript, yookue, ts-lang-utils'/>"
     ],
     "rawFooterEnds": [
         "<div style='text-align: center'>Copyright &copy; 2023 Yookue Ltd. All rights reserved</div>"
