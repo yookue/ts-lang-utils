@@ -46,7 +46,7 @@
         "@types/jest": "^29.5.12",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
-        "@yookue/typedoc-raw-content": "0.1.0",
+        "@yookue/typedoc-raw-content": "0.1.1",
         "babel-plugin-comments": "^1.0.4",
         "del-cli": "^5.1.0",
         "eslint": "^7.32.0",
