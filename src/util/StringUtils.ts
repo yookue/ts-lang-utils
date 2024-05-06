@@ -1486,14 +1486,7 @@ export abstract class StringUtils {
      * StringUtils.toChars('foobar');    // ['f', 'o', 'o', 'b', 'a', 'r']
      */
     public static toChars(text?: string | null): string[] | undefined {
-        if (!text) {
-            return undefined;
-        }
-        const result = new Array<string>(text.length);
-        for (let i = 0; i < result.length; i++) {
-            result[i] = text.charAt(i);
-        }
-        return result;
+        return !text ? undefined : text.split('');
     }
 
     /**
