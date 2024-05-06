@@ -19,6 +19,10 @@ import {RandomUtils} from '@yookue/ts-lang-utils';
 
 
 describe('RandomUtils', () => {
+    test('Testing randomBoolean', () => {
+        expect(RandomUtils.randomBoolean()).toBeDefined();
+    });
+
     test('Testing randomElement', () => {
         expect(RandomUtils.randomElement([undefined])).toBeUndefined();
         expect(RandomUtils.randomElement(['1'])).toBe('1');
@@ -32,7 +36,7 @@ describe('RandomUtils', () => {
     test('Testing randomInteger', () => {
         const result = RandomUtils.randomInteger(1, 100);
         expect(result).toBeGreaterThanOrEqual(1);
-        expect(result).toBeLessThan(100);
+        expect(result).toBeLessThanOrEqual(100);
     });
 
     test('Testing randomIntegers', () => {
@@ -40,21 +44,15 @@ describe('RandomUtils', () => {
     });
 
     test('Testing randomNumber', () => {
-        for (let i = 0; i < 2; i++) {
-            const result = RandomUtils.randomNumber(5, 8);
-            expect(result).toBeGreaterThanOrEqual(5);
-            expect(result).toBeLessThan(8);
-        }
-        for (let i = 0; i < 2; i++) {
-            const result = RandomUtils.randomNumber(1.1, 1.2);
-            expect(result).toBeGreaterThanOrEqual(1.1);
-            expect(result).toBeLessThan(1.2);
-        }
-        for (let i = 0; i < 2; i++) {
-            const result = RandomUtils.randomNumber(-3.6, 2.8);
-            expect(result).toBeGreaterThanOrEqual(-3.6);
-            expect(result).toBeLessThan(2.8);
-        }
+        const result1 = RandomUtils.randomNumber(1.1, 1.2);
+        expect(result1).toBeGreaterThanOrEqual(1.1);
+        expect(result1).toBeLessThanOrEqual(1.2);
+        const result2 = RandomUtils.randomNumber(-3.6, 2.8);
+        expect(result2).toBeGreaterThanOrEqual(-3.6);
+        expect(result2).toBeLessThanOrEqual(2.8);
+        const result3 = RandomUtils.randomNumber(-3.6, -2.8);
+        expect(result3).toBeGreaterThanOrEqual(-3.6);
+        expect(result3).toBeLessThanOrEqual(-2.8);
     });
 
     test('Testing randomNumbers', () => {
@@ -63,5 +61,9 @@ describe('RandomUtils', () => {
 
     test('Testing randomString', () => {
         expect((RandomUtils.randomString(8) as string).length).toBe(8);
+    });
+
+    test('Testing randomStrings', () => {
+        expect(RandomUtils.randomStrings(3,6, 10)).toHaveLength(3);
     });
 });

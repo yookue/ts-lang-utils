@@ -15,14 +15,14 @@
  */
 
 
+import nodePath from 'node:path';
 import {defineConfig} from 'father';
 
-
-const path = require('path');
 
 /**
  * @see "https://github.com/umijs/father/blob/master/docs/config.md"
  */
+// noinspection JSUnusedGlobalSymbols
 export default defineConfig({
     cjs: {},
     esm: {},
@@ -30,8 +30,8 @@ export default defineConfig({
         name: 'TsLangUtils',
     },
     alias: {
-        '@': path.resolve(__dirname, './src'),
-        '@yookue/ts-lang-utils': path.resolve(__dirname, './src'),
+        '@': nodePath.resolve(__dirname, './src'),
+        '@yookue/ts-lang-utils': nodePath.resolve(__dirname, './src'),
     },
     extraBabelPlugins: [
         ['babel-plugin-comments', {

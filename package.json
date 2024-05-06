@@ -31,22 +31,22 @@
     "sideEffects": false,
     "scripts": {
         "build": "del-cli ./dist && father build",
+        "build:doctor": "father doctor",
         "build:watch": "father dev",
         "docs:build": "typedoc --out ./docs-dist",
         "docs:publish": "gh-pages -d ./docs-dist",
-        "doctor": "father doctor",
         "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
         "test": "jest",
         "test:coverage": "del-cli ./coverage && jest --coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.24.4"
+        "@babel/runtime": "^7.24.5"
     },
     "devDependencies": {
         "@types/jest": "^29.5.12",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
-        "@yookue/typedoc-raw-content": "0.1.1",
+        "@yookue/typedoc-raw-content": "^0.1.1",
         "babel-plugin-comments": "^1.0.4",
         "del-cli": "^5.1.0",
         "eslint": "^7.32.0",
