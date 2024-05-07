@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.txt)
 [![NPM downloads](http://img.shields.io/npm/dm/@yookue/ts-lang-utils.svg?style=flat)](https://npmjs.org/package/@yookue/ts-lang-utils)
 
-🏅 Common Lang Utilities for TypeScript 👍
+🏅 Common lang utilities for typeScript 👍
 
 ## Features
 
@@ -44,7 +44,7 @@ Then, you may import components as follows:
 import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, NumberUtils, ObjectUtils, RandomUtils, RegexUtils, StringUtils, ThreadUtils, TreeUtils} from '@yookue/ts-lang-utils';
 ```
 
-Enjoy your coding journey with `ts-lang-utils`. ✌️
+Enjoy your coding journey with `ts-lang-utils` ✌️
 
 ## Document
 
