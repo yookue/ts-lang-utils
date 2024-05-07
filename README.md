@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.txt)
 [![NPM downloads](http://img.shields.io/npm/dm/@yookue/ts-lang-utils.svg?style=flat)](https://npmjs.org/package/@yookue/ts-lang-utils)
 
-🏅 Common lang utilities for typeScript 👍
+🏅 Common lang utilities for typescript 👍
 
 ## Features
 

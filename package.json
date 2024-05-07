@@ -2,7 +2,7 @@
     "name": "@yookue/ts-lang-utils",
     "version": "0.1.40",
     "title": "TsLangUtils",
-    "description": "Common lang utilities for typeScript",
+    "description": "Common lang utilities for typescript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
     "organization": "Yookue Ltd",
     "private": false,
