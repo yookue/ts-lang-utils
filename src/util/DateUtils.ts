@@ -15,9 +15,6 @@
  */
 
 
-import {StringUtils} from './StringUtils';
-
-
 /**
  * Utilities for date and time
  *
@@ -36,8 +33,8 @@ export abstract class DateUtils {
      * @example
      * DateUtils.addYear(new Date(2023, 8, 30), 1);    // Date(2024, 8, 30)
      */
-    public static addYear(date: Date, amount: number): Date {
-        if (!amount) {
+    public static addYear(date?: Date, amount?: number): Date | undefined {
+        if (!date || !amount) {
             return date;
         }
         const result = new Date(date);
@@ -56,8 +53,8 @@ export abstract class DateUtils {
      * @example
      * DateUtils.addMonth(new Date(2023, 8, 30), 1);    // Date(2023, 9, 30)
      */
-    public static addMonth(date: Date, amount: number): Date {
-        if (!amount) {
+    public static addMonth(date?: Date, amount?: number): Date | undefined {
+        if (!date || !amount) {
             return date;
         }
         const result = new Date(date);
@@ -76,8 +73,8 @@ export abstract class DateUtils {
      * @example
      * DateUtils.addDay(new Date(2023, 8, 30), 1);    // Date(2023, 9, 1)
      */
-    public static addDay(date: Date, amount: number): Date {
-        if (!amount) {
+    public static addDay(date?: Date, amount?: number): Date | undefined {
+        if (!date || !amount) {
             return date;
         }
         const result = new Date(date);
@@ -93,8 +90,8 @@ export abstract class DateUtils {
      *
      * @returns the formatted string that represent the given date
      */
-    public static formatDateTime(date: Date, format: string): string | undefined {
-        if (StringUtils.isBlank(format)) {
+    public static formatDateTime(date?: Date, format?: string): string | undefined {
+        if (!date || !format) {
             return undefined;
         }
         const entries: {[key: string]: number} = {
@@ -165,7 +162,10 @@ export abstract class DateUtils {
      * @example
      * DateUtils.getStartOfYear(new Date(2023, 8, 30));    // Date(2023, 0, 1, 0, 0, 0)
      */
-    public static getStartOfYear(date: Date): Date {
+    public static getStartOfYear(date?: Date): Date | undefined {
+        if (!date) {
+            return undefined;
+        }
         const result = new Date(date);
         result.setFullYear(date.getFullYear(), 0, 1);
         result.setHours(0, 0, 0, 0);
@@ -182,7 +182,10 @@ export abstract class DateUtils {
      * @example
      * DateUtils.getStartOfMonth(new Date(2023, 8, 30));    // Date(2023, 8, 1, 0, 0, 0)
      */
-    public static getStartOfMonth(date: Date): Date {
+    public static getStartOfMonth(date?: Date): Date | undefined {
+        if (!date) {
+            return undefined;
+        }
         const result = new Date(date);
         result.setDate(1);
         result.setHours(0, 0, 0, 0);
@@ -199,7 +202,10 @@ export abstract class DateUtils {
      * @example
      * DateUtils.getStartOfDay(new Date(2023, 8, 30, 12, 12, 12));    // Date(2023, 8, 30, 0, 0, 0)
      */
-    public static getStartOfDay(date: Date): Date {
+    public static getStartOfDay(date?: Date): Date | undefined {
+        if (!date) {
+            return undefined;
+        }
         const result = new Date(date);
         result.setHours(0, 0, 0, 0);
         return result;
@@ -215,7 +221,10 @@ export abstract class DateUtils {
      * @example
      * DateUtils.getEndOfYear(new Date(2023, 8, 30));    // Date(2023, 11, 31, 23, 59, 59)
      */
-    public static getEndOfYear(date: Date): Date {
+    public static getEndOfYear(date?: Date): Date | undefined {
+        if (!date) {
+            return undefined;
+        }
         const result = new Date(date);
         result.setFullYear(date.getFullYear() + 1, 0, 0);
         result.setHours(23, 59, 59, 999);
@@ -232,7 +241,10 @@ export abstract class DateUtils {
      * @example
      * DateUtils.getEndOfMonth(new Date(2023, 8, 1));    // Date(2023, 8, 30, 23, 59, 59)
      */
-    public static getEndOfMonth(date: Date): Date {
+    public static getEndOfMonth(date?: Date): Date | undefined {
+        if (!date) {
+            return undefined;
+        }
         const result = new Date(date);
         result.setFullYear(date.getFullYear(), date.getMonth() + 1, 0);
         result.setHours(23, 59, 59, 999);
@@ -249,7 +261,10 @@ export abstract class DateUtils {
      * @example
      * DateUtils.getEndOfDay(new Date(2023, 8, 30, 12, 12, 12));    // Date(2023, 8, 30, 23, 59, 59)
      */
-    public static getEndOfDay(date: Date): Date {
+    public static getEndOfDay(date?: Date): Date | undefined {
+        if (!date) {
+            return undefined;
+        }
         const result = new Date(date);
         result.setHours(23, 59, 59, 999);
         return result;
@@ -262,7 +277,7 @@ export abstract class DateUtils {
      *
      * @returns the timezone of the given date
      */
-    public static getTimezone(date = new Date()) {
+    public static getTimezone(date: Date = new Date()): string {
         const offset = date.getTimezoneOffset();
         const absOffset = Math.abs(offset);
         const hours = Math.floor(absOffset / 60);
@@ -282,8 +297,8 @@ export abstract class DateUtils {
      * DateUtils.isFirstDayOfMonth(new Date(2023, 8, 1));    // true
      * DateUtils.isFirstDayOfMonth(new Date(2023, 8, 30));    // false
      */
-    public static isFirstDayOfMonth(date: Date): boolean {
-        return date.getDate() === 1;
+    public static isFirstDayOfMonth(date?: Date): boolean {
+        return !!date && date.getDate() === 1;
     }
 
     /**
@@ -297,8 +312,8 @@ export abstract class DateUtils {
      * DateUtils.isLastDayOfMonth(new Date(2023, 8, 1));    // false
      * DateUtils.isLastDayOfMonth(new Date(2023, 8, 30));    // true
      */
-    public static isLastDayOfMonth(date: Date): boolean {
-        return this.isSameDay(this.getEndOfDay(date), this.getEndOfMonth(date));
+    public static isLastDayOfMonth(date?: Date): boolean {
+        return !!date && this.isSameDay(this.getEndOfDay(date) as Date, this.getEndOfMonth(date) as Date);
     }
 
     /**
@@ -312,7 +327,10 @@ export abstract class DateUtils {
      * DateUtils.isLeapYear(2000);    // true
      * DateUtils.isLeapYear(new Date(2000, 0, 1));    // true
      */
-    public static isLeapYear(dateYear: Date | number): boolean {
+    public static isLeapYear(dateYear?: Date | number): boolean {
+        if (dateYear === undefined) {
+            return false;
+        }
         const year = (dateYear instanceof Date) ? dateYear.getFullYear() : dateYear;
         return (!(year % 4) && !!(year % 100)) || !(year % 400);
     }
@@ -328,8 +346,8 @@ export abstract class DateUtils {
      * @example
      * DateUtils.isSameYear(new Date(2023, 1, 1), new Date(2023, 8, 30));    // true
      */
-    public static isSameYear(date: Date, comparison: Date): boolean {
-        return date.getFullYear() === comparison.getFullYear();
+    public static isSameYear(date?: Date, comparison?: Date): boolean {
+        return !!date && !!comparison && date.getFullYear() === comparison.getFullYear();
     }
 
     /**
@@ -344,8 +362,8 @@ export abstract class DateUtils {
      * @example
      * DateUtils.isSameMonth(new Date(2023, 8, 1), new Date(2023, 8, 30));    // true
      */
-    public static isSameMonth(date: Date, comparison: Date, deepCompare = true): boolean {
-        return date.getMonth() === comparison.getMonth() && (deepCompare ? date.getFullYear() === comparison.getFullYear() : true);
+    public static isSameMonth(date?: Date, comparison?: Date, deepCompare: boolean = true): boolean {
+        return !!date && !!comparison && date.getMonth() === comparison.getMonth() && (deepCompare ? date.getFullYear() === comparison.getFullYear() : true);
     }
 
     /**
@@ -360,8 +378,8 @@ export abstract class DateUtils {
      * @example
      * DateUtils.isSameDay(new Date(), new Date());    // true
      */
-    public static isSameDay(date: Date, comparison: Date, deepCompare = true): boolean {
-        return date.getDate() === comparison.getDate() && (deepCompare ? (date.getFullYear() === comparison.getFullYear() && date.getMonth() === comparison.getMonth()) : true);
+    public static isSameDay(date?: Date, comparison?: Date, deepCompare: boolean = true): boolean {
+        return !!date && !!comparison && date.getDate() === comparison.getDate() && (deepCompare ? (date.getFullYear() === comparison.getFullYear() && date.getMonth() === comparison.getMonth()) : true);
     }
 
     /**
@@ -374,8 +392,8 @@ export abstract class DateUtils {
      * @example
      * DateUtils.isWeekend(new Date(2023, 8, 30));    // true
      */
-    public static isWeekend(date: Date): boolean {
-        return date.getDay() === 0 || date.getDay() === 6;
+    public static isWeekend(date?: Date): boolean {
+        return !!date && (date.getDay() === 0 || date.getDay() === 6);
     }
 
     /**
@@ -385,8 +403,8 @@ export abstract class DateUtils {
      *
      * @returns whether the date is yesterday
      */
-    public static isYesterday(date: Date): boolean {
-        return this.isSameDay(new Date(), this.addDay(date, 1));
+    public static isYesterday(date?: Date): boolean {
+        return !!date && this.isSameDay(new Date(), this.addDay(date, 1));
     }
 
     /**
@@ -396,7 +414,7 @@ export abstract class DateUtils {
      *
      * @returns whether the date is tomorrow
      */
-    public static isTomorrow(date: Date): boolean {
-        return this.isSameDay(new Date(), this.addDay(date, -1));
+    public static isTomorrow(date?: Date): boolean {
+        return !!date && this.isSameDay(new Date(), this.addDay(date, -1));
     }
 }

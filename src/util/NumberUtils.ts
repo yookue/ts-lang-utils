@@ -94,8 +94,8 @@ export abstract class NumberUtils {
      * @example
      * NumberUtils.max([1, 2, 3]);    // 3
      */
-    public static max(values: number[]): number | undefined {
-        if (!values || values?.length === 0) {
+    public static max(values?: number[]): number | undefined {
+        if (!values || values.length === 0) {
             return undefined;
         }
         let result = values[0];
@@ -117,8 +117,8 @@ export abstract class NumberUtils {
      * @example
      * NumberUtils.min([1, 2, 3]);    // 1
      */
-    public static min(values: number[]): number | undefined {
-        if (!values || values?.length === 0) {
+    public static min(values?: number[]): number | undefined {
+        if (!values || values.length === 0) {
             return undefined;
         }
         let result = values[0];
@@ -140,8 +140,8 @@ export abstract class NumberUtils {
      * @example
      * NumberUtils.sum([1, 2, 3]);    // 6
      */
-    public static sum(values: number[]): number {
-        return values.reduce((a, b) => a + b);
+    public static sum(values?: number[]): number | undefined {
+        return !values ? undefined : values.reduce((a, b) => a + b);
     }
 
     /**
@@ -154,7 +154,7 @@ export abstract class NumberUtils {
      * @example
      * NumberUtils.average([1, 2, 3]);    // 2
      */
-    public static average(values: number[]): number {
-        return this.sum(values) / values.length;
+    public static average(values?: number[]): number | undefined {
+        return !values ? undefined : (this.sum(values) as number / values.length);
     }
 }

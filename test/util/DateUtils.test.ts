@@ -20,15 +20,15 @@ import {DateUtils} from '@yookue/ts-lang-utils';
 
 describe('DateUtils', () => {
     test('Testing addYear', () => {
-        expect(DateUtils.addYear(new Date(2023, 8, 30), 1).getFullYear()).toBe(2024);
+        expect((DateUtils.addYear(new Date(2023, 8, 30), 1) as Date).getFullYear()).toBe(2024);
     });
 
     test('Testing addMonth', () => {
-        expect(DateUtils.addMonth(new Date(2023, 8, 30), 1).getMonth()).toBe(9);    // Starts with index 0
+        expect((DateUtils.addMonth(new Date(2023, 8, 30), 1) as Date).getMonth()).toBe(9);    // Starts with index 0
     });
 
     test('Testing addDay', () => {
-        const result = DateUtils.addDay(new Date(2023, 8, 30), 1);
+        const result = DateUtils.addDay(new Date(2023, 8, 30), 1) as Date;
         expect(result.getMonth()).toBe(9);    // Starts with index 0
         expect(result.getDate()).toBe(1);
     });

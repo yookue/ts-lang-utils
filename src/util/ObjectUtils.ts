@@ -395,7 +395,7 @@ export abstract class ObjectUtils {
      * @example
      * ObjectUtils.setProperty({}, 'foo', 'bar');
      */
-    public static setProperty(object?: any, prop?: string | null, value?: any): void {
+    public static setProperty(object: any, prop?: string | null, value?: any): void {
         if (this.isPlainObject(object) && prop) {
             object[prop as keyof typeof object] = value;
         }
@@ -411,7 +411,7 @@ export abstract class ObjectUtils {
      * @example
      * ObjectUtils.keys({foo: 'bar'});    // ['foo']
      */
-    public static keys(object?: any): string[] {
+    public static keys(object: any): string[] {
         if (!object) {
             return [];
         }
@@ -435,7 +435,7 @@ export abstract class ObjectUtils {
      *
      * @returns a string representation of the given object
      */
-    public static toString(object?: any, nil?: string | null): string | undefined | null {
+    public static toString(object: any, nil?: string | null): string | undefined | null {
         return object ? object.toString() : nil;
     }
 
@@ -447,7 +447,7 @@ export abstract class ObjectUtils {
      *
      * @returns a string tag representation of the given object
      */
-    public static toStringTag(object?: any, nil?: string | null): string | undefined | null {
+    public static toStringTag(object: any, nil?: string | null): string | undefined | null {
         return object ? object[Symbol.toStringTag] : nil;
     }
 }
