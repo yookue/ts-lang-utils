@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.41",
+    "version": "0.1.42",
     "title": "TsLangUtils",
     "description": "Common lang utilities for typescript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -46,8 +46,8 @@
         "@types/jest": "^29.5.12",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
-        "@yookue/babel-plugin-remove-comment": "^0.1.0",
-        "@yookue/typedoc-plugin-raw-content": "^0.1.0",
+        "@yookue/babel-plugin-remove-comment": "^0.1.1",
+        "@yookue/typedoc-plugin-raw-content": "^0.1.1",
         "del-cli": "^5.1.0",
         "eslint": "^7.32.0",
         "father": "^4.4.0",
@@ -88,7 +88,7 @@
     },
     "contributors": [
         {
-            "name": "Davis Hsing",
+            "name": "David Hsing",
             "email": "davidhsing@163.com",
             "url": "https://github.com/davidhsing"
         }
