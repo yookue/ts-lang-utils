@@ -19,12 +19,20 @@
         "Yookue": "https://yookue.com"
     },
     "plugin": [
-        "@yookue/typedoc-plugin-raw-content"
+        "@yookue/typedoc-plugin-raw-content",
+        "@yookue/typedoc-theme-dumi"
     ],
+    "theme": "dumi",
     "rawHeadEnds": [
         "<meta name='keywords' content='typescript, yookue, ts-lang-utils'/>"
     ],
     "rawFooterEnds": [
         "<div style='text-align: center'>Copyright &copy; 2023 Yookue Ltd. All rights reserved</div>"
-    ]
+    ],
+    "logoTitle": "@yookue/ts-lang-utils",
+    "navigationLinkTargets": {
+        "GitHub": "_blank",
+        "Yookue": "_blank"
+    },
+    "footerAlign": "center"
 }
