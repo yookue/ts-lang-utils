@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-lang-utils",
-    "version": "0.1.44",
+    "version": "0.1.45",
     "title": "TsLangUtils",
     "description": "Common lang utilities for typescript",
     "homepage": "https://yookue.github.io/ts-lang-utils",
@@ -45,9 +45,9 @@
     "devDependencies": {
         "@types/jest": "^29.5.12",
         "@typescript-eslint/eslint-plugin": "^6.21.0",
-        "@yookue/babel-plugin-remove-comment": "^0.1.2",
-        "@yookue/typedoc-plugin-raw-content": "^0.1.2",
-        "@yookue/typedoc-theme-dumi": "^0.1.0",
+        "@yookue/babel-plugin-remove-comment": "^0.1.3",
+        "@yookue/typedoc-plugin-raw-content": "^0.1.3",
+        "@yookue/typedoc-theme-dumi": "^0.1.1",
         "del-cli": "^5.1.0",
         "father": "^4.4.0",
         "gh-pages": "^6.1.1",

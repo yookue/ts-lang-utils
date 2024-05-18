@@ -23,6 +23,11 @@ describe('RegexUtils', () => {
         expect(RegexUtils.compilePattern('[a-zA-Z0-9]+', 'g')).toBeDefined();
     });
 
+    test('Testing escapePattern', () => {
+        expect(RegexUtils.escapePattern('\\')).toBe('\\\\');
+        expect(RegexUtils.escapePattern('-+=')).toBe('\\-\\+=');
+    });
+
     test('Testing extractWords', () => {
         expect(RegexUtils.extractWords('foo, & bar')).toStrictEqual(['foo', 'bar']);
     });

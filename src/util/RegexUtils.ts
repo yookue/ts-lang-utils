@@ -45,6 +45,22 @@ export abstract class RegexUtils {
     }
 
     /**
+     * Returns a regex pattern that escaped the given pattern
+     *
+     * @param pattern the pattern to inspect
+     *
+     * @returns a regex pattern that escaped the given pattern
+     *
+     * @example
+     * RegexUtils.escapePattern('\\');    // '\\\\'
+     * RegexUtils.escapePattern('-+=');    // '\\-\\+='
+     */
+    public static escapePattern(pattern?: string): string | undefined {
+        const regex = /[\\^$.*+?\-()[\]{}|]/g;
+        return (!pattern || !regex.test(pattern)) ? pattern : pattern.replace(regex, '\\$&');
+    }
+
+    /**
      * Returns the array of strings that match the given pattern in the text
      *
      * @param text the text to inspect
