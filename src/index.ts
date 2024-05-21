@@ -19,6 +19,7 @@ export {ArrayUtils} from './util/ArrayUtils';
 export {BooleanUtils} from './util/BooleanUtils';
 export {DateUtils} from './util/DateUtils';
 export {JsonUtils} from './util/JsonUtils';
+export {MapUtils} from './util/MapUtils';
 export {NumberUtils} from './util/NumberUtils';
 export {ObjectUtils} from './util/ObjectUtils';
 export {RandomUtils} from './util/RandomUtils';

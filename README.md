@@ -16,6 +16,8 @@
 
 ✅ Utilities for json
 
+✅ Utilities for map
+
 ✅ Utilities for number
 
 ✅ Utilities for object
@@ -41,7 +43,7 @@ $ npm install @yookue/ts-lang-utils --save
 Then, you may import components as follows:
 
 ```jsx | pure
-import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, NumberUtils, ObjectUtils, RandomUtils, RegexUtils, StringUtils, ThreadUtils, TreeUtils} from '@yookue/ts-lang-utils';
+import {ArrayUtils, BooleanUtils, DateUtils, JsonUtils, MapUtils, NumberUtils, ObjectUtils, RandomUtils, RegexUtils, StringUtils, ThreadUtils, TreeUtils} from '@yookue/ts-lang-utils';
 ```
 
 Enjoy your coding journey with `ts-lang-utils` ✌️
