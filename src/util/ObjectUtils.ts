@@ -147,12 +147,12 @@ export abstract class ObjectUtils {
     }
 
     /**
-     * Returns an object that migrates the given props when the key of props is missing
+     * Returns an object that merges the given props when the key of props is missing
      *
      * @param target the object to inspect
      * @param props the properties to assign
      *
-     * @returns an object that migrates the given props when the key of props is missing
+     * @returns an object that merges the given props when the key of props is missing
      *
      * @example
      * ObjectUtils.defaultProps({}, {'foo': 'bar'})
