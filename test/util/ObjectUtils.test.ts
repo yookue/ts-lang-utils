@@ -42,6 +42,11 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.anyNotNil(['foo', 'bar'])).toBeTruthy();
     });
 
+    test('Testing defaultProps', () => {
+        expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({}, {'foo': 'bar'}), 'foo')).toBe('bar');
+        expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({'foo': 'world'}, {'foo': 'bar'}), 'foo')).toBe('world');
+    });
+
     test('Testing isNil', () => {
         expect(ObjectUtils.isNil(undefined)).toBeTruthy();
         expect(ObjectUtils.isNil(null)).toBeTruthy();

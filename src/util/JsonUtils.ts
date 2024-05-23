@@ -54,25 +54,25 @@ export abstract class JsonUtils {
     /**
      * Returns a JSON string that represents the given object
      *
-     * @param object the object to inspect
+     * @param target the object to inspect
      *
      * @returns a JSON string that represents the given object
      *
      * @example
      * JsonUtils.toJsonString({foo: 'bar'});    // `{"foo":"bar"}`
      */
-    public static toJsonString(object: any): string | undefined {
-        if (typeof object === 'string' && (object as string).length > 0) {
+    public static toJsonString(target: string | object): string | undefined {
+        if (typeof target === 'string' && (target as string).length > 0) {
             try {
-                const json = JSON.parse(object as string);
+                const json = JSON.parse(target as string);
                 if (typeof json === 'object') {
                     return JSON.stringify(json);
                 }
             } catch(ex) {
             }
         }
-        if (ObjectUtils.isPlainObject(object)) {
-            return JSON.stringify(object);
+        if (ObjectUtils.isPlainObject(target)) {
+            return JSON.stringify(target);
         }
         return undefined;
     }

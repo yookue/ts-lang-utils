@@ -147,6 +147,29 @@ export abstract class ObjectUtils {
     }
 
     /**
+     * Returns an object that migrates the given props when the key of props is missing
+     *
+     * @param target the object to inspect
+     * @param props the properties to assign
+     *
+     * @returns an object that migrates the given props when the key of props is missing
+     *
+     * @example
+     * ObjectUtils.defaultProps({}, {'foo': 'bar'})
+     */
+    public static defaultProps(target?: object, props?: object): object | undefined {
+        if (!target || !this.isPlainObject(target)) {
+            return props;
+        }
+        if (!props || !this.isPlainObject(props)) {
+            return target;
+        }
+        const attributes = {};
+        Object.entries(props).filter(item => !Object.prototype.hasOwnProperty.call(target, item[0])).forEach(item => this.setProperty(attributes, item[0], item[1]));
+        return Object.assign(target, attributes);
+    }
+
+    /**
      * Returns whether the given object is null or undefined
      *
      * @param object the object to check
