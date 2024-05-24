@@ -61,7 +61,7 @@ export abstract class JsonUtils {
      * @example
      * JsonUtils.toJsonString({foo: 'bar'});    // `{"foo":"bar"}`
      */
-    public static toJsonString(target: string | object): string | undefined {
+    public static toJsonString(target: any): string | undefined {
         if (typeof target === 'string' && (target as string).length > 0) {
             try {
                 const json = JSON.parse(target as string);

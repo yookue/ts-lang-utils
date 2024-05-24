@@ -147,17 +147,18 @@ export abstract class ObjectUtils {
     }
 
     /**
-     * Returns an object that merges the given props when the key of props is missing
+     * Returns an object that merges the given props, when the key of props is missing, or the value of matching key is null or undefined
      *
      * @param target the object to inspect
      * @param props the properties to assign
+     * @param overrideNil whether to override the value of target, when it is null or undefined
      *
-     * @returns an object that merges the given props when the key of props is missing
+     * @returns an object that merges the given props, when the key of props is missing, or the value of matching key is null or undefined
      *
      * @example
      * ObjectUtils.defaultProps({}, {'foo': 'bar'})
      */
-    public static defaultProps(target?: object, props?: object): object | undefined {
+    public static defaultProps(target?: object, props?: object, overrideNil = true): object | undefined {
         if (!target || !this.isPlainObject(target)) {
             return props;
         }
@@ -165,7 +166,9 @@ export abstract class ObjectUtils {
             return target;
         }
         const attributes = {};
-        Object.entries(props).filter(item => !Object.prototype.hasOwnProperty.call(target, item[0])).forEach(item => this.setProperty(attributes, item[0], item[1]));
+        Object.entries(props).filter(item => {
+            return !Object.prototype.hasOwnProperty.call(target, item[0]) || (overrideNil && (target[item[0] as keyof typeof target] === undefined || target[item[0] as keyof typeof target] === null));
+        }).forEach(item => this.setProperty(attributes, item[0], item[1]));
         return Object.assign(target, attributes);
     }
 
