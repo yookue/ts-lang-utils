@@ -71,7 +71,7 @@ export abstract class JsonUtils {
             } catch(ex) {
             }
         }
-        if (ObjectUtils.isPlainObject(target)) {
+        if (ObjectUtils.isPlain(target)) {
             return JSON.stringify(target);
         }
         return undefined;

@@ -42,6 +42,10 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.anyNotNil(['foo', 'bar'])).toBeTruthy();
     });
 
+    test('Testing clone', () => {
+        expect(ObjectUtils.getProperty(ObjectUtils.clone({'foo': 'bar'}), 'foo')).toBe('bar');
+    });
+
     test('Testing defaultProps', () => {
         expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({}, {'foo': 'bar'}), 'foo')).toBe('bar');
         expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({'foo': 'world'}, {'foo': 'bar'}), 'foo')).toBe('world');
@@ -98,21 +102,21 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.getProperty(record, 'foo')).toBe('bar');
     });
 
-    test('Testing isPlainObject', () => {
-        expect(ObjectUtils.isPlainObject(undefined)).toBeFalsy();
-        expect(ObjectUtils.isPlainObject(null)).toBeFalsy();
-        expect(ObjectUtils.isPlainObject('foobar')).toBeFalsy();
-        expect(ObjectUtils.isPlainObject(['foo', 'bar'])).toBeFalsy();
-        expect(ObjectUtils.isPlainObject({foo: 'bar'})).toBeTruthy();
+    test('Testing isPlain', () => {
+        expect(ObjectUtils.isPlain(undefined)).toBeFalsy();
+        expect(ObjectUtils.isPlain(null)).toBeFalsy();
+        expect(ObjectUtils.isPlain('foobar')).toBeFalsy();
+        expect(ObjectUtils.isPlain(['foo', 'bar'])).toBeFalsy();
+        expect(ObjectUtils.isPlain({foo: 'bar'})).toBeTruthy();
     });
 
-    test('Testing isPromiseObject', () => {
-        expect(ObjectUtils.isPromiseObject(undefined)).toBeFalsy();
-        expect(ObjectUtils.isPromiseObject({foo: 'bar'})).toBeFalsy()
+    test('Testing isPromise', () => {
+        expect(ObjectUtils.isPromise(undefined)).toBeFalsy();
+        expect(ObjectUtils.isPromise({foo: 'bar'})).toBeFalsy()
         const promise = new Promise((resolve, reject) => {
             resolve(true);
         });
-        expect(ObjectUtils.isPromiseObject(promise)).toBeTruthy();
+        expect(ObjectUtils.isPromise(promise)).toBeTruthy();
     });
 
     test('Testing keys', () => {

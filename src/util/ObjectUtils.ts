@@ -147,22 +147,36 @@ export abstract class ObjectUtils {
     }
 
     /**
-     * Returns an object that merges the given props, when the key of props is missing, or the value of matching key is null or undefined
+     * Returns an object that cloned from the given object
+     *
+     * @param source the object to clone
+     *
+     * @returns an object that cloned from the given object
+     *
+     * @example
+     * ObjectUtils.clone({'foo': 'bar'});
+     */
+    public static clone(source?: object): object | undefined {
+        return (!source || !this.isPlain(source)) ? undefined : Object.assign({}, source);
+    }
+
+    /**
+     * Returns an object that merged the given props, when the key of props is missing, or the value of matching key is null or undefined
      *
      * @param target the object to inspect
      * @param props the properties to assign
      * @param overrideNil whether to override the value of target, when it is null or undefined
      *
-     * @returns an object that merges the given props, when the key of props is missing, or the value of matching key is null or undefined
+     * @returns an object that merged the given props, when the key of props is missing, or the value of matching key is null or undefined
      *
      * @example
-     * ObjectUtils.defaultProps({}, {'foo': 'bar'})
+     * ObjectUtils.defaultProps({}, {'foo': 'bar'});
      */
     public static defaultProps(target?: object, props?: object, overrideNil = true): object | undefined {
-        if (!target || !this.isPlainObject(target)) {
+        if (!target || !this.isPlain(target)) {
             return props;
         }
-        if (!props || !this.isPlainObject(props)) {
+        if (!props || !this.isPlain(props)) {
             return target;
         }
         const attributes = {};
@@ -313,10 +327,10 @@ export abstract class ObjectUtils {
      * @returns whether the given object is a plain object
      *
      * @example
-     * ObjectUtils.isPlainObject(undefined);    // false
-     * ObjectUtils.isPlainObject({foo: 'bar'});    // true
+     * ObjectUtils.isPlain(undefined);    // false
+     * ObjectUtils.isPlain({foo: 'bar'});    // true
      */
-    public static isPlainObject(object: any): boolean {
+    public static isPlain(object: any): boolean {
         return typeof object === 'object' && Object.prototype.toString.call(object) === '[object Object]';
     }
 
@@ -328,10 +342,10 @@ export abstract class ObjectUtils {
      * @returns whether the given object is a promise
      *
      * @example
-     * ObjectUtils.isPromiseObject({});    // false
-     * ObjectUtils.isPromiseObject('foobar');    // false
+     * ObjectUtils.isPromise({});    // false
+     * ObjectUtils.isPromise('foobar');    // false
      */
-    public static isPromiseObject(object: any): boolean {
+    public static isPromise(object: any): boolean {
         return typeof object === 'object' && Object.prototype.toString.call(object) === '[object Promise]';
     }
 
@@ -422,7 +436,7 @@ export abstract class ObjectUtils {
      * ObjectUtils.setProperty({}, 'foo', 'bar');
      */
     public static setProperty(object: any, prop?: string | null, value?: any): void {
-        if (this.isPlainObject(object) && prop) {
+        if (this.isPlain(object) && prop) {
             object[prop as keyof typeof object] = value;
         }
     }

@@ -663,7 +663,7 @@ export abstract class StringUtils {
                     if (param === undefined || param === null) {
                         result = result.replace(`%${pattern}`, '');
                         break;
-                    } else if (ObjectUtils.isPlainObject(param)) {
+                    } else if (ObjectUtils.isPlain(param)) {
                         result = result.replace(`%${pattern}`, JSON.stringify(param));
                         break;
                     }
