@@ -46,6 +46,16 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.getProperty(ObjectUtils.clone({'foo': 'bar'}), 'foo')).toBe('bar');
     });
 
+    test('Testing cloneExclusive', () => {
+        expect(ObjectUtils.getProperty(ObjectUtils.cloneExclusive({'foo': 'bar'}, ['foo']), 'foo')).toBeUndefined();
+        expect(ObjectUtils.getProperty(ObjectUtils.cloneExclusive({'foo': 'bar'}, ['bar']), 'foo')).toBe('bar');
+    });
+
+    test('Testing cloneInclusive', () => {
+        expect(ObjectUtils.getProperty(ObjectUtils.cloneInclusive({'foo': 'bar'}, ['foo']), 'foo')).toBe('bar');
+        expect(ObjectUtils.getProperty(ObjectUtils.cloneInclusive({'foo': 'bar'}, ['bar']), 'foo')).toBeUndefined();
+    });
+
     test('Testing defaultProps', () => {
         expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({}, {'foo': 'bar'}), 'foo')).toBe('bar');
         expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({'foo': 'world'}, {'foo': 'bar'}), 'foo')).toBe('world');

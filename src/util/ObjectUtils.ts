@@ -161,6 +161,49 @@ export abstract class ObjectUtils {
     }
 
     /**
+     * Returns an object that cloned from the given object, excludes all the given keys
+     *
+     * @param source the object to clone
+     * @param keys the key names to exclude
+     *
+     * @returns an object that cloned from the given object, excludes all the given keys
+     *
+     * @example
+     * ObjectUtils.cloneExclusive({'foo': 'bar'}, ['foo']);
+     */
+    public static cloneExclusive(source?: object, keys?: string[]): object | undefined {
+        if (!source || !this.isPlain(source)) {
+            return undefined;
+        }
+        if (!keys || keys.length === 0) {
+            return this.clone(source);
+        }
+        const result = {};
+        Object.entries(source).filter(item => !keys.includes(item[0])).forEach(item => this.setProperty(result, item[0], item[1]));
+        return result;
+    }
+
+    /**
+     * Returns an object that cloned from the given object, includes the given keys only
+     *
+     * @param source the object to clone
+     * @param keys the key names to include
+     *
+     * @returns an object that cloned from the given object, includes the given keys only
+     *
+     * @example
+     * ObjectUtils.cloneInclusive({'foo': 'bar'}, ['foo']);
+     */
+    public static cloneInclusive(source?: object, keys?: string[]): object | undefined {
+        if (!source || !this.isPlain(source) || !keys || keys.length === 0) {
+            return undefined;
+        }
+        const result = {};
+        Object.entries(source).filter(item => keys.includes(item[0])).forEach(item => this.setProperty(result, item[0], item[1]));
+        return result;
+    }
+
+    /**
      * Returns an object that merged the given props, when the key of props is missing, or the value of matching key is null or undefined
      *
      * @param target the object to inspect
