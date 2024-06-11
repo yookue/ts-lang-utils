@@ -166,14 +166,18 @@ export abstract class BooleanUtils {
      * BooleanUtils.isTrue(1);    // true
      * BooleanUtils.isTrue('true');    // true
      * BooleanUtils.isTrue('yes');    // true
+     * BooleanUtils.isTrue('foobar');    // false
+     * BooleanUtils.isTrue(() => true);    // true
      */
-    public static isTrue(value?: boolean | number | string | null): boolean {
+    public static isTrue(value?: boolean | number | string | null | (() => boolean)): boolean {
         if (typeof value === 'boolean') {
             return (value as boolean);
         } else if (typeof value === 'number') {
             return (value as number) > 0;
         } else if (typeof value === 'string') {
             return StringUtils.equalsAnyIgnoreCase(value, ['true', 'yes', 'on', 'y', 't', '1']);
+        } else if (typeof value === 'function') {
+            return value();
         }
         return false;
     }
@@ -190,14 +194,11 @@ export abstract class BooleanUtils {
      * BooleanUtils.isNotTrue(undefined);    // true
      * BooleanUtils.isNotTrue(null);    // true
      * BooleanUtils.isNotTrue('no');    // true
+     * BooleanUtils.isNotTrue('foobar');    // true
+     * BooleanUtils.isNotTrue(() => false);    // true
      */
-    public static isNotTrue(value?: boolean | number | string | null): boolean {
-        if (value === undefined || value === null) {
-            return true;
-        } else if (typeof value === 'boolean') {
-            return !(value as boolean);
-        }
-        return this.isFalse(value);
+    public static isNotTrue(value?: boolean | number | string | null | (() => boolean)): boolean {
+        return value === undefined || value === null || !this.isTrue(value);
     }
 
     /**
@@ -212,14 +213,18 @@ export abstract class BooleanUtils {
      * BooleanUtils.isFalse(0);    // true
      * BooleanUtils.isFalse('false');    // true
      * BooleanUtils.isFalse('no');    // true
+     * BooleanUtils.isFalse('foobar');    // false
+     * BooleanUtils.isFalse(() => false);    // true
      */
-    public static isFalse(value?: boolean | number | string | null): boolean {
+    public static isFalse(value?: boolean | number | string | null | (() => boolean)): boolean {
         if (typeof value === 'boolean') {
             return !(value as boolean);
         } else if (typeof value === 'number') {
             return (value as number) <= 0;
         } else if (typeof value === 'string') {
             return StringUtils.equalsAnyIgnoreCase(value, ['false', 'no', 'off', 'n', 'f', '0']);
+        } else if (typeof value === 'function') {
+            return !value();
         }
         return false;
     }
@@ -236,14 +241,11 @@ export abstract class BooleanUtils {
      * BooleanUtils.isNotFalse(undefined);    // true
      * BooleanUtils.isNotFalse(null);    // true
      * BooleanUtils.isNotFalse('yes');    // true
+     * BooleanUtils.isNotFalse('foobar');    // true
+     * BooleanUtils.isNotFalse(() => true);    // true
      */
-    public static isNotFalse(value?: boolean | number | string | null): boolean {
-        if (value === undefined || value === null) {
-            return true;
-        } else if (typeof value === 'boolean') {
-            return (value as boolean);
-        }
-        return this.isTrue(value);
+    public static isNotFalse(value?: boolean | number | string | null | (() => boolean)): boolean {
+        return value === undefined || value === null || !this.isFalse(value);
     }
 
     /**

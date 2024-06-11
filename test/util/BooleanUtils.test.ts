@@ -72,8 +72,10 @@ describe('BooleanUtils', () => {
         expect(BooleanUtils.isTrue(1)).toBeTruthy();
         expect(BooleanUtils.isTrue('true')).toBeTruthy();
         expect(BooleanUtils.isTrue('yes')).toBeTruthy();
+        expect(BooleanUtils.isTrue('foobar')).toBeFalsy();
         expect(BooleanUtils.isTrue(undefined)).toBeFalsy();
         expect(BooleanUtils.isTrue(null)).toBeFalsy();
+        expect(BooleanUtils.isTrue(() => true)).toBeTruthy();
     });
 
     test('Testing isNotTrue', () => {
@@ -81,8 +83,10 @@ describe('BooleanUtils', () => {
         expect(BooleanUtils.isNotTrue(0)).toBeTruthy();
         expect(BooleanUtils.isNotTrue('false')).toBeTruthy();
         expect(BooleanUtils.isNotTrue('no')).toBeTruthy();
+        expect(BooleanUtils.isNotTrue('foobar')).toBeTruthy();
         expect(BooleanUtils.isNotTrue(undefined)).toBeTruthy();
         expect(BooleanUtils.isNotTrue(null)).toBeTruthy();
+        expect(BooleanUtils.isNotTrue(() => false)).toBeTruthy();
     });
 
     test('Testing isFalse', () => {
@@ -90,8 +94,10 @@ describe('BooleanUtils', () => {
         expect(BooleanUtils.isFalse(0)).toBeTruthy();
         expect(BooleanUtils.isFalse('false')).toBeTruthy();
         expect(BooleanUtils.isFalse('no')).toBeTruthy();
+        expect(BooleanUtils.isFalse('foobar')).toBeFalsy();
         expect(BooleanUtils.isFalse(undefined)).toBeFalsy();
         expect(BooleanUtils.isFalse(null)).toBeFalsy();
+        expect(BooleanUtils.isFalse(() => false)).toBeTruthy();
     });
 
     test('Testing isNotFalse', () => {
@@ -99,8 +105,10 @@ describe('BooleanUtils', () => {
         expect(BooleanUtils.isNotFalse(1)).toBeTruthy();
         expect(BooleanUtils.isNotFalse('true')).toBeTruthy();
         expect(BooleanUtils.isNotFalse('yes')).toBeTruthy();
+        expect(BooleanUtils.isNotFalse('foobar')).toBeTruthy();
         expect(BooleanUtils.isNotFalse(undefined)).toBeTruthy();
         expect(BooleanUtils.isNotFalse(null)).toBeTruthy();
+        expect(BooleanUtils.isNotFalse(() => true)).toBeTruthy();
     });
 
     test('Testing toString', () => {
