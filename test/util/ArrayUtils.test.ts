@@ -19,6 +19,10 @@ import {ArrayUtils} from '@yookue/ts-lang-utils';
 
 
 describe('ArrayUtils', () => {
+    test('Testing count', () => {
+        expect(ArrayUtils.count(['foo', 'bar', 'foobar'], value => value.includes('foo'))).toBe(2);
+    });
+
     test('Testing firstNotNil', () => {
         expect(ArrayUtils.firstNotNil([null, undefined, 'foo', 'bar', {}])).toBe('foo');
     });

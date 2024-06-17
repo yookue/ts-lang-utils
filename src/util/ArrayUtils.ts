@@ -27,6 +27,27 @@ import {StringUtils} from './StringUtils';
 // noinspection JSUnusedGlobalSymbols
 export abstract class ArrayUtils {
     /**
+     * Returns the count of elements in the given array which match the given filter
+     *
+     * @param array the array to inspect
+     * @param predicate the function to filter the given array
+     *
+     * @returns the count of elements in the given array which match the given filter
+     *
+     * @example
+     * ArrayUtils.count(['foo', 'bar', 'foobar'], value => value.includes('foo'));    // 2
+     */
+    public static count<E>(array?: E[] | readonly E[] | null, predicate?: (value: E, index: number) => boolean): number {
+        if (!array) {
+            return 0;
+        }
+        if (!predicate) {
+            return array.length;
+        }
+        return array.filter(predicate).length;
+    }
+
+    /**
      * Returns the first not nil element in the given array, or null if all elements are nil
      *
      * @param array the array to check
