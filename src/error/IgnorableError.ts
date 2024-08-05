@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Yookue Ltd. All rights reserved.
+ * Copyright (c)  Yookue Ltd. All rights reserved.
  *
  * Licensed under the MIT License (the "License")
  *
@@ -16,27 +16,9 @@
 
 
 /**
- * Utilities for thread
+ * Error for ignorable exceptions
  *
  * @author David Hsing
- * @hideconstructor
  */
-// noinspection JSUnusedGlobalSymbols
-export abstract class ThreadUtils {
-    /**
-     * Sleeps current thread for a specified amount of time
-     *
-     * @param microseconds the amount of time to sleep, in microseconds
-     *
-     * @returns a promise that could be resolved
-     *
-     * @example
-     * TimeUtils.sleep();
-     * TimeUtils.sleep().then(() => {});
-     */
-    public static sleep(microseconds: number = 1000): Promise<void> {
-        return new Promise(resolve => {
-            setTimeout(resolve, microseconds);
-        });
-    }
+export interface IgnorableError extends Error {
 }

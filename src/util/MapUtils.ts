@@ -19,6 +19,7 @@
  * Utilities for map
  *
  * @author David Hsing
+ * @hideconstructor
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class MapUtils {

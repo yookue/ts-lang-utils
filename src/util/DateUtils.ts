@@ -19,6 +19,7 @@
  * Utilities for date and time
  *
  * @author David Hsing
+ * @hideconstructor
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class DateUtils {

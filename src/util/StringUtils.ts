@@ -24,6 +24,7 @@ import {RegexUtils} from './RegexUtils';
  * Utilities for string
  *
  * @author David Hsing
+ * @hideconstructor
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class StringUtils {
@@ -763,11 +764,12 @@ export abstract class StringUtils {
     /**
      * Returns whether the given string is blank
      *
-     * @description check if all the characters in the given string is whitespace or line separators
-     *
      * @param text the string to check
      *
      * @returns whether the given string is blank
+     *
+     * @remarks
+     * check if all the characters in the given string are whitespace or line separators
      *
      * @example
      * StringUtils.isBlank(undefined);    // true

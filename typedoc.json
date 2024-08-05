@@ -8,11 +8,15 @@
     "excludeInternal": true,
     "excludePrivate": true,
     "excludeProtected": true,
-    "excludeNotDocumented": true,
-    "excludeNotDocumentedKinds": [
-        "ConstructorSignature"
-    ],
     "hideGenerator": true,
+    "highlightLanguages": [
+        "bash",
+        "html",
+        "js",
+        "json",
+        "jsx",
+        "ts"
+    ],
     "includeVersion": false,
     "navigationLinks": {
         "GitHub": "https://github.com/yookue/ts-lang-utils",

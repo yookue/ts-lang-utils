@@ -22,6 +22,7 @@ import {ObjectUtils} from './ObjectUtils';
  * Utilities for tree
  *
  * @author David Hsing
+ * @hideconstructor
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class TreeUtils {

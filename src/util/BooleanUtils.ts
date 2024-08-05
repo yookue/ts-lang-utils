@@ -23,6 +23,7 @@ import {StringUtils} from './StringUtils';
  * Utilities for boolean
  *
  * @author David Hsing
+ * @hideconstructor
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class BooleanUtils {

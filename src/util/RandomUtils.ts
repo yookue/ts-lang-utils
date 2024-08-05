@@ -22,6 +22,7 @@ import {StringUtils} from './StringUtils';
  * Utilities for random
  *
  * @author David Hsing
+ * @hideconstructor
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class RandomUtils {

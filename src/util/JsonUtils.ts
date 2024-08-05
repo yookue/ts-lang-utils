@@ -23,6 +23,7 @@ import {StringUtils} from './StringUtils';
  * Utilities for json
  *
  * @author David Hsing
+ * @hideconstructor
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class JsonUtils {

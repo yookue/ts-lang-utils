@@ -19,6 +19,7 @@
  * Utilities for object
  *
  * @author David Hsing
+ * @hideconstructor
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class ObjectUtils {

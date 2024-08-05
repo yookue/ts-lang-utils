@@ -19,6 +19,7 @@
  * Utilities for regex
  *
  * @author David Hsing
+ * @hideconstructor
  */
 // noinspection JSUnusedGlobalSymbols
 export abstract class RegexUtils {

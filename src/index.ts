@@ -15,6 +15,7 @@
  */
 
 
+export {IgnorableError} from './error/IgnorableError';
 export {ArrayUtils} from './util/ArrayUtils';
 export {BooleanUtils} from './util/BooleanUtils';
 export {DateUtils} from './util/DateUtils';
