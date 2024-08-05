@@ -284,7 +284,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3]);    // 3
      */
-    public static maxLength(...arrays: any[][] | readonly any[][]): number {
+    public static maxLength(...arrays: (any[] | readonly any[])[]): number {
         if (this.isEmpty(arrays)) {
             return 0;
         }
@@ -305,7 +305,7 @@ export abstract class ArrayUtils {
      * @example
      * ArrayUtils.minLength(['foo', 'bar'], [1, 2, 3], []);    // 0
      */
-    public static minLength(...arrays: any[][] | readonly any[][]): number {
+    public static minLength(...arrays: (any[] | readonly any[])[]): number {
         if (this.isEmpty(arrays)) {
             return 0;
         }

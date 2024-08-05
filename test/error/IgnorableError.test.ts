@@ -15,17 +15,16 @@
  */
 
 
-export {IgnorableError} from './error/IgnorableError';
-export {UnsupportedError} from './error/UnsupportedError';
-export {ArrayUtils} from './util/ArrayUtils';
-export {BooleanUtils} from './util/BooleanUtils';
-export {DateUtils} from './util/DateUtils';
-export {JsonUtils} from './util/JsonUtils';
-export {MapUtils} from './util/MapUtils';
-export {NumberUtils} from './util/NumberUtils';
-export {ObjectUtils} from './util/ObjectUtils';
-export {RandomUtils} from './util/RandomUtils';
-export {RegexUtils} from './util/RegexUtils';
-export {StringUtils} from './util/StringUtils';
-export {ThreadUtils} from './util/ThreadUtils';
-export {TreeUtils} from './util/TreeUtils';
+import {IgnorableError} from '@yookue/ts-lang-utils';
+
+
+describe('IgnorableError', () => {
+    test('Testing throws', () => {
+        try {
+            // noinspection ExceptionCaughtLocallyJS
+            throw IgnorableError('Oops, ignorable error');
+        } catch (ignored) {
+            // console.log('IgnorableError has thrown, ignored');
+        }
+    });
+});
