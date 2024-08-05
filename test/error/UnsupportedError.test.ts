@@ -1,7 +1,7 @@
 /*
- * Copyright (c)  Yookue Ltd. All rights reserved.
+ * Copyright (c) 2023 Yookue Ltd. All rights reserved.
  *
- * Licensed under the MIT License (the "License")
+ * Licensed under the MIT License.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -15,26 +15,16 @@
  */
 
 
-/**
- * Error for ignorable exceptions
- *
- * @author David Hsing
- */
-export interface IgnorableError extends Error {
-}
+import {UnsupportedError} from '@yookue/ts-lang-utils';
 
 
-/**
- * @ignore
- */
-export interface IgnorableErrorConstructor extends ErrorConstructor {
-    new(message?: string): IgnorableError;
-    (message?: string): IgnorableError;
-    readonly prototype: IgnorableError;
-}
-
-
-/**
- * @ignore
- */
-export let IgnorableError: IgnorableErrorConstructor;
+describe('UnsupportedError', () => {
+    test('Testing throws', () => {
+        try {
+            // noinspection ExceptionCaughtLocallyJS
+            throw UnsupportedError('Oops, unsupported error');
+        } catch (ignored) {
+            // console.log('UnsupportedError has thrown, ignored');
+        }
+    });
+});

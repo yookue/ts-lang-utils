@@ -16,25 +16,25 @@
 
 
 /**
- * Error for ignorable exceptions
+ * Error for unsupported exceptions
  *
  * @author David Hsing
  */
-export interface IgnorableError extends Error {
+export interface UnsupportedError extends Error {
 }
 
 
 /**
  * @ignore
  */
-export interface IgnorableErrorConstructor extends ErrorConstructor {
-    new(message?: string): IgnorableError;
-    (message?: string): IgnorableError;
-    readonly prototype: IgnorableError;
+export interface UnsupportedErrorConstructor extends ErrorConstructor {
+    new(message?: string): UnsupportedError;
+    (message?: string): UnsupportedError;
+    readonly prototype: UnsupportedError;
 }
 
 
 /**
  * @ignore
  */
-export let IgnorableError: IgnorableErrorConstructor;
+export let UnsupportedError: UnsupportedErrorConstructor;
