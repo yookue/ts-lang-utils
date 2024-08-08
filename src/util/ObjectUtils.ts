@@ -179,7 +179,7 @@ export abstract class ObjectUtils {
             return this.clone(source);
         }
         const result = {};
-        Object.entries(source).filter(item => !keys.includes(item[0])).forEach(item => this.setProperty(result, item[0], item[1]));
+        Object.entries(source).filter(item => !keys.includes(item[0])).forEach(item => this.setProp(result, item[0], item[1]));
         return result;
     }
 
@@ -199,7 +199,7 @@ export abstract class ObjectUtils {
             return undefined;
         }
         const result = {};
-        Object.entries(source).filter(item => keys.includes(item[0])).forEach(item => this.setProperty(result, item[0], item[1]));
+        Object.entries(source).filter(item => keys.includes(item[0])).forEach(item => this.setProp(result, item[0], item[1]));
         return result;
     }
 
@@ -225,7 +225,7 @@ export abstract class ObjectUtils {
         const attributes = {};
         Object.entries(props).filter(item => {
             return !Object.prototype.hasOwnProperty.call(target, item[0]) || (overrideNil && (target[item[0] as keyof typeof target] === undefined || target[item[0] as keyof typeof target] === null));
-        }).forEach(item => this.setProperty(attributes, item[0], item[1]));
+        }).forEach(item => this.setProp(attributes, item[0], item[1]));
         return Object.assign(target, attributes);
     }
 
@@ -378,6 +378,23 @@ export abstract class ObjectUtils {
     }
 
     /**
+     * Returns whether the given object is primitive
+     *
+     * @param object the object to check
+     *
+     * @returns whether the given object is primitive
+     *
+     * @example
+     * ObjectUtils.isPrimitive(undefined);    // true
+     * ObjectUtils.isPrimitive(true);    // true
+     * ObjectUtils.isPrimitive('foobar');    // true
+     * ObjectUtils.isPrimitive({foo: 'bar'});    // false
+     */
+    public static isPrimitive(object: any): boolean {
+        return object === undefined || object === null || typeof object === 'string' || typeof object === 'boolean' || typeof object === 'number' || typeof object === 'symbol' || typeof object === 'bigint' || typeof object === 'function';
+    }
+
+    /**
      * Returns whether the given object is a promise
      *
      * @param object the object to check
@@ -436,9 +453,9 @@ export abstract class ObjectUtils {
      * @returns the property value if property name is present on the given object
      *
      * @example
-     * ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foo.bar');    // foobar
+     * ObjectUtils.getProp({foo: {bar: 'foobar'}}, 'foo.bar');    // foobar
      */
-    public static getProperty(object: any, prop?: string | null): any {
+    public static getProp(object: any, prop?: string | null): any {
         if (typeof object !== 'object' || !prop || prop.length === 0) {
             return undefined;
         }
@@ -461,10 +478,10 @@ export abstract class ObjectUtils {
      * @returns whether the object has the specified property
      *
      * @example
-     * ObjectUtils.hasProperty({foo: 'bar'}, 'foo');    // true
-     * ObjectUtils.hasProperty({foo: 'bar'}, 'bar');    // false
+     * ObjectUtils.hasProp({foo: 'bar'}, 'foo');    // true
+     * ObjectUtils.hasProp({foo: 'bar'}, 'bar');    // false
      */
-    public static hasProperty(object: any, prop?: string | null): boolean {
+    public static hasProp(object: any, prop?: string | null): boolean {
         return typeof object === 'object' && !!prop && prop.length > 0 && Object.prototype.hasOwnProperty.call(object, prop);
     }
 
@@ -476,9 +493,9 @@ export abstract class ObjectUtils {
      * @param value the value to set
      *
      * @example
-     * ObjectUtils.setProperty({}, 'foo', 'bar');
+     * ObjectUtils.setProp({}, 'foo', 'bar');
      */
-    public static setProperty(object: any, prop?: string | null, value?: any): void {
+    public static setProp(object: any, prop?: string | null, value?: any): void {
         if (this.isPlain(object) && prop) {
             object[prop as keyof typeof object] = value;
         }
@@ -503,7 +520,7 @@ export abstract class ObjectUtils {
         }
         const result = [];
         for (const key in Object(object)) {
-            if (key !== 'constructor' && this.hasProperty(object, key)) {
+            if (key !== 'constructor' && this.hasProp(object, key)) {
                 result.push(key);
             }
         }

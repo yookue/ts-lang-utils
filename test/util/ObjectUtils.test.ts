@@ -43,24 +43,24 @@ describe('ObjectUtils', () => {
     });
 
     test('Testing clone', () => {
-        expect(ObjectUtils.getProperty(ObjectUtils.clone({'foo': 'bar'}), 'foo')).toBe('bar');
+        expect(ObjectUtils.getProp(ObjectUtils.clone({'foo': 'bar'}), 'foo')).toBe('bar');
     });
 
     test('Testing cloneExclusive', () => {
-        expect(ObjectUtils.getProperty(ObjectUtils.cloneExclusive({'foo': 'bar'}, ['foo']), 'foo')).toBeUndefined();
-        expect(ObjectUtils.getProperty(ObjectUtils.cloneExclusive({'foo': 'bar'}, ['bar']), 'foo')).toBe('bar');
+        expect(ObjectUtils.getProp(ObjectUtils.cloneExclusive({'foo': 'bar'}, ['foo']), 'foo')).toBeUndefined();
+        expect(ObjectUtils.getProp(ObjectUtils.cloneExclusive({'foo': 'bar'}, ['bar']), 'foo')).toBe('bar');
     });
 
     test('Testing cloneInclusive', () => {
-        expect(ObjectUtils.getProperty(ObjectUtils.cloneInclusive({'foo': 'bar'}, ['foo']), 'foo')).toBe('bar');
-        expect(ObjectUtils.getProperty(ObjectUtils.cloneInclusive({'foo': 'bar'}, ['bar']), 'foo')).toBeUndefined();
+        expect(ObjectUtils.getProp(ObjectUtils.cloneInclusive({'foo': 'bar'}, ['foo']), 'foo')).toBe('bar');
+        expect(ObjectUtils.getProp(ObjectUtils.cloneInclusive({'foo': 'bar'}, ['bar']), 'foo')).toBeUndefined();
     });
 
     test('Testing defaultProps', () => {
-        expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({}, {'foo': 'bar'}), 'foo')).toBe('bar');
-        expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({'foo': 'world'}, {'foo': 'bar'}), 'foo')).toBe('world');
-        expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({'foo': undefined}, {'foo': 'bar'}, true), 'foo')).toBe('bar');
-        expect(ObjectUtils.getProperty(ObjectUtils.defaultProps({'foo': undefined}, {'foo': 'bar'}, false), 'foo')).toBeUndefined();
+        expect(ObjectUtils.getProp(ObjectUtils.defaultProps({}, {'foo': 'bar'}), 'foo')).toBe('bar');
+        expect(ObjectUtils.getProp(ObjectUtils.defaultProps({'foo': 'world'}, {'foo': 'bar'}), 'foo')).toBe('world');
+        expect(ObjectUtils.getProp(ObjectUtils.defaultProps({'foo': undefined}, {'foo': 'bar'}, true), 'foo')).toBe('bar');
+        expect(ObjectUtils.getProp(ObjectUtils.defaultProps({'foo': undefined}, {'foo': 'bar'}, false), 'foo')).toBeUndefined();
     });
 
     test('Testing isNil', () => {
@@ -85,6 +85,13 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.isNotEmpty([undefined, null])).toBeTruthy();
     });
 
+    test('Testing isPrimitive', () => {
+        expect(ObjectUtils.isPrimitive(undefined)).toBeTruthy();
+        expect(ObjectUtils.isPrimitive(true)).toBeTruthy();
+        expect(ObjectUtils.isPrimitive('foobar')).toBeTruthy();
+        expect(ObjectUtils.isPrimitive({foo: 'bar'})).toBeFalsy();
+    });
+
     test('Testing isPrototype', () => {
         expect(ObjectUtils.isPrototype({foo: 'bar'})).toBeFalsy();
         expect(ObjectUtils.isPrototype('foobar')).toBeFalsy();
@@ -95,21 +102,21 @@ describe('ObjectUtils', () => {
         expect(ObjectUtils.isRegular('/[0-9a-zA-Z]+/g')).toBeFalsy();
     });
 
-    test('Testing getProperty', () => {
-        expect(ObjectUtils.getProperty({foo: 'bar'}, 'foo')).toBe('bar');
-        expect(ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foobar')).toBeUndefined();
-        expect(ObjectUtils.getProperty({foo: {bar: 'foobar'}}, 'foo.bar')).toBe('foobar');
+    test('Testing getProp', () => {
+        expect(ObjectUtils.getProp({foo: 'bar'}, 'foo')).toBe('bar');
+        expect(ObjectUtils.getProp({foo: {bar: 'foobar'}}, 'foobar')).toBeUndefined();
+        expect(ObjectUtils.getProp({foo: {bar: 'foobar'}}, 'foo.bar')).toBe('foobar');
     });
 
-    test('Testing hasProperty', () => {
-        expect(ObjectUtils.hasProperty({foo: 'bar'}, 'foo')).toBeTruthy();
-        expect(ObjectUtils.hasProperty({foo: 'bar'}, 'bar')).toBeFalsy();
+    test('Testing hasProp', () => {
+        expect(ObjectUtils.hasProp({foo: 'bar'}, 'foo')).toBeTruthy();
+        expect(ObjectUtils.hasProp({foo: 'bar'}, 'bar')).toBeFalsy();
     });
 
-    test('Testing setProperty', () => {
+    test('Testing setProp', () => {
         const record = {};
-        ObjectUtils.setProperty(record, 'foo', 'bar');
-        expect(ObjectUtils.getProperty(record, 'foo')).toBe('bar');
+        ObjectUtils.setProp(record, 'foo', 'bar');
+        expect(ObjectUtils.getProp(record, 'foo')).toBe('bar');
     });
 
     test('Testing isPlain', () => {

@@ -38,7 +38,7 @@ export abstract class TreeUtils {
         }
         for (const node of nodes) {
             callback(node, nodes);
-            const children = ObjectUtils.getProperty(node, childrenKey);
+            const children = ObjectUtils.getProp(node, childrenKey);
             if (children && Array.isArray(children)) {
                 this.forEach(children, callback, childrenKey);
             }
