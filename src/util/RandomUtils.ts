@@ -80,7 +80,7 @@ export abstract class RandomUtils {
      * Returns a random integer that between value range
      *
      * @param minValue the min value, inclusive
-     * @param maxValue the max value, inclusive
+     * @param maxValue the max value, exclusive
      *
      * @returns a random integer that between value range
      *
@@ -98,7 +98,7 @@ export abstract class RandomUtils {
      *
      * @param size the size of the expected array
      * @param minValue the min value, inclusive
-     * @param maxValue the max value, inclusive
+     * @param maxValue the max value, exclusive
      *
      * @returns a random integer array that between value range, matching the given size
      *
@@ -125,7 +125,7 @@ export abstract class RandomUtils {
      * Returns a random number that between the value range
      *
      * @param minValue the min value, inclusive
-     * @param maxValue the max value, inclusive
+     * @param maxValue the max value, exclusive
      *
      * @returns a random number that between the value range
      *
@@ -145,7 +145,7 @@ export abstract class RandomUtils {
      *
      * @param size the size of the expected array
      * @param minValue the min value, inclusive
-     * @param maxValue the max value, inclusive
+     * @param maxValue the max value, exclusive
      *
      * @returns a random number array that between value range, matching the given size
      *
@@ -172,7 +172,7 @@ export abstract class RandomUtils {
      * Returns a random string that between the length range
      *
      * @param minLength the min length, inclusive
-     * @param maxLength the max length, inclusive
+     * @param maxLength the max length, exclusive
      * @param characters the source characters to be generated from
      *
      * @returns a random string that between the length range
@@ -201,7 +201,7 @@ export abstract class RandomUtils {
      *
      * @param size the size of the expected array
      * @param minLength the min length, inclusive
-     * @param maxLength the max length, inclusive
+     * @param maxLength the max length, exclusive
      * @param characters the source characters to be generated from
      *
      * @returns a random string array that between the length range, matching the given size
