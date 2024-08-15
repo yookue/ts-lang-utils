@@ -41,6 +41,70 @@ export abstract class NumberUtils {
     }
 
     /**
+     * Returns whether the given value is positive
+     *
+     * @param value the number value to check
+     *
+     * @returns whether the given value is positive
+     *
+     * @example
+     * NumberUtils.isPositive(1);    // true
+     * NumberUtils.isPositive(0);    // false
+     * NumberUtils.isPositive(-1);    // false
+     */
+    public static isPositive(value?: number): boolean {
+        return value !== undefined && value > 0;
+    }
+
+    /**
+     * Returns whether the given value is not positive
+     *
+     * @param value the number value to check
+     *
+     * @returns whether the given value is not positive
+     *
+     * @example
+     * NumberUtils.isNotPositive(1);    // false
+     * NumberUtils.isNotPositive(0);    // true
+     * NumberUtils.isNotPositive(-1);    // true
+     */
+    public static isNotPositive(value?: number): boolean {
+        return !this.isPositive(value);
+    }
+
+    /**
+     * Returns whether the given value is negative
+     *
+     * @param value the number value to check
+     *
+     * @returns whether the given value is negative
+     *
+     * @example
+     * NumberUtils.isNegative(1);    // false
+     * NumberUtils.isNegative(0);    // false
+     * NumberUtils.isNegative(-1);    // true
+     */
+    public static isNegative(value?: number): boolean {
+        return value !== undefined && value < 0;
+    }
+
+    /**
+     * Returns whether the given value is not negative
+     *
+     * @param value the number value to check
+     *
+     * @returns whether the given value is not negative
+     *
+     * @example
+     * NumberUtils.isNotNegative(1);    // true
+     * NumberUtils.isNotNegative(0);    // true
+     * NumberUtils.isNotNegative(-1);    // false
+     */
+    public static isNotNegative(value?: number): boolean {
+        return !this.isNegative(value);
+    }
+
+    /**
      * Returns an integer value from the string value, or undefined if the value cannot be converted
      *
      * @param value the string value to check

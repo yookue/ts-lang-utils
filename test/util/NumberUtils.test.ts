@@ -24,6 +24,30 @@ describe('NumberUtils', () => {
         expect(NumberUtils.isInteger(1)).toBeTruthy();
     });
 
+    test('Testing isPositive', () => {
+        expect(NumberUtils.isPositive(1)).toBeTruthy();
+        expect(NumberUtils.isPositive(0)).toBeFalsy();
+        expect(NumberUtils.isPositive(-1)).toBeFalsy();
+    });
+
+    test('Testing isNotPositive', () => {
+        expect(NumberUtils.isNotPositive(1)).toBeFalsy();
+        expect(NumberUtils.isNotPositive(0)).toBeTruthy();
+        expect(NumberUtils.isNotPositive(-1)).toBeTruthy();
+    });
+
+    test('Testing isNegative', () => {
+        expect(NumberUtils.isNegative(1)).toBeFalsy();
+        expect(NumberUtils.isNegative(0)).toBeFalsy();
+        expect(NumberUtils.isNegative(-1)).toBeTruthy();
+    });
+
+    test('Testing isNotNegative', () => {
+        expect(NumberUtils.isNotNegative(1)).toBeTruthy();
+        expect(NumberUtils.isNotNegative(0)).toBeTruthy();
+        expect(NumberUtils.isNotNegative(-1)).toBeFalsy();
+    });
+
     test('Testing toInteger', () => {
         expect(NumberUtils.toInteger(undefined)).toBeUndefined();
         expect(NumberUtils.toInteger('foobar')).toBeUndefined();
