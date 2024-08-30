@@ -113,9 +113,15 @@ describe('ArrayUtils', () => {
     });
 
     test('Testing remove', () => {
+        expect(ArrayUtils.remove(undefined, 'bar')).toBeUndefined();
         expect(ArrayUtils.remove(['foo', 'bar'], undefined)).toStrictEqual(['foo', 'bar']);
-        expect(ArrayUtils.remove(['foo', 'bar'], ['world'])).toStrictEqual(['foo', 'bar']);
-        expect(ArrayUtils.remove(['foo', 'bar'], ['bar'])).toStrictEqual(['foo']);
+        expect(ArrayUtils.remove(['foo', 'bar'], 'bar')).toStrictEqual(['foo']);
+    });
+
+    test('Testing removeAll', () => {
+        expect(ArrayUtils.removeAll(undefined, ['bar'])).toBeUndefined();
+        expect(ArrayUtils.removeAll(['foo', 'bar'], undefined)).toStrictEqual(['foo', 'bar']);
+        expect(ArrayUtils.removeAll(['foo', 'bar'], ['bar'])).toStrictEqual(['foo']);
     });
 
     test('Testing reverse', () => {
