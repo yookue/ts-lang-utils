@@ -380,18 +380,37 @@ export abstract class ArrayUtils {
     }
 
     /**
-     * Returns the array that excludes the given elements
+     * Returns the array that removes the given element
+     *
+     * @param array the arrays to inspect
+     * @param element the element to remove
+     *
+     * @returns the array that removes the given element
+     *
+     * @example
+     * ArrayUtils.remove(undefined, 'bar');    // undefined
+     * ArrayUtils.remove(['foo', 'bar'], undefined);    // ['foo', 'bar']
+     * ArrayUtils.remove(['foo', 'bar'], 'bar');    // ['foo']
+     */
+    public static remove<E>(array?: E[] | null, element?: E | null): E[] | undefined | null {
+        return (!array || !element) ? array : array.filter(item => item !== element);
+    }
+
+    /**
+     * Returns the array that removes the given elements
      *
      * @param array the arrays to inspect
      * @param elements the elements to remove
      *
-     * @returns the array that excludes the given elements
+     * @returns the array that removes the given elements
      *
      * @example
-     * ArrayUtils.remove(['foo', 'bar'], ['bar']);    // ['foo']
+     * ArrayUtils.removeAll(undefined, ['bar']);    // undefined
+     * ArrayUtils.removeAll(['foo', 'bar'], undefined);    // ['foo', 'bar']
+     * ArrayUtils.removeAll(['foo', 'bar'], ['bar']);    // ['foo']
      */
-    public static remove<E>(array?: E[] | null, elements?: E[] | null): E[] | undefined | null {
-        return (!array || array.length === 0 || !elements || elements.length === 0) ? array : array.filter(item => !elements.includes(item));
+    public static removeAll<E>(array?: E[] | null, elements?: E[] | null): E[] | undefined | null {
+        return (!array || !elements) ? array : array.filter(item => !elements.includes(item));
     }
 
     /**

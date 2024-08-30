@@ -1089,7 +1089,7 @@ export abstract class StringUtils {
      * StringUtils.removeEquals(['foo', 'bar'], ['bar']);    // ['foo']
      */
     public static removeEquals(texts?: string[] | null, excludes?: string[] | null): string[] | undefined | null {
-        return ArrayUtils.remove(texts, excludes);
+        return ArrayUtils.removeAll(texts, excludes);
     }
 
     /**
