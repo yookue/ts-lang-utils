@@ -19,6 +19,18 @@ import {ArrayUtils} from '@yookue/ts-lang-utils';
 
 
 describe('ArrayUtils', () => {
+    test('Testing add', () => {
+        expect(ArrayUtils.add(undefined, 'bar')).toStrictEqual(['bar']);
+        expect(ArrayUtils.add(['foo', 'bar'], undefined)).toStrictEqual(['foo', 'bar']);
+        expect(ArrayUtils.add(['foo', 'bar'], 'world')).toStrictEqual(['foo', 'bar', 'world']);
+    });
+
+    test('Testing addAll', () => {
+        expect(ArrayUtils.addAll(undefined, ['bar'])).toStrictEqual(['bar']);
+        expect(ArrayUtils.addAll(['foo', 'bar'], undefined)).toStrictEqual(['foo', 'bar']);
+        expect(ArrayUtils.addAll(['foo', 'bar'], ['world'])).toStrictEqual(['foo', 'bar', 'world']);
+    });
+
     test('Testing count', () => {
         expect(ArrayUtils.count(['foo', 'bar', 'foobar'], value => value.includes('foo'))).toBe(2);
     });

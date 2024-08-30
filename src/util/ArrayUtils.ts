@@ -27,6 +27,54 @@ import {StringUtils} from './StringUtils';
 // noinspection JSUnusedGlobalSymbols
 export abstract class ArrayUtils {
     /**
+     * Returns the array that adds the given element
+     *
+     * @param array the arrays to inspect
+     * @param element the element to add
+     *
+     * @returns the array that adds the given element
+     *
+     * @example
+     * ArrayUtils.add(undefined, 'bar');    // ['bar']
+     * ArrayUtils.add(['foo', 'bar'], undefined);    // ['foo', 'bar']
+     * ArrayUtils.add(['foo', 'bar'], 'world');    // ['foo', 'bar', 'world']
+     */
+    public static add<E>(array?: E[] | null, element?: E | null): E[] | undefined | null {
+        if (!array) {
+            return !element ? undefined : [element];
+        }
+        if (!element) {
+            return array;
+        }
+        const result = [...array];
+        result[result.length] = element;
+        return result;
+    }
+
+    /**
+     * Returns the array that adds all the given elements
+     *
+     * @param array the arrays to inspect
+     * @param elements the elements to remove
+     *
+     * @returns the array that adds all the given elements
+     *
+     * @example
+     * ArrayUtils.addAll(undefined, ['bar']);    // ['bar']
+     * ArrayUtils.addAll(['foo', 'bar'], undefined);    // ['foo', 'bar']
+     * ArrayUtils.addAll(['foo', 'bar'], ['world']);    // ['foo', 'bar', 'world']
+     */
+    public static addAll<E>(array?: E[] | null, elements?: E[] | null): E[] | undefined | null {
+        if (!array) {
+            return elements;
+        }
+        if (!elements) {
+            return array;
+        }
+        return [...array, ...elements];
+    }
+
+    /**
      * Returns the count of elements in the given array which match the given filter
      *
      * @param array the array to inspect
