@@ -34,9 +34,11 @@ export abstract class JsonUtils {
      * @returns whether the given object is a JSON string
      *
      * @example
+     * ```ts
      * JsonUtils.isJsonString(`{"foo": "bar"}`);    // true
      * JsonUtils.isJsonString(`[{"foo": "bar"}]`);    // true
      * JsonUtils.isJsonString(`[{"foo": "bar"}, {"hello": "world"}]`);    // true
+     * ```
      */
     public static isJsonString(text?: string | null): boolean {
         if (StringUtils.isBlank(text)) {
@@ -59,7 +61,9 @@ export abstract class JsonUtils {
      * @returns a JSON string that represents the given object
      *
      * @example
+     * ```ts
      * JsonUtils.toJsonString({foo: 'bar'});    // `{"foo":"bar"}`
+     * ```
      */
     public static toJsonString(target: any): string | undefined {
         if (typeof target === 'string' && (target as string).length > 0) {

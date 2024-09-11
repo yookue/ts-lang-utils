@@ -31,7 +31,9 @@ export abstract class DateUtils {
      * @returns the year calculated date with the source date and the specified amount
      *
      * @example
+     * ```ts
      * DateUtils.addYear(new Date(2023, 8, 30), 1);    // Date(2024, 8, 30)
+     * ```
      */
     public static addYear(date?: Date, amount?: number): Date | undefined {
         if (!date || !amount) {
@@ -51,7 +53,9 @@ export abstract class DateUtils {
      * @returns the month calculated date with the source date and the specified amount
      *
      * @example
+     * ```ts
      * DateUtils.addMonth(new Date(2023, 8, 30), 1);    // Date(2023, 9, 30)
+     * ```
      */
     public static addMonth(date?: Date, amount?: number): Date | undefined {
         if (!date || !amount) {
@@ -71,7 +75,9 @@ export abstract class DateUtils {
      * @returns the day calculated date with the source date and the specified amount
      *
      * @example
+     * ```ts
      * DateUtils.addDay(new Date(2023, 8, 30), 1);    // Date(2023, 9, 1)
+     * ```
      */
     public static addDay(date?: Date, amount?: number): Date | undefined {
         if (!date || !amount) {
@@ -160,7 +166,9 @@ export abstract class DateUtils {
      * @returns the start year date of the given date
      *
      * @example
+     * ```ts
      * DateUtils.getStartOfYear(new Date(2023, 8, 30));    // Date(2023, 0, 1, 0, 0, 0)
+     * ```
      */
     public static getStartOfYear(date?: Date): Date | undefined {
         if (!date) {
@@ -180,7 +188,9 @@ export abstract class DateUtils {
      * @returns the start month date of the given date
      *
      * @example
+     * ```ts
      * DateUtils.getStartOfMonth(new Date(2023, 8, 30));    // Date(2023, 8, 1, 0, 0, 0)
+     * ```
      */
     public static getStartOfMonth(date?: Date): Date | undefined {
         if (!date) {
@@ -200,7 +210,9 @@ export abstract class DateUtils {
      * @returns the start day date of the given date
      *
      * @example
+     * ```ts
      * DateUtils.getStartOfDay(new Date(2023, 8, 30, 12, 12, 12));    // Date(2023, 8, 30, 0, 0, 0)
+     * ```
      */
     public static getStartOfDay(date?: Date): Date | undefined {
         if (!date) {
@@ -219,7 +231,9 @@ export abstract class DateUtils {
      * @returns the end year date of the given date
      *
      * @example
+     * ```ts
      * DateUtils.getEndOfYear(new Date(2023, 8, 30));    // Date(2023, 11, 31, 23, 59, 59)
+     * ```
      */
     public static getEndOfYear(date?: Date): Date | undefined {
         if (!date) {
@@ -239,7 +253,9 @@ export abstract class DateUtils {
      * @returns the end month date of the given date
      *
      * @example
+     * ```ts
      * DateUtils.getEndOfMonth(new Date(2023, 8, 1));    // Date(2023, 8, 30, 23, 59, 59)
+     * ```
      */
     public static getEndOfMonth(date?: Date): Date | undefined {
         if (!date) {
@@ -259,7 +275,9 @@ export abstract class DateUtils {
      * @returns the end day date of the given date
      *
      * @example
+     * ```ts
      * DateUtils.getEndOfDay(new Date(2023, 8, 30, 12, 12, 12));    // Date(2023, 8, 30, 23, 59, 59)
+     * ```
      */
     public static getEndOfDay(date?: Date): Date | undefined {
         if (!date) {
@@ -294,8 +312,10 @@ export abstract class DateUtils {
      * @returns whether the date is the first day of month
      *
      * @example
+     * ```ts
      * DateUtils.isFirstDayOfMonth(new Date(2023, 8, 1));    // true
      * DateUtils.isFirstDayOfMonth(new Date(2023, 8, 30));    // false
+     * ```
      */
     public static isFirstDayOfMonth(date?: Date): boolean {
         return !!date && date.getDate() === 1;
@@ -309,8 +329,10 @@ export abstract class DateUtils {
      * @returns whether the date is the last day of month
      *
      * @example
+     * ```ts
      * DateUtils.isLastDayOfMonth(new Date(2023, 8, 1));    // false
      * DateUtils.isLastDayOfMonth(new Date(2023, 8, 30));    // true
+     * ```
      */
     public static isLastDayOfMonth(date?: Date): boolean {
         return !!date && this.isSameDay(this.getEndOfDay(date) as Date, this.getEndOfMonth(date) as Date);
@@ -324,8 +346,10 @@ export abstract class DateUtils {
      * @returns whether the date or year is a leap year
      *
      * @example
+     * ```ts
      * DateUtils.isLeapYear(2000);    // true
      * DateUtils.isLeapYear(new Date(2000, 0, 1));    // true
+     * ```
      */
     public static isLeapYear(dateYear?: Date | number): boolean {
         if (dateYear === undefined) {
@@ -344,7 +368,9 @@ export abstract class DateUtils {
      * @returns whether the given date is same year with the comparison date
      *
      * @example
+     * ```ts
      * DateUtils.isSameYear(new Date(2023, 1, 1), new Date(2023, 8, 30));    // true
+     * ```
      */
     public static isSameYear(date?: Date, comparison?: Date): boolean {
         return !!date && !!comparison && date.getFullYear() === comparison.getFullYear();
@@ -360,7 +386,9 @@ export abstract class DateUtils {
      * @returns whether the given date is same month with the comparison date
      *
      * @example
+     * ```ts
      * DateUtils.isSameMonth(new Date(2023, 8, 1), new Date(2023, 8, 30));    // true
+     * ```
      */
     public static isSameMonth(date?: Date, comparison?: Date, deepCompare: boolean = true): boolean {
         return !!date && !!comparison && date.getMonth() === comparison.getMonth() && (deepCompare ? date.getFullYear() === comparison.getFullYear() : true);
@@ -376,7 +404,9 @@ export abstract class DateUtils {
      * @returns whether the given date is same day with the comparison date
      *
      * @example
+     * ```ts
      * DateUtils.isSameDay(new Date(), new Date());    // true
+     * ```
      */
     public static isSameDay(date?: Date, comparison?: Date, deepCompare: boolean = true): boolean {
         return !!date && !!comparison && date.getDate() === comparison.getDate() && (deepCompare ? (date.getFullYear() === comparison.getFullYear() && date.getMonth() === comparison.getMonth()) : true);
@@ -390,7 +420,9 @@ export abstract class DateUtils {
      * @returns whether the date is a weekend
      *
      * @example
+     * ```ts
      * DateUtils.isWeekend(new Date(2023, 8, 30));    // true
+     * ```
      */
     public static isWeekend(date?: Date): boolean {
         return !!date && (date.getDay() === 0 || date.getDay() === 6);

@@ -35,9 +35,11 @@ export abstract class ArrayUtils {
      * @returns the array that adds the given element
      *
      * @example
+     * ```ts
      * ArrayUtils.add(undefined, 'bar');    // ['bar']
      * ArrayUtils.add(['foo', 'bar'], undefined);    // ['foo', 'bar']
      * ArrayUtils.add(['foo', 'bar'], 'world');    // ['foo', 'bar', 'world']
+     * ```
      */
     public static add<E>(array?: E[] | null, element?: E | null): E[] | undefined | null {
         if (!array) {
@@ -60,9 +62,11 @@ export abstract class ArrayUtils {
      * @returns the array that adds all the given elements
      *
      * @example
+     * ```ts
      * ArrayUtils.addAll(undefined, ['bar']);    // ['bar']
      * ArrayUtils.addAll(['foo', 'bar'], undefined);    // ['foo', 'bar']
      * ArrayUtils.addAll(['foo', 'bar'], ['world']);    // ['foo', 'bar', 'world']
+     * ```
      */
     public static addAll<E>(array?: E[] | null, elements?: E[] | null): E[] | undefined | null {
         if (!array) {
@@ -83,7 +87,9 @@ export abstract class ArrayUtils {
      * @returns the count of elements in the given array which match the given filter
      *
      * @example
+     * ```ts
      * ArrayUtils.count(['foo', 'bar', 'foobar'], value => value.includes('foo'));    // 2
+     * ```
      */
     public static count<E>(array?: E[] | readonly E[] | null, predicate?: (value: E, index: number) => boolean): number {
         if (!array) {
@@ -103,7 +109,9 @@ export abstract class ArrayUtils {
      * @returns the first not nil element in the given array, or null if all elements are nil
      *
      * @example
+     * ```ts
      * ArrayUtils.firstNotNil([null, undefined, 'foo', 'bar', {}]);    // 'foo'
+     * ```
      */
     public static firstNotNil(array?: any[] | readonly any[] | null): any {
         // @ts-ignore
@@ -118,7 +126,9 @@ export abstract class ArrayUtils {
      * @returns the first not empty element in the given array, or null if all elements are nil
      *
      * @example
+     * ```ts
      * ArrayUtils.firstNotEmpty([null, undefined, {}, 'foo', 'bar']);    // 'foo'
+     * ```
      */
     public static firstNotEmpty(array?: any[] | readonly any[] | null): any {
         // @ts-ignore
@@ -133,7 +143,9 @@ export abstract class ArrayUtils {
      * @returns the first element of the given array
      *
      * @example
+     * ```ts
      * ArrayUtils.getFirst(['foo', 'bar']);    // 'foo'
+     * ```
      */
     public static getFirst<E>(array?: E[] | readonly E[] | null): E | undefined {
         return (!array || array.length === 0) ? undefined : array[0];
@@ -147,7 +159,9 @@ export abstract class ArrayUtils {
      * @returns the last element of the given array
      *
      * @example
+     * ```ts
      * ArrayUtils.getLast(['foo', 'bar']);    // 'bar'
+     * ```
      */
     public static getLast<E>(array?: E[] | readonly E[] | null): E | undefined {
         return (!array || array.length === 0) ? undefined : array[array.length - 1];
@@ -161,8 +175,10 @@ export abstract class ArrayUtils {
      * @returns the length of the given array
      *
      * @example
+     * ```ts
      * ArrayUtils.getLength([]);    // 0
      * ArrayUtils.getLength(['foo', 'bar']);    // 2
+     * ```
      */
     public static getLength(array?: any[] | readonly any[] | null): number {
         return array ? array.length : 0;
@@ -176,7 +192,9 @@ export abstract class ArrayUtils {
      * @returns the element types of the given array
      *
      * @example
+     * ```ts
      * ArrayUtils.getTypeof(['foo', 'bar']);    // ['string', 'string']
+     * ```
      */
     public static getTypeof(array?: any[] | readonly any[] | null): string[] | undefined {
         if (this.isEmpty(array)) {
@@ -201,7 +219,9 @@ export abstract class ArrayUtils {
      * @returns whether the given array is empty
      *
      * @example
+     * ```ts
      * ArrayUtils.isEmpty([]);    // true
+     * ```
      */
     public static isEmpty(array?: any[] | readonly any[] | null): boolean {
         return !array || array.length === 0;
@@ -215,7 +235,9 @@ export abstract class ArrayUtils {
      * @returns whether the given array is not empty
      *
      * @example
+     * ```ts
      * ArrayUtils.isNotEmpty(['foo', 'bar']);    // true
+     * ```
      */
     public static isNotEmpty(array?: any[] | readonly any[] | null): boolean {
         return !this.isEmpty(array);
@@ -231,8 +253,10 @@ export abstract class ArrayUtils {
      * @returns whether each element in the given array is the expected type
      *
      * @example
+     * ```ts
      * ArrayUtils.isTypeof(['foo', 'bar'], 'string');    // true
      * ArrayUtils.isTypeof(['foo', 'bar', null], 'string', true);    // true
+     * ```
      */
     public static isTypeof(array?: any[] | readonly any[] | null, type?: string, relaxed = false): boolean {
         if (this.isEmpty(array) || StringUtils.isBlank(type)) {
@@ -253,7 +277,9 @@ export abstract class ArrayUtils {
      * @returns whether the given array includes the given element
      *
      * @example
+     * ```ts
      * ArrayUtils.includes(['foo', 'bar'], 'foo');    // true
+     * ```
      */
     public static includes<E>(array?: E[] | readonly E[] | null, element?: E | null): boolean {
         return !!array && !!element && array.includes(element);
@@ -268,8 +294,10 @@ export abstract class ArrayUtils {
      * @returns whether the given array includes all the given elements
      *
      * @example
+     * ```ts
      * ArrayUtils.includesAll(['foo', 'bar'], ['foo', 'bar']);    // true
      * ArrayUtils.includesAll(['foo', 'bar'], ['foo', 'world']);    // false
+     * ```
      */
     public static includesAll<E>(array?: E[] | readonly E[] | null, elements?: E[] | null): boolean {
         return !!array && !!elements && elements.every(item => array.includes(item));
@@ -284,8 +312,10 @@ export abstract class ArrayUtils {
      * @returns whether the given array includes any of the given elements
      *
      * @example
+     * ```ts
      * ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'bar']);    // true
      * ArrayUtils.includesAny(['foo', 'bar'], ['foo', 'world']);    // true
+     * ```
      */
     public static includesAny<E>(array?: E[] | readonly E[] | null, elements?: E[] | null): boolean {
         return !!array && !!elements && elements.some(item => array.includes(item));
@@ -301,10 +331,12 @@ export abstract class ArrayUtils {
      * @returns the array that contains all the given elements at the index of the source array
      *
      * @example
+     * ```ts
      * ArrayUtils.insert(['foo', 'bar'], -1, ['hello', 'world']);    // ['foo', 'bar', 'hello', 'world']
      * ArrayUtils.insert(['foo', 'bar'], 0, ['hello', 'world']);    // ['hello', 'world', 'foo', 'bar']
      * ArrayUtils.insert(['foo', 'bar'], 1, ['hello', 'world']);    // ['foo', 'hello', 'world', 'bar']
      * ArrayUtils.insert(['foo', 'bar'], 9, ['hello', 'world']);    // ['foo', 'bar', 'hello', 'world']
+     * ```
      */
     public static insert<E>(array?: E[] | null, index?: number, elements?: E[] | null): E[] | undefined | null {
         if (index === undefined || !elements || elements.length === 0) {
@@ -330,7 +362,9 @@ export abstract class ArrayUtils {
      * @returns the max length of the given arrays
      *
      * @example
+     * ```ts
      * ArrayUtils.maxLength(['foo', 'bar'], [1, 2, 3]);    // 3
+     * ```
      */
     public static maxLength(...arrays: (any[] | readonly any[])[]): number {
         if (this.isEmpty(arrays)) {
@@ -351,7 +385,9 @@ export abstract class ArrayUtils {
      * @returns the min length of the given arrays
      *
      * @example
+     * ```ts
      * ArrayUtils.minLength(['foo', 'bar'], [1, 2, 3], []);    // 0
+     * ```
      */
     public static minLength(...arrays: (any[] | readonly any[])[]): number {
         if (this.isEmpty(arrays)) {
@@ -387,9 +423,11 @@ export abstract class ArrayUtils {
      * @returns the array that removes the given element
      *
      * @example
+     * ```ts
      * ArrayUtils.remove(undefined, 'bar');    // undefined
      * ArrayUtils.remove(['foo', 'bar'], undefined);    // ['foo', 'bar']
      * ArrayUtils.remove(['foo', 'bar'], 'bar');    // ['foo']
+     * ```
      */
     public static remove<E>(array?: E[] | null, element?: E | null): E[] | undefined | null {
         return (!array || !element) ? array : array.filter(item => item !== element);
@@ -404,9 +442,11 @@ export abstract class ArrayUtils {
      * @returns the array that removes the given elements
      *
      * @example
+     * ```ts
      * ArrayUtils.removeAll(undefined, ['bar']);    // undefined
      * ArrayUtils.removeAll(['foo', 'bar'], undefined);    // ['foo', 'bar']
      * ArrayUtils.removeAll(['foo', 'bar'], ['bar']);    // ['foo']
+     * ```
      */
     public static removeAll<E>(array?: E[] | null, elements?: E[] | null): E[] | undefined | null {
         return (!array || !elements) ? array : array.filter(item => !elements.includes(item));
@@ -420,9 +460,11 @@ export abstract class ArrayUtils {
      * @param endExclusive the ending index, exclusive
      *
      * @example
+     * ```ts
      * ArrayUtils.reverse(undefined);    // undefined
      * ArrayUtils.reverse(['foo', 'bar']);    // ['bar', 'foo']
      * ArrayUtils.reverse(['foo', 'bar'], 0, 1);    // ['foo']
+     * ```
      */
     public static reverse<E>(array?: E[] | null, startInclusive?: number, endExclusive?: number): E[] | undefined | null {
         if (!array) {
@@ -441,7 +483,9 @@ export abstract class ArrayUtils {
      * @returns an array that only contains the given element
      *
      * @example
+     * ```ts
      * ArrayUtils.singleton('foobar');    // ['foobar']
+     * ```
      */
     public static singleton<E>(element?: E | null): E[] | undefined {
         return !element ? undefined : [element];

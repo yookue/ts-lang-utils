@@ -31,7 +31,9 @@ export abstract class RegexUtils {
      * @returns a regex that compiled by the given pattern
      *
      * @example
+     * ```ts
      * RegexUtils.compilePattern('[a-zA-Z0-9]+', 'g');
+     * ```
      */
     public static compilePattern(pattern?: string, flags?: string): RegExp | undefined {
         if (!pattern) {
@@ -52,8 +54,10 @@ export abstract class RegexUtils {
      * @returns a regex pattern that escaped the given pattern
      *
      * @example
+     * ```ts
      * RegexUtils.escapePattern('\\');    // '\\\\'
      * RegexUtils.escapePattern('-+=');    // '\\-\\+='
+     * ```
      */
     public static escapePattern(pattern?: string): string | undefined {
         const regex = /[\\^$.*+?\-()[\]{}|]/g;
@@ -69,7 +73,9 @@ export abstract class RegexUtils {
      * @returns the array of strings that match the given pattern in the text
      *
      * @example
+     * ```ts
      * RegexUtils.extractWords('foo, & bar');    // ['foo', 'bar']
+     * ```
      */
     public static extractWords(text?: string | null, search: string | RegExp = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g): string[] | undefined {
         return !text ? undefined : (text.match(search) || undefined);
@@ -84,9 +90,11 @@ export abstract class RegexUtils {
      * @returns whether the given pattern can be compiled to a regex
      *
      * @example
+     * ```ts
      * RegexUtils.isCompilable(undefined);    // false
      * RegexUtils.isCompilable('foobar');    // true
      * RegexUtils.isCompilable('[a-zA-Z0-9]+', 'g');    // true
+     * ```
      */
     public static isCompilable(pattern?: string | null, flags?: string): boolean {
         if (!pattern) {
@@ -108,9 +116,11 @@ export abstract class RegexUtils {
      * @returns whether all the characters in the given text is alphabetic
      *
      * @example
+     * ```ts
      * RegexUtils.isAlphabetic('abc');    // true
      * RegexUtils.isAlphabetic('abc123');    // false
      * RegexUtils.isAlphabetic('123456');    // false
+     * ```
      */
     public static isAlphabetic(text?: string): boolean {
         return !!text && /^[A-Za-z]+$/.test(text);
@@ -124,9 +134,11 @@ export abstract class RegexUtils {
      * @returns whether all the characters in the given text is alphanumeric
      *
      * @example
+     * ```ts
      * RegexUtils.isAlphanumeric(undefined);    // false
      * RegexUtils.isAlphanumeric('abc123');    // true
      * RegexUtils.isAlphanumeric('--$$##');    // false
+     * ```
      */
     public static isAlphanumeric(text?: string): boolean {
         return !!text && /^[A-Za-z\d]+$/.test(text);
@@ -140,9 +152,11 @@ export abstract class RegexUtils {
      * @returns whether all the characters in the given text is numeric
      *
      * @example
+     * ```ts
      * RegexUtils.isNumeric(undefined);    // false
      * RegexUtils.isNumeric('abc123');    // false
      * RegexUtils.isNumeric('123456');    // true
+     * ```
      */
     public static isNumeric(text?: string): boolean {
         return !!text && /^\d+$/.test(text);

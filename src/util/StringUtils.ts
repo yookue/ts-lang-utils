@@ -35,8 +35,10 @@ export abstract class StringUtils {
      * @returns whether all the given texts are empty
      *
      * @example
+     * ```ts
      * StringUtils.allEmpty([null, undefined]);    // true
      * StringUtils.allEmpty([null, 'true']);    // false
+     * ```
      */
     public static allEmpty(texts?: Array<string | undefined | null>): boolean {
         return !texts || texts.length === 0 || texts.every(item => this.isEmpty(item));
@@ -50,9 +52,11 @@ export abstract class StringUtils {
      * @returns whether all the given texts are not empty
      *
      * @example
+     * ```ts
      * StringUtils.allNotEmpty([null, undefined]);    // false
      * StringUtils.allNotEmpty([null, 'world']);    // false
      * StringUtils.allNotEmpty(['foo', 'bar']);    // true
+     * ```
      */
     public static allNotEmpty(texts?: Array<string | undefined | null>): boolean {
         return !!texts && texts.length > 0 && texts.every(item => this.isNotEmpty(item));
@@ -66,8 +70,10 @@ export abstract class StringUtils {
      * @returns whether all the given texts are blank
      *
      * @example
+     * ```ts
      * StringUtils.allBlank([null, undefined]);    // true
      * StringUtils.allBlank([null, 'true']);    // false
+     * ```
      */
     public static allBlank(texts?: Array<string | undefined | null>): boolean {
         return !texts || texts.length === 0 || texts.every(item => this.isBlank(item));
@@ -81,9 +87,11 @@ export abstract class StringUtils {
      * @returns whether all the given texts are not blank
      *
      * @example
+     * ```ts
      * StringUtils.allNotBlank([null, undefined]);    // false
      * StringUtils.allNotBlank([null, 'world']);    // false
      * StringUtils.allNotBlank(['foo', 'bar']);    // true
+     * ```
      */
     public static allNotBlank(texts?: Array<string | undefined | null>): boolean {
         return !!texts && texts.length > 0 && texts.every(item => this.isNotBlank(item));
@@ -97,8 +105,10 @@ export abstract class StringUtils {
      * @returns whether any of the given texts is empty
      *
      * @example
+     * ```ts
      * StringUtils.anyEmpty([null, undefined]);    // true
      * StringUtils.anyEmpty(['foo', 'bar']);    // false
+     * ```
      */
     public static anyEmpty(texts?: Array<string | undefined | null>): boolean {
         return !texts || texts.length === 0 || texts.some(item => this.isEmpty(item));
@@ -112,8 +122,10 @@ export abstract class StringUtils {
      * @returns whether any of the given texts is not empty
      *
      * @example
+     * ```ts
      * StringUtils.anyNotEmpty([null, undefined]);    // false
      * StringUtils.anyNotEmpty([null, 'world']);    // true
+     * ```
      */
     public static anyNotEmpty(texts?: Array<string | undefined | null>): boolean {
         return !!texts && texts?.length > 0 && texts.some(item => this.isNotEmpty(item));
@@ -127,8 +139,10 @@ export abstract class StringUtils {
      * @returns whether any of the given texts is blank
      *
      * @example
+     * ```ts
      * StringUtils.anyBlank([null, undefined]);    // true
      * StringUtils.anyBlank(['foo', 'bar']);    // false
+     * ```
      */
     public static anyBlank(texts?: Array<string | undefined | null>): boolean {
         return !texts || texts.length === 0 || texts.some(item => this.isBlank(item));
@@ -142,8 +156,10 @@ export abstract class StringUtils {
      * @returns whether any of the given texts is not blank
      *
      * @example
+     * ```ts
      * StringUtils.anyNotBlank([null, undefined]);    // false
      * StringUtils.anyNotBlank([null, 'world']);    // true
+     * ```
      */
     public static anyNotBlank(texts?: Array<string | undefined | null>): boolean {
         return !!texts && texts.length > 0 && texts.some(item => this.isNotBlank(item));
@@ -159,11 +175,13 @@ export abstract class StringUtils {
      * @returns a string that abbreviates the given text using placeholder
      *
      * @example
+     * ```ts
      * StringUtils.abbreviate('foobar', -1);    // 'foobar'
      * StringUtils.abbreviate('foobar', 0);    // ''
      * StringUtils.abbreviate('foobar', 5);    // 'fo...'
      * StringUtils.abbreviate('foobar', 6);    // 'foobar'
      * StringUtils.abbreviate('foobar', 10);    // 'foobar'
+     * ```
      */
     public static abbreviate(text?: string | null, width: number = -1, placeholder: string = '...'): string | undefined | null {
         if (!text || width < 0 || width >= text.length) {
@@ -187,8 +205,10 @@ export abstract class StringUtils {
      * @returns a string that concat the given text and suffix
      *
      * @example
+     * ```ts
      * StringUtils.appendIfMissing('foo', 'bar');    // 'foobar'
      * StringUtils.appendIfMissing('foobar', 'bar');    // 'foobar'
+     * ```
      */
     public static appendIfMissing(text?: string | null, suffix?: string | null): string | undefined | null {
         return (!text || this.isEmpty(suffix) || this.endsWith(text, suffix)) ? text : (text + suffix);
@@ -203,8 +223,10 @@ export abstract class StringUtils {
      * @returns a string that concat the given text and suffix, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.appendIfMissingIgnoreCase('foo', 'bar');    // 'foobar'
      * StringUtils.appendIfMissingIgnoreCase('foobar', 'BAR');    // 'foobar'
+     * ```
      */
     public static appendIfMissingIgnoreCase(text?: string | null, suffix?: string | null): string | undefined | null {
         return (!text || this.isEmpty(suffix) || this.endsWithIgnoreCase(text, suffix)) ? text : (text + suffix);
@@ -216,9 +238,11 @@ export abstract class StringUtils {
      * @param text the source string to check
      *
      * @returns the first letter uppercase representation of the given string
-
-     @example
-     StringUtils.capitalizeFirst('fooBar');    // 'FooBar'
+     *
+     * @example
+     * ```ts
+     * StringUtils.capitalizeFirst('fooBar');    // 'FooBar'
+     * ```
      */
     public static capitalizeFirst(text?: string | null): string | undefined | null {
         return !text ? text : (text.charAt(0).toUpperCase() + text.substring(1));
@@ -230,9 +254,11 @@ export abstract class StringUtils {
      * @param text the source string to check
      *
      * @returns the letter uppercase and others lowercase representation of the given string
-
-     @example
-     StringUtils.capitalizeFirstLowerTail('fooBar');    // 'Foobar'
+     *
+     * @example
+     * ```ts
+     * StringUtils.capitalizeFirstLowerTail('fooBar');    // 'Foobar'
+     * ```
      */
     public static capitalizeFirstLowerTail(text?: string | null): string | undefined | null {
         return !text ? text : (text.charAt(0).toUpperCase() + text.substring(1)?.toLowerCase());
@@ -248,11 +274,13 @@ export abstract class StringUtils {
      * @returns a string that centers the given text using placeholder
      *
      * @example
+     * ```ts
      * StringUtils.center('foobar', -1);    // 'foobar'
      * StringUtils.center('foobar', 0);    // ''
      * StringUtils.center('foobar', 3);    // 'foobar'
      * StringUtils.center('foobar', 7);    // 'foobar '
      * StringUtils.center('foobar', 10);    // '  foobar  '
+     * ```
      */
     public static center(text?: string | null, width: number = -1, placeholder: string = ' '): string | undefined | null {
         if (!text || width < 0 || (width > 0 && width <= text.length)) {
@@ -273,8 +301,10 @@ export abstract class StringUtils {
      * @returns an empty value if the given text is undefined
      *
      * @example
+     * ```ts
      * StringUtils.defaultString(undefined);    // ''
      * StringUtils.defaultString(null);    // ''
+     * ```
      */
     public static defaultString(text?: string | null): string {
         return text ? text : '';
@@ -289,7 +319,9 @@ export abstract class StringUtils {
      * @returns the default value if the given text is empty, or the text self if it is not empty
      *
      * @example
+     * ```ts
      * StringUtils.defaultIfEmpty(undefined, 'foobar');    // 'foobar'
+     * ```
      */
     public static defaultIfEmpty(text?: string | null, defaultValue?: string | null): string | undefined | null {
         return this.isEmpty(text) ? defaultValue : text;
@@ -304,7 +336,9 @@ export abstract class StringUtils {
      * @returns the default value if the given text is blank, or the text self if it is not blank
      *
      * @example
+     * ```ts
      * StringUtils.defaultIfBlank(undefined, 'foobar');    // 'foobar'
+     * ```
      */
     public static defaultIfBlank(text?: string | null, defaultValue?: string | null): string | undefined | null {
         return this.isBlank(text) ? defaultValue : text;
@@ -319,8 +353,10 @@ export abstract class StringUtils {
      * @returns whether the given string ends with the suffix
      *
      * @example
+     * ```ts
      * StringUtils.endsWith('foobar', 'bar');    // true
      * StringUtils.endsWith('hello', 'bar');    // false
+     * ```
      */
     public static endsWith(text?: string | null, suffix?: string | null): boolean {
         if (!text || !suffix) {
@@ -341,8 +377,10 @@ export abstract class StringUtils {
      * @returns whether the given string ends with the suffix, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.endsWithIgnoreCase('foobar', 'BAR');    // true
      * StringUtils.endsWithIgnoreCase('hello', 'BAR');    // false
+     * ```
      */
     public static endsWithIgnoreCase(text?: string | null, suffix?: string | null): boolean {
         if (!text || !suffix) {
@@ -363,8 +401,10 @@ export abstract class StringUtils {
      * @returns whether the given string ends with any of the suffixes
      *
      * @example
+     * ```ts
      * StringUtils.endsWithAny('foobar', ['foo', 'bar']);    // true
      * StringUtils.endsWithAny('hello', ['foo', 'bar']);    // false
+     * ```
      */
     public static endsWithAny(text?: string | null, suffixes?: Array<string | undefined | null>): boolean {
         if (!text || !suffixes || suffixes.length === 0) {
@@ -382,8 +422,10 @@ export abstract class StringUtils {
      * @returns whether the given string ends with any of the suffixes, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.endsWithAnyIgnoreCase('foobar', ['FOO', 'BAR']);    // true
      * StringUtils.endsWithAnyIgnoreCase('hello', ['FOO', 'BAR']);    // false
+     * ```
      */
     public static endsWithAnyIgnoreCase(text?: string | null, suffixes?: Array<string | undefined | null>): boolean {
         if (!text || !suffixes || suffixes.length === 0) {
@@ -401,9 +443,11 @@ export abstract class StringUtils {
      * @returns whether the given strings are equal
      *
      * @example
+     * ```ts
      * StringUtils.equals(undefined, null);    // false
      * StringUtils.equals('foo', 'foo');    // true
      * StringUtils.equals('foo', 'bar');    // false
+     * ```
      */
     public static equals(text?: string | null, comparison?: string | null): boolean {
         if (text === comparison) {
@@ -424,7 +468,9 @@ export abstract class StringUtils {
      * @returns whether the given strings are equal, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.equalsIgnoreCase('foo', 'FOO');    // true
+     * ```
      */
     public static equalsIgnoreCase(text?: string | null, comparison?: string | null): boolean {
         if (text === comparison) {
@@ -445,7 +491,9 @@ export abstract class StringUtils {
      * @returns whether the given string equals to any of the comparison strings
      *
      * @example
+     * ```ts
      * StringUtils.equalsAny('foo', ['foo', 'bar']);    // true
+     * ```
      */
     public static equalsAny(text?: string | null, comparisons?: Array<string | undefined | null>): boolean {
         return ArrayUtils.includes(comparisons, text);
@@ -460,7 +508,9 @@ export abstract class StringUtils {
      * @returns whether the given string equals to any of the comparison strings, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.equalsAnyIgnoreCase('foo', ['FOO', 'bar']);    // true
+     * ```
      */
     public static equalsAnyIgnoreCase(text?: string | null, comparisons?: Array<string | undefined | null>): boolean {
         if (!text || !comparisons || comparisons.length === 0) {
@@ -477,7 +527,9 @@ export abstract class StringUtils {
      * @returns the escaped html string of the given text
      *
      * @example
+     * ```ts
      * StringUtils.escapeHtml('<div>foobar<div>');    // '&lt;div&gt;foobar&lt;div&gt;'
+     * ```
      */
     public static escapeHtml(text?: string | null): string | undefined | null {
         if (!text) {
@@ -501,7 +553,9 @@ export abstract class StringUtils {
      * @returns the unescaped html string of the given text
      *
      * @example
+     * ```ts
      * StringUtils.unescapeHtml('&lt;div&gt;foobar&lt;div&gt;');    // '<div>foobar<div>'
+     * ```
      */
     public static unescapeHtml(text?: string | null): string | undefined | null {
         if (!text) {
@@ -525,7 +579,9 @@ export abstract class StringUtils {
      * @returns the filtered array of the gaven strings, without empties
      *
      * @example
+     * ```ts
      * StringUtils.filterIgnoreEmpty([null, undefined, '', 'foobar']);    //  ['foobar']
+     * ```
      */
     public static filterIgnoreEmpty(texts?: Array<string | undefined | null>): string[] | undefined {
         if (!texts || texts.length === 0) {
@@ -544,7 +600,9 @@ export abstract class StringUtils {
      * @returns the filtered array of the gaven strings, without blanks
      *
      * @example
+     * ```ts
      * StringUtils.filterIgnoreEmpty([null, undefined, ' ', 'foobar']);    //  ['foobar']
+     * ```
      */
     public static filterIgnoreBlank(texts?: Array<string | undefined | null>): string[] | undefined {
         if (!texts || texts.length === 0) {
@@ -564,9 +622,11 @@ export abstract class StringUtils {
      * @returns the replaced string of the source string
      *
      * @example
+     * ```ts
      * StringUtils.formatBrace('foo{}', 'bar');    //  'foobar'
      * StringUtils.formatBrace('foobar{}');    //  'foobar{}'
      * StringUtils.formatBrace('hello {}, foo{}', 'world', 'bar');    //  'hello world, foobar'
+     * ```
      */
     public static formatBrace(text?: string | null, ...params: any[]): string | undefined | null {
         if (!text || text.length <= 2 || !params || params.length === 0) {
@@ -590,9 +650,11 @@ export abstract class StringUtils {
      * @see "https://github.com/samsonjs/format/blob/main/format.js"
      *
      * @example
+     * ```ts
      * StringUtils.formatPercent("foo%s", "bar");    // "foobar"
      * StringUtils.formatPercent("foobar %d", 2023);    // "foobar 2023"
      * StringUtils.formatPercent("hello %s, foo%s", "world", "bar");    // "hello world, foobar"
+     * ```
      */
     public static formatPercent(text?: string | null, ...params: any[]): string | undefined | null {
         if (!text || text.length <= 2 || !params || params.length === 0) {
@@ -687,10 +749,12 @@ export abstract class StringUtils {
      * @returns the replaced string of the source string
      *
      * @example
+     * ```ts
      * StringUtils.formatPlaceholder("foo{bar}", {bar: "bar"});    //  "foobar"
      * StringUtils.formatPlaceholder("foobar{none}");    //  "foobar{none}"
      * StringUtils.formatPlaceholder("foobar{none}", {});    //  "foobar{none}"
      * StringUtils.formatPlaceholder("hello {name}, foo{bar}", {name: "world", bar: "bar"});    //  "hello world, foobar"
+     * ```
      */
     public static formatPlaceholder(text?: string | null, params?: {[key: string]: any}): string | undefined | null {
         if (!text || text.length <= 2 || !params) {
@@ -713,8 +777,10 @@ export abstract class StringUtils {
      * @returns a string that represents the given string array
      *
      * @example
+     * ```ts
      * StringUtils.fromChars(undefined);    // undefined
      * StringUtils.fromChars(['f', 'o', 'o', 'b', 'a', 'r']);    // 'foobar'
+     * ```
      */
     public static fromChars(texts?: Array<string | undefined | null>): string | undefined {
         return !texts ? undefined : texts.join('');
@@ -739,8 +805,10 @@ export abstract class StringUtils {
      * @returns whether the given string is empty
      *
      * @example
+     * ```ts
      * StringUtils.isEmpty(undefined);    // true
      * StringUtils.isEmpty('foobar');    // false
+     * ```
      */
     public static isEmpty(text?: string | null): boolean {
         return !text || text.length === 0;
@@ -754,7 +822,9 @@ export abstract class StringUtils {
      * @returns whether the given string is not empty
      *
      * @example
+     * ```ts
      * StringUtils.isNotEmpty('foobar');    // true
+     * ```
      */
     public static isNotEmpty(text?: string | null): boolean {
         return !this.isEmpty(text);
@@ -771,8 +841,10 @@ export abstract class StringUtils {
      * check if all the characters in the given string are whitespace or line separators
      *
      * @example
+     * ```ts
      * StringUtils.isBlank(undefined);    // true
      * StringUtils.isBlank('foobar');    // false
+     * ```
      */
     public static isBlank(text?: string | null): boolean {
         return !text || text?.length === 0 || /^\s*$/.test(text);
@@ -786,7 +858,9 @@ export abstract class StringUtils {
      * @returns whether the given string is not blank
      *
      * @example
+     * ```ts
      * StringUtils.isNotBlank('foobar');    // true
+     * ```
      */
     public static isNotBlank(text?: string | null): boolean {
         return !this.isBlank(text);
@@ -801,7 +875,9 @@ export abstract class StringUtils {
      * @returns whether the given text includes the comparison string
      *
      * @example
+     * ```ts
      * StringUtils.includes('foobar', 'foo');    // true
+     * ```
      */
     public static includes(text?: string | null, comparison?: string | null): boolean {
         return text === comparison || (!!text && !!comparison && text.includes(comparison));
@@ -816,7 +892,9 @@ export abstract class StringUtils {
      * @returns whether the given text includes the comparison string, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.includesIgnoreCase('foobar', 'FOO');    // true
+     * ```
      */
     public static includesIgnoreCase(text?: string | null, comparison?: string | null): boolean {
         return text === comparison || (!!text && !!comparison && text?.toUpperCase()?.includes(comparison?.toUpperCase()));
@@ -831,7 +909,9 @@ export abstract class StringUtils {
      * @returns whether the given text includes the comparison string
      *
      * @example
+     * ```ts
      * StringUtils.includesAny('foobar', ['foo', 'bar']);    // true
+     * ```
      */
     public static includesAny(text?: string | null, comparisons?: Array<string | undefined | null>): boolean {
         if (!text || !comparisons) {
@@ -849,7 +929,9 @@ export abstract class StringUtils {
      * @returns whether the text includes the comparison string, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.includesAnyIgnoreCase('foobar', ['FOO', 'world']);    // true
+     * ```
      */
     public static includesAnyIgnoreCase(text?: string | null, comparisons?: Array<string | undefined | null>): boolean {
         if (!text || !comparisons || comparisons.length === 0) {
@@ -868,9 +950,11 @@ export abstract class StringUtils {
      * @returns the joined string with the given texts and delimiter
      *
      * @example
+     * ```ts
      * StringUtils.joinWith('foobar');    // 'foobar'
      * StringUtils.joinWith(['foo', 'bar'], undefined);    // 'foobar'
      * StringUtils.joinWith(['foo', 'bar', 'world'], undefined, (text => text !== 'world'));    // 'foobar'
+     * ```
      */
     public static joinWith(texts?: string | string[] | null, separator?: string | null, filter?: (text?: string) => boolean): string | undefined {
         if (!texts || (Array.isArray(texts) && texts.length === 0)) {
@@ -895,8 +979,10 @@ export abstract class StringUtils {
      * @returns the leftmost length characters of the given string
      *
      * @example
+     * ```ts
      * StringUtils.left('foobar', 3);    // 'foo'
      * StringUtils.left('foobar', 10);    // 'foobar'
+     * ```
      */
     public static left(text?: string | null, length?: number): string | undefined | null {
         if (!text || length === undefined || length < 0) {
@@ -917,8 +1003,10 @@ export abstract class StringUtils {
      * @returns the rightmost length characters of the given string
      *
      * @example
+     * ```ts
      * StringUtils.right('foobar', 3);    // 'bar'
      * StringUtils.right('foobar', 10);    // 'foobar'
+     * ```
      */
     public static right(text?: string | null, length?: number): string | undefined | null {
         if (!text || length === undefined || length < 0) {
@@ -939,8 +1027,10 @@ export abstract class StringUtils {
      * @returns a string that concat the given prefix and text
      *
      * @example
+     * ```ts
      * StringUtils.prependIfMissing('bar', 'foo');    // 'foobar'
      * StringUtils.prependIfMissing('foobar', 'foo');    // 'foobar'
+     * ```
      */
     public static prependIfMissing(text?: string | null, prefix?: string): string | undefined | null {
         return (!text || this.isEmpty(prefix) || this.startsWith(text, prefix)) ? text : (prefix + text);
@@ -955,8 +1045,10 @@ export abstract class StringUtils {
      * @returns a string that concat the given prefix and text, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.prependIfMissingIgnoreCase('bar', 'foo');    // 'foobar'
      * StringUtils.prependIfMissingIgnoreCase('foobar', 'FOO');    // 'foobar'
+     * ```
      */
     public static prependIfMissingIgnoreCase(text?: string | null, prefix?: string): string | undefined | null {
         return (!text || this.isEmpty(prefix) || this.startsWithIgnoreCase(text, prefix)) ? text : (prefix + text);
@@ -970,8 +1062,10 @@ export abstract class StringUtils {
      * @returns a string that single quotes the given text
      *
      * @example
+     * ```ts
      * StringUtils.quoteSingle(undefined);    // undefined
      * StringUtils.quoteSingle('foobar');    // '\'foobar\''
+     * ```
      */
     public static quoteSingle(text?: string | null): string | undefined | null {
         return !text ? text : `'${text}'`;
@@ -985,8 +1079,10 @@ export abstract class StringUtils {
      * @returns a string that double quotes the given text
      *
      * @example
+     * ```ts
      * StringUtils.quoteSingle(undefined);    // undefined
      * StringUtils.quoteSingle('foobar');    // '"foobar"'
+     * ```
      */
     public static quoteDouble(text?: string | null): string | undefined | null {
         return !text ? text : `"${text}"`;
@@ -1000,9 +1096,11 @@ export abstract class StringUtils {
      * @returns a string that unquotes the given text
      *
      * @example
+     * ```ts
      * StringUtils.unquote(undefined);    // undefined
      * StringUtils.unquote('\'foobar\'');    // 'foobar'
      * StringUtils.unquote('"foobar"');    // 'foobar'
+     * ```
      */
     public static unquote(text?: string | null): string | undefined | null {
         return !text ? text : text.replace(/^['"`]|['"`]$/g, '');
@@ -1017,9 +1115,11 @@ export abstract class StringUtils {
      * @returns the string that removed all occurrences in the given text
      *
      * @example
+     * ```ts
      * StringUtils.removeAll(undefined, undefined);    // undefined
      * StringUtils.removeAll('foobar-foobar', undefined);    // 'foobar-foobar'
      * StringUtils.removeAll('foobar-foobar', 'bar');    // 'foo-foo'
+     * ```
      */
     public static removeAll(text?: string | null, search?: string | RegExp | null): string | undefined | null {
         return this.replaceAll(text, search, '');
@@ -1034,9 +1134,11 @@ export abstract class StringUtils {
      * @returns the string that removed all occurrences in the given text, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.removeAllIgnoreCase(undefined, undefined);    // undefined
      * StringUtils.removeAllIgnoreCase('foobar-foobar', undefined);    // 'foobar-foobar'
      * StringUtils.removeAllIgnoreCase('foobar-foobar', 'BAR');    // 'foo-foo'
+     * ```
      */
     public static removeAllIgnoreCase(text?: string | null, search?: string | RegExp | null): string | undefined | null {
         return this.replaceAllIgnoreCase(text, search, '');
@@ -1051,9 +1153,11 @@ export abstract class StringUtils {
      * @returns the string that removed the first occurrence in the given text
      *
      * @example
+     * ```ts
      * StringUtils.removeFirst(undefined, undefined);    // undefined
      * StringUtils.removeFirst('foobar-foobar', undefined);    // 'foobar-foobar'
      * StringUtils.removeFirst('foobar-foobar', 'bar');    // 'foo-foobar'
+     * ```
      */
     public static removeFirst(text?: string | null, search?: string | RegExp | null): string | undefined | null {
         return this.replaceFirst(text, search, '');
@@ -1068,9 +1172,11 @@ export abstract class StringUtils {
      * @returns the string that removed the first occurrence in the given text, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.removeFirstIgnoreCase(undefined, undefined);    // undefined
      * StringUtils.removeFirstIgnoreCase('foobar-foobar', undefined);    // 'foobar-foobar'
      * StringUtils.removeFirstIgnoreCase('foobar-foobar', 'BAR');    // 'foo-foobar'
+     * ```
      */
     public static removeFirstIgnoreCase(text?: string | null, search?: string | RegExp | null): string | undefined | null {
         return this.replaceFirstIgnoreCase(text, search, '');
@@ -1085,7 +1191,9 @@ export abstract class StringUtils {
      * @returns the array that excludes the elements which equals to any of the given exclusions
      *
      * @example
+     * ```ts
      * StringUtils.removeEquals(['foo', 'bar'], ['bar']);    // ['foo']
+     * ```
      */
     public static removeEquals(texts?: string[] | null, excludes?: string[] | null): string[] | undefined | null {
         return ArrayUtils.removeAll(texts, excludes);
@@ -1100,7 +1208,9 @@ export abstract class StringUtils {
      * @returns the array that excludes the elements which equals to any of the given exclusions, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.removeEqualsIgnoreCase(['foo', 'bar'], ['BAR']);    // ['foo']
+     * ```
      */
     public static removeEqualsIgnoreCase(texts?: string[] | null, excludes?: string[] | null): string[] | undefined | null {
         return (!texts || texts.length === 0 || !excludes || excludes.length === 0) ? texts : texts.filter(text => !excludes.some(exclude => this.equalsIgnoreCase(text, exclude)));
@@ -1115,7 +1225,9 @@ export abstract class StringUtils {
      * @returns the array that excludes the elements which includes any of the given exclusions
      *
      * @example
+     * ```ts
      * StringUtils.removeIncludes(['foo', 'bar'], ['ar']);    // ['foo']
+     * ```
      */
     public static removeIncludes(texts?: string[] | null, excludes?: string[] | null): string[] | undefined | null {
         return (!texts || texts.length === 0 || !excludes || excludes.length === 0) ? texts : texts.filter(text => !excludes.some(exclude => this.includes(text, exclude)));
@@ -1130,7 +1242,9 @@ export abstract class StringUtils {
      * @returns the array that excludes the elements which includes any of the given exclusions, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.removeIncludesIgnoreCase(['foo', 'bar'], ['AR']);    // ['foo']
+     * ```
      */
     public static removeIncludesIgnoreCase(texts?: string[] | null, excludes?: string[] | null): string[] | undefined | null {
         return (!texts || texts.length === 0 || !excludes || excludes.length === 0) ? texts : texts.filter(text => !excludes.some(exclude => this.includesIgnoreCase(text, exclude)));
@@ -1145,8 +1259,10 @@ export abstract class StringUtils {
      * @returns the string that removed the leftmost given string
      *
      * @example
+     * ```ts
      * StringUtils.removeStart('foobar', 'hello');    // 'foobar'
      * StringUtils.removeStart('foobar', 'foo');    // 'bar'
+     * ```
      */
     public static removeStart(text?: string | null, remove?: string | null): string | undefined | null {
         return (!text || !remove || !this.startsWith(text, remove)) ? text : text.substring(remove.length);
@@ -1161,8 +1277,10 @@ export abstract class StringUtils {
      * @returns the string that removed the leftmost given string, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.removeStartIgnoreCase('foobar', 'Hello');    // 'foobar'
      * StringUtils.removeStartIgnoreCase('foobar', 'Foo');    // 'bar'
+     * ```
      */
     public static removeStartIgnoreCase(text?: string | null, remove?: string | null): string | undefined | null {
         return (!text || !remove || !this.startsWithIgnoreCase(text, remove)) ? text : text.substring(remove.length);
@@ -1177,8 +1295,10 @@ export abstract class StringUtils {
      * @returns the string that removed the leftmost given string
      *
      * @example
+     * ```ts
      * StringUtils.removeEnd('foobar', 'hello');    // 'foobar'
      * StringUtils.removeEnd('foobar', 'bar');    // 'foo'
+     * ```
      */
     public static removeEnd(text?: string | null, remove?: string | null): string | undefined | null {
         return (!text || !remove || !this.endsWith(text, remove)) ? text : text.substring(0, text.length - remove.length);
@@ -1193,8 +1313,10 @@ export abstract class StringUtils {
      * @returns the string that removed the rightmost given string, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.removeEndIgnoreCase('foobar', 'Hello');    // 'foobar'
      * StringUtils.removeEndIgnoreCase('foobar', 'Bar');    // 'foo'
+     * ```
      */
     public static removeEndIgnoreCase(text?: string | null, remove?: string | null): string | undefined | null {
         return (!text || !remove || !this.endsWithIgnoreCase(text, remove)) ? text : text.substring(0, text.length - remove.length);
@@ -1210,9 +1332,11 @@ export abstract class StringUtils {
      * @returns the string that replaced all occurrences in the given text
      *
      * @example
+     * ```ts
      * StringUtils.replaceAll(undefined, undefined, undefined);    // undefined
      * StringUtils.replaceAll('foobar-foobar', undefined, 'hello');    // 'foobar-foobar'
      * StringUtils.replaceAll('foobar-foobar', 'foobar', 'hello');    // 'hello-hello'
+     * ```
      */
     public static replaceAll(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
         return (this.isEmpty(text) || !search) ? text : text?.replace(new RegExp(search, 'g'), (replace ?? ''));
@@ -1228,9 +1352,11 @@ export abstract class StringUtils {
      * @returns the string that replaced all occurrences in the given text, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.replaceAllIgnoreCase(undefined, undefined, undefined);    // undefined
      * StringUtils.replaceAllIgnoreCase('foobar-foobar', undefined, 'hello');    // 'foobar-foobar'
      * StringUtils.replaceAllIgnoreCase('foobar-foobar', 'FOOBAR', 'hello');    // 'hello-hello'
+     * ```
      */
     public static replaceAllIgnoreCase(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
         return (this.isEmpty(text) || !search) ? text : text?.replace(new RegExp(search, 'gi'), (replace ?? ''));
@@ -1246,9 +1372,11 @@ export abstract class StringUtils {
      * @returns the string that replaced the first occurrence in the given text
      *
      * @example
+     * ```ts
      * StringUtils.replaceFirst(undefined, undefined, undefined);    // undefined
      * StringUtils.replaceFirst('foobar-foobar', 'foobar', undefined);    // 'foobar-foobar'
      * StringUtils.replaceFirst('foobar-foobar', 'foobar', 'hello');    // 'hello-foobar'
+     * ```
      */
     public static replaceFirst(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
         return (this.isEmpty(text) || !search) ? text : text?.replace(search, (replace ?? ''));
@@ -1264,9 +1392,11 @@ export abstract class StringUtils {
      * @returns the string that replaced the first occurrence in the given text, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.replaceFirstIgnoreCase(undefined, undefined, undefined);    // undefined
      * StringUtils.replaceFirstIgnoreCase('foobar-foobar', 'foobar', undefined);    // 'foobar-foobar'
      * StringUtils.replaceFirstIgnoreCase('foobar-foobar', 'FOOBAR', 'hello');    // 'hello-foobar'
+     * ```
      */
     public static replaceFirstIgnoreCase(text?: string | null, search?: string | RegExp | null, replace?: string | null): string | undefined | null {
         return (this.isEmpty(text) || !search) ? text : text?.replace(new RegExp(search, 'i'), (replace ?? ''));
@@ -1282,8 +1412,10 @@ export abstract class StringUtils {
      * @returns the reversed representation of the given string
      *
      * @example
+     * ```ts
      * StringUtils.reverse('foobar');    // 'raboof'
      * StringUtils.reverse('foobar', 1, 5);    // 'aboo'
+     * ```
      */
     public static reverse(text?: string | null, startInclusive?: number, endExclusive?: number): string | undefined | null {
         if (!text) {
@@ -1304,8 +1436,10 @@ export abstract class StringUtils {
      * @returns the split array of the given string by the given delimiter
      *
      * @example
+     * ```ts
      * StringUtils.split('foo,bar');    // ['foo', 'bar']
      * StringUtils.split('hello | world | wonderful', '|', 2);    // ['hello', 'world']
+     * ```
      */
     public static split(text?: string | null, delimiter: string = ',', max: number = -1, trim: boolean = true): string[] | undefined {
         if (!text) {
@@ -1327,8 +1461,10 @@ export abstract class StringUtils {
      * @returns whether the given string starts with the prefix
      *
      * @example
+     * ```ts
      * StringUtils.startsWith('foobar', 'foo');    // true
      * StringUtils.startsWith('hello', 'bar');    // false
+     * ```
      */
     public static startsWith(text?: string | null, prefix?: string | null): boolean {
         if (!text || !prefix) {
@@ -1349,8 +1485,10 @@ export abstract class StringUtils {
      * @returns whether the given string starts with the prefix, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.startsWithIgnoreCase('foobar', 'FOO');    // true
      * StringUtils.startsWithIgnoreCase('hello', 'BAR');    // false
+     * ```
      */
     public static startsWithIgnoreCase(text?: string | null, prefix?: string | null): boolean {
         if (!text || !prefix) {
@@ -1371,8 +1509,10 @@ export abstract class StringUtils {
      * @returns whether the given string starts with any of the prefixes
      *
      * @example
+     * ```ts
      * StringUtils.startsWithAny('foobar', ['foo', 'bar']);    // true
      * StringUtils.startsWithAny('hello', ['foo', 'bar']);    // false
+     * ```
      */
     public static startsWithAny(text?: string | null, prefixes?: Array<string | undefined | null>): boolean {
         if (!text || !prefixes || prefixes.length === 0) {
@@ -1390,8 +1530,10 @@ export abstract class StringUtils {
      * @returns whether the given string starts with any of the prefixes, case-insensitive
      *
      * @example
+     * ```ts
      * StringUtils.startsWithAnyIgnoreCase('foobar', ['FOO', 'BAR']);    // true
      * StringUtils.startsWithAnyIgnoreCase('hello', ['FOO', 'BAR']);    // false
+     * ```
      */
     public static startsWithAnyIgnoreCase(text?: string | null, prefixes?: Array<string | undefined | null>): boolean {
         if (!text || !prefixes || prefixes.length === 0) {
@@ -1409,7 +1551,9 @@ export abstract class StringUtils {
      * @returns the substring after the first occurrence of the given separator
      *
      * @example
+     * ```ts
      * StringUtils.substringAfter("foo/bar/foo/bar", "/");    // 'bar/foo/bar'
+     * ```
      */
     public static substringAfter(text?: string | null, separator?: string | null): string | undefined {
         if (!text || !separator || separator.length === 0) {
@@ -1428,7 +1572,9 @@ export abstract class StringUtils {
      * @returns the substring after the last occurrence of the given separator
      *
      * @example
+     * ```ts
      * StringUtils.substringAfterLast("foo/bar/foo/bar", "/");    // 'bar'
+     * ```
      */
     public static substringAfterLast(text?: string | null, separator?: string | null): string | undefined {
         if (!text || !separator || separator.length === 0) {
@@ -1446,7 +1592,9 @@ export abstract class StringUtils {
      * @returns the substring before the first occurrence of the given separator
      *
      * @example
+     * ```ts
      * StringUtils.substringBefore("foo/bar/foo/bar", "/");    // 'foo'
+     * ```
      */
     public static substringBefore(text?: string | null, separator?: string | null): string | undefined {
         if (!text || !separator || separator.length === 0) {
@@ -1465,7 +1613,9 @@ export abstract class StringUtils {
      * @returns the substring before the last occurrence of the given separator
      *
      * @example
+     * ```ts
      * StringUtils.substringBeforeLast("foo/bar/foo/bar", "/");    // 'foo/bar/foo'
+     * ```
      */
     public static substringBeforeLast(text?: string | null, separator?: string | null): string | undefined {
         if (!text || !separator || separator.length === 0) {
@@ -1483,8 +1633,10 @@ export abstract class StringUtils {
      * @returns a string array that represents the given string
      *
      * @example
+     * ```ts
      * StringUtils.toChars(undefined);    // undefined
      * StringUtils.toChars('foobar');    // ['f', 'o', 'o', 'b', 'a', 'r']
+     * ```
      */
     public static toChars(text?: string | null): string[] | undefined {
         return !text ? undefined : text.split('');
@@ -1499,8 +1651,10 @@ export abstract class StringUtils {
      * @returns the camel case representation of the given string
      *
      * @example
+     * ```ts
      * StringUtils.toCamelCase('FOO BAR');    // 'fooBar'
      * StringUtils.toCamelCase('--FOO-BAR--');    // 'fooBar'
+     * ```
      */
     public static toCamelCase(text?: string | null, pattern?: RegExp | string): string | undefined | null {
         if (!text || text.length === 0) {
@@ -1522,8 +1676,10 @@ export abstract class StringUtils {
      * @returns the kebab case representation of the given string
      *
      * @example
+     * ```ts
      * StringUtils.toKebabCase('FOO BAR');    // 'foo-bar'
      * StringUtils.toKebabCase('--FOO-BAR--');    // 'foo-bar'
+     * ```
      */
     public static toKebabCase(text?: string | null, pattern?: RegExp | string): string | undefined | null {
         if (!text || text.length === 0) {
@@ -1544,7 +1700,9 @@ export abstract class StringUtils {
      * @returns the trimmed string value from the given string
      *
      * @example
+     * ```ts
      * StringUtils.trim("foobar", true);    // 'foobar'
+     * ```
      */
     public static trim(text?: string | null, emptyAsNull?: boolean): string | undefined | null {
         if (!text) {
