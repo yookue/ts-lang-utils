@@ -41,7 +41,7 @@ export abstract class MapUtils {
      * Processes each entry in the map, with breakable ability
      *
      * @param map the map to inspect
-     * @param callback a callback function that processes each entry, returns `false` means break
+     * @param callback the callback function that processes each entry, returns `false` means break
      */
     public static forEachBreakable<K, V>(map?: Map<K, V>, callback?: (value: V, key: K) => boolean): void {
         if (!map || map.size === 0 || !callback) {
@@ -74,7 +74,7 @@ export abstract class MapUtils {
      * Processes each entry in the map, with indexing and breakable ability
      *
      * @param map the map to inspect
-     * @param callback a callback function that processes each entry, returns `false` means break
+     * @param callback the callback function that processes each entry, returns `false` means break
      */
     public static forEachIndexingBreakable<K, V>(map?: Map<K, V>, callback?: (value: V, key: K, index: number) => boolean): void {
         if (!map || map.size === 0 || !callback) {
@@ -92,7 +92,7 @@ export abstract class MapUtils {
      * Processes each entry in the map, with indexing ability, but not the tailing entry, and returns it
      *
      * @param map the map to inspect
-     * @param callback a callback function that processes each entry
+     * @param callback the callback function that processes each entry
      *
      * @returns the tailing entry in the source map
      */
@@ -115,7 +115,7 @@ export abstract class MapUtils {
      * Processes each entry in the map, but not the tailing entry, and returns it
      *
      * @param map the map to inspect
-     * @param callback a callback function that processes each entry
+     * @param callback the callback function that processes each entry
      *
      * @returns the tailing entry in the source map
      */

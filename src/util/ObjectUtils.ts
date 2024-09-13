@@ -254,6 +254,21 @@ export abstract class ObjectUtils {
     }
 
     /**
+     * Processes each prop key in the object
+     *
+     * @param object the object to inspect
+     * @param callback the callback function that processes each prop key
+     */
+    public static forEachProp(object: any, callback?: (key: string) => void): void {
+        if (!object || !this.isPlain(object) || !callback) {
+            return;
+        }
+        Object.keys(object).filter(key => Object.prototype.hasOwnProperty.call(object, key)).forEach((key: string) => {
+            callback(key);
+        });
+    }
+
+    /**
      * Returns whether the given object is null or undefined
      *
      * @param object the object to check
