@@ -259,12 +259,27 @@ export abstract class ObjectUtils {
      * @param object the object to inspect
      * @param callback the callback function that processes each prop key
      */
-    public static forEachProp(object: any, callback?: (key: string) => void): void {
+    public static forEachProp(object: any, callback?: (key: string, index: number) => void): void {
         if (!object || !this.isPlain(object) || !callback) {
             return;
         }
-        Object.keys(object).filter(key => Object.prototype.hasOwnProperty.call(object, key)).forEach((key: string) => {
-            callback(key);
+        Object.keys(object).filter(key => Object.prototype.hasOwnProperty.call(object, key)).forEach((key: string, index: number) => {
+            callback(key, index);
+        });
+    }
+
+    /**
+     * Processes and map each prop key in the object
+     *
+     * @param object the object to inspect
+     * @param callback the callback function that processes each prop key
+     */
+    public static mapEachProp(object: any, callback?: (key: string, index: number) => any): any[] | undefined {
+        if (!object || !this.isPlain(object) || !callback) {
+            return undefined;
+        }
+        return Object.keys(object).filter(key => Object.prototype.hasOwnProperty.call(object, key)).map((key: string, index: number) => {
+            return callback(key, index);
         });
     }
 

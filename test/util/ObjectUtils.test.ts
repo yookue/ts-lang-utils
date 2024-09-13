@@ -69,6 +69,11 @@ describe('ObjectUtils', () => {
         expect(keys.length).toBe(2);
     });
 
+    test('Testing mapEachProp', () => {
+        const keys = ObjectUtils.mapEachProp({'foo': 'bar', 'hello': 'world'}, key => 'jest_' + key) as string[];
+        expect(keys).toStrictEqual(['jest_foo', 'jest_hello']);
+    });
+
     test('Testing isNil', () => {
         expect(ObjectUtils.isNil(undefined)).toBeTruthy();
         expect(ObjectUtils.isNil(null)).toBeTruthy();
