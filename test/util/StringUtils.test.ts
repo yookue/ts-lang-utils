@@ -435,12 +435,14 @@ describe('StringUtils', () => {
 
     test('Testing toCamelCase', () => {
         expect(StringUtils.toCamelCase('FOO BAR')).toBe('fooBar');
-        expect(StringUtils.toCamelCase('--FOO-BAR--')).toBe('fooBar');
+        expect(StringUtils.toCamelCase('--foo-bar--')).toBe('fooBar');
+        expect(StringUtils.toCamelCase('__FOO_BAR__')).toBe('fooBar');
     });
 
     test('Testing toKebabCase', () => {
         expect(StringUtils.toKebabCase('FOO BAR')).toBe('foo-bar');
-        expect(StringUtils.toKebabCase('--FOO-BAR--')).toBe('foo-bar');
+        expect(StringUtils.toKebabCase('fooBar')).toBe('foo-bar');
+        expect(StringUtils.toKebabCase('__FOO_BAR__')).toBe('foo-bar');
     });
 
     test('Testing trim', () => {

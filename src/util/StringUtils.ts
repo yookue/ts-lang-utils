@@ -15,6 +15,7 @@
  */
 
 
+import {camelCase, kebabCase} from 'lodash';
 import {ArrayUtils} from './ArrayUtils';
 import {ObjectUtils} from './ObjectUtils';
 import {RegexUtils} from './RegexUtils';
@@ -1646,49 +1647,36 @@ export abstract class StringUtils {
      * Returns the camel case representation of the given string
      *
      * @param text the source string to inspect
-     * @param pattern the regex to match
      *
      * @returns the camel case representation of the given string
      *
      * @example
      * ```ts
      * StringUtils.toCamelCase('FOO BAR');    // 'fooBar'
-     * StringUtils.toCamelCase('--FOO-BAR--');    // 'fooBar'
+     * StringUtils.toCamelCase('--foo-bar--');    // 'fooBar'
+     * StringUtils.toCamelCase('__FOO_BAR__');    // 'fooBar'
      * ```
      */
-    public static toCamelCase(text?: string | null, pattern?: RegExp | string): string | undefined | null {
-        if (!text || text.length === 0) {
-            return text;
-        }
-        const words = RegexUtils.extractWords(text, pattern);
-        return !words ? undefined : words.reduce((previous, current, index) => {
-            current = current.toLowerCase();
-            return previous + (index > 0 ? this.capitalizeFirst(current) : current);
-        }, '');
+    public static toCamelCase(text?: string | null): string | undefined | null {
+        return !text ? text : camelCase(text);
     }
 
     /**
      * Returns the kebab case representation of the given string
      *
      * @param text the source string to inspect
-     * @param pattern the regex to match
      *
      * @returns the kebab case representation of the given string
      *
      * @example
      * ```ts
      * StringUtils.toKebabCase('FOO BAR');    // 'foo-bar'
-     * StringUtils.toKebabCase('--FOO-BAR--');    // 'foo-bar'
+     * StringUtils.toKebabCase('fooBar');    // 'foo-bar'
+     * StringUtils.toKebabCase('__FOO_BAR__');    // 'foo-bar'
      * ```
      */
-    public static toKebabCase(text?: string | null, pattern?: RegExp | string): string | undefined | null {
-        if (!text || text.length === 0) {
-            return text;
-        }
-        const words = RegexUtils.extractWords(text, pattern);
-        return !words ? undefined : words.reduce((previous, current, index) => {
-            return previous + (index > 0 ? '-' : '') + current.toLowerCase();
-        }, '');
+    public static toKebabCase(text?: string | null): string | undefined | null {
+        return !text ? text : kebabCase(text);
     }
 
     /**
