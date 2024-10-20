@@ -538,7 +538,7 @@ export abstract class ObjectUtils {
      * ```
      */
     public static getProp(object: any, prop?: string | null): any {
-        if (typeof object !== 'object' || !prop || prop.length === 0) {
+        if (typeof object !== 'object' || !prop) {
             return undefined;
         }
         if (!prop.includes('.')) {

@@ -197,7 +197,7 @@ export abstract class RandomUtils {
      * ```
      */
     public static randomString(minLength?: number, maxLength?: number, characters: string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'): string | undefined {
-        if (!minLength || minLength <= 0 || (maxLength && maxLength < minLength) || characters.length === 0) {
+        if (!minLength || minLength <= 0 || (maxLength && maxLength < minLength) || !characters) {
             return undefined;
         }
         if (maxLength === undefined && characters.length === 1) {

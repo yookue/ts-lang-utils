@@ -812,7 +812,7 @@ export abstract class StringUtils {
      * ```
      */
     public static isEmpty(text?: string | null): boolean {
-        return !text || text.length === 0;
+        return !text;
     }
 
     /**
@@ -848,7 +848,7 @@ export abstract class StringUtils {
      * ```
      */
     public static isBlank(text?: string | null): boolean {
-        return !text || text?.length === 0 || /^\s*$/.test(text);
+        return !text || /^\s*$/.test(text);
     }
 
     /**
@@ -1557,7 +1557,7 @@ export abstract class StringUtils {
      * ```
      */
     public static substringAfter(text?: string | null, separator?: string | null): string | undefined {
-        if (!text || !separator || separator.length === 0) {
+        if (!text || !separator) {
             return undefined;
         }
         const index = text.indexOf(separator);
@@ -1578,7 +1578,7 @@ export abstract class StringUtils {
      * ```
      */
     public static substringAfterLast(text?: string | null, separator?: string | null): string | undefined {
-        if (!text || !separator || separator.length === 0) {
+        if (!text || !separator) {
             return undefined;
         }
         const index = text.lastIndexOf(separator);
@@ -1598,7 +1598,7 @@ export abstract class StringUtils {
      * ```
      */
     public static substringBefore(text?: string | null, separator?: string | null): string | undefined {
-        if (!text || !separator || separator.length === 0) {
+        if (!text || !separator) {
             return undefined;
         }
         const index = text.indexOf(separator);
@@ -1619,7 +1619,7 @@ export abstract class StringUtils {
      * ```
      */
     public static substringBeforeLast(text?: string | null, separator?: string | null): string | undefined {
-        if (!text || !separator || separator.length === 0) {
+        if (!text || !separator) {
             return undefined;
         }
         const index = text.lastIndexOf(separator);
