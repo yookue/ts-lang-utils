@@ -24,6 +24,7 @@
 
 export { detectDimension } from './detectDimension';
 export { detectSource } from './detectSource';
+export { extractExtension } from './extractExtension';
 export { isImage } from './isImage';
 export { isGifImage } from './isGifImage';
 export { isJpgImage } from './isJpgImage';
