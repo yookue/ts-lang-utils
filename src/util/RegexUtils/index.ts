@@ -32,6 +32,7 @@ export { isAlphanumeric } from './isAlphanumeric';
 export { isAlphanumericLower } from './isAlphanumericLower';
 export { isAlphanumericUpper } from './isAlphanumericUpper';
 export { isCompilable } from './isCompilable';
+export { isEmail } from './isEmail';
 export { isNumeric } from './isNumeric';
 export { normalizePattern } from './normalizePattern';
 export { testResetting } from './testResetting';

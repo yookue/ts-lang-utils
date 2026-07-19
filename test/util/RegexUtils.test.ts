@@ -78,6 +78,16 @@ describe('RegexUtils.test', () => {
         expect(RegexUtils.isCompilable('[a-zA-Z0-9]+', 'g')).toBeTruthy();
     });
 
+    test('Testing isEmail', () => {
+        expect(RegexUtils.isEmail(undefined)).toBeFalsy();
+        expect(RegexUtils.isEmail('user@example.com')).toBeTruthy();
+        expect(RegexUtils.isEmail('abc-def@example.com')).toBeTruthy();
+        expect(RegexUtils.isEmail('user@sub-domain.example.com')).toBeTruthy();
+        expect(RegexUtils.isEmail('invalid-email')).toBeFalsy();
+        expect(RegexUtils.isEmail('@example.com')).toBeFalsy();
+        expect(RegexUtils.isEmail('user@.com')).toBeFalsy();
+    });
+
     test('Testing isNumeric', () => {
         expect(RegexUtils.isNumeric(undefined)).toBeFalsy();
         expect(RegexUtils.isNumeric('abc123')).toBeFalsy();
