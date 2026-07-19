@@ -1,6 +1,6 @@
 {
     "name": "@unikue/ts-lang-utils",
-    "version": "1.2.10",
+    "version": "1.2.11",
     "title": "TsLangUtils",
     "description": "Common lang utilities for typescript",
     "homepage": "https://unikueltd.github.io/ts-lang-utils",
@@ -55,11 +55,11 @@
         "@babel/runtime": "^7.29.7",
         "@imranbarbhuiya/duration": "^5.1.8",
         "lodash": "^4.18.1",
-        "nanoid": "^3.3.15",
+        "nanoid": "^3.3.16",
         "universal-cookie": "^8.1.2"
     },
     "devDependencies": {
-        "@eslint/eslintrc": "^3.3.5",
+        "@eslint/eslintrc": "^3.3.6",
         "@eslint/js": "^10.0.1",
         "@types/jest": "^30.0.0",
         "@types/lodash": "^4.17.24",
@@ -67,16 +67,16 @@
         "@unikue/typedoc-plugin-raw-content": "^1.1.1",
         "@unikue/typedoc-theme-dumi": "^1.1.3",
         "del-cli": "^7.0.0",
-        "eslint": "^10.6.0",
+        "eslint": "^10.7.0",
         "eslint-plugin-jest": "^29.15.4",
-        "father": "^4.6.25",
+        "father": "^4.6.31",
         "gh-pages": "^6.3.0",
         "globals": "^17.7.0",
         "jest-environment-jsdom": "^30.4.1",
         "ts-jest": "^29.4.11",
-        "typedoc": "~0.28.19",
+        "typedoc": "~0.28.20",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.62.1"
+        "typescript-eslint": "^8.64.0"
     },
     "peerDependencies": {
         "typescript": ">=4.0.0"

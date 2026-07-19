@@ -26,6 +26,31 @@ function mockFile(type: string): File {
 describe('FileUtils.test', () => {
 
     // -------------------------------------------------------------------------
+    // formatBytes
+    // -------------------------------------------------------------------------
+
+    test('Testing formatBytes', () => {
+        expect(FileUtils.formatBytes(undefined)).toBeUndefined();
+        expect(FileUtils.formatBytes(null)).toBeUndefined();
+        expect(FileUtils.formatBytes()).toBeUndefined();
+
+        expect(FileUtils.formatBytes(0)).toBe('0 B');
+        expect(FileUtils.formatBytes(-1)).toBe('0 B');
+        expect(FileUtils.formatBytes(Infinity)).toBe('0 B');
+
+        expect(FileUtils.formatBytes(500)).toBe('500 B');
+        expect(FileUtils.formatBytes(1024)).toBe('1 KB');
+        expect(FileUtils.formatBytes(1536)).toBe('1.5 KB');
+        expect(FileUtils.formatBytes(1048576)).toBe('1 MB');
+        expect(FileUtils.formatBytes(1610612736)).toBe('1.5 GB');
+        expect(FileUtils.formatBytes(1649267441664)).toBe('1.5 TB');
+
+        // precision
+        expect(FileUtils.formatBytes(1500, 0)).toBe('1 KB');
+        expect(FileUtils.formatBytes(1500, 3)).toBe('1.465 KB');
+    });
+
+    // -------------------------------------------------------------------------
     // readAsDataUrl
     // -------------------------------------------------------------------------
 

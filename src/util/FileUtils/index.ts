@@ -22,4 +22,5 @@
  */
 
 
+export { formatBytes } from './formatBytes';
 export { readAsDataUrl } from './readAsDataUrl';
