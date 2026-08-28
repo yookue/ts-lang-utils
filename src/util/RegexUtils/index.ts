@@ -31,6 +31,7 @@ export { isAlphabeticUpper } from './isAlphabeticUpper';
 export { isAlphanumeric } from './isAlphanumeric';
 export { isAlphanumericLower } from './isAlphanumericLower';
 export { isAlphanumericUpper } from './isAlphanumericUpper';
+export { isChinaIdCard } from './isChinaIdCard';
 export { isCompilable } from './isCompilable';
 export { isEmail } from './isEmail';
 export { isMobile } from './isMobile';

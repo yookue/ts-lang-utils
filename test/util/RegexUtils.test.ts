@@ -72,6 +72,29 @@ describe('RegexUtils.test', () => {
         expect(RegexUtils.isAlphanumericUpper('--$$##')).toBeFalsy();
     });
 
+    test('Testing isChinaIdCard', () => {
+        expect(RegexUtils.isChinaIdCard(undefined)).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('')).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('11010519491231002X')).toBeTruthy();
+        expect(RegexUtils.isChinaIdCard('11010519491231002x')).toBeTruthy();
+        expect(RegexUtils.isChinaIdCard('110101199003070011')).toBeTruthy();
+        expect(RegexUtils.isChinaIdCard('440524188001010014')).toBeTruthy();
+        expect(RegexUtils.isChinaIdCard('310101198511170038')).toBeTruthy();
+        expect(RegexUtils.isChinaIdCard('440304199601010023')).toBeTruthy();
+        expect(RegexUtils.isChinaIdCard('110105194912310021')).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('110101199003078888')).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('01010519491231002X')).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('11010519491331002X')).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('110105194912321234')).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('11010519491231002')).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('1101051949123100222')).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('110101199002301234')).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('110101199002301234', false)).toBeFalsy();
+        expect(RegexUtils.isChinaIdCard('110105194912310021', false)).toBeTruthy();
+        expect(RegexUtils.isChinaIdCard('110101199003078888', false)).toBeTruthy();
+        expect(RegexUtils.isChinaIdCard('11010519491231002X', false)).toBeTruthy();
+    });
+
     test('Testing isCompilable', () => {
         expect(RegexUtils.isCompilable(undefined)).toBeFalsy();
         expect(RegexUtils.isCompilable('foobar')).toBeTruthy();
