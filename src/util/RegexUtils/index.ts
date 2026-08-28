@@ -33,6 +33,7 @@ export { isAlphanumericLower } from './isAlphanumericLower';
 export { isAlphanumericUpper } from './isAlphanumericUpper';
 export { isCompilable } from './isCompilable';
 export { isEmail } from './isEmail';
+export { isMobile } from './isMobile';
 export { isNumeric } from './isNumeric';
 export { normalizePattern } from './normalizePattern';
 export { testResetting } from './testResetting';

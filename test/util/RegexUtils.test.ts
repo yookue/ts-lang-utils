@@ -83,9 +83,34 @@ describe('RegexUtils.test', () => {
         expect(RegexUtils.isEmail('user@example.com')).toBeTruthy();
         expect(RegexUtils.isEmail('abc-def@example.com')).toBeTruthy();
         expect(RegexUtils.isEmail('user@sub-domain.example.com')).toBeTruthy();
+        expect(RegexUtils.isEmail('user.name+tag@sub.example.co.uk')).toBeTruthy();
+        expect(RegexUtils.isEmail('张三@example.com')).toBeTruthy();
+        expect(RegexUtils.isEmail('user@example.中国')).toBeTruthy();
         expect(RegexUtils.isEmail('invalid-email')).toBeFalsy();
         expect(RegexUtils.isEmail('@example.com')).toBeFalsy();
         expect(RegexUtils.isEmail('user@.com')).toBeFalsy();
+        expect(RegexUtils.isEmail('user@example.c')).toBeFalsy();
+        expect(RegexUtils.isEmail('user@example.com.')).toBeFalsy();
+        expect(RegexUtils.isEmail('user@example..com')).toBeFalsy();
+        expect(RegexUtils.isEmail('user@exa!mple.com')).toBeFalsy();
+        expect(RegexUtils.isEmail('user name@example.com')).toBeFalsy();
+    });
+
+    test('Testing isMobile', () => {
+        expect(RegexUtils.isMobile(undefined)).toBeFalsy();
+        expect(RegexUtils.isMobile('13812345678')).toBeTruthy();
+        expect(RegexUtils.isMobile('15912345678')).toBeTruthy();
+        expect(RegexUtils.isMobile('19912345678')).toBeTruthy();
+        expect(RegexUtils.isMobile('12345678901')).toBeFalsy();
+        expect(RegexUtils.isMobile('12812345678')).toBeFalsy();
+        expect(RegexUtils.isMobile('1381234567')).toBeFalsy();
+        expect(RegexUtils.isMobile('138123456789')).toBeFalsy();
+        expect(RegexUtils.isMobile('2125551234', '^[2-9]\\d{2}[2-9]\\d{6}$')).toBeTruthy();
+        expect(RegexUtils.isMobile('1125551234', '^[2-9]\\d{2}[2-9]\\d{6}$')).toBeFalsy();
+        expect(RegexUtils.isMobile('2125551234', /^[2-9]\d{2}[2-9]\d{6}$/)).toBeTruthy();
+        expect(RegexUtils.isMobile('1125551234', /^[2-9]\d{2}[2-9]\d{6}$/)).toBeFalsy();
+        expect(RegexUtils.isMobile('13812345678', '[invalid')).toBeFalsy();
+        expect(RegexUtils.isMobile('13812345678', /^1[3-9]\d{9}$/)).toBeTruthy();
     });
 
     test('Testing isNumeric', () => {
