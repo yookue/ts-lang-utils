@@ -72,27 +72,27 @@ describe('RegexUtils.test', () => {
         expect(RegexUtils.isAlphanumericUpper('--$$##')).toBeFalsy();
     });
 
-    test('Testing isChinaIdCard', () => {
-        expect(RegexUtils.isChinaIdCard(undefined)).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('')).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('11010519491231002X')).toBeTruthy();
-        expect(RegexUtils.isChinaIdCard('11010519491231002x')).toBeTruthy();
-        expect(RegexUtils.isChinaIdCard('110101199003070011')).toBeTruthy();
-        expect(RegexUtils.isChinaIdCard('440524188001010014')).toBeTruthy();
-        expect(RegexUtils.isChinaIdCard('310101198511170038')).toBeTruthy();
-        expect(RegexUtils.isChinaIdCard('440304199601010023')).toBeTruthy();
-        expect(RegexUtils.isChinaIdCard('110105194912310021')).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('110101199003078888')).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('01010519491231002X')).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('11010519491331002X')).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('110105194912321234')).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('11010519491231002')).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('1101051949123100222')).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('110101199002301234')).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('110101199002301234', false)).toBeFalsy();
-        expect(RegexUtils.isChinaIdCard('110105194912310021', false)).toBeTruthy();
-        expect(RegexUtils.isChinaIdCard('110101199003078888', false)).toBeTruthy();
-        expect(RegexUtils.isChinaIdCard('11010519491231002X', false)).toBeTruthy();
+    test('Testing isChineseIdCard', () => {
+        expect(RegexUtils.isChineseIdCard(undefined)).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('')).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('11010519491231002X')).toBeTruthy();
+        expect(RegexUtils.isChineseIdCard('11010519491231002x')).toBeTruthy();
+        expect(RegexUtils.isChineseIdCard('110101199003070011')).toBeTruthy();
+        expect(RegexUtils.isChineseIdCard('440524188001010014')).toBeTruthy();
+        expect(RegexUtils.isChineseIdCard('310101198511170038')).toBeTruthy();
+        expect(RegexUtils.isChineseIdCard('440304199601010023')).toBeTruthy();
+        expect(RegexUtils.isChineseIdCard('110105194912310021')).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('110101199003078888')).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('01010519491231002X')).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('11010519491331002X')).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('110105194912321234')).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('11010519491231002')).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('1101051949123100222')).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('110101199002301234')).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('110101199002301234', false)).toBeFalsy();
+        expect(RegexUtils.isChineseIdCard('110105194912310021', false)).toBeTruthy();
+        expect(RegexUtils.isChineseIdCard('110101199003078888', false)).toBeTruthy();
+        expect(RegexUtils.isChineseIdCard('11010519491231002X', false)).toBeTruthy();
     });
 
     test('Testing isCompilable', () => {
@@ -124,10 +124,17 @@ describe('RegexUtils.test', () => {
         expect(RegexUtils.isMobile('13812345678')).toBeTruthy();
         expect(RegexUtils.isMobile('15912345678')).toBeTruthy();
         expect(RegexUtils.isMobile('19912345678')).toBeTruthy();
+        expect(RegexUtils.isMobile('+8613812345678')).toBeTruthy();
+        expect(RegexUtils.isMobile('+86-13812345678')).toBeTruthy();
+        expect(RegexUtils.isMobile('8613812345678')).toBeTruthy();
+        expect(RegexUtils.isMobile('86-13812345678')).toBeTruthy();
         expect(RegexUtils.isMobile('12345678901')).toBeFalsy();
         expect(RegexUtils.isMobile('12812345678')).toBeFalsy();
         expect(RegexUtils.isMobile('1381234567')).toBeFalsy();
         expect(RegexUtils.isMobile('138123456789')).toBeFalsy();
+        expect(RegexUtils.isMobile('0086-13812345678')).toBeFalsy();
+        expect(RegexUtils.isMobile('+86 13812345678')).toBeFalsy();
+        expect(RegexUtils.isMobile('+86--13812345678')).toBeFalsy();
         expect(RegexUtils.isMobile('2125551234', '^[2-9]\\d{2}[2-9]\\d{6}$')).toBeTruthy();
         expect(RegexUtils.isMobile('1125551234', '^[2-9]\\d{2}[2-9]\\d{6}$')).toBeFalsy();
         expect(RegexUtils.isMobile('2125551234', /^[2-9]\d{2}[2-9]\d{6}$/)).toBeTruthy();

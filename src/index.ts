@@ -30,6 +30,7 @@ export * as NumberUtils from './util/NumberUtils';
 export * as ObjectUtils from './util/ObjectUtils';
 export * as RandomUtils from './util/RandomUtils';
 export * as RegexUtils from './util/RegexUtils';
+export * as SensitiveUtils from './util/SensitiveUtils';
 export * as StringUtils from './util/StringUtils';
 export * as ThreadUtils from './util/ThreadUtils';
 export * as TreeUtils from './util/TreeUtils';

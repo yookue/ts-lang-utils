@@ -15,11 +15,8 @@
  */
 
 
+import { CHINESE_MOBILE_REGEX } from '@/constant/regex-pattern';
 import { compilePattern } from './compilePattern';
-
-
-/** 中国手机号校验 */
-export const CHINA_MOBILE_REGEX = /^1[3-9]\d{9}$/;
 
 
 /**
@@ -36,13 +33,16 @@ export const CHINA_MOBILE_REGEX = /^1[3-9]\d{9}$/;
  * ```ts
  * isMobile(undefined);                                    // false
  * isMobile('13812345678');                                // true
+ * isMobile('+8613812345678');                             // true, 带国家码
+ * isMobile('+86-13812345678');                            // true, 带国家码与连字符
  * isMobile('12345678901');                                // false
+ * isMobile('0086-13812345678');                           // false, 国际拨号前缀
  * isMobile('2125551234', '^[2-9]\\d{2}[2-9]\\d{6}$');     // true, 美国
  * isMobile('2125551234', /^[2-9]\d{2}[2-9]\d{6}$/);       // true, 美国
  * isMobile('1125551234', /^[2-9]\d{2}[2-9]\d{6}$/);       // false, 区号不能以 1 开头
  * ```
  */
-export function isMobile(text?: string | null, pattern: string | RegExp = CHINA_MOBILE_REGEX): boolean {
+export function isMobile(text?: string | null, pattern: string | RegExp = CHINESE_MOBILE_REGEX): boolean {
     if (!text) {
         return false;
     }

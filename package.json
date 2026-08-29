@@ -1,6 +1,6 @@
 {
     "name": "@unikue/ts-lang-utils",
-    "version": "1.2.13",
+    "version": "1.3.0",
     "title": "TsLangUtils",
     "description": "Common lang utilities for typescript",
     "homepage": "https://unikueltd.github.io/ts-lang-utils",

@@ -15,29 +15,15 @@
  */
 
 
-import { EMAIL_REGEX } from '@/constant/regex-pattern';
-
-
 /**
- * Returns whether the given text is a valid email address
- *
- * @param text The text to check
- *
- * @returns whether the given text is a valid email address
+ * Utilities for sensitive data
  *
  * @author David Hsing
- *
- * @example
- * ```ts
- * isEmail(undefined);                      // false
- * isEmail('user@example.com');             // true
- * isEmail('abc-def@example.com');          // true
- * isEmail('张三@example.com');              // true
- * isEmail('user@exa!mple.com');            // false
- * isEmail('user@example.com.');            // false
- * isEmail('invalid-email');                // false
- * ```
  */
-export function isEmail(text?: string | null): boolean {
-    return !!text && EMAIL_REGEX.test(text);
-}
+
+
+export { maskBankCard } from './maskBankCard';
+export { maskChineseIdCard } from './maskChineseIdCard';
+export { maskChineseMobile } from './maskChineseMobile';
+export { maskChineseName } from './maskChineseName';
+export { maskEmail } from './maskEmail';

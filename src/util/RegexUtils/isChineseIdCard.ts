@@ -15,37 +15,38 @@
  */
 
 
-/** 中国大陆身份证号格式正则（18 位，仅校验格式，不含校验位与日期真实性） */
-export const CHINA_ID_CARD_REGEX = /^[1-9]\d{5}(?:18|19|20)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])\d{3}[\dXx]$/;
+import { CHINESE_ID_CARD_REGEX } from '@/constant/regex-pattern';
+
 
 /** 校验位加权因子，对应 ISO 7064:1983 MOD 11-2 */
 const CHECKSUM_WEIGHTS = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+
 
 /** 校验位字符表，以加权和对 11 取模的结果为下标 */
 const CHECKSUM_CODES = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
 
 
 /**
- * Returns whether the given text is a valid China mainland ID card number
+ * Returns whether the given text is a valid Chinese mainland ID card number
  *
  * @param text The text to check
  * @param checksum Whether to validate the checksum character, which is the 18th character
  *
- * @returns whether the given text is a valid China mainland ID card number
+ * @returns whether the given text is a valid Chinese mainland ID card number
  *
  * @author David Hsing
  *
  * @example
  * ```ts
- * isChinaIdCard(undefined);                              // false
- * isChinaIdCard('11010519491231002X');                   // true
- * isChinaIdCard('110105194912310021');                   // false, 校验位错误
- * isChinaIdCard('110105194912310021', false);            // true, 仅校验格式
- * isChinaIdCard('110101199002301234');                   // false, 日期不存在
+ * isChineseIdCard(undefined);                              // false
+ * isChineseIdCard('11010519491231002X');                   // true
+ * isChineseIdCard('110105194912310021');                   // false, 校验位错误
+ * isChineseIdCard('110105194912310021', false);            // true, 仅校验格式
+ * isChineseIdCard('110101199002301234');                   // false, 日期不存在
  * ```
  */
-export function isChinaIdCard(text?: string | null, checksum: boolean = true): boolean {
-    if (!text || !CHINA_ID_CARD_REGEX.test(text)) {
+export function isChineseIdCard(text?: string | null, checksum: boolean = true): boolean {
+    if (!text || !CHINESE_ID_CARD_REGEX.test(text)) {
         return false;
     }
     const year = parseInt(text.substring(6, 10), 10);
